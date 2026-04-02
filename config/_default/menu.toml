@@ -5,7 +5,6 @@
     weight     = -100
     [main.params]
         icon = "home"
-        newTab = false
 
 [[main]]
     identifier = "projects"
@@ -13,7 +12,7 @@
     url        = "/page/projects/"
     weight     = -90
     [main.params]
-        icon = "rocket"
+        icon = "link"
 
 [[main]]
     identifier = "photography"
@@ -21,7 +20,7 @@
     url        = "/categories/photography/"
     weight     = -80
     [main.params]
-        icon = "camera"
+        icon = "infinity"
 
 [[main]]
     identifier = "archives"
@@ -53,10 +52,3 @@
     url        = "https://github.com/"
     [social.params]
         icon = "brand-github"
-
-[[social]]
-    identifier = "linkedin"
-    name       = "LinkedIn"
-    url        = "https://linkedin.com/"
-    [social.params]
-        icon = "brand-linkedin"
