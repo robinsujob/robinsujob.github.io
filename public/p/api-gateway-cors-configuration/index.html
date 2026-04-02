@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Complete guide to configuring CORS for AWS API Gateway.">
+<title>API Gateway CORS Configuration Guide</title>
+
+
+<link rel="canonical" href="http://localhost:4002/p/api-gateway-cors-configuration/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.389e156f5e9bb13df5a924cfa99dfb9c39f3e01e68d9e146cd65bdae963be145.css"><meta property='og:title' content="API Gateway CORS Configuration Guide">
+<meta property='og:description' content="Complete guide to configuring CORS for AWS API Gateway.">
+<meta property='og:url' content='http://localhost:4002/p/api-gateway-cors-configuration/'>
+<meta property='og:site_name' content='Robin&#39;s Space'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='api-gateway' /><meta property='article:tag' content='cors' /><meta property='article:tag' content='serverless' /><meta property='article:published_time' content='2024-10-28T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-10-28T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="API Gateway CORS Configuration Guide">
+<meta name="twitter:description" content="Complete guide to configuring CORS for AWS API Gateway.">
+    <link rel="shortcut icon" href="/img/avatar.jpg" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/avatar.jpg" 
+                        width="600"
+                        height="400"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🚀</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Robin&#39;s Space</a></h1>
+            <h2 class="site-description">AWS Solutions Architect | Cloud &amp; AI</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/robinzhu'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ol>
+    <li><a href="#cors-原理--how-cors-works">CORS 原理 / How CORS Works</a></li>
+    <li><a href="#api-gateway-介绍--introduction-to-api-gateway">API Gateway 介绍 / Introduction to API Gateway</a>
+      <ol>
+        <li><a href="#rest-api-与-http-api-的简介与区别--rest-api-vs-http-api">REST API 与 HTTP API 的简介与区别 / REST API vs HTTP API</a>
+          <ol>
+            <li><a href="#功能上--features">功能上 / Features</a></li>
+            <li><a href="#性能与价格上--performance--pricing">性能与价格上 / Performance &amp; Pricing</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#在-api-gateway-中配置跨域访问--configuring-cors-in-api-gateway">在 API Gateway 中配置跨域访问 / Configuring CORS in API Gateway</a>
+      <ol>
+        <li><a href="#rest-apis-跨域访问配置--rest-api-cors-configuration">REST APIs 跨域访问配置 / REST API CORS Configuration</a>
+          <ol>
+            <li><a href="#附加授权的跨域配置场景--cors-configuration-with-authorization">附加授权的跨域配置场景 / CORS Configuration with Authorization</a></li>
+          </ol>
+        </li>
+        <li><a href="#http-apis-跨域访问配置--http-api-cors-configuration">HTTP APIs 跨域访问配置 / HTTP API CORS Configuration</a>
+          <ol>
+            <li><a href="#附加授权的跨域配置场景--cors-configuration-with-authorization-1">附加授权的跨域配置场景 / CORS Configuration with Authorization</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#总结--summary">总结 / Summary</a></li>
+    <li><a href="#相关资源--related-resources">相关资源 / Related Resources</a></li>
+    <li><a href="#本篇作者--authors">本篇作者 / Authors</a></li>
+  </ol>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/aws/" style="background-color: hsl(94, 60%, 84%); color: hsl(94, 60%, 15%);">
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/api-gateway-cors-configuration/">API Gateway CORS Configuration Guide</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Complete guide to configuring CORS for AWS API Gateway.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2024-10-28T00:00:00&#43;08:00'>Monday, October 28, 2024</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        11 minutes read
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span>Table of contents</span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ol>
+    <li><a href="#cors-原理--how-cors-works">CORS 原理 / How CORS Works</a></li>
+    <li><a href="#api-gateway-介绍--introduction-to-api-gateway">API Gateway 介绍 / Introduction to API Gateway</a>
+      <ol>
+        <li><a href="#rest-api-与-http-api-的简介与区别--rest-api-vs-http-api">REST API 与 HTTP API 的简介与区别 / REST API vs HTTP API</a>
+          <ol>
+            <li><a href="#功能上--features">功能上 / Features</a></li>
+            <li><a href="#性能与价格上--performance--pricing">性能与价格上 / Performance &amp; Pricing</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#在-api-gateway-中配置跨域访问--configuring-cors-in-api-gateway">在 API Gateway 中配置跨域访问 / Configuring CORS in API Gateway</a>
+      <ol>
+        <li><a href="#rest-apis-跨域访问配置--rest-api-cors-configuration">REST APIs 跨域访问配置 / REST API CORS Configuration</a>
+          <ol>
+            <li><a href="#附加授权的跨域配置场景--cors-configuration-with-authorization">附加授权的跨域配置场景 / CORS Configuration with Authorization</a></li>
+          </ol>
+        </li>
+        <li><a href="#http-apis-跨域访问配置--http-api-cors-configuration">HTTP APIs 跨域访问配置 / HTTP API CORS Configuration</a>
+          <ol>
+            <li><a href="#附加授权的跨域配置场景--cors-configuration-with-authorization-1">附加授权的跨域配置场景 / CORS Configuration with Authorization</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#总结--summary">总结 / Summary</a></li>
+    <li><a href="#相关资源--related-resources">相关资源 / Related Resources</a></li>
+    <li><a href="#本篇作者--authors">本篇作者 / Authors</a></li>
+  </ol>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    
+    <blockquote>
+        <p>原文链接：<a class="link" href="https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/"  target="_blank" rel="noopener"
+    >Amazon API Gateway 跨域请求（CORS）配置 - 亚马逊AWS官方博客</a></p>
+
+    </blockquote>
+<p>CORS，全称为跨源资源共享（Cross-Origin Resource Sharing），是一种基于 HTTP 标头的机制，允许服务器标示哪些外部源（域、协议或端口）可以访问其资源。CORS 可以解决同源策略带来的不便，同源策略是浏览器的一种安全机制，它限制网页从不同的来源加载资源，以防止恶意网站窃取敏感数据。然而，这种限制也阻碍了合法的跨域请求。复杂的应用程序通常会在其客户端代码中引用第三方API和资源，当客户端域与服务器域不匹配时就需要 CORS。通过 CORS，浏览器能够安全地进行跨源数据传输，从而突破同源策略的限制。CORS 允许客户端浏览器在任何数据传输之前,先向第三方服务器检查请求是否被授权。由于 CORS 配置的复杂性，开发人员往往将跨域访问的权限设置得过大，比如在允许访问的标头中使用 &ldquo;*&rdquo; 来允许全部访问，这会对应用的安全性造成损害。</p>
+<p>CORS, or Cross-Origin Resource Sharing, is an HTTP header-based mechanism that allows servers to indicate which external origins (domains, protocols, or ports) can access their resources. CORS addresses the inconveniences of the same-origin policy—a browser security mechanism that restricts web pages from loading resources from different origins to prevent malicious websites from stealing sensitive data. However, this restriction also blocks legitimate cross-origin requests. Complex applications often reference third-party APIs and resources in their client-side code, and CORS is needed when the client domain doesn&rsquo;t match the server domain. Through CORS, browsers can safely perform cross-origin data transfers, breaking through same-origin policy restrictions. CORS allows client browsers to check with third-party servers whether a request is authorized before any data transfer. Due to the complexity of CORS configuration, developers often set cross-origin access permissions too broadly—for example, using &ldquo;*&rdquo; in allowed headers to permit all access—which can compromise application security.</p>
+<p><a class="link" href="https://aws.amazon.com/cn/api-gateway/"  target="_blank" rel="noopener"
+    >Amazon API Gateway</a> 是一项帮助开发人员轻松管理任意规模的 API 的全托管服务，常被用于后端服务的管理与路由。因此，在 API Gateway 上配置 CORS 是一个很常见的需要。在 Amazon API Gateway 中，不同类型的 API 对于 CORS 有不同的配置方式，这增加了 CORS 配置的复杂度。</p>
+<p><a class="link" href="https://aws.amazon.com/cn/api-gateway/"  target="_blank" rel="noopener"
+    >Amazon API Gateway</a> is a fully managed service that helps developers easily manage APIs at any scale, commonly used for backend service management and routing. Therefore, configuring CORS on API Gateway is a very common requirement. In Amazon API Gateway, different types of APIs have different CORS configuration methods, which adds to the complexity of CORS configuration.</p>
+<p>本文将介绍如何在 Amazon API Gateway 的 REST API 和 HTTP API 中进行跨源资源共享设置，其中将重点介绍 REST API 和 HTTP API 在跨源资源共享配置上的不同之处，以及在开启了授权验证（authorization）的情况下怎么配置跨源资源共享。通过阅读本文，您将掌握 Amazon API Gateway 中跨源资源共享的配置技巧，从而实现满足最小权限原则的跨域访问配置。</p>
+<p>This article will explain how to configure Cross-Origin Resource Sharing in Amazon API Gateway&rsquo;s REST API and HTTP API, with a focus on the differences between REST API and HTTP API CORS configurations, and how to configure CORS when authorization is enabled. After reading this article, you will master CORS configuration techniques in Amazon API Gateway to achieve cross-origin access configurations that meet the principle of least privilege.</p>
+<h2 id="cors-原理--how-cors-works">CORS 原理 / How CORS Works
+</h2><p>CORS 是一种基于 HTTP 标头的机制，服务器通过使用标头信息来限制访问。CORS 的工作主要依赖于以下几个关键的 HTTP 标头：</p>
+<p>CORS is an HTTP header-based mechanism where servers use header information to restrict access. CORS primarily relies on the following key HTTP headers:</p>
+<ul>
+<li><strong>Origin</strong>：指示请求来源。/ Indicates the request origin.</li>
+<li><strong>Access-Control-Allow-Origin</strong>：指定哪些源可以访问资源。/ Specifies which origins can access the resource.</li>
+<li><strong>Access-Control-Allow-Methods</strong>：列出允许访问资源的 HTTP 方法。/ Lists the HTTP methods allowed to access the resource.</li>
+<li><strong>Access-Control-Allow-Headers</strong>：指示允许使用的自定义请求头。/ Indicates which custom request headers are allowed.</li>
+<li><strong>Access-Control-Allow-Credentials</strong>：指示是否允许发送凭据（如 Cookies）。/ Indicates whether credentials (such as Cookies) are allowed.</li>
+<li><strong>Access-Control-Max-Age</strong>：指示预检请求结果可以被缓存多长时间。/ Indicates how long preflight request results can be cached.</li>
+</ul>
+<p>根据请求的复杂程度，CORS 将其分为两类：</p>
+<p>Based on request complexity, CORS divides requests into two categories:</p>
+<ul>
+<li><strong>简单请求 / Simple requests</strong>：不需要预检。这类请求使用 GET/POST/HEAD 方法，并且只使用特定的安全头（如 Accept、Content-Type）。/ No preflight needed. These requests use GET/POST/HEAD methods and only use specific safe headers (such as Accept, Content-Type).</li>
+<li><strong>非简单请求 / Non-simple requests</strong>：需要预检。除简单请求外的跨域请求都算是非简单请求。在发送实际请求之前，浏览器会先发送一个 OPTIONS 请求，以确认服务器是否允许该实际请求。/ Preflight required. Any cross-origin request that isn&rsquo;t a simple request is considered non-simple. Before sending the actual request, the browser first sends an OPTIONS request to confirm whether the server allows the actual request.</li>
+</ul>
+<p>对于非简单请求，服务器依赖浏览器发送 CORS 预检或 OPTIONS 请求。一个完整的请求过程如下：</p>
+<p>For non-simple requests, the server relies on the browser sending a CORS preflight or OPTIONS request. A complete request process is as follows:</p>
+<p><img alt="CORS 完整请求流程 / Complete CORS Request Flow" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>非简单请求的 CORS 完整过程：</p>
+<p>The complete CORS process for non-simple requests:</p>
+<ol>
+<li>客户端应用程序发起请求 / Client application initiates the request</li>
+<li>浏览器发送预检请求（preflight request）/ Browser sends a preflight request</li>
+<li>服务器返回预检响应（preflight response）/ Server returns a preflight response</li>
+<li>浏览器发送实际的请求 / Browser sends the actual request</li>
+<li>服务器返回实际的响应 / Server returns the actual response</li>
+<li>客户端接收到实际的响应 / Client receives the actual response</li>
+</ol>
+<h2 id="api-gateway-介绍--introduction-to-api-gateway">API Gateway 介绍 / Introduction to API Gateway
+</h2><p><a class="link" href="https://aws.amazon.com/cn/api-gateway/"  target="_blank" rel="noopener"
+    >Amazon API Gateway</a> 是一项完全托管的服务，可以帮助开发人员轻松创建、发布、维护、监控和保护任意规模的 API。在您不需要维护其底层基础设施的情况下，API Gateway 能接受和处理成千上万个并发 API 调用。API Gateway 支持 RESTful 和 WebSocket 两种类型的 API，且支持多种类型的后端集成，如容器化服务、无服务器工作负载、HTTP 端点等。</p>
+<p>Amazon API Gateway is a fully managed service that helps developers easily create, publish, maintain, monitor, and secure APIs at any scale. Without requiring you to maintain the underlying infrastructure, API Gateway can accept and process thousands of concurrent API calls. API Gateway supports both RESTful and WebSocket API types, and supports multiple backend integration types such as containerized services, serverless workloads, and HTTP endpoints.</p>
+<h3 id="rest-api-与-http-api-的简介与区别--rest-api-vs-http-api">REST API 与 HTTP API 的简介与区别 / REST API vs HTTP API
+</h3><p>REST API 和 HTTP API 都是 Amazon API Gateway 的 RESTful API 类型产品。它们的区别如下。</p>
+<p>Both REST API and HTTP API are RESTful API products of Amazon API Gateway. Their differences are as follows.</p>
+<h4 id="功能上--features">功能上 / Features
+</h4><p>REST API 的特有功能包括：/ REST API unique features include:</p>
+<ul>
+<li>支持 API 密钥 / API key support</li>
+<li>支持每客户端节流 / Per-client throttling</li>
+<li>支持请求验证 / Request validation</li>
+<li>可以与 AWS WAF 集成 / AWS WAF integration</li>
+<li>支持私有 API 端点 / Private API endpoints</li>
+</ul>
+<p>HTTP API 的设计初衷是仅保留最简化的功能：/ HTTP API is designed with minimal features:</p>
+<ul>
+<li>自动部署 / Automatic deployment</li>
+<li>支持 default stage / Default stage support</li>
+</ul>
+<h4 id="性能与价格上--performance--pricing">性能与价格上 / Performance &amp; Pricing
+</h4><p>由于 HTTP API 的功能更精简，因此它提供更快的速度和更低的价格。</p>
+<p>Since HTTP API has streamlined features, it offers faster speed and lower pricing.</p>
+<h2 id="在-api-gateway-中配置跨域访问--configuring-cors-in-api-gateway">在 API Gateway 中配置跨域访问 / Configuring CORS in API Gateway
+</h2><p>若需要在 Amazon API Gateway 中解决跨域问题，皆需通过 CORS 配置来执行。API Gateway 会自动通过 OPTIONS 方法，并尝试将 CORS 标头添加到现有的方法集成响应中。在 Amazon API Gateway 中，REST API 与 HTTP API 的跨域配置方式会有所不同。</p>
+<p>To resolve cross-origin issues in Amazon API Gateway, CORS configuration is required. API Gateway automatically handles OPTIONS methods and attempts to add CORS headers to existing method integration responses. In Amazon API Gateway, the CORS configuration methods differ between REST API and HTTP API.</p>
+<h3 id="rest-apis-跨域访问配置--rest-api-cors-configuration">REST APIs 跨域访问配置 / REST API CORS Configuration
+</h3><p>以下图为例，REST API 中有一个默认的 / 资源，我们在 / 资源下创建了一个 POST 方法，集成了 Lambda 函数作为后端服务。</p>
+<p>As shown below, the REST API has a default / resource, and we created a POST method under the / resource, integrated with a Lambda function as the backend service.</p>
+<p><img alt="REST API 资源配置" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>如果想要为 / 资源下的 POST 方法配置跨域访问，我们需要回到资源的简介页面，点击启用 CORS。</p>
+<p>To configure CORS for the POST method under the / resource, we need to go back to the resource overview page and click Enable CORS.</p>
+<p><img alt="启用 CORS 按钮" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在启用 CORS 页面，首先配置访问控制允许的方法。为了正确的响应 preflight 请求，OPTIONS 方法已被默认开启。我们勾选需要配置跨域访问的 POST 方法。随后，我们配置访问控制允许的标头和来源，具体允许的值取决于您的后端应用。配置好后点击保存。</p>
+<p>On the Enable CORS page, first configure the allowed methods. The OPTIONS method is enabled by default to properly respond to preflight requests. We select the POST method that needs CORS configuration. Then we configure the allowed headers and origins—the specific allowed values depend on your backend application. Click Save after configuration.</p>
+<p><img alt="CORS 配置页面" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>保存之后，在 POST 方法的集成响应页面可以看到，标头映射中，Access-Control-Allow-Origin 的映射值为上一步配置的访问控制允许的来源。</p>
+<p>After saving, on the POST method&rsquo;s integration response page, you can see that in the header mapping, the Access-Control-Allow-Origin mapping value is the allowed origin configured in the previous step.</p>
+<p><img alt="集成响应标头映射" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在资源列表我们还可以看到，在启用 CORS 之后，API Gateway 为我们自动创建了 OPTIONS 方法，该方法用于正确响应 preflight 请求。OPTIONS 方法的集成类型为模拟集成，模拟集成会为请求返回一个 200 的状态码，并且返回 preflight 响应的所有相关标头。</p>
+<p>In the resource list, we can also see that after enabling CORS, API Gateway automatically created an OPTIONS method for properly responding to preflight requests. The OPTIONS method&rsquo;s integration type is Mock integration, which returns a 200 status code and all relevant preflight response headers.</p>
+<p><img alt="OPTIONS 方法配置" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在配置的访问控制允许的来源端点上测试跨域 POST 请求，可以看到，对于 preflight 请求和实际请求，REST API 都返回了相应的标头。</p>
+<p>Testing a cross-origin POST request on the configured allowed origin endpoint shows that the REST API returns the appropriate headers for both the preflight request and the actual request.</p>
+<p><img alt="Preflight 请求响应" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="实际请求响应" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>对于非根路径，也可以在创建资源时直接勾选 CORS（跨源资源共享），这样 API Gateway 会自动在这个资源下创建一个 OPTIONS 方法处理 preflight 请求。</p>
+<p>For non-root paths, you can also check CORS (Cross-Origin Resource Sharing) when creating a resource, so API Gateway will automatically create an OPTIONS method under this resource to handle preflight requests.</p>
+<p><img alt="创建资源时勾选 CORS" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>需要注意的是，使用这种方法创建的 OPTIONS 方法默认会接受来自所有源、所有方法的跨域请求，如果需要缩小权限可以点击右上角的编辑进行修改。</p>
+<p>Note that the OPTIONS method created this way will accept cross-origin requests from all origins and all methods by default. If you need to narrow the permissions, you can click Edit in the upper right corner to modify.</p>
+<p><img alt="编辑 OPTIONS 方法" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在创建资源时勾选 CORS（跨源资源共享）后，依旧要在资源简介页面的右上角点击启用 CORS，为具体的请求方法（如 POST）配置跨域相关的标头。</p>
+<p>After checking CORS when creating a resource, you still need to click Enable CORS in the upper right corner of the resource overview page to configure CORS-related headers for specific request methods (such as POST).</p>
+<p><img alt="为具体方法配置 CORS 标头" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<h4 id="附加授权的跨域配置场景--cors-configuration-with-authorization">附加授权的跨域配置场景 / CORS Configuration with Authorization
+</h4><p>您可以为您的 REST API 集成 Lambda 授权方或者 Cognito 授权方。开启授权时，请注意只为需要的方法开启授权，不要为 OPTIONS 方法开启授权，否则将导致 preflight 请求（未授权）出现 401 错误。</p>
+<p>You can integrate Lambda authorizers or Cognito authorizers for your REST API. When enabling authorization, note that you should only enable it for the methods that need it—do not enable authorization for the OPTIONS method, as this will cause 401 errors for preflight requests (which are unauthorized).</p>
+<p><img alt="为 POST 方法开启授权" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><em>为 POST 方法开启授权 / Enable authorization for the POST method</em></p>
+<p><img alt="如果为 OPTIONS 方法开启授权，preflight 请求会出现错误" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><em>如果为 OPTIONS 方法开启授权，preflight 请求会出现错误 / If authorization is enabled for the OPTIONS method, preflight requests will fail</em></p>
+<p><img alt="不要为 OPTIONS 方法开启授权" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><em>不要为 OPTIONS 方法开启授权 / Do not enable authorization for the OPTIONS method</em></p>
+<h3 id="http-apis-跨域访问配置--http-api-cors-configuration">HTTP APIs 跨域访问配置 / HTTP API CORS Configuration
+</h3><p>在这一章节中，我们依旧以为 / 资源下的 POST 方法配置跨域访问为例，展示如何为 HTTP API 配置跨域访问。</p>
+<p>In this section, we continue using the example of configuring CORS for the POST method under the / resource to demonstrate how to configure CORS for HTTP API.</p>
+<p>HTTP API 的 CORS 配置相对简单，因为您一旦为您的 HTTP API 开启跨域访问，API Gateway 会自动响应浏览器发来的 preflight 请求，并且自动为您的后端返回添加 CORS 相关的标头。您无法在您的 API 资源中看到 API Gateway 自动响应 preflight 请求的 OPTIONS 方法的配置，也看不到 POST 方法的响应标头的配置。</p>
+<p>HTTP API CORS configuration is relatively simple because once you enable CORS for your HTTP API, API Gateway automatically responds to preflight requests from browsers and automatically adds CORS-related headers to your backend responses. You won&rsquo;t be able to see the OPTIONS method configuration for API Gateway&rsquo;s automatic preflight responses in your API resources, nor the response header configuration for the POST method.</p>
+<p>以下为开启 HTTP API 跨域访问的详细步骤。</p>
+<p>Below are the detailed steps for enabling HTTP API CORS.</p>
+<p>进入 HTTP API 的页面，在左侧导航栏中点击 CORS，随后在右上角点击配置。</p>
+<p>Navigate to the HTTP API page, click CORS in the left navigation bar, then click Configure in the upper right corner.</p>
+<p><img alt="HTTP API CORS 配置入口" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在配置 CORS 的页面，依次输入访问控制允许的来源、标头、方法。根据您的需要，您也可以选择性地配置访问控制公开标头、访问控制最长期限、访问控制允许凭证。配置完成后，点击右下角保存。</p>
+<p>On the CORS configuration page, enter the allowed origins, headers, and methods. Optionally, you can also configure exposed headers, max age, and allow credentials. Click Save in the lower right corner after configuration.</p>
+<p><img alt="HTTP API CORS 配置页面" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>配置好后，我们在 HTTP API 的路由页面看不到 OPTIONS 方法的配置。</p>
+<p>After configuration, we cannot see the OPTIONS method configuration on the HTTP API routes page.</p>
+<p><img alt="HTTP API 路由页面" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在 HTTP API 允许的跨域访问来源端点上测试跨域 POST 请求，可以看到，preflight 的 OPTIONS 请求和实际的 POST 请求都能得到正确响应。这是因为 API Gateway 替我们完成了 HTTP API 对 preflight 请求的响应和 CORS 相关的标头的添加。</p>
+<p>Testing a cross-origin POST request on the HTTP API&rsquo;s allowed origin endpoint shows that both the preflight OPTIONS request and the actual POST request receive correct responses. This is because API Gateway handles the HTTP API&rsquo;s preflight request responses and CORS header additions for us.</p>
+<p><img alt="HTTP API CORS 测试结果" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<h4 id="附加授权的跨域配置场景--cors-configuration-with-authorization-1">附加授权的跨域配置场景 / CORS Configuration with Authorization
+</h4><p>类似于 REST API，HTTP API 支持通过 Lambda、JWT、IAM 三种授权方为特定的方法授权。如果您想为集成了授权方的 HTTP API 开启跨域访问，在大多数情况下，HTTP API 会自动为您处理 preflight 请求。因此，您无需进行特殊配置。唯一的例外是，当您创建了授权的 ANY 方法时，preflight 请求也会由 ANY 方法而不会由 HTTP API 处理。而 preflight 请求中不包含授权信息，因此授权的 ANY 方法不会返回正确的状态码和跨域标头，preflight 请求会出现 401 错误。</p>
+<p>Similar to REST API, HTTP API supports authorization through Lambda, JWT, and IAM authorizers for specific methods. If you want to enable CORS for an HTTP API with integrated authorizers, in most cases HTTP API will automatically handle preflight requests for you, requiring no special configuration. The only exception is when you create an authorized ANY method—in this case, preflight requests will be handled by the ANY method instead of HTTP API. Since preflight requests don&rsquo;t include authorization information, the authorized ANY method won&rsquo;t return the correct status code and CORS headers, resulting in 401 errors.</p>
+<p><img alt="授权的 ANY 方法" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="ANY 方法导致的 401 错误" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>这种情况下，有两种解决方法：</p>
+<p>In this case, there are two solutions:</p>
+<p><strong>（推荐方法）</strong> 根据需要为每种方法和资源创建一个特定的路由，尽量避免使用 ANY 方法。比如，在本文的例子中，我只需要为 POST 方法创建路由。</p>
+<p><strong>(Recommended)</strong> Create a specific route for each method and resource as needed, and avoid using the ANY method. For example, in this article&rsquo;s case, you only need to create a route for the POST method.</p>
+<p><img alt="为特定方法创建路由" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在同一资源路径下创建一个无需授权的 OPTIONS 方法路由，并为 OPTIONS 方法添加一个任意后端集成。这样无授权的 OPTIONS 路由会捕捉 preflight 请求。</p>
+<p>Create an unauthorized OPTIONS method route under the same resource path, and add any backend integration for the OPTIONS method. This way, the unauthorized OPTIONS route will capture preflight requests.</p>
+<p><img alt="创建无授权的 OPTIONS 路由" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<h2 id="总结--summary">总结 / Summary
+</h2><p>本文介绍了 Amazon API Gateway 中 REST API 和 HTTP API 的跨域访问配置方式，并特别介绍了开启授权的情况下两种 API 要如何设置才能保证 preflight 请求被正确响应。</p>
+<p>This article covered the CORS configuration methods for REST API and HTTP API in Amazon API Gateway, with special attention to how both API types should be configured to ensure preflight requests are properly handled when authorization is enabled.</p>
+<p>两种 API 的跨域访问配置方式区别如下：</p>
+<p>The differences between the two API types&rsquo; CORS configurations are as follows:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>API 类型 / Type</th>
+          <th>跨域配置方法 / CORS Configuration Method</th>
+          <th>配置特点 / Configuration Features</th>
+          <th>授权注意事项 / Authorization Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>REST API</td>
+          <td>可以为特定路由配置跨域，在该路由下点击启用 CORS / Configure CORS for specific routes by clicking Enable CORS</td>
+          <td>可以看到 OPTIONS 方法及其响应标头设置 / OPTIONS method and response header settings are visible</td>
+          <td>不要为 OPTIONS 方法开启授权 / Do not enable authorization for OPTIONS method</td>
+      </tr>
+      <tr>
+          <td>HTTP API</td>
+          <td>点击左侧导航栏的 CORS 进入配置页面 / Click CORS in the left navigation bar</td>
+          <td>preflight 请求由 API Gateway 自动响应，控制台中看不到配置 / Preflight handled automatically, not visible in console</td>
+          <td>避免使用 ANY 方法，如必须使用则另外创建无授权的 OPTIONS 方法 / Avoid ANY method; if necessary, create an unauthorized OPTIONS method</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="相关资源--related-resources">相关资源 / Related Resources
+</h2><p>若要为其他亚马逊云科技的资源开启 CORS，可参考：</p>
+<p>For enabling CORS on other AWS resources, refer to:</p>
+<ul>
+<li><a class="link" href="https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/"  target="_blank" rel="noopener"
+    >为 CloudFront 开启 CORS / Enable CORS for CloudFront</a></li>
+<li><a class="link" href="https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/"  target="_blank" rel="noopener"
+    >为 Lambda 函数 URL 开启 CORS / Enable CORS for Lambda Function URLs</a></li>
+<li><a class="link" href="https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/cors.html"  target="_blank" rel="noopener"
+    >为托管静态网站的 S3 开启 CORS / Enable CORS for S3 Static Website Hosting</a></li>
+</ul>
+<h2 id="本篇作者--authors">本篇作者 / Authors
+</h2><ul>
+<li><strong>李方怡</strong> - 亚马逊云科技解决方案架构师，负责基于亚马逊云科技的云计算方案架构的设计和技术咨询，在无服务器领域有丰富经验。/ AWS Solutions Architect, specializing in serverless architecture.</li>
+<li><strong>张司雨</strong> - 亚马逊云科技解决方案架构师，负责亚马逊云科技云计算方案咨询和设计，在电商行业有丰富的经验。/ AWS Solutions Architect, specializing in e-commerce solutions.</li>
+<li><strong>苏喆</strong> - 亚马逊云科技解决方案架构师，致力于亚马逊云科技服务在电商、教育以及开发者群体中的推广。/ AWS Solutions Architect, focusing on cloud-native and container architecture.</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/api-gateway/">Api-Gateway</a>
+        
+            <a href="/tags/cors/">Cors</a>
+        
+            <a href="/tags/serverless/">Serverless</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2026 Robin&#39;s Space
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
+
+
+    </body>
+</html>

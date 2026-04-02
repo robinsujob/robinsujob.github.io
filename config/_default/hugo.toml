@@ -1,0 +1,14 @@
+baseURL                = "http://localhost:4002/"
+languageCode           = "en-us"
+title                  = "Robin's Space"
+defaultContentLanguage = "en"
+hasCJKLanguage         = false
+theme                  = "hugo-theme-stack"
+timeZone               = "Asia/Shanghai"
+
+[pagination]
+    pagerSize = 10
+
+[permalinks]
+    post = "/p/:slug/"
+    page = "/:slug/"

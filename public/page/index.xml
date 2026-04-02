@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Robin&#39;s Space</title>
+        <link>http://localhost:4002/page/</link>
+        <description>Recent content in Pages on Robin&#39;s Space</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language><atom:link href="http://localhost:4002/page/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>About</title>
+            <link>http://localhost:4002/about/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/about/</guid>
+            <description>&lt;h1 id=&#34;hey-im-robin-&#34;&gt;Hey, I&amp;rsquo;m Robin 👋&#xA;&lt;/h1&gt;&lt;p&gt;Builder, photographer, and lifelong tinkerer.&lt;/p&gt;&#xA;&lt;p&gt;I spend my days building products at the intersection of technology and creativity. This site is where I share what I&amp;rsquo;m learning, what I&amp;rsquo;m building, and what I&amp;rsquo;m seeing through my lens.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-youll-find-here&#34;&gt;What You&amp;rsquo;ll Find Here&#xA;&lt;/h2&gt;&lt;p&gt;📝 &lt;strong&gt;Blog&lt;/strong&gt; — Deep dives into tech, AI, cloud architecture, and the occasional hot take.&lt;/p&gt;&#xA;&lt;p&gt;🛠 &lt;strong&gt;Projects&lt;/strong&gt; — Things I&amp;rsquo;ve built, from side projects to serious products.&lt;/p&gt;&#xA;&lt;p&gt;📷 &lt;strong&gt;Photography&lt;/strong&gt; — Moments captured. Mostly street, travel, and architecture.&lt;/p&gt;&#xA;&lt;h2 id=&#34;get-in-touch&#34;&gt;Get in Touch&#xA;&lt;/h2&gt;&lt;p&gt;Feel free to reach out via &lt;a class=&#34;link&#34; href=&#34;https://github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; or &lt;a class=&#34;link&#34; href=&#34;https://linkedin.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;&#xA;</description>
+        </item><item>
+            <title>Archives</title>
+            <link>http://localhost:4002/archives/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/archives/</guid>
+            <description></description>
+        </item><item>
+            <title>Projects</title>
+            <link>http://localhost:4002/projects/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/projects/</guid>
+            <description>&lt;h2 id=&#34;aws-solutions&#34;&gt;AWS Solutions&#xA;&lt;/h2&gt;&lt;h3 id=&#34;china-cloudfront-ssl-plugin-v2&#34;&gt;China CloudFront SSL Plugin V2&#xA;&lt;/h3&gt;&lt;p&gt;面向中国区 CloudFront 的一站式免费 SSL 证书管理方案。V2 带来多项目统一管理、GUI 界面和 Access Key 认证。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/p/china-cloudfront-ssl-plugin-v2/&#34; &gt;Blog Post&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; AWS, CloudFront, SSL, Serverless&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;china-cloudfront-ssl-plugin&#34;&gt;China CloudFront SSL Plugin&#xA;&lt;/h3&gt;&lt;p&gt;中国区 CloudFront 免费 SSL 证书部署插件（第一代）。解决免费 SSL 证书使用和自动更新的功能缺失问题。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;https://github.com/aws-samples/China-CloudFront-SSL-Plugin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/p/cloudfront-ssl-plugin-deployment-guide/&#34; &gt;Blog Post&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; AWS, CloudFront, SSL&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;deploy-gguf-model-to-sagemaker&#34;&gt;Deploy GGUF Model to SageMaker&#xA;&lt;/h3&gt;&lt;p&gt;使用 llama.cpp 在 SageMaker 上部署 GGUF 量化模型进行推理。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/p/sagemaker-gguf-model-inference/&#34; &gt;Blog Post&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; AWS, SageMaker, LLM, GGUF&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;wordpress-genai-plus&#34;&gt;WordPress GenAI Plus&#xA;&lt;/h3&gt;&lt;p&gt;为 WordPress 添加 AI 内容生成能力的插件。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/p/wordpress-genai-plus/&#34; &gt;Blog Post&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; WordPress, GenAI, AWS Bedrock&lt;/p&gt;&#xA;</description>
+        </item><item>
+            <title>Search</title>
+            <link>http://localhost:4002/search/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/search/</guid>
+            <description></description>
+        </item></channel>
+</rss>
