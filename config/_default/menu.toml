@@ -7,9 +7,56 @@
         icon = "home"
         newTab = false
 
+[[main]]
+    identifier = "projects"
+    name       = "Projects"
+    url        = "/page/projects/"
+    weight     = -90
+    [main.params]
+        icon = "rocket"
+
+[[main]]
+    identifier = "photography"
+    name       = "Photography"
+    url        = "/categories/photography/"
+    weight     = -80
+    [main.params]
+        icon = "camera"
+
+[[main]]
+    identifier = "archives"
+    name       = "Archives"
+    url        = "/page/archives/"
+    weight     = -70
+    [main.params]
+        icon = "archives"
+
+[[main]]
+    identifier = "search"
+    name       = "Search"
+    url        = "/page/search/"
+    weight     = -60
+    [main.params]
+        icon = "search"
+
+[[main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/page/about/"
+    weight     = -50
+    [main.params]
+        icon = "user"
+
 [[social]]
     identifier = "github"
     name       = "GitHub"
-    url        = "https://github.com/robinzhu"
+    url        = "https://github.com/"
     [social.params]
         icon = "brand-github"
+
+[[social]]
+    identifier = "linkedin"
+    name       = "LinkedIn"
+    url        = "https://linkedin.com/"
+    [social.params]
+        icon = "brand-linkedin"

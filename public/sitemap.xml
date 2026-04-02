@@ -11,7 +11,7 @@
     <loc>http://localhost:4002/tags/china/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/china-cloudfront-ssl-plugin-v2-one-stop-free-ssl-certificate-management-for-china-cloudfront/</loc>
+    <loc>http://localhost:4002/p/china-cloudfront-ssl-plugin-v2/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/cloudfront/</loc>
@@ -35,7 +35,7 @@
     <loc>http://localhost:4002/categories/ai/ml/</loc>
     <lastmod>2025-02-12T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/deploy-gguf-models-on-amazon-sagemaker-with-llama.cpp/</loc>
+    <loc>http://localhost:4002/p/sagemaker-gguf-model-inference/</loc>
     <lastmod>2025-02-12T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/gguf/</loc>
@@ -50,7 +50,7 @@
     <loc>http://localhost:4002/tags/sagemaker/</loc>
     <lastmod>2025-02-12T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/api-gateway-cors-configuration-guide/</loc>
+    <loc>http://localhost:4002/p/api-gateway-cors-configuration/</loc>
     <lastmod>2024-10-28T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/api-gateway/</loc>
@@ -68,10 +68,25 @@
     <loc>http://localhost:4002/tags/wordpress/</loc>
     <lastmod>2024-04-29T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/wordpress-genai-plus-ai-content-generation-plugin/</loc>
+    <loc>http://localhost:4002/p/wordpress-genai-plus/</loc>
     <lastmod>2024-04-29T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/china-cloudfront-ssl-plugin-deployment-guide/</loc>
+    <loc>http://localhost:4002/tags/architecture/</loc>
+    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/p/photography-city-lights/</loc>
+    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/night/</loc>
+    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/categories/photography/</loc>
+    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/urban/</loc>
+    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/p/cloudfront-ssl-plugin-deployment-guide/</loc>
     <lastmod>2023-11-15T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/deployment/</loc>
@@ -80,7 +95,7 @@
     <loc>http://localhost:4002/tags/art/</loc>
     <lastmod>2023-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/p/art-qr-code-with-controlnet-and-stable-diffusion/</loc>
+    <loc>http://localhost:4002/p/art-qr-code-controlnet-stable-diffusion/</loc>
     <lastmod>2023-09-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/controlnet/</loc>

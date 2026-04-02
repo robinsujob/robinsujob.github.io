@@ -84,6 +84,24 @@
             <guid>http://localhost:4002/tags/wordpress/</guid>
             <description></description>
         </item><item>
+            <title>Architecture</title>
+            <link>http://localhost:4002/tags/architecture/</link>
+            <pubDate>Mon, 15 Jan 2024 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/tags/architecture/</guid>
+            <description></description>
+        </item><item>
+            <title>Night</title>
+            <link>http://localhost:4002/tags/night/</link>
+            <pubDate>Mon, 15 Jan 2024 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/tags/night/</guid>
+            <description></description>
+        </item><item>
+            <title>Urban</title>
+            <link>http://localhost:4002/tags/urban/</link>
+            <pubDate>Mon, 15 Jan 2024 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/tags/urban/</guid>
+            <description></description>
+        </item><item>
             <title>Deployment</title>
             <link>http://localhost:4002/tags/deployment/</link>
             <pubDate>Wed, 15 Nov 2023 00:00:00 +0800</pubDate>
