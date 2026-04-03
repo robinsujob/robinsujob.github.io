@@ -1,7 +1,8 @@
-// 中文副标题（第一行）加大
+// 中文副标题（第一行）加大加黑
 .article-subtitle .cn-title {
     font-size: 1.4em;
     font-weight: 600;
+    color: var(--card-text-color-main);
     display: block;
     margin-bottom: 0.3em;
 }
