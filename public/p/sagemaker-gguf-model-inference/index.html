@@ -136,7 +136,7 @@
         
         
         <li >
-            <a href='/page/projects/' >
+            <a href='/projects/' >
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -164,25 +164,6 @@
 
                 
                 <span>Photography</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/projects/' >
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                
-                <span>Projects</span>
             </a>
         </li>
         
@@ -272,19 +253,19 @@
         <div class="widget--toc">
             <nav class="toc-nav" id="TableOfContents">
                 
-  <ol>
+  <ul>
     <li><a href="#amazon-sagemaker-ai-模型部署的选项">Amazon SageMaker AI 模型部署的选项</a></li>
     <li><a href="#amazon-sagemaker-ai-model-deployment-options">Amazon SageMaker AI Model Deployment Options</a></li>
     <li><a href="#llamacpp-与-gguf">llama.cpp 与 GGUF</a></li>
     <li><a href="#llamacpp-and-gguf">llama.cpp and GGUF</a></li>
     <li><a href="#使用-byoc-方式在-sagemaker-ai-中托管-gguf-模型">使用 BYOC 方式在 SageMaker AI 中托管 GGUF 模型</a></li>
     <li><a href="#hosting-gguf-models-in-sagemaker-ai-using-byoc">Hosting GGUF Models in SageMaker AI Using BYOC</a>
-      <ol>
+      <ul>
         <li><a href="#1-创建-amazon-sagemaker-ai-notebook">1. 创建 Amazon SageMaker AI Notebook</a></li>
         <li><a href="#1-create-amazon-sagemaker-ai-notebook">1. Create Amazon SageMaker AI Notebook</a></li>
         <li><a href="#2-构建-byoc-代码">2. 构建 BYOC 代码</a></li>
         <li><a href="#2-build-byoc-code">2. Build BYOC Code</a>
-          <ol>
+          <ul>
             <li><a href="#21-dockerfile-文件">2.1 Dockerfile 文件</a></li>
             <li><a href="#21-dockerfile">2.1 Dockerfile</a></li>
             <li><a href="#22-mainpy-文件">2.2 main.py 文件</a></li>
@@ -293,16 +274,16 @@
             <li><a href="#23-sagemaker-inference-entry-point-serve-file">2.3 SageMaker Inference Entry Point: serve File</a></li>
             <li><a href="#24-llamacpp-启动脚本文件-serversh">2.4 llama.cpp 启动脚本文件 server.sh</a></li>
             <li><a href="#24-llamacpp-startup-script-serversh">2.4 llama.cpp Startup Script: server.sh</a></li>
-          </ol>
+          </ul>
         </li>
         <li><a href="#3-模型部署及测试">3. 模型部署及测试</a></li>
         <li><a href="#3-model-deployment-and-testing">3. Model Deployment and Testing</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#总结">总结</a></li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#参考文档--references">参考文档 / References</a></li>
-  </ol>
+  </ul>
 
             </nav>
         </div>
@@ -409,19 +390,19 @@
             </summary>
             <nav class="toc-nav">
                 
-  <ol>
+  <ul>
     <li><a href="#amazon-sagemaker-ai-模型部署的选项">Amazon SageMaker AI 模型部署的选项</a></li>
     <li><a href="#amazon-sagemaker-ai-model-deployment-options">Amazon SageMaker AI Model Deployment Options</a></li>
     <li><a href="#llamacpp-与-gguf">llama.cpp 与 GGUF</a></li>
     <li><a href="#llamacpp-and-gguf">llama.cpp and GGUF</a></li>
     <li><a href="#使用-byoc-方式在-sagemaker-ai-中托管-gguf-模型">使用 BYOC 方式在 SageMaker AI 中托管 GGUF 模型</a></li>
     <li><a href="#hosting-gguf-models-in-sagemaker-ai-using-byoc">Hosting GGUF Models in SageMaker AI Using BYOC</a>
-      <ol>
+      <ul>
         <li><a href="#1-创建-amazon-sagemaker-ai-notebook">1. 创建 Amazon SageMaker AI Notebook</a></li>
         <li><a href="#1-create-amazon-sagemaker-ai-notebook">1. Create Amazon SageMaker AI Notebook</a></li>
         <li><a href="#2-构建-byoc-代码">2. 构建 BYOC 代码</a></li>
         <li><a href="#2-build-byoc-code">2. Build BYOC Code</a>
-          <ol>
+          <ul>
             <li><a href="#21-dockerfile-文件">2.1 Dockerfile 文件</a></li>
             <li><a href="#21-dockerfile">2.1 Dockerfile</a></li>
             <li><a href="#22-mainpy-文件">2.2 main.py 文件</a></li>
@@ -430,16 +411,16 @@
             <li><a href="#23-sagemaker-inference-entry-point-serve-file">2.3 SageMaker Inference Entry Point: serve File</a></li>
             <li><a href="#24-llamacpp-启动脚本文件-serversh">2.4 llama.cpp 启动脚本文件 server.sh</a></li>
             <li><a href="#24-llamacpp-startup-script-serversh">2.4 llama.cpp Startup Script: server.sh</a></li>
-          </ol>
+          </ul>
         </li>
         <li><a href="#3-模型部署及测试">3. 模型部署及测试</a></li>
         <li><a href="#3-model-deployment-and-testing">3. Model Deployment and Testing</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#总结">总结</a></li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#参考文档--references">参考文档 / References</a></li>
-  </ol>
+  </ul>
 
             </nav>
         </details>
@@ -519,7 +500,7 @@
     >Amazon SageMaker AI Notebook</a> 进行 GGUF 模型的运行框架构建与部署操作，方案架构图如下图所示。</p>
 <p>This article uses <a class="link" href="https://aws.amazon.com/sagemaker-ai/notebooks/"  target="_blank" rel="noopener"
     >Amazon SageMaker AI Notebook</a> to build and deploy the GGUF model runtime framework. The solution architecture is shown below.</p>
-<p><img alt="Solution Architecture" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="Solution Architecture" class="gallery-image" data-flex-basis="344px" data-flex-grow="143" height="680" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai1.jpg" srcset="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai1_hu_77d54a03e10f814.jpg 800w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai1.jpg 976w" width="976"></p>
 <p>主要分为以下几个步骤：</p>
 <p>The main steps are:</p>
 <ul>
@@ -534,10 +515,10 @@
 </h3><h3 id="1-create-amazon-sagemaker-ai-notebook">1. Create Amazon SageMaker AI Notebook
 </h3><p>您可以在亚马逊云科技的控制台创建 SageMaker AI Notebook 实例，选择合适的实例类型和存储空间。请注意，磁盘空间建议 30GB 以上，主要用于容器构建，模型转存等需要。</p>
 <p>You can create a SageMaker AI Notebook instance in the AWS console, selecting an appropriate instance type and storage. Note that disk space of 30GB or more is recommended, primarily for container building and model storage.</p>
-<p><img alt="Notebook Creation" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="Notebook Creation" class="gallery-image" data-flex-basis="242px" data-flex-grow="101" height="1703" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai2.jpg" srcset="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai2_hu_f3ed2e041fdb6436.jpg 800w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai2_hu_37b333e052ca44e0.jpg 1600w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai2.jpg 1722w" width="1722"></p>
 <p>在选择或创建 IAM 角色时，请确保该角色具有向 Amazon ECR 推送镜像的权限。</p>
 <p>When selecting or creating an IAM role, ensure the role has permissions to push images to Amazon ECR.</p>
-<p><img alt="IAM Permissions" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="IAM Permissions" class="gallery-image" data-flex-basis="292px" data-flex-grow="121" height="1249" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai3.jpg" srcset="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai3_hu_8314466b84e5192e.jpg 800w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai3.jpg 1521w" width="1521"></p>
 <p>若缺少对应权限，请复制如下权限添加至对应的内联策略中。</p>
 <p>If the permissions are missing, add the following inline policy:</p>
 <div class="highlight"><div class="chroma">
@@ -598,7 +579,7 @@
 </div>
 </div><p>其运行触发逻辑及 HTTP 请求如图所示。</p>
 <p>The runtime trigger logic and HTTP requests are shown below.</p>
-<p><img alt="Runtime Logic" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="Runtime Logic" class="gallery-image" data-flex-basis="287px" data-flex-grow="119" height="401" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai4.png" width="481"></p>
 <h4 id="21-dockerfile-文件">2.1 Dockerfile 文件
 </h4><h4 id="21-dockerfile">2.1 Dockerfile
 </h4><p>Dockerfile 文件定义了一个基于 llama.cpp CUDA 版本的容器环境，专为在 SageMaker 上运行 GGUF 模型而设计。</p>
@@ -1007,7 +988,7 @@
 </div>
 </div><p>部署后推理结果如图所示。</p>
 <p>The inference results after deployment are shown below.</p>
-<p><img alt="Inference Results" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p><img alt="Inference Results" class="gallery-image" data-flex-basis="483px" data-flex-grow="201" height="1648" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai5.jpg" srcset="/p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai5_hu_8c8e6cd9d8315636.jpg 800w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai5_hu_96443b5ae743182f.jpg 1600w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai5_hu_31cf501a671b939e.jpg 2400w, /p/sagemaker-gguf-model-inference/practice-running-gguf-format-model-inference-using-sagemaker-ai5.jpg 3322w" width="3322"></p>
 <p>完成测试后，如果您不再需要运行的推理终端节点，请删除所创建的 Endpoint 资源，从而避免不必要的费用支出。</p>
 <p>After testing, if you no longer need the inference endpoint, delete the Endpoint resources to avoid unnecessary charges.</p>
 <h2 id="总结">总结

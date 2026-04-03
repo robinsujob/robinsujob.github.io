@@ -2,10 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:4002/categories/aws/</loc>
-    <lastmod>2025-08-19T00:00:00+08:00</lastmod>
+    <loc>http://localhost:4002/tags/ai/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/api-management/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/categories/azure/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/azure/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/categories/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/enterprise-architecture/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/high-availability/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/load-balancing/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/managed-identity/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/microsoft-foundry/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/post/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/tags/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/p/azure-apim-ai-resilience/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:4002/categories/aws/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/china/</loc>
@@ -17,19 +56,10 @@
     <loc>http://localhost:4002/tags/cloudfront/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:4002/post/</loc>
-    <lastmod>2025-08-19T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:4002/</loc>
-    <lastmod>2025-08-19T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:4002/tags/serverless/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/tags/ssl/</loc>
-    <lastmod>2025-08-19T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:4002/tags/</loc>
     <lastmod>2025-08-19T00:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:4002/categories/ai/ml/</loc>

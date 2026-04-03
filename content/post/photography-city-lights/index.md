@@ -2,7 +2,7 @@
 title: "City Lights"
 date: 2024-01-15
 description: "Urban nightscapes and city architecture."
-image: /images/photography/placeholder.png
+image: placeholder.png
 categories:
   - Photography
 tags:

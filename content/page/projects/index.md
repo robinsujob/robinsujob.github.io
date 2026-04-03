@@ -1,11 +1,6 @@
 ---
 title: "Projects"
 slug: "projects"
-menu:
-  main:
-    weight: -80
-    params:
-      icon: hash
 ---
 
 ## AWS Solutions

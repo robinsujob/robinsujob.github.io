@@ -37,9 +37,9 @@ tags:
 
 *We will use QR codes as ControlNet input, integrating QR code data points into artistic images while still being scannable by QR code readers. With this technology, you can transform any QR code into a unique work of art, expressing and conveying information in a completely new way. Here are some example images:*
 
-![示例1](/images/posts/art-qr-code/sample1.jpg)
-![示例2](/images/posts/art-qr-code/sample2.jpg)
-![示例3](/images/posts/art-qr-code/sample3.jpg)
+![示例1](sample1.jpg)
+![示例2](sample2.jpg)
+![示例3](sample3.jpg)
 
 ## Stable Diffusion 实战技巧 / Stable Diffusion Practical Tips
 
@@ -145,7 +145,7 @@ tags:
 
 *Use X/Y/Z plots to find optimal parameters: By using X/Y/Z plots, we can clearly compare results under different parameters, quickly locate suitable parameter ranges, and perform further generation control.*
 
-![X/Y/Z 图对比](/images/posts/art-qr-code/image4.jpg)
+![X/Y/Z 图对比](image4.jpg)
 
 #### 图片尺寸优化 / Image Size Optimization
 
@@ -182,7 +182,7 @@ tags:
 
 *When drawing images with small character subjects, facial distortion frequently occurs. Especially in the artistic QR code generation process described later, faces often break due to QR code data points. For facial inpainting, the ADetailer plugin is recommended. It uses YOLO algorithm for object detection, identifies faces, and performs localized inpainting with specified prompts and models. ADetailer can handle both face and hand detection and repair, and can also reference LoRA models for localized inpainting.*
 
-![ADetailer 面部修复](/images/posts/art-qr-code/image5.jpg)
+![ADetailer 面部修复](image5.jpg)
 
 ## 借助 ControlNet 生成艺术二维码 / Generating Artistic QR Codes with ControlNet
 
@@ -192,7 +192,7 @@ tags:
 
 *A QR code is a pattern of black and white geometric shapes distributed in 2D space that records symbolic data information. There are multiple encoding methods for QR codes; we use the most universal and basic encoding method: QR Code.*
 
-![QR Code 结构](/images/posts/art-qr-code/image6.jpg)
+![QR Code 结构](image6.jpg)
 
 输入的二维码是借助 SD 生成艺术二维码过程中最重要的部分之一。我们主要关心输入的二维码的以下两个特点：
 
@@ -208,7 +208,7 @@ tags:
 
 *For the most common use case, QR codes usually contain a web link. To improve the aesthetics of the generated QR code, we first need to shorten the URL. There are many URL shortening tools available. Note that within mainland China, choose platforms with registered domain names, otherwise they may be blocked by WeChat, browsers, etc.*
 
-![链接长短对比](/images/posts/art-qr-code/image7.jpg)
+![链接长短对比](image7.jpg)
 
 **2. 二维码的呈现形式**
 
@@ -216,13 +216,13 @@ tags:
 
 *With technological development, QR codes no longer only support black and white square patterns; both positioning points and modules support diverse presentation styles.*
 
-![不同码点形式](/images/posts/art-qr-code/image8.jpg)
+![不同码点形式](image8.jpg)
 
 在实际操作中，我们可以尝试多种不同的码点形式，以使得生图效果符合我们的预期。下图展示了不同的二维码形式对最终效果图的影响：
 
 *In practice, we can try different module styles to achieve the desired image generation effect. The following image shows how different QR code styles affect the final result:*
 
-![不同二维码形式对比](/images/posts/art-qr-code/image9.jpg)
+![不同二维码形式对比](image9.jpg)
 
 生成参数 / Generation parameters:
 
@@ -246,7 +246,7 @@ Version: v1.3.
 - **Anthony's QR Toolkit**：整合在 Webui 的 QRCode 生成与优化工具 / Integrated QR code generation and optimization tool in Webui
   - [https://github.com/antfu/sd-webui-qrcode-toolkit](https://github.com/antfu/sd-webui-qrcode-toolkit)
 
-![QR Toolkit 配置](/images/posts/art-qr-code/image10.jpg)
+![QR Toolkit 配置](image10.jpg)
 
 完成二维码制作后，可以点击右侧的 "Download" 以下载到本地。或点击 "Send to ControlNet"，直接将二维码发送至 ControlNet 以进行下一步操作。
 
@@ -258,7 +258,7 @@ Version: v1.3.
 
 *The core of creating art with Stable Diffusion is choosing the right model + prompts. Before creating artistic QR codes, we recommend first generating an image without ControlNet to test the generation effect.*
 
-![测试生图效果](/images/posts/art-qr-code/image11.jpg)
+![测试生图效果](image11.jpg)
 
 生成参数 / Generation parameters:
 
@@ -281,7 +281,7 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 - **控制权重**：对于 qrcode_monster 模型，我们建议设置在 1.1-1.6 之间 / For qrcode_monster model, we recommend setting between 1.1-1.6
 - **引导介入/终止时机**：介入时机建议在 0-0.1 之间，终止时机建议为 1 / Start timing recommended between 0-0.1, end timing recommended at 1
 
-![ControlNet 配置](/images/posts/art-qr-code/image12.jpg)
+![ControlNet 配置](image12.jpg)
 
 在文生图配置中建议调整两组数值：
 
@@ -290,13 +290,13 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 - **迭代步数**：建议在 30-50 之间，默认值 20 不足以引导生成一个高质量的二维码图片 / Sampling steps: recommended 30-50, default 20 is insufficient for high-quality QR code images
 - **宽度/高度**：建议直接从 ControlNet 发送二维码原图的宽高比至上方 / Width/Height: recommended to send the original QR code aspect ratio from ControlNet
 
-![文生图参数调整](/images/posts/art-qr-code/image13.jpg)
+![文生图参数调整](image13.jpg)
 
 参数全部配置完成后，点击生成即可，可以看到此处我们生成了一个效果不错的图片，使用手机扫码测试也完全通过。
 
 *After all parameters are configured, click generate. Here we can see a good result — the QR code passes scanning tests on mobile phones.*
 
-![生成效果](/images/posts/art-qr-code/image14.jpg)
+![生成效果](image14.jpg)
 
 如果生成的二维码不能够达到期望，可以选择微调以下几个参数，并增加生成的总批次数，不断尝试抽卡以逼近最终期望的效果：
 
@@ -307,13 +307,13 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 - ControlNet 控制权重 / ControlNet control weight
 - ControlNet 引导介入/终止时机 / ControlNet guidance start/end timing
 
-![参数微调](/images/posts/art-qr-code/image15.jpg)
+![参数微调](image15.jpg)
 
 必要时可以选择使用 "脚本" 中的 X/Y/Z Plot，来对比不同参数下生成二维码的效果。我们此处对比了 ControlNet 的控制权重和引导介入时机：
 
 *When necessary, use the X/Y/Z Plot in "Scripts" to compare QR code generation effects under different parameters. Here we compared ControlNet's control weight and guidance start timing:*
 
-![X/Y/Z Plot 对比](/images/posts/art-qr-code/image16.jpg)
+![X/Y/Z Plot 对比](image16.jpg)
 
 ## 附录 / Appendix
 

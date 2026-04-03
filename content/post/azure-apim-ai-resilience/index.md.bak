@@ -1,0 +1,885 @@
+---
+slug: "azure-apim-ai-resilience"
+title: "使用 API Management 网关构建 Azure AI 韧性架构"
+date: 2026-04-03
+description: "通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"
+image: /images/posts/azure-apim-ai-resilience/cover.png
+categories:
+  - Azure
+tags:
+  - azure
+  - api-management
+  - ai
+  - high-availability
+  - load-balancing
+  - managed-identity
+  - microsoft-foundry
+  - enterprise-architecture
+---
+
+
+## 使用 API Management 网关构建 Azure AI 韧性架构 / Building Resilient Azure AI Architecture with API Management Gateway
+
+随着企业对 AI 能力的需求持续增长，越来越多的组织正在将 Microsoft Foundry 的模型服务深度集成到核心业务系统中。当 AI 服务从实验阶段转入生产环境时，架构设计的关注点也随之转变——**高可用、弹性伸缩、统一治理和安全管控**成为企业级 AI 架构无法回避的关键主题。
+
+*As enterprise demand for AI capabilities continues to grow, more and more organizations are deeply integrating model services from Microsoft Foundry into their core business systems. When AI services transition from the experimental phase to production environments, the focus of architecture design shifts accordingly—**high availability, elastic scaling, unified governance, and security controls** become critical themes that enterprise-grade AI architectures cannot avoid.*
+
+在生产级 AI 架构中，依赖单一订阅下的单个服务实例往往无法满足企业对**服务连续性、稳定性和大规模吞吐能力**的要求——**有限的配额**无法支撑大规模并发，**单点故障**影响服务可用性，**单区域部署**缺乏容灾能力。成熟的架构应该具备跨订阅整合资源的能力，**聚合多个订阅的 AI 资源配额**以最大化可用吞吐量，同时结合流量分发、自动故障转移和统一身份认证与访问控制，确保 AI 服务在面对各种运行时挑战时能够可靠响应。
+
+*In a production-grade AI architecture, relying on a single service instance under a single subscription often cannot meet enterprise requirements for **service continuity, stability, and large-scale throughput capacity**—**limited quotas** cannot support large-scale concurrency, **single points of failure** impact service availability, and **single-region deployments** lack disaster recovery capabilities. A mature architecture should possess the ability to consolidate resources across subscriptions, **aggregating AI resource quotas across multiple subscriptions** to maximize available throughput, while combining traffic distribution, automatic failover, and unified identity authentication and access control to ensure AI services can respond reliably when facing various runtime challenges.*
+
+**Azure API Management (APIM)** 作为 Azure 原生的 API 网关服务，天然适合承担这一角色。通过将 APIM 部署为 AI 服务的统一入口，结合以下核心能力，我们可以构建一个**企业级、高韧性的 AI 服务架构**：
+
+***Azure API Management (APIM)**, as Azure's native API gateway service, is naturally suited to take on this role. By deploying APIM as the unified entry point for AI services, combined with the following core capabilities, we can build an **enterprise-grade, highly resilient AI service architecture**:*
+
+- 🔀 **后端负载均衡池 / Backend Load Balancing Pool** — 跨多个订阅和多个 Microsoft Foundry 资源实例进行负载均衡和故障转移，聚合分布在不同订阅中的配额容量
+- 🔐 **托管标识 / Managed Identity** — APIM 与后端 AI 服务之间的零密钥安全认证，消除凭据管理负担
+- 🛡️ **统一 API 治理 / Unified API Governance** — 在网关层实现请求路由、流量控制、日志审计和策略管理，为所有 AI 调用提供一致的治理能力
+
+*- 🔀 **Backend Load Balancing Pool** — Load balancing and failover across multiple subscriptions and multiple Microsoft Foundry resource instances, aggregating quota capacity distributed across different subscriptions*
+*- 🔐 **Managed Identity** — Zero-key secure authentication between APIM and backend AI services, eliminating credential management burden*
+*- 🛡️ **Unified API Governance** — Implementing request routing, traffic control, log auditing, and policy management at the gateway layer, providing consistent governance capabilities for all AI calls*
+
+本文将通过一个完整的动手示例，详细介绍如何使用 APIM 构建一个面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署和身份配置到负载均衡策略，一步步构建一个可用于生产的解决方案。
+
+*This article will walk through a complete hands-on example, detailing how to use APIM to build a resilient gateway architecture targeting multiple Microsoft Foundry resources—from resource deployment and identity configuration to load balancing policies, step by step building a solution ready for production use.*
+
+## 1. 架构概览 / Architecture Overview
+
+![1-Architecture](/images/posts/azure-apim-ai-resilience/1-Architecture-en.png)
+
+该架构采用**集中式 API 网关 + 多订阅后端模式**，使用 Azure API Management 作为统一网关入口，通过 APIM 的 Backend Load Balancing Pool 以轮询方式将请求分发到分布在多个订阅和区域的 Microsoft Foundry 资源实例。
+
+*This architecture adopts a **centralized API gateway + multi-subscription backend pattern**, using Azure API Management as the unified gateway entry point, distributing requests through APIM's Backend Load Balancing Pool in a round-robin fashion to Microsoft Foundry resource instances distributed across multiple subscriptions and regions.*
+
+以 Sora2 视频生成模型为例，单个 Foundry 资源的视频创建任务配额有限，单个订阅下可申请的配额也有上限。通过将多个订阅和区域的 Foundry 资源纳入 APIM Backend Load Balancing Pool，可以将分散的配额聚合为更大的统一容量，同时实现跨区域高可用。
+
+*Taking the Sora2 video generation model as an example, the video creation jobs quota for a single Foundry resource is limited, and the quota that can be requested under a single subscription also has an upper limit. By incorporating Foundry resources from multiple subscriptions and regions into the APIM Backend Load Balancing Pool, distributed quotas can be aggregated into a larger unified capacity, while also achieving cross-region high availability.*
+
+核心设计原则包括：
+
+*Core design principles include:*
+
+- **统一入口 / Unified Entry Point** — 客户端只需访问 APIM 端点，无需知道后端资源的位置或数量；Backend Load Balancing Pool 默认使用 Round-Robin 策略，将请求均匀分发到所有健康实例
+- **简化安全认证 / Simplified Security Authentication** — APIM 与后端 Foundry 资源通过 Managed Identity 零密钥安全通信，消除逐一管理后端凭据的负担；对外，APIM 提供统一的 API Key，客户端只需持有此 Key 即可访问所有后端 AI 资源
+- **跨订阅配额聚合 / Cross-Subscription Quota Aggregation** — 将分布在不同订阅中的 Foundry 资源配额整合为统一容量池，突破单订阅配额限制
+- **跨区域容灾 / Cross-Region Disaster Recovery** — 资源分布在不同区域；当某个区域不可用时，APIM 自动将流量路由到健康实例
+
+*- **Unified Entry Point** — Clients only need to access the APIM endpoint, without needing to know the location or number of backend resources; the Backend Load Balancing Pool uses a Round-Robin strategy by default, evenly distributing requests across all healthy instances*
+*- **Simplified Security Authentication** — APIM and backend Foundry resources communicate securely through Managed Identity with zero keys, eliminating the burden of managing backend credentials one by one; externally, APIM provides a unified API Key, and clients only need to hold this Key to access all backend AI resources*
+*- **Cross-Subscription Quota Aggregation** — Consolidating Foundry resource quotas distributed across different subscriptions into a unified capacity pool, breaking through single-subscription quota limits*
+*- **Cross-Region Disaster Recovery** — Resources are distributed across different regions; when a region becomes unavailable, APIM automatically routes traffic to healthy instances*
+
+除了上述架构层面的设计，APIM 的 Policy 引擎还为此架构提供了灵活的流量控制能力：
+
+*Beyond the above architecture-level design, APIM's Policy engine also provides flexible traffic control capabilities for this architecture:*
+
+- **定向路由 / Targeted Routing** — 通过自定义请求头（如 `X-AI-Foundry-Target`），调用方可以精确地将请求路由到指定的后端实例，适用于会话亲和、调试或数据隔离场景；未指定时，请求自动进入负载均衡池进行轮询分发
+- **自动故障转移 / Automatic Failover** — 通过在 `backend` 策略部分配置 `retry` 策略，当后端返回 4xx/5xx 错误或连接失败时，自动重试并切换到池中其他健康后端，使用指数退避策略避免短时间内产生大量重试请求
+- **请求追踪 / Request Tracing** — 在 `outbound` 策略部分，响应头 `X-AI-Foundry-Backend` 返回实际处理请求的后端标识，方便客户端追踪和运维排障
+
+*- **Targeted Routing** — Through custom request headers, such as `X-AI-Foundry-Target`, callers can precisely route requests to a specified backend instance, suitable for session affinity, debugging, or data isolation scenarios; when not specified, requests automatically enter the load balancing pool for round-robin distribution*
+*- **Automatic Failover** — By configuring a `retry` policy in the `backend` policy section, when the backend returns 4xx/5xx errors or connection failures, it automatically retries and switches to other healthy backends in the pool, using exponential backoff strategy to avoid generating a burst of retry requests in a short period*
+*- **Request Tracing** — In the `outbound` policy section, the response header `X-AI-Foundry-Backend` returns the identifier of the backend that actually processed the request, facilitating client tracking and operational troubleshooting*
+
+接下来，我们将逐步完成整个架构的搭建：
+
+*Next, we will complete the entire architecture setup step by step:*
+
+| 章节 / Section | 操作 / Action | 目标 / Objective | 平台 / Platform |
+|---------|--------|-----------|----------|
+| 2 | 创建 APIM 实例 / Create APIM Instance | 搭建统一网关入口，启用 Managed Identity / Set up the unified gateway entry point, enable Managed Identity | Azure Portal |
+| 3 | 创建 Foundry 资源 / Create Foundry Resources | 跨多个订阅和区域构建后端资源池 / Build the backend resource pool across multiple subscriptions and regions | Azure Portal / Foundry Portal |
+| 4 | 部署 AI 模型 / Deploy AI Models | 在后端资源上启用 AI 服务能力（以 Sora2 为例）/ Enable AI service capabilities on backend resources (using Sora2 as an example) | Foundry Portal |
+| 5 | 配置 RBAC / Configure RBAC | 授予 APIM 托管标识访问后端的权限，建立安全链路 / Grant APIM managed identity permissions to access backends, establishing the security chain | Azure Portal |
+| 6 | 配置后端 + 负载均衡池 / Configure Backend + LB Pool | 注册后端并组装负载均衡池进行流量分发 / Register backends and assemble the load balancing pool for traffic distribution | Azure Portal (APIM) |
+| 7 | 创建 API + 策略 / Create API + Policy | 定义 API 入口，配置路由和故障转移策略 / Define API entry points, configure routing and failover policies | Azure Portal (APIM) |
+| 8 | 测试与验证 / Test & Validate | 验证负载均衡、定向路由和自动故障转移 / Verify load balancing, pinned backend routing, and automatic failover | curl / Postman |
+
+## 2. 创建 Azure API Management 实例 / Create an Azure API Management Instance
+
+在 Hub 订阅中创建 APIM 实例，作为所有 AI 服务请求的统一网关入口。
+
+*Create an APIM instance in the Hub subscription as the unified gateway entry point for all AI service requests.*
+
+##### 2-1) 在 Azure Portal 顶部搜索栏输入 API Management Service，并选择 API Management services / In the Azure Portal top search bar, type API Management Service, and select API Management services
+
+![](/images/posts/azure-apim-ai-resilience/2-1-search-apim.png)
+
+##### 2-2) 在 API Management services 页面，点击左上角 **+ Create** 创建新实例 / On the API Management services page, click **+ Create** in the upper left corner to create a new instance
+
+![](/images/posts/azure-apim-ai-resilience/2-2-create-apim.png)
+
+##### 2-3) 在 Basics 标签页中填写以下关键配置 / Fill in the following key configurations on the Basics tab
+
+![](/images/posts/azure-apim-ai-resilience/2-3-basics-config.png)
+
+| # | 配置 / Configuration | 说明 / Description |
+|---|---------------|-------------|
+| 1 | Subscription | 选择 APIM 所在的 Hub 订阅 / Select the Hub subscription where APIM resides |
+| 2 | Resource group | 新建或选择已有资源组 / Create new or select an existing resource group |
+| 3 | Region | 选择就近区域；不需要与后端 Foundry 资源区域相同 / Select a nearby region; it does not need to be the same as the backend Foundry resource regions |
+| 4 | Resource name | APIM 实例名称，需全局唯一 / APIM instance name, must be globally unique |
+| 5 | Organization name | 组织名称，显示在开发者门户 / Organization name, displayed on the developer portal |
+| 6 | Administrator email | 管理员邮箱，接收系统通知 / Admin email for receiving system notifications |
+| 7 | Pricing tier | Basicv2（开发/测试）/ Standardv2（生产）/ Premiumv2（企业）📖 [v2 Tier Comparison](https://learn.microsoft.com/azure/api-management/v2-service-tiers-overview) |
+
+##### 2-4) 切换到 Managed identity 标签页，启用系统分配的托管标识 / Switch to the Managed identity tab and enable the system-assigned managed identity
+
+将 **System assigned managed identity** 的 Status 设置为 **enabled (✅)**。启用后，Azure 会自动为此 APIM 实例创建系统分配的托管标识，后续可通过 RBAC 授权其访问后端 Foundry 资源，无需管理任何密钥或凭据。
+
+*Set the **System assigned managed identity** Status to **enabled (✅)**. Once enabled, Azure will automatically create a system-assigned managed identity for this APIM instance, which can later be authorized via RBAC to access backend Foundry resources without managing any keys or credentials.*
+
+![](/images/posts/azure-apim-ai-resilience/2-4-managed-identity.png)
+
+##### 2-5) 切换到 Review + install 标签页，检查配置并完成创建 / Switch to the Review + install tab, review the configuration and complete creation
+
+检查所有配置是否正确，然后点击左下角的 **Create** 按钮提交部署。
+
+*Review all configurations for accuracy, then click the **Create** button in the lower left corner to submit the deployment.*
+
+![](/images/posts/azure-apim-ai-resilience/2-5-review-create.png)
+
+> [!NOTE]
+>
+> ⏱️ APIM 实例通常需要 **5-10 分钟**完成创建。
+>
+> *⏱️ APIM instances typically take **5-10 minutes** to complete creation.*
+
+你也可以通过 Azure CLI 完成上述所有配置（包括启用系统分配的托管标识）：
+
+*You can also complete all the above configurations (including enabling the system-assigned managed identity) via Azure CLI:*
+
+```bash
+az rest --method PUT \
+  --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-name>?api-version=2024-05-01" \
+  --body '{
+    "location": "<region>",
+    "sku": {
+      "name": "<BasicV2|StandardV2|PremiumV2>",
+      "capacity": 1
+    },
+    "identity": {
+      "type": "SystemAssigned"
+    },
+    "properties": {
+      "publisherName": "<organization-name>",
+      "publisherEmail": "<admin-email>"
+    }
+  }'
+```
+
+##### 2-6) 部署完成后，进入 APIM 实例的概览页面，验证以下关键信息 / After deployment is complete, go to the APIM instance's Overview page and verify the following key information
+
+![](/images/posts/azure-apim-ai-resilience/2-6-apim-dashboard.png)
+
+重点关注红色标注的三个项目：
+
+*Focus on the three items highlighted in red:*
+
+- **Status: Online** — 确认 APIM 实例已成功上线并处于正常运行状态 / Confirms the APIM instance has successfully come online and is in a normal running state
+- **Location** — 确认部署区域与创建时选择的一致 / Confirms the deployment region matches what was selected during creation
+- **Gateway URL: `https://<apim-name>.azure-api.net`** — 这是 APIM 对外暴露的统一网关地址；后续所有客户端请求都将通过此 URL 访问后端 AI 资源 / This is the unified gateway address exposed by APIM; all subsequent client requests will access backend AI resources through this URL
+
+##### 2-7) 确认 Managed Identity 已启用 / Confirm Managed Identity is enabled
+
+在 APIM 实例界面中，展开左侧 ① **Security** 菜单，点击 ② **Managed identities**，确认 System assigned 标签页下的 Status 为 ③ **On**（如未启用，将其设置为 On）。
+
+*In the APIM instance interface, expand the left-side ① **Security** menu, click ② **Managed identities**, and confirm the Status under the System assigned tab is ③ **On** (if not enabled, set it to On).*
+
+> [!IMPORTANT]
+>
+> 请记录页面上显示的 **Object (principal) ID**。这是 APIM 托管标识的唯一标识符，将在第 5 节配置 RBAC 角色分配时以及使用 CLI 批量分配角色时用到。
+>
+> *Please record the **Object (principal) ID** displayed on the page. This is the unique identifier of the APIM managed identity, which will be needed in Section 5 when configuring RBAC role assignments and when using CLI for batch role assignments.*
+
+![](/images/posts/azure-apim-ai-resilience/2-7-managed-identity-confirm.png)
+
+## 3. 创建 Microsoft Foundry 资源 / Create Microsoft Foundry Resources
+
+APIM 网关准备就绪后，我们现在切换到 Microsoft Foundry 侧来创建后端 AI 资源。
+
+*With the APIM gateway ready, we now switch to the Microsoft Foundry side to create backend AI resources.*
+
+在不同的订阅和区域创建多个 Foundry 资源。本示例将在 **East US 2**（订阅 1）创建一个 Foundry 资源。
+
+*Create multiple Foundry resources across different subscriptions and regions. This example will create a Foundry resource in **East US 2** (Subscription 1).*
+
+> [!NOTE]
+>
+> 💡 以下以创建一个 Foundry 资源为例进行演示；对其余资源，在各自的区域和订阅中重复相同流程。
+>
+> *💡 The following demonstrates creating one Foundry resource as an example; repeat the same process for the remaining resources in their respective regions and subscriptions.*
+
+##### 3-1) 在 Azure Portal 顶部搜索栏输入 Microsoft Foundry，并选择 **Microsoft Foundry** 服务 / In the Azure Portal top search bar, type Microsoft Foundry, and select the **Microsoft Foundry** service
+
+![](/images/posts/azure-apim-ai-resilience/3-1-foundry-search.png)
+
+##### 3-2) 在 Microsoft Foundry 概览页面，点击 **Create a resource** 创建新的 Foundry 资源 / On the Microsoft Foundry overview page, click **Create a resource** to create a new Foundry resource
+
+（你也可以点击左侧的 Foundry 菜单进入 Foundry 界面创建资源）
+
+*(you can also click the Foundry menu on the left to enter the Foundry interface and create resources)*
+
+![](/images/posts/azure-apim-ai-resilience/3-2-foundry-overview.png)
+
+##### 3-3) 在 Basics 标签页中填写以下关键配置 / Fill in the following key configurations on the Basics tab
+
+![](/images/posts/azure-apim-ai-resilience/3-3-create-foundry-resource.png)
+
+| # | 配置 / Configuration | 说明 / Description |
+|---|---------------|-------------|
+| 1 | Subscription | 选择目标订阅（按架构方案分别在订阅 A 和订阅 B 中创建）/ Select the target subscription (create in Subscription A and Subscription B respectively per the architecture plan) |
+| 2 | Resource group | 新建或选择已有资源组；建议按区域命名 / Create new or select an existing resource group; naming by region is recommended |
+| 3 | Name | Foundry 资源名称，需全局唯一 / Foundry resource name, must be globally unique |
+| 4 | Region | 选择目标区域（按架构方案分别在 East US 2 和 Sweden Central 创建）/ Select the target region (create in East US 2 and Sweden Central respectively per the architecture plan) |
+| 5 | Default project name | 默认项目名称；Foundry 会自动创建此项目用于组织开发资源 / Default project name; Foundry will automatically create this project for organizing development resources |
+| 6 | Review + create | 填写完成后，点击 **Review + create** 进入审核页面 / After filling in, click **Review + create** to proceed to the review page |
+
+##### 3-4) 切换到 Review + create 标签页，检查配置并完成创建 / Switch to the Review + create tab, review the configuration and complete creation
+
+确认所有配置正确后，点击 **Create** 按钮提交部署。
+
+*After confirming all configurations are correct, click the **Create** button to submit the deployment.*
+
+![](/images/posts/azure-apim-ai-resilience/3-4-review-create.png)
+
+你也可以通过 Azure CLI 一步创建 Foundry 资源和项目：
+
+*You can also create the Foundry resource and project in one step via Azure CLI:*
+
+```bash
+az cognitiveservices account create \
+  --subscription <subscription-id> \
+  --resource-group <resource-group> \
+  --name <foundry-resource-name> \
+  --location <region-code> \
+  --kind AIServices \
+  --sku S0 \
+  --custom-domain <foundry-resource-name> \
+  --allow-project-management && \
+az cognitiveservices account project create \
+  --subscription <subscription-id> \
+  --name <foundry-resource-name> \
+  --resource-group <resource-group> \
+  --project-name <project-name> \
+  --location <region-code>
+```
+
+> [!NOTE]
+>
+> 然后，按照 3-1) 到 3-4) 的相同流程，在多个区域和订阅中重复创建 Foundry 资源。
+>
+> *Then, follow the same process from 3-1) to 3-4) to repeat creating Foundry resources across multiple regions and subscriptions.*
+
+完成后，在 Microsoft Foundry Portal 中点击 [**View all projects**](https://ai.azure.com/nextgen/r/,-,,-/allresources) 查看所有已创建的项目：
+
+*After completion, click [**View all projects**](https://ai.azure.com/nextgen/r/,-,,-/allresources) in the Microsoft Foundry Portal to view all created projects:*
+
+![](/images/posts/azure-apim-ai-resilience/3-5-foundry-portal-projects.png)
+
+如图所示，本教程已成功创建了 4 个 Foundry 项目和资源，分布在两个订阅和两个区域：
+
+*As shown, this tutorial has successfully created 4 Foundry projects and resources distributed across two subscriptions and two regions:*
+
+![](/images/posts/azure-apim-ai-resilience/3-6-all-projects.png)
+
+## 4. 部署模型 / Deploy Models
+
+Foundry 资源和项目创建完成后，下一步是在每个资源中部署 AI 模型。本文以 **Sora2 视频生成模型**为例，在所有 4 个 Foundry 资源中部署 Sora2，以便 APIM 后端负载均衡池可以将视频生成请求分发到任意实例。
+
+*After the Foundry resources and projects are created, the next step is to deploy AI models in each resource. This article uses the **Sora2 video generation model** as an example, deploying Sora2 across all 4 Foundry resources so that the APIM backend load balancing pool can distribute video generation requests to any instance.*
+
+> [!NOTE]
+>
+> 💡 以下以一个 Foundry 项目为例进行演示；对其余 Foundry 资源重复相同流程。
+>
+> *💡 The following demonstrates one Foundry project as an example; repeat the same process for the remaining Foundry resources.*
+
+##### 4-1) 选择目标项目并导航到模型部署 / Select the target project and navigate to model deployment
+
+在 Foundry Portal 中，① 在顶部选择目标项目，进入 ② **Build** 视图，点击左侧 ③ **Models** 进入模型管理页面，然后点击 ④ **Deploy a base model** 开始部署。
+
+*In the Foundry Portal, ① select the target project at the top, enter the ② **Build** view, click ③ **Models** on the left to enter the model management page, then click ④ **Deploy a base model** to begin deployment.*
+
+![](/images/posts/azure-apim-ai-resilience/4-1-select-project.png)
+
+##### 4-2) 在模型目录中搜索模型。以 sora-2 为例，选择 **sora-2 (Video generation)** / Search for the model in the model catalog. Using sora-2 as an example, select **sora-2 (Video generation)**
+
+![](/images/posts/azure-apim-ai-resilience/4-2-search-sora2.png)
+
+##### 4-3) 进入模型详情页面，查看模型信息 / Enter the model details page and review the model information
+
+> [!WARNING]
+>
+> 某些模型需要访问批准。如果你的订阅尚未获得访问权限，需要在模型详情页面点击 **Request access** 提交申请。审批通过后才能进行部署。
+>
+> *Some models require access approval. If your subscription has not yet been granted access, you need to click **Request access** on the model details page to submit an application. Deployment will only be available after approval.*
+
+![](/images/posts/azure-apim-ai-resilience/4-3-model-details.png)
+
+##### 4-4) 点击右上角的 **Deploy** 按钮，选择 **Default settings** 进行快速部署 / Click the **Deploy** button in the upper right corner, and select **Default settings** for quick deployment
+
+![](/images/posts/azure-apim-ai-resilience/4-4-deploy-settings.png)
+
+> [!TIP]
+>
+> 选择 **Default settings** 将使用 Global Standard 配额和默认设置进行快速部署。如需自定义 SKU、配额或 PTU 配置，请选择 **Custom settings**。
+>
+> *Selecting **Default settings** will use Global Standard quota and default settings for quick deployment. For custom SKU, quota, or PTU configurations, select **Custom settings**.*
+
+##### 4-5) 部署完成后，进入 Sora2 Playground 页面确认模型已就绪 / After deployment is complete, go to the Sora2 Playground page to confirm the model is ready
+
+![](/images/posts/azure-apim-ai-resilience/4-5-playground.png)
+
+看到 **"Generate a video to get started"** 提示即确认 Sora2 模型已成功部署并可用。
+
+*Seeing the **"Generate a video to get started"** prompt confirms that the Sora2 model has been successfully deployed and is available.*
+
+按照相同流程在其余项目中部署 Sora2 模型。完成后，所有 Foundry 资源都将具备视频生成能力，可由 APIM 后端负载均衡池统一调度。
+
+*Follow the same process to deploy the Sora2 model in the remaining projects. After completion, all Foundry resources will have video generation capabilities and can be uniformly scheduled by the APIM backend load balancing pool.*
+
+你也可以通过 Azure CLI 部署模型：
+
+*You can also deploy models via Azure CLI:*
+
+```bash
+az cognitiveservices account deployment create \
+  --subscription <subscription-id> \
+  --resource-group <resource-group> \
+  --name <foundry-resource-name> \
+  --deployment-name <deployment-name> \
+  --model-name <model-name> \
+  --model-version <model-version> \
+  --model-format <model-format> \
+  --sku-name <sku-name> \
+  --sku-capacity <capacity>
+```
+
+> [!TIP]
+>
+> 可用的模型名称、版本、SKU 等参数因区域而异。参见：Models and region availability: https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+>
+> *Available model names, versions, SKUs, and other parameters vary by region. See: Models and region availability: https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure*
+
+至此，后端 Foundry 资源和模型部署已全部就绪。接下来，我们将回到 APIM 侧完成网关与后端资源之间的安全连接和流量配置。
+
+*At this point, the backend Foundry resources and model deployments are all ready. Next, we will return to the APIM side to complete the secure connection and traffic configuration between the gateway and backend resources.*
+
+## 5. 配置 Managed Identity 和 RBAC 角色授权 / Configure Managed Identity and RBAC Role Authorization
+
+在第 2 节中，我们在创建 APIM 时启用了 System Assigned Managed Identity。现在需要在**每个 Foundry 资源**上为此托管标识授予 `Cognitive Services OpenAI User` 角色，使 APIM 能够以零密钥方式安全访问后端 Foundry 资源。
+
+*In Section 2, we enabled the System Assigned Managed Identity when creating APIM. Now we need to grant the `Cognitive Services OpenAI User` role to this managed identity on **each Foundry resource**, enabling APIM to securely access backend Foundry resources with zero keys.*
+
+> [!NOTE]
+>
+> 💡 以下以一个 Foundry 项目为例进行演示；对其余项目重复相同流程。
+>
+> *💡 The following demonstrates one Foundry project as an example; repeat the same process for the remaining projects.*
+
+##### 5-1) 在 Azure Portal 中，① 在顶部搜索栏输入 `Foundry`，进入 ② **Microsoft Foundry** 服务，展开左侧 ③ Foundry 菜单，点击 ④ 目标 Foundry 资源 / In the Azure Portal, ① type `Foundry` in the top search bar, go to ② **Microsoft Foundry** service, expand ③ **Foundry** menu on the left, and click ④ the target Foundry resource
+
+![](/images/posts/azure-apim-ai-resilience/5-1-search-foundry-resource.png)
+
+##### 5-2) 进入 Foundry 资源后，点击左侧 ① **Access control (IAM)**，然后点击顶部 ② **+ Add**，选择 ③ **Add role assignment** / After entering the Foundry resource, click ① **Access control (IAM)** on the left, then click ② **+ Add** at the top, and select ③ **Add role assignment**
+
+![](/images/posts/azure-apim-ai-resilience/5-2-iam-add-role.png)
+
+##### 5-3) 在 Role 标签页中，搜索 ① `Cognitive Services OpenAI User`，选择 ② 该角色，点击 ③ **Next** / On the Role tab, search for ① `Cognitive Services OpenAI User`, select ② the role, and click ③ **Next**
+
+![](/images/posts/azure-apim-ai-resilience/5-3-select-role.png)
+
+> [!TIP]
+>
+> `Cognitive Services OpenAI User` 角色允许查看模型、部署和进行推理调用，但不允许修改资源配置——这正是 APIM 网关所需的最小权限。
+>
+> *The `Cognitive Services OpenAI User` role allows viewing models, deployments, and making inference calls, but does not allow modifying resource configurations—this is exactly the minimum permission required for the APIM gateway.*
+
+##### 5-4) 在 Members 标签页中，选择 ① **Managed identity**，点击 ② **+ Select members**，在右侧面板中选择 ③ APIM 所在的订阅，④ 将 Managed identity 类型设置为 **API Management service**，点击 ⑤ 选择 APIM 实例 / On the Members tab, select ① **Managed identity**, click ② **+ Select members**, in the right-side panel select ③ the subscription where APIM resides, ④ set the Managed identity type to **API Management service**, and click ⑤ to select the APIM instance
+
+![](/images/posts/azure-apim-ai-resilience/5-4-select-managed-identity.png)
+
+##### 5-5) 确认 APIM 实例出现在 Selected members 列表中，点击 **Select** 确认 / Confirm the APIM instance appears in the Selected members list, and click **Select** to confirm
+
+![](/images/posts/azure-apim-ai-resilience/5-5-confirm-select.png)
+
+##### 5-6) 返回 Members 标签页，确认角色为 `Cognitive Services OpenAI User`，成员为 APIM 托管标识（类型：API Management service），然后点击 **Review + assign** / Return to the Members tab, confirm the role is `Cognitive Services OpenAI User` and the member is the APIM managed identity (type: API Management service), then click **Review + assign**
+
+![](/images/posts/azure-apim-ai-resilience/5-6-review-assign.png)
+
+##### 5-7) 在 Review + assign 标签页上，最终审核角色分配信息，点击 **Review + assign** 完成授权 / On the Review + assign tab, do a final review of the role assignment information, and click **Review + assign** to complete the authorization
+
+![](/images/posts/azure-apim-ai-resilience/5-7-review-confirm.png)
+
+验证以下关键信息是否正确：
+
+*Verify the following key information is correct:*
+
+| 属性 / Property | 值 / Value |
+|----------|-------|
+| Role | Cognitive Services OpenAI User |
+| Scope | 目标 Foundry 资源的完整资源 ID / Full resource ID of the target Foundry resource |
+| Members | APIM 实例名称（Type: API Management service）/ APIM instance name (Type: API Management service) |
+
+按照相同流程，在其余 Foundry 资源上重复上述步骤（5-1 到 5-7）。
+
+*Follow the same process to repeat the above steps (5-1 through 5-7) on the remaining Foundry resources.*
+
+你也可以通过 Azure CLI 批量完成 RBAC 角色分配。首先，获取 APIM 托管标识的 Principal ID（即步骤 2-7 中记录的 Object ID）：
+
+*You can also batch complete RBAC role assignments via Azure CLI. First, get the APIM managed identity's Principal ID (the Object ID recorded in step 2-7):*
+
+```bash
+az apim show \
+  --subscription <subscription-id> \
+  --name <apim-name> \
+  --resource-group <resource-group> \
+  --query "identity.principalId" -o tsv
+```
+
+然后为每个 Foundry 资源分配角色：
+
+*Then assign the role for each Foundry resource:*
+
+```bash
+az role assignment create \
+  --assignee <apim-managed-identity-principal-id> \
+  --role "Cognitive Services OpenAI User" \
+  --scope /subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.CognitiveServices/accounts/<foundry-resource-name>
+```
+
+完成本节后，APIM 托管标识已在所有后端 Foundry 资源上获得授权，安全链路完全建立。接下来，我们将这些 Foundry 资源注册为 APIM 后端并组装负载均衡池。
+
+*After completing this section, the APIM managed identity has been authorized on all backend Foundry resources, and the security chain is fully established. Next, we will register these Foundry resources as APIM backends and assemble the load balancing pool.*
+
+## 6. 配置后端和负载均衡池 / Configure Backends and Load Balancing Pool
+
+将每个 Foundry 资源注册为 APIM Backend，然后将它们组装为带有轮询策略的 Backend Load Balancing Pool 进行流量分发。
+
+*Register each Foundry resource as an APIM Backend, then assemble them into a Backend Load Balancing Pool with a round-robin policy for traffic distribution.*
+
+> [!NOTE]
+>
+> 💡 以下以为一个 Foundry 资源创建 Backend 为例进行演示；对其余资源重复相同流程。
+>
+> *💡 The following demonstrates creating a Backend for one Foundry resource as an example; repeat the same process for the remaining resources.*
+
+##### 6-1) 获取 Foundry 资源的 Azure OpenAI Endpoint / Get the Foundry Resource's Azure OpenAI Endpoint
+
+在 [Microsoft Foundry Portal](https://ai.azure.com/nextgen/) 中，点击顶部 ① 项目名称展开下拉菜单，选择 ② 目标项目，在 Home 页面找到 ③ **Azure OpenAI endpoint**，复制该 URL。
+
+*In the [Microsoft Foundry Portal](https://ai.azure.com/nextgen/), click ① the project name at the top to expand the dropdown menu, select ② the target project, and on the Home page find ③ **Azure OpenAI endpoint**, then copy the URL.*
+
+![](/images/posts/azure-apim-ai-resilience/6-1-get-endpoint.png)
+
+##### 6-2) 在 APIM 中导航到 Backends 页面并点击创建新 Backend / Navigate to the Backends page in APIM and click to create a new Backend
+
+返回 Azure Portal 中的 APIM 实例，点击左侧菜单 ① **Backends**，然后点击 ② **+ Create new backend**。
+
+*Return to the APIM instance in Azure Portal, click ① **Backends** in the left menu, then click ② **+ Create new backend**.*
+
+![](/images/posts/azure-apim-ai-resilience/6-2-backends-page.png)
+
+##### 6-3) 填写 Backend 配置 / Fill in the Backend configuration
+
+![](/images/posts/azure-apim-ai-resilience/6-3-create-backend.png)
+
+在创建 Backend 页面，填写 ① **Name**（**为方便管理，建议与 Foundry 资源名称保持一致**，如 `ai-hub-eastus2-01`），② **Runtime URL** 填写 Foundry 资源的 OpenAI endpoint（如 `https://ai-hub-eastus2-01.openai.azure.com/openai/v1`）。
+
+*On the create Backend page, fill in ① **Name** (**for management convenience, it is recommended to keep it consistent with the Foundry resource name**, e.g., `ai-hub-eastus2-01`), ② **Runtime URL** with the Foundry resource's OpenAI endpoint (e.g., `https://ai-hub-eastus2-01.openai.azure.com/openai/v1`).*
+
+切换到 ③ **Managed Identity** 标签页，④ 将 Client identity 设置为 **System assigned identity**，⑤ 在 Resource ID 中填写 `https://cognitiveservices.azure.com`，最后点击 ⑥ **Create** 完成。
+
+*Switch to the ③ **Managed Identity** tab, ④ set Client identity to **System assigned identity**, ⑤ fill in Resource ID with `https://cognitiveservices.azure.com`, and finally click ⑥ **Create** to complete.*
+
+> [!IMPORTANT]
+>
+> **Resource ID** 必须设置为 `https://cognitiveservices.azure.com`。这是 APIM 使用托管标识获取 token 时的 audience 参数，对所有 Foundry / Azure OpenAI 资源通用。
+>
+> ***Resource ID** must be set to `https://cognitiveservices.azure.com`. This is the audience parameter used by APIM to obtain a token with managed identity, and it is universal for all Foundry / Azure OpenAI resources.*
+
+按照 6-1) 到 6-3) 的相同流程，为每个剩余的 Foundry 资源创建 Backend。
+
+*Follow the same process from 6-1) to 6-3) to create Backends for each remaining Foundry resource.*
+
+你也可以通过 Azure CLI 创建 Backend：
+
+*You can also create Backends via Azure CLI:*
+
+```bash
+az rest --method PUT \
+  --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-name>/backends/<backend-name>?api-version=2024-05-01" \
+  --body '{
+    "properties": {
+      "url": "https://<foundry-resource-name>.openai.azure.com/openai/v1",
+      "protocol": "http",
+      "credentials": {
+        "managedIdentity": {
+          "clientId": null,
+          "resource": "https://cognitiveservices.azure.com"
+        }
+      }
+    }
+  }'
+```
+
+> [!NOTE]
+>
+> 将 `clientId` 设置为 `null` 表示使用 APIM 的 System Assigned Managed Identity。如果使用 User Assigned Identity，请填写对应的 Client ID。
+>
+> *Setting `clientId` to `null` means using APIM's System Assigned Managed Identity. If using a User Assigned Identity, fill in the corresponding Client ID.*
+
+##### 6-4) 确认所有 Backend 已成功创建 / Confirm all Backends have been created successfully
+
+返回 Backends 页面，确认所有需要的 Backend 都已列出，Runtime URL 分别指向各自的 Foundry 资源端点：
+
+*Return to the Backends page and confirm that all required Backends are listed, with Runtime URLs pointing to their respective Foundry resource endpoints:*
+
+![](/images/posts/azure-apim-ai-resilience/6-4-backends-list.png)
+
+##### 6-5) 切换到 Load balancer 标签页并创建负载均衡池 / Switch to the Load balancer tab and create a load balancing pool
+
+在 Backends 页面，切换到 ① **Load balancer** 标签页，点击 ② **+ Create new pool**。
+
+*On the Backends page, switch to the ① **Load balancer** tab and click ② **+ Create new pool**.*
+
+![](/images/posts/azure-apim-ai-resilience/6-5-lb-tab.png)
+
+##### 6-6) 配置负载均衡池 / Configure the load balancing pool
+
+在创建页面，填写 Pool **Name**（如 `ai-hub-pool`），在 **Add backends to pool** 下拉菜单中选择所需的 Backend：
+
+*On the creation page, fill in the Pool **Name** (e.g., `ai-hub-pool`), and in the **Add backends to pool** dropdown, select the required Backends:*
+
+![](/images/posts/azure-apim-ai-resilience/6-6-create-pool.png)
+
+##### 6-7) 选择负载均衡策略并完成创建 / Select the load balancing strategy and complete creation
+
+在 **Backend weight and priority** 下，选择 **Send requests evenly**（Round-robin）以将请求均匀分发到所有后端实例。确认后，点击 **Create** 完成负载均衡池创建。
+
+*Under **Backend weight and priority**, select **Send requests evenly** (Round-robin) to distribute requests evenly across all backend instances. After confirming, click **Create** to complete the load balancing pool creation.*
+
+![](/images/posts/azure-apim-ai-resilience/6-7-pool-config.png)
+
+Backend 和负载均衡池配置完成。接下来，我们将创建 API 入口并通过 Policy 将请求路由到后端池。
+
+*Backend and load balancing pool configuration is complete. Next, we will create the API entry point and route requests to the backend pool through Policy.*
+
+## 7. 创建 API 并关联后端池 / Create API and Associate with Backend Pool
+
+在 APIM 中创建 API，配置 Operations 和 Policy 以将请求路由到后端负载均衡池。
+
+*Create an API in APIM, configure Operations and Policy to route requests to the backend load balancing pool.*
+
+##### 7-1) 在 APIM 左侧菜单中，点击 ① **APIs**，选择 ② **HTTP** 手动定义 API / In the APIM left menu, click ① **APIs**, and select ② **HTTP** to manually define an API
+
+![](/images/posts/azure-apim-ai-resilience/7-1-apis-page.png)
+
+##### 7-2) 填写 API 基本信息并点击 **Create** 完成 / Fill in the API basic information and click **Create** to complete
+
+![](/images/posts/azure-apim-ai-resilience/7-2-create-http-api.png)
+
+在 Create an HTTP API 对话框中，填写：
+
+*In the Create an HTTP API dialog, fill in:*
+
+- **Display name**：自定义的 API 显示名称 / Your custom API display name
+- **API URL suffix**：`openai/v1`（客户端访问路径；最终 Base URL 为 `https://<apim-name>.azure-api.net/openai/v1`）/ `openai/v1` (client access path; the final Base URL will be `https://<apim-name>.azure-api.net/openai/v1`)
+
+> [!NOTE]
+>
+> **Web service URL** 可以留空。到后端池的路由将通过 Policy 中的 `set-backend-service` 动态处理。
+>
+> ***Web service URL** can be left empty. The routing to the backend pool will be handled dynamically through `set-backend-service` in the Policy.*
+
+##### 7-3) 点击 ① **+ Add operation** 添加 API 操作 / Click ① **+ Add operation** to add an API operation
+
+![](/images/posts/azure-apim-ai-resilience/7-3-add-operation.png)
+
+为每个 HTTP 方法创建通配符路径操作。以 POST 为例：填写 ② **Display name** 为 `POST Wildcard`，③ 选择 **POST** 方法，④ URL 路径为 `/*`。
+
+*Create wildcard path operations for each HTTP method. Using POST as an example: fill in ② **Display name** as `POST Wildcard`, ③ select **POST** method, ④ URL path as `/*`.*
+
+按照相同方式添加 **GET Wildcard**（GET `/*`）和 **DELETE Wildcard**（DELETE `/*`）操作。
+
+*Follow the same approach to add **GET Wildcard** (GET `/*`) and **DELETE Wildcard** (DELETE `/*`) operations.*
+
+> [!TIP]
+>
+> 本示例使用通配符路径 `/*` 将所有请求转发到后端，适用于统一代理所有 API 的场景。如需更细粒度的控制，可以为特定业务场景创建操作。例如，对于 Sora2 视频生成，可以仅匹配 `/videos/*` 路径。
+>
+> *This example uses the wildcard path `/*` to forward all requests to the backend, suitable for scenarios where all APIs are proxied uniformly. For finer-grained control, you can create operations for specific business scenarios. For example, with Sora2 video generation, you could match only the `/videos/*` path.*
+
+##### 7-4) 选择 ① **All operations**，点击 Inbound processing 区域的 ② **</>** 图标打开 Policy 编辑器 / Select ① **All operations**, and click the ② **</>** icon in the Inbound processing area to open the Policy editor
+
+![](/images/posts/azure-apim-ai-resilience/7-4-api-design-view.png)
+
+##### 7-5) 配置 API Policy / Configure API Policy
+
+在 Policy 编辑器中粘贴以下策略代码，实现负载均衡、故障转移和定向路由能力：
+
+*Paste the following policy code in the Policy editor to implement load balancing, failover, and pinned backend routing capabilities:*
+
+**Policy 核心逻辑说明 / Policy Core Logic Description:**
+
+| 部分 / Section | 功能 / Function |
+|---------|----------|
+| **inbound** | 读取请求头 `X-AI-Foundry-Target`；如指定则路由到该后端；否则使用负载均衡池轮询分发 / Reads the request header `X-AI-Foundry-Target`; if specified, routes to that backend; otherwise uses the load balancing pool for round-robin distribution |
+| **outbound** | 在响应头 `X-AI-Foundry-Backend` 中返回实际处理请求的后端名称，方便客户端追踪和调试；客户端可在后续请求中设置 `X-AI-Foundry-Target` 指定特定后端 / Returns the actual backend name that processed the request in the response header `X-AI-Foundry-Backend`, facilitating client tracking and debugging; clients can set `X-AI-Foundry-Target` in subsequent requests to specify a particular backend |
+| **backend** | 支持两种模式：**定向模式**直接转发不重试；**轮询模式**在连接失败、4xx 或 5xx 错误时自动重试，最多 3 次，使用指数退避（间隔约 0s → 3s → 5s），在池中其他健康后端间循环 / Supports two modes: **Pinned backend mode** forwards directly without retry; **Round-robin mode** automatically retries on connection failures, 4xx, or 5xx errors, up to 3 times with exponential backoff (intervals approximately 0s → 3s → 5s), cycling through other healthy backends in the pool |
+
+```xml
+<policies>
+    <inbound>
+        <base />
+        <!-- Read request header to allow callers to specify a specific backend -->
+        <set-variable name="target" value="@(context.Request.Headers.GetValueOrDefault("X-AI-Foundry-Target", ""))" />
+        <!-- Backend load balancing pool name -->
+        <set-variable name="pool_name" value="<your-ai-hub-pool-name>" />
+        <choose>
+            <!-- Caller specified a target backend, route directly -->
+            <when condition="@(context.Variables.GetValueOrDefault<string>("target") != "")">
+                <set-backend-service backend-id="@(context.Variables.GetValueOrDefault<string>("target"))" />
+            </when>
+            <!-- No target specified, use load balancing pool for round-robin distribution -->
+            <otherwise>
+                <set-backend-service backend-id="@((string)context.Variables["pool_name"])" />
+            </otherwise>
+        </choose>
+    </inbound>
+    <outbound>
+        <base />
+        <!-- Return the actual backend identifier in the response header -->
+        <set-header name="X-AI-Foundry-Backend" exists-action="override">
+            <value>@(context.Request.Url.Host.Split('.')[0])</value>
+        </set-header>
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+    <backend>
+        <choose>
+            <!-- Pinned backend mode: forward directly, no retry -->
+            <when condition="@(context.Variables.GetValueOrDefault<string>("target") != "")">
+                <forward-request buffer-request-body="true" />
+            </when>
+            <otherwise>
+                <!-- Round-robin mode: automatically retry and switch backends on connection failure(null), client errors(4xx), server errors(5xx) -->
+                <!-- Exponential backoff: approximately 0s -> 3s -> 5s (cap), first retry executes immediately -->
+                <retry condition="@(context.Response == null || context.Response.StatusCode >= 400)" count="3" interval="1" delta="1" max-interval="5" first-fast-retry="true">
+                    <set-backend-service backend-id="@((string)context.Variables["pool_name"])" />
+                    <forward-request buffer-request-body="true" />
+                </retry>
+            </otherwise>
+        </choose>
+    </backend>
+</policies>
+```
+
+将上述代码粘贴到 Policy 编辑器中并点击 **Save**：
+
+*Paste the above code into the Policy editor and click **Save**:*
+
+![](/images/posts/azure-apim-ai-resilience/7-5-policy-editor-en.png)
+
+## 8. 测试与验证 / Test and Validate
+
+完成 API 与 Policy 配置后，整个架构已经可以投入使用。接下来，我们通过实际请求来验证负载均衡、指定后端路由和故障转移是否按预期工作。
+
+*After the API and Policy configuration is complete, the entire architecture is ready. Next, we will verify that load balancing, pinned backend routing, and failover are working correctly through actual requests.*
+
+##### 8-1) 获取 APIM Gateway URL / Get the APIM Gateway URL
+
+在 APIM 实例的 Overview 页面中，找到 ① **Overview** 菜单，并复制 ② **Gateway URL**（例如：`https://<apim-name>.azure-api.net`）。这就是客户端访问的统一入口。
+
+*On the APIM instance's Overview page, find ① **Overview** menu, and copy ② **Gateway URL** (e.g., `https://<apim-name>.azure-api.net`). This is the unified entry point for client requests.*
+
+![](/images/posts/azure-apim-ai-resilience/8-1-apim-overview.png)
+
+##### 8-2) 获取 APIM Subscription Key / Get the APIM Subscription Key
+
+点击左侧菜单中的 ① **Subscriptions**，找到 **Built-in all-access subscription**，点击右侧 ② **...**，选择 ③ **Show/hide keys**，然后复制 ④ **Primary key**。
+
+*Click ① **Subscriptions** in the left menu, find **Built-in all-access subscription**, click ② **...** on the right, select ③ **Show/hide keys**, and copy ④ **Primary key**.*
+
+![](/images/posts/azure-apim-ai-resilience/8-2-subscription-key.png)
+
+> [!NOTE]
+>
+> 这个 Key 将作为 `Ocp-Apim-Subscription-Key` 请求头的值，是客户端访问 APIM 所需的唯一凭证。后端 Foundry 资源的认证由 APIM 的 Managed Identity 自动完成，客户端无需感知。
+>
+> *This Key will be used as the value of the `Ocp-Apim-Subscription-Key` request header and is the only credential needed for clients to access APIM. Authentication to the backend Foundry resources is handled automatically by APIM's Managed Identity—clients don't need to be aware of it.*
+>
+> 如果你希望自定义请求头名称（例如改成 `api-key` 以兼容 OpenAI SDK），可以在左侧进入 ① **APIs**，选择 ② 目标 API，切换到 ③ **Settings** 标签页，并在 ④ **Subscription** 区域修改 **Header name** 与 **Query parameter name**。
+>
+> *If you need to customize the request header name (e.g., change it to `api-key` for OpenAI SDK compatibility), go to ① **APIs** on the left, select ② the target API, switch to the ③ **Settings** tab, and modify the **Header name** and **Query parameter name** in the ④ **Subscription** section.*
+>
+> ![](/images/posts/azure-apim-ai-resilience/8-2b-subscription-settings.png)
+
+##### 8-3) 验证负载均衡（Round-Robin） / Verify Load Balancing (Round-Robin)
+
+连续发送多次请求，并且**不带** `X-AI-Foundry-Target` 请求头，观察响应头中的 `X-AI-Foundry-Backend` 是否在 4 个后端之间轮转：
+
+*Send multiple requests consecutively without the `X-AI-Foundry-Target` header, and observe whether the `X-AI-Foundry-Backend` response header rotates among the 4 backends:*
+
+```bash
+curl -D - -o /dev/null --location \
+  'https://<apim-gateway-url>/openai/v1/videos' \
+  --header 'Ocp-Apim-Subscription-Key: <your-subscription-key>'
+```
+
+![](/images/posts/azure-apim-ai-resilience/8-3-round-robin-test.png)
+
+如截图所示，连续 4 次请求被分配到了不同的后端（红框标出的 `X-AI-Foundry-Backend` 响应头）：
+
+*As shown in the screenshot, 4 consecutive requests were routed to different backends (highlighted by the `X-AI-Foundry-Backend` response header in red boxes):*
+
+- 请求 1 → `ai-hub-swedencentral-02` / Request 1 → `ai-hub-swedencentral-02`
+- 请求 2 → `ai-hub-eastus2-01` / Request 2 → `ai-hub-eastus2-01`
+- 请求 3 → `ai-hub-eastus2-02` / Request 3 → `ai-hub-eastus2-02`
+- 请求 4 → `ai-hub-swedencentral-01` / Request 4 → `ai-hub-swedencentral-01`
+
+这说明负载均衡池的 Round-robin 策略工作正常，请求能够均匀分发到跨订阅、跨区域的 4 个 Foundry 资源上。
+
+*This verifies that the load balancing pool's Round-robin strategy is working correctly, with requests evenly distributed across 4 Foundry resources spanning multiple subscriptions and regions.*
+
+##### 8-4) 验证指定后端路由 / Verify Pinned Backend Routing
+
+通过 `X-AI-Foundry-Target` 请求头指定某一个后端名称，验证请求是否能精确路由到目标实例：
+
+*Use the `X-AI-Foundry-Target` request header to specify a backend name, and verify that requests are precisely routed to the specified instance:*
+
+```bash
+curl -s -D - -o /dev/null --location \
+  'https://<apim-gateway-url>/openai/v1/responses' \
+  --header 'Content-Type: application/json' \
+  --header 'Ocp-Apim-Subscription-Key: <your-subscription-key>' \
+  --header 'X-AI-Foundry-Target: <target-backend>' \
+  --data '{"model": "gpt-5.2", "input": "Hello"}' \
+  | grep -i X-AI-Foundry-Backend
+```
+
+![](/images/posts/azure-apim-ai-resilience/8-4-pinned-backend-test.png)
+
+连续发送多次请求后，`X-AI-Foundry-Backend` 始终返回 `ai-hub-swedencentral-02`，说明指定后端路由功能生效。这个能力适合会话亲和、调试特定实例或做数据隔离时使用。
+
+*After sending multiple requests, the `X-AI-Foundry-Backend` response header consistently returns `ai-hub-swedencentral-02`, confirming that pinned backend routing is working correctly. This feature is suitable for scenarios requiring session affinity or debugging specific backends.*
+
+##### 8-5) 验证指定后端的数据隔离 / Verify Data Isolation with Pinned Backend
+
+通过指定后端实例查询视频生成记录，验证不同后端之间的数据隔离能力：
+
+*Query video generation records on a specific backend instance to verify data is isolated by backend:*
+
+```bash
+curl --location \
+  'https://<apim-gateway-url>/openai/v1/videos' \
+  --header 'Ocp-Apim-Subscription-Key: <your-subscription-key>' \
+  --header 'X-AI-Foundry-Target: <target-backend>'
+```
+
+![](/images/posts/azure-apim-ai-resilience/8-5-pinned-backend-videos.png)
+
+响应中返回了该后端实例上的视频生成任务列表（`status: completed`，`model: sora-2`），说明我们可以通过 APIM 网关精确访问特定 Foundry 资源上的数据。
+
+*The response returns a list of completed video generation tasks on that backend instance (`status: completed`, `model: sora-2`), confirming that specific Foundry resource data can be precisely accessed through the APIM gateway.*
+
+---
+
+至此，整个架构搭建与验证已经完成。通过 APIM 的 Backend Load Balancing Pool，我们成功实现了：
+
+*At this point, the entire architecture setup and validation is complete. Through APIM's Backend Load Balancing Pool, we have successfully achieved:*
+
+- ✅ **跨订阅配额聚合** — 4 个 Foundry 资源分布在 2 个订阅、2 个区域 / **Cross-Subscription Quota Aggregation** — 4 Foundry resources distributed across 2 subscriptions and 2 regions
+- ✅ **负载均衡** — Round-robin 均匀分发请求 / **Load Balancing** — Round-robin evenly distributes requests
+- ✅ **指定后端路由** — 通过请求头精确路由到指定实例 / **Pinned Backend Routing** — Precisely routes to specific instances via request headers
+- ✅ **零密钥认证** — APIM 通过 Managed Identity 自动认证，客户端只需要一个 API Key / **Zero-Key Authentication** — APIM authenticates automatically via Managed Identity; clients only need a single API Key
+- ✅ **故障转移** — 当后端出现 4xx/5xx 错误时自动重试并切换到健康实例 / **Failover** — Automatically retries and switches to healthy backends on 4xx/5xx errors
+
+## 常见问题 / FAQ
+
+**Q：为什么不使用 APIM Backend 的 Circuit Breaker？**
+
+***Q: Why not use APIM Backend's Circuit Breaker?***
+
+这个架构的核心目标是**负载均衡与配额聚合**，而不是熔断保护。原因主要有三点：
+
+*The core objective of this architecture is **load balancing and quota aggregation**, not circuit breaking protection. Here are the specific reasons:*
+
+1. **目标不同**：我们使用 Round-robin 访问多个 Foundry 资源，是为了提升整体并发处理能力（例如增加 Sora2 视频生成任务的并发数）。而 APIM 的 Circuit Breaker 适合在某个后端持续失败时临时断路以保护系统。但在这个场景下，如果某个后端上的某个 API（例如视频创建接口）触发配额限制，不应该影响同一后端上的其他健康 API（例如查询、下载接口）。
+
+   * **Different purposes**: We use Round-robin to access multiple Foundry resources to increase parallel processing capacity (e.g., increasing the number of concurrent Sora2 video generation tasks). APIM's Circuit Breaker is designed to "break the circuit" when a backend experiences sustained failures to protect the system. However, in our scenario, a failure of a specific API on one backend (e.g., the video creation API hitting quota limits) should not block access to other healthy APIs on that backend (e.g., query and download APIs).*
+
+2. **模型隔离问题**：在生产环境中，同一个 Backend Pool 可能会同时服务多个模型。例如客户端通过同一个 APIM 入口访问 GPT-5.1 与 GPT-5.2 的 Responses API，只是请求体里的 `model` 字段不同。如果使用 Circuit Breaker，GPT-5.1 的 429 可能会触发整个后端熔断，连带影响 GPT-5.2 的访问，这显然不是我们想要的行为。
+
+   * **Model isolation issues**: In production, the same Backend Pool may serve requests for different models. For example, clients may access both GPT-5.1 and GPT-5.2 through the Responses API, sharing the same APIM endpoint with only the `model` field differing in the request body. If Circuit Breaker is used, a 429 error from GPT-5.1 could trigger the circuit breaker, preventing GPT-5.2 from accessing the same backend—clearly not the desired behavior.*
+
+3. **更直接的容错方式**：当某个后端不可用时，我们真正需要的是让请求切换到下一个健康后端。这个需求通过 `retry` + `set-backend-service` 就能完成，不需要引入 Circuit Breaker 更复杂的状态管理机制。
+
+   * **Simple and direct fault tolerance**: If a backend is unavailable, the request should be routed to the next backend. This can be achieved through the `retry` + `set-backend-service` combination without introducing the complex state management of Circuit Breaker.*
+
+**Q：这个架构只适用于 Sora2 吗？**
+
+***Q: Is this architecture only applicable to Sora2?***
+
+不是。本文用 Sora2 做示例，是因为它非常适合演示跨订阅配额聚合的价值，但这个架构模式适用于任何通过 Microsoft Foundry / Azure OpenAI 提供的模型服务，包括但不限于：
+
+*No. This article uses Sora2 as an example, but this architecture pattern applies to any model service provided through Microsoft Foundry / Azure OpenAI, including but not limited to:*
+
+- **Responses API**（GPT-5.x 系列）— 聚合多个后端的 TPM 配额 / **Responses API** (GPT-5.x series) — Aggregate TPM quota across multiple backends
+- **Chat Completions API**（GPT-4o 等）— 实现跨区域负载均衡 / **Chat Completions API** (GPT-4o, etc.) — Cross-region load balancing
+- **Embeddings API** — 聚合嵌入模型的吞吐能力 / **Embeddings API** — Aggregate embedding model throughput
+- **Image Generation API**（DALL-E / GPT-image-1）— 聚合图像生成配额 / **Image Generation API** (DALL-E / GPT-image-1) — Aggregate image generation quota
+
+只要将 Backend 的 Runtime URL 指向对应的 Foundry 资源端点，并确保模型已部署，这套架构就可以复用。
+
+*Simply point the Backend's Runtime URL to the corresponding Foundry resource endpoint, ensure the model is deployed, and the same architecture can be reused.*
+
+## 参考文档 / Reference Documentation
+
+**Microsoft Foundry Related**
+
+- Microsoft Foundry Overview: https://learn.microsoft.com/azure/foundry/what-is-foundry
+- Foundry Architecture: https://learn.microsoft.com/azure/foundry/concepts/architecture
+- Create Foundry Projects: https://learn.microsoft.com/azure/foundry/how-to/create-projects
+- Foundry Role-Based Access Control (RBAC): https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry
+- Azure OpenAI RBAC Role Permissions: https://learn.microsoft.com/azure/foundry-classic/openai/how-to/role-based-access-control
+- Models and Region Availability: https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+- Sora2 Video Generation: https://learn.microsoft.com/azure/foundry/openai/concepts/video-generation
+- Responses API Guide: https://learn.microsoft.com/azure/foundry/openai/how-to/responses
+- Azure OpenAI Error Codes and Retry Strategies: https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling
+
+**Azure API Management Related**
+
+- APIM v2 Tier Comparison: https://learn.microsoft.com/azure/api-management/v2-service-tiers-overview
+- APIM Managed Identity: https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity
+- Backends and Load Balancing Pool: https://learn.microsoft.com/azure/api-management/backends
+- Authenticate and Authorize LLM APIs with APIM: https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis
+- Managed Identity Authentication Policy (authentication-managed-identity): https://learn.microsoft.com/azure/api-management/authentication-managed-identity-policy
+- Set Backend Service Policy (set-backend-service): https://learn.microsoft.com/azure/api-management/set-backend-service-policy
+- Retry Policy: https://learn.microsoft.com/azure/api-management/retry-policy
+- Policy Expressions Syntax: https://learn.microsoft.com/azure/api-management/api-management-policy-expressions
+
+**Azure CLI Command Reference**
+
+- az cognitiveservices account create: https://learn.microsoft.com/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create
+- az apim create: https://learn.microsoft.com/cli/azure/apim#az-apim-create
+- az role assignment create: https://learn.microsoft.com/cli/azure/role/assignment#az-role-assignment-create
+
+**REST API Version Reference**
+
+- API Management REST API (2024-05-01 GA): https://learn.microsoft.com/rest/api/apimanagement/operation-groups?api-version=2024-05-01
+- API Management Backend - Create Or Update: https://learn.microsoft.com/rest/api/apimanagement/backend/create-or-update
+- API Management ARM Template Definition (2024-05-01): https://learn.microsoft.com/azure/templates/microsoft.apimanagement/2024-05-01/service
+- Azure OpenAI v1 REST API: https://learn.microsoft.com/azure/foundry/openai/latest
+- Azure OpenAI v1 Preview REST API: https://learn.microsoft.com/azure/foundry/openai/reference-preview-latest
+
+---
+
+## 变更日志 / Change Log
+
+| Date | Changes |
+|------|---------|
+| 2026-03-20 | Initial release |

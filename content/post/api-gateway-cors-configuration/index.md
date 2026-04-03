@@ -3,7 +3,7 @@ slug: "api-gateway-cors-configuration"
 title: "API Gateway CORS Configuration Guide"
 date: 2024-10-28
 description: "Complete guide to configuring CORS for AWS API Gateway."
-image: /images/posts/api-gateway-cors/cors-flow.png
+image: cors-flow.png
 categories:
   - AWS
 tags:
@@ -50,7 +50,7 @@ Based on request complexity, CORS divides requests into two categories:
 
 For non-simple requests, the server relies on the browser sending a CORS preflight or OPTIONS request. A complete request process is as follows:
 
-![CORS 完整请求流程 / Complete CORS Request Flow](/images/posts/api-gateway-cors/cors-config-1.png)
+![CORS 完整请求流程 / Complete CORS Request Flow](cors-config-1.png)
 
 非简单请求的 CORS 完整过程：
 
@@ -108,57 +108,57 @@ To resolve cross-origin issues in Amazon API Gateway, CORS configuration is requ
 
 As shown below, the REST API has a default / resource, and we created a POST method under the / resource, integrated with a Lambda function as the backend service.
 
-![REST API 资源配置](/images/posts/api-gateway-cors/cors-config-2.png)
+![REST API 资源配置](cors-config-2.png)
 
 如果想要为 / 资源下的 POST 方法配置跨域访问，我们需要回到资源的简介页面，点击启用 CORS。
 
 To configure CORS for the POST method under the / resource, we need to go back to the resource overview page and click Enable CORS.
 
-![启用 CORS 按钮](/images/posts/api-gateway-cors/cors-config-3.png)
+![启用 CORS 按钮](cors-config-3.png)
 
 在启用 CORS 页面，首先配置访问控制允许的方法。为了正确的响应 preflight 请求，OPTIONS 方法已被默认开启。我们勾选需要配置跨域访问的 POST 方法。随后，我们配置访问控制允许的标头和来源，具体允许的值取决于您的后端应用。配置好后点击保存。
 
 On the Enable CORS page, first configure the allowed methods. The OPTIONS method is enabled by default to properly respond to preflight requests. We select the POST method that needs CORS configuration. Then we configure the allowed headers and origins—the specific allowed values depend on your backend application. Click Save after configuration.
 
-![CORS 配置页面](/images/posts/api-gateway-cors/cors-config-4.png)
+![CORS 配置页面](cors-config-4.png)
 
 保存之后，在 POST 方法的集成响应页面可以看到，标头映射中，Access-Control-Allow-Origin 的映射值为上一步配置的访问控制允许的来源。
 
 After saving, on the POST method's integration response page, you can see that in the header mapping, the Access-Control-Allow-Origin mapping value is the allowed origin configured in the previous step.
 
-![集成响应标头映射](/images/posts/api-gateway-cors/cors-config-5.png)
+![集成响应标头映射](cors-config-5.png)
 
 在资源列表我们还可以看到，在启用 CORS 之后，API Gateway 为我们自动创建了 OPTIONS 方法，该方法用于正确响应 preflight 请求。OPTIONS 方法的集成类型为模拟集成，模拟集成会为请求返回一个 200 的状态码，并且返回 preflight 响应的所有相关标头。
 
 In the resource list, we can also see that after enabling CORS, API Gateway automatically created an OPTIONS method for properly responding to preflight requests. The OPTIONS method's integration type is Mock integration, which returns a 200 status code and all relevant preflight response headers.
 
-![OPTIONS 方法配置](/images/posts/api-gateway-cors/cors-config-6.png)
+![OPTIONS 方法配置](cors-config-6.png)
 
 在配置的访问控制允许的来源端点上测试跨域 POST 请求，可以看到，对于 preflight 请求和实际请求，REST API 都返回了相应的标头。
 
 Testing a cross-origin POST request on the configured allowed origin endpoint shows that the REST API returns the appropriate headers for both the preflight request and the actual request.
 
-![Preflight 请求响应](/images/posts/api-gateway-cors/cors-config-7.png)
+![Preflight 请求响应](cors-config-7.png)
 
-![实际请求响应](/images/posts/api-gateway-cors/cors-config-8.png)
+![实际请求响应](cors-config-8.png)
 
 对于非根路径，也可以在创建资源时直接勾选 CORS（跨源资源共享），这样 API Gateway 会自动在这个资源下创建一个 OPTIONS 方法处理 preflight 请求。
 
 For non-root paths, you can also check CORS (Cross-Origin Resource Sharing) when creating a resource, so API Gateway will automatically create an OPTIONS method under this resource to handle preflight requests.
 
-![创建资源时勾选 CORS](/images/posts/api-gateway-cors/cors-config-9.png)
+![创建资源时勾选 CORS](cors-config-9.png)
 
 需要注意的是，使用这种方法创建的 OPTIONS 方法默认会接受来自所有源、所有方法的跨域请求，如果需要缩小权限可以点击右上角的编辑进行修改。
 
 Note that the OPTIONS method created this way will accept cross-origin requests from all origins and all methods by default. If you need to narrow the permissions, you can click Edit in the upper right corner to modify.
 
-![编辑 OPTIONS 方法](/images/posts/api-gateway-cors/cors-config-10.png)
+![编辑 OPTIONS 方法](cors-config-10.png)
 
 在创建资源时勾选 CORS（跨源资源共享）后，依旧要在资源简介页面的右上角点击启用 CORS，为具体的请求方法（如 POST）配置跨域相关的标头。
 
 After checking CORS when creating a resource, you still need to click Enable CORS in the upper right corner of the resource overview page to configure CORS-related headers for specific request methods (such as POST).
 
-![为具体方法配置 CORS 标头](/images/posts/api-gateway-cors/cors-config-11.png)
+![为具体方法配置 CORS 标头](cors-config-11.png)
 
 #### 附加授权的跨域配置场景 / CORS Configuration with Authorization
 
@@ -166,15 +166,15 @@ After checking CORS when creating a resource, you still need to click Enable COR
 
 You can integrate Lambda authorizers or Cognito authorizers for your REST API. When enabling authorization, note that you should only enable it for the methods that need it—do not enable authorization for the OPTIONS method, as this will cause 401 errors for preflight requests (which are unauthorized).
 
-![为 POST 方法开启授权](/images/posts/api-gateway-cors/cors-config-12.png)
+![为 POST 方法开启授权](cors-config-12.png)
 
 *为 POST 方法开启授权 / Enable authorization for the POST method*
 
-![如果为 OPTIONS 方法开启授权，preflight 请求会出现错误](/images/posts/api-gateway-cors/cors-config-13.png)
+![如果为 OPTIONS 方法开启授权，preflight 请求会出现错误](cors-config-13.png)
 
 *如果为 OPTIONS 方法开启授权，preflight 请求会出现错误 / If authorization is enabled for the OPTIONS method, preflight requests will fail*
 
-![不要为 OPTIONS 方法开启授权](/images/posts/api-gateway-cors/cors-config-14.png)
+![不要为 OPTIONS 方法开启授权](cors-config-14.png)
 
 *不要为 OPTIONS 方法开启授权 / Do not enable authorization for the OPTIONS method*
 
@@ -196,25 +196,25 @@ Below are the detailed steps for enabling HTTP API CORS.
 
 Navigate to the HTTP API page, click CORS in the left navigation bar, then click Configure in the upper right corner.
 
-![HTTP API CORS 配置入口](/images/posts/api-gateway-cors/cors-config-15.png)
+![HTTP API CORS 配置入口](cors-config-15.png)
 
 在配置 CORS 的页面，依次输入访问控制允许的来源、标头、方法。根据您的需要，您也可以选择性地配置访问控制公开标头、访问控制最长期限、访问控制允许凭证。配置完成后，点击右下角保存。
 
 On the CORS configuration page, enter the allowed origins, headers, and methods. Optionally, you can also configure exposed headers, max age, and allow credentials. Click Save in the lower right corner after configuration.
 
-![HTTP API CORS 配置页面](/images/posts/api-gateway-cors/cors-config-16.png)
+![HTTP API CORS 配置页面](cors-config-16.png)
 
 配置好后，我们在 HTTP API 的路由页面看不到 OPTIONS 方法的配置。
 
 After configuration, we cannot see the OPTIONS method configuration on the HTTP API routes page.
 
-![HTTP API 路由页面](/images/posts/api-gateway-cors/cors-config-17.png)
+![HTTP API 路由页面](cors-config-17.png)
 
 在 HTTP API 允许的跨域访问来源端点上测试跨域 POST 请求，可以看到，preflight 的 OPTIONS 请求和实际的 POST 请求都能得到正确响应。这是因为 API Gateway 替我们完成了 HTTP API 对 preflight 请求的响应和 CORS 相关的标头的添加。
 
 Testing a cross-origin POST request on the HTTP API's allowed origin endpoint shows that both the preflight OPTIONS request and the actual POST request receive correct responses. This is because API Gateway handles the HTTP API's preflight request responses and CORS header additions for us.
 
-![HTTP API CORS 测试结果](/images/posts/api-gateway-cors/cors-config-18.png)
+![HTTP API CORS 测试结果](cors-config-18.png)
 
 #### 附加授权的跨域配置场景 / CORS Configuration with Authorization
 
@@ -222,9 +222,9 @@ Testing a cross-origin POST request on the HTTP API's allowed origin endpoint sh
 
 Similar to REST API, HTTP API supports authorization through Lambda, JWT, and IAM authorizers for specific methods. If you want to enable CORS for an HTTP API with integrated authorizers, in most cases HTTP API will automatically handle preflight requests for you, requiring no special configuration. The only exception is when you create an authorized ANY method—in this case, preflight requests will be handled by the ANY method instead of HTTP API. Since preflight requests don't include authorization information, the authorized ANY method won't return the correct status code and CORS headers, resulting in 401 errors.
 
-![授权的 ANY 方法](/images/posts/api-gateway-cors/cors-config-19.png)
+![授权的 ANY 方法](cors-config-19.png)
 
-![ANY 方法导致的 401 错误](/images/posts/api-gateway-cors/cors-config-20.png)
+![ANY 方法导致的 401 错误](cors-config-20.png)
 
 这种情况下，有两种解决方法：
 
@@ -234,13 +234,13 @@ In this case, there are two solutions:
 
 **(Recommended)** Create a specific route for each method and resource as needed, and avoid using the ANY method. For example, in this article's case, you only need to create a route for the POST method.
 
-![为特定方法创建路由](/images/posts/api-gateway-cors/cors-config-21.png)
+![为特定方法创建路由](cors-config-21.png)
 
 在同一资源路径下创建一个无需授权的 OPTIONS 方法路由，并为 OPTIONS 方法添加一个任意后端集成。这样无授权的 OPTIONS 路由会捕捉 preflight 请求。
 
 Create an unauthorized OPTIONS method route under the same resource path, and add any backend integration for the OPTIONS method. This way, the unauthorized OPTIONS route will capture preflight requests.
 
-![创建无授权的 OPTIONS 路由](/images/posts/api-gateway-cors/cors-config-22.png)
+![创建无授权的 OPTIONS 路由](cors-config-22.png)
 
 ## 总结 / Summary
 

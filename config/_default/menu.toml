@@ -9,7 +9,7 @@
 [[main]]
     identifier = "projects"
     name       = "Projects"
-    url        = "/page/projects/"
+    url        = "/projects/"
     weight     = -90
     [main.params]
         icon = "link"
