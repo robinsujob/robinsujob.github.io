@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。">
-<title>使用 API Management 网关构建 Azure AI 韧性架构</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="使用 API Management 网关构建 Azure AI 韧性架构\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。\nBuild an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.">
+<title>Building Resilient Azure AI Architecture with API Management Gateway</title>
 
 
 <link rel="canonical" href="http://localhost:4002/p/azure-apim-ai-resilience/">
@@ -12,13 +12,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.389e156f5e9bb13df5a924cfa99dfb9c39f3e01e68d9e146cd65bdae963be145.css"><meta property='og:title' content="使用 API Management 网关构建 Azure AI 韧性架构">
-<meta property='og:description' content="通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。">
+<link rel="stylesheet" href="/scss/style.min.389e156f5e9bb13df5a924cfa99dfb9c39f3e01e68d9e146cd65bdae963be145.css"><meta property='og:title' content="Building Resilient Azure AI Architecture with API Management Gateway">
+<meta property='og:description' content="使用 API Management 网关构建 Azure AI 韧性架构\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。\nBuild an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.">
 <meta property='og:url' content='http://localhost:4002/p/azure-apim-ai-resilience/'>
 <meta property='og:site_name' content='Robin&#39;s Space'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='azure' /><meta property='article:tag' content='api-management' /><meta property='article:tag' content='ai' /><meta property='article:tag' content='high-availability' /><meta property='article:tag' content='load-balancing' /><meta property='article:tag' content='managed-identity' /><meta property='article:tag' content='microsoft-foundry' /><meta property='article:tag' content='enterprise-architecture' /><meta property='article:published_time' content='2026-04-03T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-04-03T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
-<meta name="twitter:title" content="使用 API Management 网关构建 Azure AI 韧性架构">
-<meta name="twitter:description" content="通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Resilient Azure AI Architecture with API Management Gateway">
+<meta name="twitter:description" content="使用 API Management 网关构建 Azure AI 韧性架构\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。\nBuild an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:4002/' />
     <link rel="shortcut icon" href="/img/avatar.jpg" />
 
@@ -296,7 +296,7 @@
     <header class="article-header">
     <div class="article-image">
         <a href="/p/azure-apim-ai-resilience/">
-            <img alt="Featured image of post 使用 API Management 网关构建 Azure AI 韧性架构" height="938" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/cover.png" srcset="/p/azure-apim-ai-resilience/images/cover_hu_ea52db3014a0416d.png 800w, /p/azure-apim-ai-resilience/images/cover.png 1536w" width="1536">
+            <img alt="Featured image of post Building Resilient Azure AI Architecture with API Management Gateway" height="938" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/cover.png" srcset="/p/azure-apim-ai-resilience/images/cover_hu_ea52db3014a0416d.png 800w, /p/azure-apim-ai-resilience/images/cover.png 1536w" width="1536">
         </a>
     </div>
     
@@ -317,12 +317,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/azure-apim-ai-resilience/">使用 API Management 网关构建 Azure AI 韧性架构</a>
+            <a href="/p/azure-apim-ai-resilience/">Building Resilient Azure AI Architecture with API Management Gateway</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。
+            使用 API Management 网关构建 Azure AI 韧性架构<br>通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。<br>Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.
         </h3>
         
     </div>
@@ -433,9 +433,9 @@
 <li>🔐 <strong>Managed Identity</strong> — 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担</li>
 <li>🛡️ <strong>统一 API 治理</strong> — 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力</li>
 </ul>
-<p><em>- 🔀 <strong>Backend Load Balancing Pool</strong> — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas</em>
-<em>- 🔐 <strong>Managed Identity</strong> — Zero-key secure authentication between APIM and backend AI services</em>
-<em>- 🛡️ <strong>Unified API Governance</strong> — Request routing, traffic control, log auditing, and policy management at the gateway layer</em></p>
+<p><em>🔀 <strong>Backend Load Balancing Pool</strong> — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas</em></p>
+<p><em>🔐 <strong>Managed Identity</strong> — Zero-key secure authentication between APIM and backend AI services</em></p>
+<p><em>🛡️ <strong>Unified API Governance</strong> — Request routing, traffic control, log auditing, and policy management at the gateway layer</em></p>
 <p>本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。</p>
 <p><em>This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.</em></p>
 <h2 id="架构概览--architecture-overview">架构概览 / Architecture Overview

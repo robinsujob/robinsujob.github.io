@@ -1,8 +1,8 @@
 ---
 slug: "azure-apim-ai-resilience"
-title: "使用 API Management 网关构建 Azure AI 韧性架构"
+title: "Building Resilient Azure AI Architecture with API Management Gateway"
 date: 2026-04-03
-description: "通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"
+description: "使用 API Management 网关构建 Azure AI 韧性架构<br>通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。<br>Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance."
 image: images/cover.png
 categories:
   - Azure
@@ -35,9 +35,11 @@ tags:
 - 🔐 **Managed Identity** — 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担
 - 🛡️ **统一 API 治理** — 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力
 
-*- 🔀 **Backend Load Balancing Pool** — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas*
-*- 🔐 **Managed Identity** — Zero-key secure authentication between APIM and backend AI services*
-*- 🛡️ **Unified API Governance** — Request routing, traffic control, log auditing, and policy management at the gateway layer*
+*🔀 **Backend Load Balancing Pool** — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas*
+
+*🔐 **Managed Identity** — Zero-key secure authentication between APIM and backend AI services*
+
+*🛡️ **Unified API Governance** — Request routing, traffic control, log auditing, and policy management at the gateway layer*
 
 本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。
 
