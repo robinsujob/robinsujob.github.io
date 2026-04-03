@@ -280,7 +280,6 @@
     </li>
     <li><a href="#常见问题--faq">常见问题 / FAQ</a></li>
     <li><a href="#参考文档--reference-documentation">参考文档 / Reference Documentation</a></li>
-    <li><a href="#更新记录--change-log">更新记录 / Change Log</a></li>
   </ul>
 
             </nav>
@@ -297,7 +296,7 @@
     <header class="article-header">
     <div class="article-image">
         <a href="/p/azure-apim-ai-resilience/">
-            <img alt="Featured image of post 使用 API Management 网关构建 Azure AI 韧性架构" height="938" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/cover.png" srcset="/p/azure-apim-ai-resilience/cover_hu_ea52db3014a0416d.png 800w, /p/azure-apim-ai-resilience/cover.png 1536w" width="1536">
+            <img alt="Featured image of post 使用 API Management 网关构建 Azure AI 韧性架构" height="938" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/cover.png" srcset="/p/azure-apim-ai-resilience/images/cover_hu_ea52db3014a0416d.png 800w, /p/azure-apim-ai-resilience/images/cover.png 1536w" width="1536">
         </a>
     </div>
     
@@ -413,7 +412,6 @@
     </li>
     <li><a href="#常见问题--faq">常见问题 / FAQ</a></li>
     <li><a href="#参考文档--reference-documentation">参考文档 / Reference Documentation</a></li>
-    <li><a href="#更新记录--change-log">更新记录 / Change Log</a></li>
   </ul>
 
             </nav>
@@ -441,7 +439,7 @@
 <p>本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。</p>
 <p><em>This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.</em></p>
 <h2 id="架构概览--architecture-overview">架构概览 / Architecture Overview
-</h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="289px" data-flex-grow="120" height="683" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/1-Architecture-en.png" srcset="/p/azure-apim-ai-resilience/1-Architecture-en_hu_10ff4595295ffe34.png 800w, /p/azure-apim-ai-resilience/1-Architecture-en.png 823w" width="823"></p>
+</h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="289px" data-flex-grow="120" height="683" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/1-Architecture-en.png" srcset="/p/azure-apim-ai-resilience/images/1-Architecture-en_hu_10ff4595295ffe34.png 800w, /p/azure-apim-ai-resilience/images/1-Architecture-en.png 823w" width="823"></p>
 <p>本架构采用<strong>集中式 API 网关 + 多订阅后端模式</strong>，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。</p>
 <p><em>This architecture uses a <strong>centralized API gateway + multi-subscription backend pattern</strong>, with APIM as the unified entry point, distributing requests round-robin to Foundry instances across multiple subscriptions and regions.</em></p>
 <p>核心设计理念包括：</p>
@@ -520,8 +518,8 @@
 </h2><p>在 Azure Portal 中创建 API Management 实例，选择 v2 Tier（Basicv2 / Standardv2 / Premiumv2），并在创建时启用 <strong>System Assigned Managed Identity</strong>。</p>
 <p><em>Create an API Management instance in Azure Portal, selecting v2 Tier, and enable <strong>System Assigned Managed Identity</strong> during creation.</em></p>
 <p><strong>Portal 操作 / Portal Steps：</strong> 搜索 <code>API Management Service</code> → + Create → 填写配置 → Managed identity 页签启用 → Review + install</p>
-<p><img class="gallery-image" data-flex-basis="185px" data-flex-grow="77" height="1506" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/2-3-basics-config.png" srcset="/p/azure-apim-ai-resilience/2-3-basics-config_hu_14e08ccbc5610987.png 800w, /p/azure-apim-ai-resilience/2-3-basics-config.png 1163w" width="1163"></p>
-<p><img class="gallery-image" data-flex-basis="475px" data-flex-grow="198" height="562" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/2-4-managed-identity.png" srcset="/p/azure-apim-ai-resilience/2-4-managed-identity_hu_4043f457949cc774.png 800w, /p/azure-apim-ai-resilience/2-4-managed-identity.png 1114w" width="1114"></p>
+<p><img class="gallery-image" data-flex-basis="185px" data-flex-grow="77" height="1506" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-3-basics-config.png" srcset="/p/azure-apim-ai-resilience/images/2-3-basics-config_hu_14e08ccbc5610987.png 800w, /p/azure-apim-ai-resilience/images/2-3-basics-config.png 1163w" width="1163"></p>
+<p><img class="gallery-image" data-flex-basis="475px" data-flex-grow="198" height="562" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-4-managed-identity.png" srcset="/p/azure-apim-ai-resilience/images/2-4-managed-identity_hu_4043f457949cc774.png 800w, /p/azure-apim-ai-resilience/images/2-4-managed-identity.png 1114w" width="1114"></p>
 <p><strong>CLI 替代方式 / CLI Alternative：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -558,13 +556,13 @@
 <li>记录 <strong>Gateway URL</strong>（如 <code>https://&lt;apim-name&gt;.azure-api.net</code>）/ <em>Record <strong>Gateway URL</strong></em></li>
 <li>记录 Managed Identity 的 <strong>Object (principal) ID</strong>（后续 RBAC 需要）/ <em>Record Managed Identity <strong>Object (principal) ID</strong> for RBAC</em></li>
 </ul>
-<p><img class="gallery-image" data-flex-basis="728px" data-flex-grow="303" height="644" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/2-6-apim-dashboard.png" srcset="/p/azure-apim-ai-resilience/2-6-apim-dashboard_hu_2b05d081fb5fa317.png 800w, /p/azure-apim-ai-resilience/2-6-apim-dashboard_hu_e21fb9797c99f7a2.png 1600w, /p/azure-apim-ai-resilience/2-6-apim-dashboard.png 1956w" width="1956"></p>
+<p><img class="gallery-image" data-flex-basis="728px" data-flex-grow="303" height="644" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png" srcset="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_2b05d081fb5fa317.png 800w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_e21fb9797c99f7a2.png 1600w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png 1956w" width="1956"></p>
 <hr>
 <h2 id="2-创建-foundry-资源--create-foundry-resources">2. 创建 Foundry 资源 / Create Foundry Resources
 </h2><p>在多个订阅和区域中创建 Foundry 资源，每个资源需创建对应的项目。</p>
 <p><em>Create Foundry resources across multiple subscriptions and regions, each with a corresponding project.</em></p>
 <p><strong>Portal 操作 / Portal Steps：</strong> 搜索 <code>Microsoft Foundry</code> → Create a resource → 填写 Subscription / Region / Name / Project name → Create</p>
-<p><img class="gallery-image" data-flex-basis="220px" data-flex-grow="91" height="1512" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/3-3-create-foundry-resource.png" srcset="/p/azure-apim-ai-resilience/3-3-create-foundry-resource_hu_e040e90bd75b1db3.png 800w, /p/azure-apim-ai-resilience/3-3-create-foundry-resource.png 1386w" width="1386"></p>
+<p><img class="gallery-image" data-flex-basis="220px" data-flex-grow="91" height="1512" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/3-3-create-foundry-resource.png" srcset="/p/azure-apim-ai-resilience/images/3-3-create-foundry-resource_hu_e040e90bd75b1db3.png 800w, /p/azure-apim-ai-resilience/images/3-3-create-foundry-resource.png 1386w" width="1386"></p>
 <p><strong>CLI 替代方式 / CLI Alternative：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -638,8 +636,8 @@
 <p><em>Deploy AI models in each Foundry resource via the Foundry Portal.</em></p>
 <p><strong>Portal 操作 / Portal Steps：</strong> 在 <a class="link" href="https://ai.azure.com/nextgen/"  target="_blank" rel="noopener"
     >Foundry Portal</a> 中选择目标项目 → Build → Models → Deploy a base model → 搜索模型（如 <code>sora-2</code>）→ Deploy → Default settings</p>
-<p><img class="gallery-image" data-flex-basis="491px" data-flex-grow="204" height="924" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/4-2-search-sora2.png" srcset="/p/azure-apim-ai-resilience/4-2-search-sora2_hu_e7087db313cdf721.png 800w, /p/azure-apim-ai-resilience/4-2-search-sora2_hu_956f92a0935b1b90.png 1600w, /p/azure-apim-ai-resilience/4-2-search-sora2.png 1891w" width="1891"></p>
-<p><img class="gallery-image" data-flex-basis="455px" data-flex-grow="189" height="1006" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/4-5-playground.png" srcset="/p/azure-apim-ai-resilience/4-5-playground_hu_b6ecf169c4389d93.png 800w, /p/azure-apim-ai-resilience/4-5-playground_hu_50733a65436bad42.png 1600w, /p/azure-apim-ai-resilience/4-5-playground.png 1911w" width="1911"></p>
+<p><img class="gallery-image" data-flex-basis="491px" data-flex-grow="204" height="924" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/4-2-search-sora2.png" srcset="/p/azure-apim-ai-resilience/images/4-2-search-sora2_hu_e7087db313cdf721.png 800w, /p/azure-apim-ai-resilience/images/4-2-search-sora2_hu_956f92a0935b1b90.png 1600w, /p/azure-apim-ai-resilience/images/4-2-search-sora2.png 1891w" width="1891"></p>
+<p><img class="gallery-image" data-flex-basis="455px" data-flex-grow="189" height="1006" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/4-5-playground.png" srcset="/p/azure-apim-ai-resilience/images/4-5-playground_hu_b6ecf169c4389d93.png 800w, /p/azure-apim-ai-resilience/images/4-5-playground_hu_50733a65436bad42.png 1600w, /p/azure-apim-ai-resilience/images/4-5-playground.png 1911w" width="1911"></p>
 <p><strong>CLI 替代方式 / CLI Alternative：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -680,8 +678,8 @@
 </h2><p>在<strong>每个 Foundry 资源</strong>上为 APIM 的 Managed Identity 授予 <code>Cognitive Services OpenAI User</code> 角色。</p>
 <p><em>Grant the <code>Cognitive Services OpenAI User</code> role to APIM&rsquo;s Managed Identity on <strong>each Foundry resource</strong>.</em></p>
 <p><strong>Portal 操作 / Portal Steps：</strong> 进入 Foundry 资源 → Access control (IAM) → + Add → Add role assignment → 搜索 <code>Cognitive Services OpenAI User</code> → Members 选 Managed identity → 选择 API Management service → Review + assign</p>
-<p><img class="gallery-image" data-flex-basis="296px" data-flex-grow="123" height="1042" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/5-3-select-role.png" srcset="/p/azure-apim-ai-resilience/5-3-select-role_hu_7d310acac9aba761.png 800w, /p/azure-apim-ai-resilience/5-3-select-role.png 1287w" width="1287"></p>
-<p><img class="gallery-image" data-flex-basis="378px" data-flex-grow="157" height="1166" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/5-4-select-managed-identity.png" srcset="/p/azure-apim-ai-resilience/5-4-select-managed-identity_hu_d617d34d874084d4.png 800w, /p/azure-apim-ai-resilience/5-4-select-managed-identity_hu_66bfce957da67b8d.png 1600w, /p/azure-apim-ai-resilience/5-4-select-managed-identity.png 1840w" width="1840"></p>
+<p><img class="gallery-image" data-flex-basis="296px" data-flex-grow="123" height="1042" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/5-3-select-role.png" srcset="/p/azure-apim-ai-resilience/images/5-3-select-role_hu_7d310acac9aba761.png 800w, /p/azure-apim-ai-resilience/images/5-3-select-role.png 1287w" width="1287"></p>
+<p><img class="gallery-image" data-flex-basis="378px" data-flex-grow="157" height="1166" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/5-4-select-managed-identity.png" srcset="/p/azure-apim-ai-resilience/images/5-4-select-managed-identity_hu_d617d34d874084d4.png 800w, /p/azure-apim-ai-resilience/images/5-4-select-managed-identity_hu_66bfce957da67b8d.png 1600w, /p/azure-apim-ai-resilience/images/5-4-select-managed-identity.png 1840w" width="1840"></p>
 <p><strong>CLI 替代方式 / CLI Alternative：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -743,7 +741,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>Portal 操作 / Portal Steps：</strong> APIM → Backends → + Create new backend → 填写 Name / Runtime URL → Managed Identity 标签页 → Client identity 选 System assigned → Resource ID 填 <code>https://cognitiveservices.azure.com</code> → Create</p>
-<p><img class="gallery-image" data-flex-basis="299px" data-flex-grow="124" height="1647" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/6-3-create-backend.png" srcset="/p/azure-apim-ai-resilience/6-3-create-backend_hu_6b4ff1c24b7d40ce.png 800w, /p/azure-apim-ai-resilience/6-3-create-backend_hu_3c50fe44b4ab8742.png 1600w, /p/azure-apim-ai-resilience/6-3-create-backend.png 2052w" width="2052"></p>
+<p><img class="gallery-image" data-flex-basis="299px" data-flex-grow="124" height="1647" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/6-3-create-backend.png" srcset="/p/azure-apim-ai-resilience/images/6-3-create-backend_hu_6b4ff1c24b7d40ce.png 800w, /p/azure-apim-ai-resilience/images/6-3-create-backend_hu_3c50fe44b4ab8742.png 1600w, /p/azure-apim-ai-resilience/images/6-3-create-backend.png 2052w" width="2052"></p>
 <p><strong>关键配置说明 / Key Configuration：</strong></p>
 <div class="table-wrapper"><table>
   <thead>
@@ -813,7 +811,7 @@
 </div>
 </div><h3 id="5b-创建-load-balancing-pool--create-lb-pool">5b) 创建 Load Balancing Pool / Create LB Pool
 </h3><p><strong>Portal 操作 / Portal Steps：</strong> APIM → Backends → Load balancer 标签页 → + Create new pool → 填写 Pool Name → 勾选所有 Backend → Send requests evenly (Round-robin) → Create</p>
-<p><img class="gallery-image" data-flex-basis="375px" data-flex-grow="156" height="774" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/6-6-create-pool.png" srcset="/p/azure-apim-ai-resilience/6-6-create-pool_hu_3af9a6228e0fc588.png 800w, /p/azure-apim-ai-resilience/6-6-create-pool.png 1212w" width="1212"></p>
+<p><img class="gallery-image" data-flex-basis="375px" data-flex-grow="156" height="774" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/6-6-create-pool.png" srcset="/p/azure-apim-ai-resilience/images/6-6-create-pool_hu_3af9a6228e0fc588.png 800w, /p/azure-apim-ai-resilience/images/6-6-create-pool.png 1212w" width="1212"></p>
 
     <blockquote>
         <p>Portal 提供两种选项：<strong>Send requests evenly</strong>（Round-robin 均匀分发）和 <strong>Customize weight and priority</strong>（自定义权重与优先级）。</p>
@@ -919,7 +917,7 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/policies&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img class="gallery-image" data-flex-basis="370px" data-flex-grow="154" height="1848" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/7-5-policy-editor-en.png" srcset="/p/azure-apim-ai-resilience/7-5-policy-editor-en_hu_bf4c944bd3751b2f.png 800w, /p/azure-apim-ai-resilience/7-5-policy-editor-en_hu_82283df76f27d876.png 1600w, /p/azure-apim-ai-resilience/7-5-policy-editor-en_hu_fc16f38167941c1d.png 2400w, /p/azure-apim-ai-resilience/7-5-policy-editor-en.png 2851w" width="2851"></p>
+</div><p><img class="gallery-image" data-flex-basis="370px" data-flex-grow="154" height="1848" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png" srcset="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_bf4c944bd3751b2f.png 800w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_82283df76f27d876.png 1600w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_fc16f38167941c1d.png 2400w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png 2851w" width="2851"></p>
 <p><strong>Policy 核心逻辑 / Policy Logic：</strong></p>
 <div class="table-wrapper"><table>
   <thead>
@@ -951,7 +949,7 @@
 <li>获取 Gateway URL：APIM → Overview → Gateway URL / <em>Get Gateway URL: APIM → Overview → Gateway URL</em></li>
 <li>获取 API Key：APIM → Subscriptions → Built-in all-access → Show keys → Primary key / <em>Get API Key: APIM → Subscriptions → Built-in all-access → Show keys → Primary key</em></li>
 </ul>
-<p><img class="gallery-image" data-flex-basis="506px" data-flex-grow="211" height="1116" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/8-2-subscription-key.png" srcset="/p/azure-apim-ai-resilience/8-2-subscription-key_hu_73484fdc0f89d8c9.png 800w, /p/azure-apim-ai-resilience/8-2-subscription-key_hu_a8585cc5e1155571.png 1600w, /p/azure-apim-ai-resilience/8-2-subscription-key.png 2355w" width="2355"></p>
+<p><img class="gallery-image" data-flex-basis="506px" data-flex-grow="211" height="1116" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-2-subscription-key.png" srcset="/p/azure-apim-ai-resilience/images/8-2-subscription-key_hu_73484fdc0f89d8c9.png 800w, /p/azure-apim-ai-resilience/images/8-2-subscription-key_hu_a8585cc5e1155571.png 1600w, /p/azure-apim-ai-resilience/images/8-2-subscription-key.png 2355w" width="2355"></p>
 <h3 id="测试-1负载均衡--test-1-load-balancing">测试 1：负载均衡 / Test 1: Load Balancing
 </h3><p>连续发送请求，观察 <code>X-AI-Foundry-Backend</code> 响应头在多个后端间轮换：</p>
 <p><em>Send consecutive requests without <code>X-AI-Foundry-Target</code>, observe <code>X-AI-Foundry-Backend</code> rotating across backends:</em></p>
@@ -969,7 +967,7 @@
 </div>
 </div><p>预期：每次请求的 <code>X-AI-Foundry-Backend</code> 值不同，证明 Round-robin 轮询生效。</p>
 <p><em>Expected: <code>X-AI-Foundry-Backend</code> changes with each request, confirming Round-robin is working.</em></p>
-<p><img class="gallery-image" data-flex-basis="295px" data-flex-grow="123" height="1961" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/8-3-round-robin-test.png" srcset="/p/azure-apim-ai-resilience/8-3-round-robin-test_hu_7f93d3fde652e814.png 800w, /p/azure-apim-ai-resilience/8-3-round-robin-test_hu_a47e59e6a4cc2c60.png 1600w, /p/azure-apim-ai-resilience/8-3-round-robin-test_hu_54b55a659d650932.png 2400w, /p/azure-apim-ai-resilience/8-3-round-robin-test.png 2415w" width="2415"></p>
+<p><img class="gallery-image" data-flex-basis="295px" data-flex-grow="123" height="1961" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-3-round-robin-test.png" srcset="/p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_7f93d3fde652e814.png 800w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_a47e59e6a4cc2c60.png 1600w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_54b55a659d650932.png 2400w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test.png 2415w" width="2415"></p>
 <h3 id="测试-2指定后端路由--test-2-pinned-backend-routing">测试 2：指定后端路由 / Test 2: Pinned Backend Routing
 </h3><p>通过 <code>X-AI-Foundry-Target</code> 请求头锁定特定后端：</p>
 <p><em>Use <code>X-AI-Foundry-Target</code> header to pin to a specific backend:</em></p>
@@ -995,7 +993,7 @@
 </div>
 </div><p>预期：多次请求的 <code>X-AI-Foundry-Backend</code> 始终返回指定的后端名称。</p>
 <p><em>Expected: <code>X-AI-Foundry-Backend</code> consistently returns the specified backend name.</em></p>
-<p><img class="gallery-image" data-flex-basis="423px" data-flex-grow="176" height="1056" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/8-4-pinned-backend-test.png" srcset="/p/azure-apim-ai-resilience/8-4-pinned-backend-test_hu_dfc5dea219569ee5.png 800w, /p/azure-apim-ai-resilience/8-4-pinned-backend-test_hu_f665edd6a0ac1aeb.png 1600w, /p/azure-apim-ai-resilience/8-4-pinned-backend-test.png 1865w" width="1865"></p>
+<p><img class="gallery-image" data-flex-basis="423px" data-flex-grow="176" height="1056" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-4-pinned-backend-test.png" srcset="/p/azure-apim-ai-resilience/images/8-4-pinned-backend-test_hu_dfc5dea219569ee5.png 800w, /p/azure-apim-ai-resilience/images/8-4-pinned-backend-test_hu_f665edd6a0ac1aeb.png 1600w, /p/azure-apim-ai-resilience/images/8-4-pinned-backend-test.png 1865w" width="1865"></p>
 <hr>
 <h2 id="常见问题--faq">常见问题 / FAQ
 </h2><p><strong>Q: 为什么不使用 APIM Backend 的 Circuit Breaker？</strong></p>
@@ -1029,21 +1027,6 @@
     >https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling</a></li>
 </ul>
 <hr>
-<h2 id="更新记录--change-log">更新记录 / Change Log
-</h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>日期</th>
-          <th>更新内容</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2026-03-20</td>
-          <td>初始发布 / Initial release</td>
-      </tr>
-  </tbody>
-</table></div>
 
 </section>
 

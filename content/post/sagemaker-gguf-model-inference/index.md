@@ -90,7 +90,7 @@ Using the [Bring Your Own Container (BYOC)](https://docs.aws.amazon.com/sagemake
 
 This article uses [Amazon SageMaker AI Notebook](https://aws.amazon.com/sagemaker-ai/notebooks/) to build and deploy the GGUF model runtime framework. The solution architecture is shown below.
 
-![Solution Architecture](practice-running-gguf-format-model-inference-using-sagemaker-ai1.jpg)
+![Solution Architecture](images/practice-running-gguf-format-model-inference-using-sagemaker-ai1.jpg)
 
 主要分为以下几个步骤：
 
@@ -111,13 +111,13 @@ The main steps are:
 
 You can create a SageMaker AI Notebook instance in the AWS console, selecting an appropriate instance type and storage. Note that disk space of 30GB or more is recommended, primarily for container building and model storage.
 
-![Notebook Creation](practice-running-gguf-format-model-inference-using-sagemaker-ai2.jpg)
+![Notebook Creation](images/practice-running-gguf-format-model-inference-using-sagemaker-ai2.jpg)
 
 在选择或创建 IAM 角色时，请确保该角色具有向 Amazon ECR 推送镜像的权限。
 
 When selecting or creating an IAM role, ensure the role has permissions to push images to Amazon ECR.
 
-![IAM Permissions](practice-running-gguf-format-model-inference-using-sagemaker-ai3.jpg)
+![IAM Permissions](images/practice-running-gguf-format-model-inference-using-sagemaker-ai3.jpg)
 
 若缺少对应权限，请复制如下权限添加至对应的内联策略中。
 
@@ -163,7 +163,7 @@ workspace
 
 The runtime trigger logic and HTTP requests are shown below.
 
-![Runtime Logic](practice-running-gguf-format-model-inference-using-sagemaker-ai4.png)
+![Runtime Logic](images/practice-running-gguf-format-model-inference-using-sagemaker-ai4.png)
 
 #### 2.1 Dockerfile 文件
 
@@ -412,7 +412,7 @@ print(f"response: {response}")
 
 The inference results after deployment are shown below.
 
-![Inference Results](practice-running-gguf-format-model-inference-using-sagemaker-ai5.jpg)
+![Inference Results](images/practice-running-gguf-format-model-inference-using-sagemaker-ai5.jpg)
 
 完成测试后，如果您不再需要运行的推理终端节点，请删除所创建的 Endpoint 资源，从而避免不必要的费用支出。
 
