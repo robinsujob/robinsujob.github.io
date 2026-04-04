@@ -13,10 +13,6 @@ tags:
   - deployment
 ---
 
-> **Original Post:** [Divert Website Access Traffic from EC2 to Amazon CloudFront](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
->
-> **GitHub:** [aws-samples/China-CloudFront-SSL-Plugin](https://github.com/aws-samples/China-CloudFront-SSL-Plugin)
-
 This article applies to AWS China Region services. You will learn how to use Amazon CloudFront in the China Region to accelerate and distribute traffic from websites deployed on EC2, and use the [China CloudFront SSL Plugin](https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/) to deploy free SSL certificates to protect your site. The plugin helps you generate, renew, and download free SSL certificates in the AWS China Regions, with Amazon CloudFront integration and automatic certificate renewal. You can also refer to the EC2-CloudFront integration section for configuring CloudFront to distribute EC2 website traffic in AWS Global Regions.
 
 ## Why Choose Amazon CloudFront?
@@ -264,3 +260,9 @@ Through this article, you've learned the basics of Amazon CloudFront and how to 
 - [Amazon CloudFront Introduction](https://docs.amazonaws.cn/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 - [Amazon CloudFront China Region Differences](https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff)
 - [Network Acceleration with Amazon CloudFront in China](https://www.amazonaws.cn/getting-started/use-cases/cloudfront-network-acceleration/?nc1=h_ls)
+
+---
+
+> **Original Post:** [Divert Website Access Traffic from EC2 to Amazon CloudFront](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
+>
+> **GitHub:** [aws-samples/China-CloudFront-SSL-Plugin](https://github.com/aws-samples/China-CloudFront-SSL-Plugin)

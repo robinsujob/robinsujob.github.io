@@ -13,10 +13,6 @@ tags:
   - deployment
 ---
 
-> **原文链接：** [Amazon CloudFront 部署小指南（八）- 使用中国区 CloudFront 及 CloudFront SSL 插件部署免费证书](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
->
-> **GitHub：** [aws-samples/China-CloudFront-SSL-Plugin](https://github.com/aws-samples/China-CloudFront-SSL-Plugin)
-
 本文适用于亚马逊云科技中国区服务，阅读本文您将了解到如何使用中国区 Amazon CloudFront 将部署在 EC2 网站上的流量进行加速与分发，并使用 [China CloudFront SSL 插件](https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/)提供的免费证书保护您的站点。该插件可以帮助您在亚马逊云科技中国区域生成、更新和下载免费的 SSL 证书，并支持与 Amazon CloudFront 的集成及关联 SSL 证书的自动更新。您亦可参考本文的将 EC2 与 CloudFront 集成部分，用于亚马逊云科技全球区域使用 CloudFront 分发 EC2 网站流量的配置操作。
 
 ## 为什么选用 Amazon CloudFront？
@@ -265,3 +261,9 @@ systemctl start httpd
 - [Amazon CloudFront 中国区差异](https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff)
 - [使用中国区 Amazon CloudFront 进行网络加速](https://www.amazonaws.cn/getting-started/use-cases/cloudfront-network-acceleration/?nc1=h_ls)
 
+
+---
+
+> **原文链接：** [Amazon CloudFront 部署小指南（八）- 使用中国区 CloudFront 及 CloudFront SSL 插件部署免费证书](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
+>
+> **GitHub：** [aws-samples/China-CloudFront-SSL-Plugin](https://github.com/aws-samples/China-CloudFront-SSL-Plugin)

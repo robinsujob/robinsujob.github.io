@@ -12,10 +12,6 @@ tags:
   - llama.cpp
   - llm
 ---
-
->
-> GitHub repo: [aws-samples/deploy-gguf-model-to-sagemaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker)
-
 With the rapid development of artificial intelligence, LLM models have demonstrated powerful capabilities in natural language processing, machine translation, and intelligent assistants. These models are typically developed using frameworks like PyTorch, with pre-trained results stored in specific binary formats such as PyTorch's .pt files. However, as model sizes continue to grow, traditional file formats face challenges in storage, transmission, and loading — large file sizes, slow loading speeds, and poor cross-platform compatibility.
 
 To address these challenges, [GGUF](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) (GPT-Generated Unified Format) was created. GGUF is a binary file format designed specifically for LLM models, proposed by Georgi Gerganov, the founder of the llama.cpp open-source project. It aims to improve the storage and exchange efficiency of large models through optimized data structures, compact binary encoding, and memory mapping. GGUF format is now widely used in deploying and sharing various large models, especially popular in open-source communities like Hugging Face.
@@ -349,3 +345,9 @@ This article demonstrated how to deploy GGUF format models on Amazon SageMaker A
 
 > Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
 
+
+---
+
+> Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
+>
+> GitHub repo: [aws-samples/deploy-gguf-model-to-sagemaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker)
