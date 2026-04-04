@@ -3,7 +3,6 @@ slug: "api-gateway-cors-configuration"
 title: "API Gateway CORS Configuration Guide"
 date: 2024-10-28
 description: "Complete guide to configuring CORS for AWS API Gateway."
-image: images/cors-flow.png
 categories:
   - AWS
 tags:

@@ -3,6 +3,7 @@ slug: "art-qr-code-controlnet-stable-diffusion"
 title: "Art QR Code with ControlNet and Stable Diffusion"
 date: 2023-09-01
 description: "Generate artistic QR codes using ControlNet and Stable Diffusion."
+image: images/sample1.jpg
 categories:
   - AI/ML
 tags:

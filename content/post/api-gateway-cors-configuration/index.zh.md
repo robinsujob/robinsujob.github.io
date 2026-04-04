@@ -3,7 +3,6 @@ slug: "api-gateway-cors-configuration"
 title: "API Gateway 跨域访问（CORS）配置指南"
 date: 2024-10-28
 description: "全面介绍 AWS API Gateway 中 REST API 和 HTTP API 的 CORS 配置方法，以及开启授权时的注意事项。"
-image: images/cors-flow.png
 categories:
   - AWS
 tags:

@@ -3,6 +3,7 @@ slug: "sagemaker-gguf-model-inference"
 title: "Deploy GGUF Models on Amazon SageMaker with llama.cpp"
 date: 2025-02-12
 description: "Step-by-step guide to deploying quantized GGUF models on SageMaker using llama.cpp."
+image: images/architecture.jpg
 categories:
   - AWS
   - AI/ML

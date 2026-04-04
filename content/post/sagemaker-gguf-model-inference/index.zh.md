@@ -3,6 +3,7 @@ slug: "sagemaker-gguf-model-inference"
 title: "使用 SageMaker AI 运行 GGUF 格式的模型推理实践"
 date: 2025-02-12
 description: "一步步讲解如何在 SageMaker 上使用 llama.cpp 部署量化后的 GGUF 模型。"
+image: images/architecture.jpg
 categories:
   - AWS
   - AI/ML
