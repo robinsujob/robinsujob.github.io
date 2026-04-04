@@ -295,26 +295,41 @@
             <nav class="toc-nav" id="TableOfContents">
                 
   <ul>
-    <li><a href="#core-upgrades">Core Upgrades</a>
+    <li>
       <ul>
-        <li><a href="#1-multi-project-management">1. Multi-Project Management</a></li>
-        <li><a href="#2-graphical-interface">2. Graphical Interface</a></li>
-        <li><a href="#3-security-auth">3. Security Auth</a></li>
-        <li><a href="#retained-features">Retained Features</a></li>
+        <li><a href="#major-upgrades">Major Upgrades</a>
+          <ul>
+            <li><a href="#1-breaking-through-the-single-project-limitation-with-unified-multi-project-management">1. Breaking Through the Single-Project Limitation with Unified Multi-Project Management</a></li>
+            <li><a href="#2-a-brand-new-interactive-experience--no-more-complex-operations">2. A Brand-New Interactive Experience — No More Complex Operations</a></li>
+            <li><a href="#3-enhanced-security-mechanisms-for-safer-operations">3. Enhanced Security Mechanisms for Safer Operations</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#deployment-demo">Deployment Demo</a>
       <ul>
-        <li><a href="#create-stack">Create Stack</a></li>
-        <li><a href="#create-certificate-project">Create Certificate Project</a></li>
-        <li><a href="#attach-to-cloudfront">Attach to CloudFront</a></li>
-        <li><a href="#update-project">Update Project</a></li>
-        <li><a href="#re-issue-certificate">Re-issue Certificate</a></li>
+        <li>
+          <ul>
+            <li><a href="#create-management-stack">Create Management Stack</a></li>
+            <li><a href="#create-certificate-project">Create Certificate Project</a></li>
+            <li><a href="#attach-the-auto-issued-certificate-to-cloudfront">Attach the Auto-Issued Certificate to CloudFront</a></li>
+            <li><a href="#update-certificate-project-domains--auto-renewal-interval">Update Certificate Project (Domains / Auto-Renewal Interval)</a></li>
+            <li><a href="#re-issue-certificate--force-certificate-update">Re-issue Certificate / Force Certificate Update</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
-    <li><a href="#resources">Resources</a></li>
+    <li><a href="#resources-and-documentation">Resources and Documentation</a>
+      <ul>
+        <li><a href="#tutorials--deployment">Tutorials &amp; Deployment</a></li>
+        <li><a href="#open-source-repositories">Open Source Repositories</a></li>
+        <li><a href="#related-aws-service-documentation">Related AWS Service Documentation</a></li>
+        <li><a href="#other-technical-references">Other Technical References</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+      </ul>
+    </li>
   </ul>
 
             </nav>
@@ -395,7 +410,7 @@
 
 
                     <time class="article-time--reading">
-                        2 minutes read
+                        7 minutes read
                     </time>
                 
             </div>
@@ -439,26 +454,41 @@
             <nav class="toc-nav">
                 
   <ul>
-    <li><a href="#core-upgrades">Core Upgrades</a>
+    <li>
       <ul>
-        <li><a href="#1-multi-project-management">1. Multi-Project Management</a></li>
-        <li><a href="#2-graphical-interface">2. Graphical Interface</a></li>
-        <li><a href="#3-security-auth">3. Security Auth</a></li>
-        <li><a href="#retained-features">Retained Features</a></li>
+        <li><a href="#major-upgrades">Major Upgrades</a>
+          <ul>
+            <li><a href="#1-breaking-through-the-single-project-limitation-with-unified-multi-project-management">1. Breaking Through the Single-Project Limitation with Unified Multi-Project Management</a></li>
+            <li><a href="#2-a-brand-new-interactive-experience--no-more-complex-operations">2. A Brand-New Interactive Experience — No More Complex Operations</a></li>
+            <li><a href="#3-enhanced-security-mechanisms-for-safer-operations">3. Enhanced Security Mechanisms for Safer Operations</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#deployment-demo">Deployment Demo</a>
       <ul>
-        <li><a href="#create-stack">Create Stack</a></li>
-        <li><a href="#create-certificate-project">Create Certificate Project</a></li>
-        <li><a href="#attach-to-cloudfront">Attach to CloudFront</a></li>
-        <li><a href="#update-project">Update Project</a></li>
-        <li><a href="#re-issue-certificate">Re-issue Certificate</a></li>
+        <li>
+          <ul>
+            <li><a href="#create-management-stack">Create Management Stack</a></li>
+            <li><a href="#create-certificate-project">Create Certificate Project</a></li>
+            <li><a href="#attach-the-auto-issued-certificate-to-cloudfront">Attach the Auto-Issued Certificate to CloudFront</a></li>
+            <li><a href="#update-certificate-project-domains--auto-renewal-interval">Update Certificate Project (Domains / Auto-Renewal Interval)</a></li>
+            <li><a href="#re-issue-certificate--force-certificate-update">Re-issue Certificate / Force Certificate Update</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
-    <li><a href="#resources">Resources</a></li>
+    <li><a href="#resources-and-documentation">Resources and Documentation</a>
+      <ul>
+        <li><a href="#tutorials--deployment">Tutorials &amp; Deployment</a></li>
+        <li><a href="#open-source-repositories">Open Source Repositories</a></li>
+        <li><a href="#related-aws-service-documentation">Related AWS Service Documentation</a></li>
+        <li><a href="#other-technical-references">Other Technical References</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+      </ul>
+    </li>
   </ul>
 
             </nav>
@@ -469,77 +499,197 @@
     <section class="article-content">
     
     
-    <p>In today&rsquo;s digital age, website security is paramount. In 2023, we released China CloudFront SSL Plugin for free SSL integration with CloudFront in China region. Now we&rsquo;re pleased to announce V2.</p>
-<h2 id="core-upgrades">Core Upgrades
-</h2><p>V2 introduces three core upgrades making certificate management simpler, safer, and more efficient.</p>
-<h3 id="1-multi-project-management">1. Multi-Project Management
-</h3><ul>
-<li><strong>V1</strong>: Each stack managed one project only</li>
-<li><strong>V2</strong>: Single stack manages multiple projects</li>
-</ul>
-<h3 id="2-graphical-interface">2. Graphical Interface
-</h3><ul>
-<li><strong>V1</strong>: Manual API request construction via Swagger UI</li>
-<li><strong>V2</strong>: Intuitive GUI with button clicks</li>
-</ul>
-<h3 id="3-security-auth">3. Security Auth
-</h3><ul>
-<li><strong>V1</strong>: No API security validation</li>
-<li><strong>V2</strong>: Access Key authentication required</li>
-</ul>
-<h3 id="retained-features">Retained Features
-</h3><p>While bringing new features, we retained the most popular characteristics:</p>
-<p>✓ <strong>Cost</strong> — Serverless, pay-per-use, auto-renewal every 30 days</p>
-<p>✓ <strong>Automation</strong> — Seamless CloudFront integration, auto certificate replacement, EventBridge scheduling</p>
-<p>✓ <strong>Transparency</strong> — Email notifications, graphical dashboard, multi-project monitoring</p>
-<p>✓ <strong>Open Source</strong> — All code open source, supports customization</p>
-<h2 id="architecture">Architecture
-</h2><p>Built on serverless architecture with one-click CloudFormation deployment.</p>
-<p><img alt="Architecture" class="gallery-image" data-flex-basis="555px" data-flex-grow="231" height="731" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/architecture-v2.png" srcset="/p/china-cloudfront-ssl-plugin-v2/images/architecture-v2_hu_77ffabdb655b00f5.png 800w, /p/china-cloudfront-ssl-plugin-v2/images/architecture-v2_hu_a1659a5a8d55333.png 1600w, /p/china-cloudfront-ssl-plugin-v2/images/architecture-v2.png 1691w" width="1691"></p>
-<p><strong>Core Components</strong>: Let&rsquo;s Encrypt + Certbot + Lambda + API Gateway</p>
-<p><strong>Storage</strong>: DynamoDB (status) + S3 (backup) + IAM SSL (CloudFront association)</p>
-<p><strong>Automation</strong>: SNS (notifications) + EventBridge (scheduled renewal, default 30 days)</p>
-<h2 id="deployment-demo">Deployment Demo
-</h2><h3 id="create-stack">Create Stack
-</h3><p>Deploy the main stack via CloudFormation template in 3-5 minutes with a stack name and Access Key.</p>
-<p><img alt="Create Stack" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/new-stack.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/new-stack_hu_801afb176afd33fd.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/new-stack.gif 1280w" width="1280"></p>
-<h3 id="create-certificate-project">Create Certificate Project
-</h3><p>Create certificate projects in the GUI for domain sets. Supports multiple domains, configurable email and renewal intervals (30 days recommended). System auto-deploys sub-stacks.</p>
-<p><img alt="Create Project" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/create-project.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/create-project_hu_7162baf9cd7a6cb.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/create-project.gif 1280w" width="1280"></p>
-<h3 id="attach-to-cloudfront">Attach to CloudFront
-</h3><p>Certificates auto-upload to IAM SSL storage. Select in CloudFront console. Subsequent renewals replace seamlessly without manual intervention.</p>
-<p><img alt="Attach SSL" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/attach-ssl.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/attach-ssl_hu_635e22f67d718779.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/attach-ssl.gif 1280w" width="1280"></p>
-<h3 id="update-project">Update Project
-</h3><p>Update domain lists and intervals anytime; each change triggers re-issuance. Auto-handles certificate updates and cleanup.</p>
-<p><img alt="Update Project" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/update-project.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/update-project_hu_e4ce74cd9263387c.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/update-project.gif 1280w" width="1280"></p>
-<h3 id="re-issue-certificate">Re-issue Certificate
-</h3><p>Manual certificate update control for fault recovery, emergency updates, or testing. Re-executes the full certificate lifecycle.</p>
-<p><img alt="Re-issue" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/recert.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/recert_hu_884274259bf0fe5a.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/recert.gif 1280w" width="1280"></p>
+    <p>In today&rsquo;s digital age, website security is paramount. SSL certificates, as a critical tool for protecting data transmission, have always been a key concern for developers and operations teams. In 2023, we released the China CloudFront SSL Plugin to facilitate the integration of free SSL certificates with CloudFront in the China region. We have continued to iterate on our solution. Now, we are pleased to announce the official release of the second generation of the China CloudFront SSL Plugin.</p>
+<h3 id="major-upgrades">Major Upgrades
+</h3><p>China CloudFront SSL Plugin V2 introduces three core upgrades, making certificate management simpler, safer, and more efficient.</p>
+<h4 id="1-breaking-through-the-single-project-limitation-with-unified-multi-project-management">1. Breaking Through the Single-Project Limitation with Unified Multi-Project Management
+</h4><p>In this new version, we have completely restructured the project management architecture:</p>
 <ul>
-<li>Deploy: <a class="link" href="https://console.amazonaws.cn/cloudformation/home?#/stacks/create/template?templateURL=https://aws-cn-getting-started.s3.cn-northwest-1.amazonaws.com.cn/china-cloudfront-ssl-plugin_v2/ChinaCloudFrontSslPluginStackV2.template.json"  target="_blank" rel="noopener"
-    >One-click Deploy V2</a></li>
-<li>Tutorial: <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
-    >V2 Tutorial</a></li>
+<li>
+<p><strong>Before (V1)</strong>: Each stack could only manage a single project&rsquo;s domain set. Managing multiple projects required deploying multiple stacks.</p>
+</li>
+<li>
+<p><strong>After (V2)</strong>: A single stack can now manage domain sets for multiple projects, significantly simplifying operations.</p>
+</li>
 </ul>
+<h4 id="2-a-brand-new-interactive-experience--no-more-complex-operations">2. A Brand-New Interactive Experience — No More Complex Operations
+</h4><p>To improve the user experience, we have completely redesigned the management interface:</p>
+<ul>
+<li>
+<p><strong>Before (V1)</strong>: An API management page built on Swagger UI that required manually constructing and sending API requests.</p>
+</li>
+<li>
+<p><strong>After (V2)</strong>: An intuitive graphical user interface where all operations can be completed with simple button clicks, greatly lowering the barrier to entry.</p>
+</li>
+</ul>
+<h4 id="3-enhanced-security-mechanisms-for-safer-operations">3. Enhanced Security Mechanisms for Safer Operations
+</h4><p>Security has been comprehensively strengthened:</p>
+<ul>
+<li>
+<p><strong>Before (V1)</strong>: External APIs lacked effective security validation mechanisms.</p>
+</li>
+<li>
+<p><strong>After (V2)</strong>: An Access Key verification mechanism has been introduced — all API operations now require authentication, ensuring secure and controlled access.</p>
+</li>
+</ul>
+<p>While introducing these new capabilities, we have preserved and reinforced the most popular features of the solution:</p>
+<p>✓ <strong>Cost Advantage</strong></p>
+<ul>
+<li>Fully serverless architecture with pay-per-invocation pricing</li>
+<li>Certificate renewal triggers every 30 days by default</li>
+<li>Only minimal storage and logging costs</li>
+</ul>
+<p>✓ <strong>Operational Automation</strong></p>
+<ul>
+<li>Seamless integration with CloudFront</li>
+<li>Automatic replacement of associated CloudFront certificates after renewal</li>
+<li>Scheduled automatic renewal via Amazon EventBridge</li>
+</ul>
+<p>✓ <strong>Operational Transparency</strong></p>
+<ul>
+<li>Comprehensive email notification mechanism covering the entire certificate lifecycle</li>
+<li>Intuitive graphical dashboard for real-time certificate status monitoring</li>
+<li>Unified multi-project management and monitoring</li>
+</ul>
+<p>✓ <strong>Open Source</strong></p>
+<ul>
+<li>All code is provided as open source</li>
+<li>Supports customization on top of the source code</li>
+<li>Easy to extend for enterprise-specific requirements</li>
+</ul>
+<p>These upgrades not only enhance the user experience but also provide more powerful support for China CloudFront certificate management. Whether managing certificates for a single website or multiple projects, V2 can handle it with ease.</p>
+<h2 id="architecture">Architecture
+</h2><p>As a certificate management solution for CloudFront in the China region, we designed a complete architecture based on serverless services, with automated deployment via Amazon CloudFormation templates.</p>
+<p><img alt="Architecture" class="gallery-image" data-flex-basis="555px" data-flex-grow="231" height="731" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/architecture-v2.png" srcset="/p/china-cloudfront-ssl-plugin-v2/images/architecture-v2_hu_77ffabdb655b00f5.png 800w, /p/china-cloudfront-ssl-plugin-v2/images/architecture-v2_hu_a1659a5a8d55333.png 1600w, /p/china-cloudfront-ssl-plugin-v2/images/architecture-v2.png 1691w" width="1691"></p>
+<p><strong>1. Core Components:</strong></p>
+<ul>
+<li><strong>Let&rsquo;s Encrypt</strong>: A free, open, and automated certificate authority that provides free SSL certificate support for the solution</li>
+<li><strong>Certbot</strong>: A free open-source tool for automated certificate acquisition, deployment, and renewal</li>
+<li><strong>Amazon Lambda</strong>: The core compute component responsible for running the certificate issuance program, frontend interface, and certificate management API</li>
+<li><strong>Amazon API Gateway</strong>: Provides a secure certificate management API interface — all operations require Access Key verification</li>
+</ul>
+<p><strong>2. Storage &amp; Database:</strong></p>
+<ul>
+<li><strong>Amazon DynamoDB</strong>: A serverless database dedicated to storing project certificate issuance status and error information</li>
+<li><strong>Amazon S3</strong>: Used for storing backup SSL certificates, supporting certificate download and backup management</li>
+<li><strong>IAM SSL Certificate Storage</strong>: Dedicated storage for SSL certificates associated with CloudFront — a special requirement for the China region</li>
+</ul>
+<p><strong>3. Automation &amp; Notifications:</strong></p>
+<ul>
+<li><strong>Amazon SNS</strong>: Sends email notifications about certificate issuance status, ensuring operations teams are promptly informed</li>
+<li><strong>Amazon EventBridge</strong>: Triggers certificate renewal on a schedule, defaulting to automatic renewal every 30 days</li>
+</ul>
+<h2 id="deployment-demo">Deployment Demo
+</h2><h4 id="create-management-stack">Create Management Stack
+</h4><p>Creating the management stack is the first step in deploying China CloudFront SSL Plugin V2. Using an Amazon CloudFormation template, you can deploy the main stack — including Lambda functions, API Gateway, DynamoDB, and other core components — with a single click. During deployment, you need to specify a stack name and an Access Key as the API Gateway security key, ensuring only authorized users can access the certificate management features. The entire deployment process takes approximately 3–5 minutes, after which you will receive an access link to the certificate management frontend.</p>
+<p><img alt="Create Stack" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/new-stack.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/new-stack_hu_801afb176afd33fd.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/new-stack.gif 1280w" width="1280"></p>
+<h4 id="create-certificate-project">Create Certificate Project
+</h4><p>Creating a certificate project is the core step in using China CloudFront SSL Plugin V2. In the graphical management interface, you can easily create new certificate projects to request free Let&rsquo;s Encrypt SSL certificates for specified domain sets. Each project supports multiple domains (comma-separated), and you can configure the notification email address and automatic renewal interval (30 days recommended). Once a project is created, the system automatically deploys a dedicated sub-stack containing a certificate issuance Lambda function and an EventBridge scheduling rule for automated certificate management.</p>
+<p><img alt="Create Project" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/create-project.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/create-project_hu_7162baf9cd7a6cb.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/create-project.gif 1280w" width="1280"></p>
+<h4 id="attach-the-auto-issued-certificate-to-cloudfront">Attach the Auto-Issued Certificate to CloudFront
+</h4><p>Attaching the auto-issued certificate to CloudFront is the key step for enabling HTTPS access. After a certificate is successfully issued, the system automatically uploads it to IAM SSL certificate storage. You can then find and select the corresponding certificate in the CloudFront console&rsquo;s distribution settings. Under &ldquo;Alternate Domain Names and SSL Certificate,&rdquo; enter the domain name for which you requested the certificate, then select the corresponding certificate from the custom SSL certificate dropdown to complete the binding. Once bound, subsequent automatic certificate renewals will seamlessly replace the certificate in CloudFront without any manual intervention.</p>
+<p><img alt="Attach SSL" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/attach-ssl.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/attach-ssl_hu_635e22f67d718779.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/attach-ssl.gif 1280w" width="1280"></p>
+<h4 id="update-certificate-project-domains--auto-renewal-interval">Update Certificate Project (Domains / Auto-Renewal Interval)
+</h4><p>The update certificate project feature allows you to flexibly adjust project configurations to adapt to business changes. By selecting a project and clicking the &ldquo;Modify Project&rdquo; button, you can update the domain list and adjust the SSL certificate auto-renewal interval. Each project modification triggers a new certificate issuance, ensuring configuration changes take effect immediately. The system automatically handles CloudFront certificate updates and old certificate cleanup — the entire process is transparent to the user and reliably secure.</p>
+<p><img alt="Update Project" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/update-project.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/update-project_hu_e4ce74cd9263387c.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/update-project.gif 1280w" width="1280"></p>
+<h4 id="re-issue-certificate--force-certificate-update">Re-issue Certificate / Force Certificate Update
+</h4><p>The re-issue certificate feature gives you manual control over certificate updates. When certificate issuance fails or you need an immediate certificate update, you can select the corresponding certificate from the certificate list and click the &ldquo;Re-issue&rdquo; button to manually trigger the certificate update process. The system re-executes the full certificate request, validation, issuance, and CloudFront update workflow, and notifies you of the result via email. This feature is particularly useful for fault recovery, emergency updates, or testing scenarios, ensuring your SSL certificates are always up to date.</p>
+<p><img alt="Re-issue" class="gallery-image" data-flex-basis="426px" data-flex-grow="177" height="720" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/china-cloudfront-ssl-plugin-v2/images/recert.gif" srcset="/p/china-cloudfront-ssl-plugin-v2/images/recert_hu_884274259bf0fe5a.gif 800w, /p/china-cloudfront-ssl-plugin-v2/images/recert.gif 1280w" width="1280"></p>
+<p>To experience the full feature set, please refer to our solution page for deployment.</p>
+<p>Deploy: <a class="link" href="https://console.amazonaws.cn/cloudformation/home?#/stacks/create/template?templateURL=https://aws-cn-getting-started.s3.cn-northwest-1.amazonaws.com.cn/china-cloudfront-ssl-plugin_v2/ChinaCloudFrontSslPluginStackV2.template.json"  target="_blank" rel="noopener"
+    >One-Click Deploy China CloudFront SSL Plugin V2</a></p>
+<p>Tutorial: <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
+    >China CloudFront SSL Plugin V2 Full Tutorial</a></p>
 <h2 id="summary">Summary
-</h2><p>V2 delivers a more convenient certificate solution through multi-project architecture, graphical UI, and enhanced security.</p>
-<h2 id="resources">Resources
-</h2><ul>
-<li><a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
-    >V2 Tutorial</a></li>
-<li><a class="link" href="https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2"  target="_blank" rel="noopener"
-    >GitHub V2</a></li>
-<li><a class="link" href="https://github.com/aws-samples/China-CloudFront-SSL-Plugin"  target="_blank" rel="noopener"
-    >GitHub V1</a></li>
-<li><a class="link" href="https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff"  target="_blank" rel="noopener"
-    >CloudFront China Differences</a></li>
-<li><a class="link" href="https://docs.amazonaws.cn/IAM/latest/UserGuide/id_credentials_server-certs.html"  target="_blank" rel="noopener"
-    >IAM SSL Certificate Management</a></li>
-<li><a class="link" href="https://letsencrypt.org/docs/"  target="_blank" rel="noopener"
-    >Let&rsquo;s Encrypt Docs</a></li>
-<li><a class="link" href="https://certbot.eff.org/pages/about"  target="_blank" rel="noopener"
-    >Certbot Docs</a></li>
-<li><a class="link" href="mailto:china-cloudfront-ssl-plugin@amazon.com" >Contact Us</a></li>
+</h2><p>China CloudFront SSL Plugin V2 delivers a more convenient and comprehensive certificate solution for CloudFront users in the China region through its brand-new multi-project management architecture, intuitive graphical interface, and enhanced security mechanisms.</p>
+<h2 id="resources-and-documentation">Resources and Documentation
+</h2><h3 id="tutorials--deployment">Tutorials &amp; Deployment
+</h3><ul>
+<li>
+<p><a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
+    >China CloudFront SSL Plugin V2 Full Tutorial</a></p>
+<p>Detailed deployment and usage guide with complete step-by-step instructions and troubleshooting</p>
+</li>
+<li>
+<p><a class="link" href="https://console.amazonaws.cn/cloudformation/home?#/stacks/create/template?templateURL=https://aws-cn-getting-started.s3.cn-northwest-1.amazonaws.com.cn/china-cloudfront-ssl-plugin_v2/ChinaCloudFrontSslPluginStackV2.template.json"  target="_blank" rel="noopener"
+    >One-Click Deploy V2</a></p>
+<p>Deploy the latest version directly via CloudFormation template</p>
+</li>
+</ul>
+<h3 id="open-source-repositories">Open Source Repositories
+</h3><ul>
+<li>
+<p><a class="link" href="https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2"  target="_blank" rel="noopener"
+    >China CloudFront SSL Plugin V2</a></p>
+<p>Complete V2 source code, supporting custom development and contributions</p>
+</li>
+<li>
+<p><a class="link" href="https://github.com/aws-samples/China-CloudFront-SSL-Plugin"  target="_blank" rel="noopener"
+    >China CloudFront SSL Plugin V1</a></p>
+<p>First-generation source code for comparison and reference</p>
+</li>
+<li>
+<p><a class="link" href="mailto:china-cloudfront-ssl-plugin@amazon.com" >Email the Solution Team</a></p>
+<p>Contact the China CloudFront SSL Plugin solution team directly for professional support</p>
+</li>
+<li>
+<p><a class="link" href="https://www.amazonaws.cn/support/icp/"  target="_blank" rel="noopener"
+    >ICP Filing Guide</a></p>
+<p>Required ICP filing process for website deployment in the China region</p>
+</li>
+</ul>
+<h3 id="related-aws-service-documentation">Related AWS Service Documentation
+</h3><ul>
+<li>
+<p><a class="link" href="https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff"  target="_blank" rel="noopener"
+    >Amazon CloudFront China Region Feature Differences</a></p>
+<p>Understand the special requirements and limitations of CloudFront in the China region</p>
+</li>
+<li>
+<p><a class="link" href="https://docs.amazonaws.cn/IAM/latest/UserGuide/id_credentials_server-certs.html"  target="_blank" rel="noopener"
+    >IAM SSL Certificate Management</a></p>
+<p>Official documentation for China region CloudFront SSL certificate storage</p>
+</li>
+<li>
+<p><a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/migrate-domain-to-amazon-route53/"  target="_blank" rel="noopener"
+    >Amazon Route 53 Domain Migration</a></p>
+<p>Detailed steps for migrating domain resolution to Route 53</p>
+</li>
+<li>
+<p><a class="link" href="https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/"  target="_blank" rel="noopener"
+    >Amazon CloudFront Deployment Guide</a></p>
+<p>CloudFront Deployment Mini-Guide — Deploying Free Certificates with China Region CloudFront and SSL Plugin</p>
+</li>
+</ul>
+<h3 id="other-technical-references">Other Technical References
+</h3><ul>
+<li>
+<p><a class="link" href="https://letsencrypt.org/docs/"  target="_blank" rel="noopener"
+    >Let&rsquo;s Encrypt Documentation</a></p>
+<p>Learn about how the Let&rsquo;s Encrypt certificate authority works and its limitations</p>
+</li>
+<li>
+<p><a class="link" href="https://certbot.eff.org/pages/about"  target="_blank" rel="noopener"
+    >Certbot Documentation</a></p>
+<p>Detailed usage instructions for the Certbot tool</p>
+</li>
+<li>
+<p><a class="link" href="https://certbot-dns-route53.readthedocs.io/en/stable/"  target="_blank" rel="noopener"
+    >Amazon Route 53 DNS Validation</a></p>
+<p>Technical documentation for the Route 53 DNS validation plugin</p>
+</li>
+</ul>
+<h3 id="contact-us">Contact Us
+</h3><ul>
+<li>
+<p><a class="link" href="https://webchat-aws.clink.cn/chat.html?accessId=35d2504b-57b6-4093-97fd-81a6198bbbfa&amp;language=zh_CN"  target="_blank" rel="noopener"
+    >Contact AWS Technical Support</a></p>
+<p>Get official professional technical support and answers</p>
+</li>
+<li>
+<p><a class="link" href="mailto:china-cloudfront-ssl-plugin@amazon.com" >Email the Solution Team</a></p>
+<p>Contact the China CloudFront SSL Plugin solution team directly for professional support</p>
+</li>
 </ul>
 <hr>
 
