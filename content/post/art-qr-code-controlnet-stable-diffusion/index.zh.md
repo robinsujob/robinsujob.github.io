@@ -310,8 +310,6 @@ extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quali
 
 ![OpenPose + QR Code 最终效果](images/12-openpose-qrcode.png)
 
-通过巧妙地偏移二维码位置和运用构图技巧，可以有效地将观众的视觉焦点从二维码转移到角色本身，让整体画面更加自然协调。
-
 | ![侧躺姿势效果](images/13-lying-sleep-openpose.png) | ![OpenPose 骨架](images/14-openpose.png) |
 |:---:|:---:|
 | 侧躺姿势生成效果 | 对应的 OpenPose 骨架 |

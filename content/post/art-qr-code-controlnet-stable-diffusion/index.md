@@ -296,11 +296,6 @@ Here is the final generated result combining OpenPose and QR code:
 
 ![OpenPose + QR Code Result](images/12-openpose-qrcode.png)
 
-By cleverly offsetting the QR code position and applying composition techniques, the viewer's focus is effectively shifted from the QR code to the character itself, creating a more natural and harmonious overall image.
-
-**Design notes:** By using composition techniques to shift the viewer's visual focus away from the QR code's core functional area, we can create images that are both aesthetically pleasing and maintain QR code scannability. The key is to avoid placing important visual elements directly over the QR code's positioning markers and data modules.
-
-For comparison, here are the individual components:
 
 | | |
 |:---:|:---:|
