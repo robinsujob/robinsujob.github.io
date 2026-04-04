@@ -4,7 +4,7 @@ layout: "search"
 slug: "search"
 menu:
   main:
-    weight: -60
+    weight: -50
     params:
       icon: search
 ---

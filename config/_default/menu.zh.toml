@@ -1,24 +1,24 @@
 [[main]]
-    identifier = "home"
-    name       = "首页"
-    url        = "/zh/"
-    weight     = -100
-    [main.params]
-        icon = "home"
-
-[[main]]
     identifier = "about"
     name       = "关于"
     url        = "/zh/about/"
-    weight     = -95
+    weight     = -100
     [main.params]
         icon = "user"
+
+[[main]]
+    identifier = "tech"
+    name       = "技术"
+    url        = "/zh/"
+    weight     = -90
+    [main.params]
+        icon = "home"
 
 [[main]]
     identifier = "projects"
     name       = "项目"
     url        = "/zh/projects/"
-    weight     = -90
+    weight     = -80
     [main.params]
         icon = "link"
 
@@ -26,7 +26,7 @@
     identifier = "photography"
     name       = "摄影"
     url        = "/zh/categories/photography/"
-    weight     = -80
+    weight     = -70
     [main.params]
         icon = "infinity"
 

@@ -5,10 +5,6 @@ description: "Urban nightscapes and city architecture."
 image: images/placeholder.png
 categories:
   - Photography
-tags:
-  - urban
-  - night
-  - architecture
 slug: photography-city-lights
 ---
 

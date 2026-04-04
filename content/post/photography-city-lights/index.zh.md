@@ -5,10 +5,6 @@ description: "城市夜景与建筑摄影。"
 image: images/placeholder.png
 categories:
   - Photography
-tags:
-  - urban
-  - night
-  - architecture
 slug: photography-city-lights
 ---
 

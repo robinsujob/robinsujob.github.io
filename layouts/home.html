@@ -1,0 +1,22 @@
+{{ define "main" }}
+    {{- $paginator := partial "helper/paginator.html" . -}}
+
+    <section class="article-list">
+        {{ range $index, $element := $paginator.Pages }}
+            {{ $isPhoto := false }}
+            {{ range .Params.categories }}
+                {{ if eq . "Photography" }}{{ $isPhoto = true }}{{ end }}
+            {{ end }}
+            {{ if not $isPhoto }}
+                {{ partial "article-list/default" . }}
+            {{ end }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

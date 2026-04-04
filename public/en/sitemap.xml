@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:4002/p/azure-apim-ai-resilience/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/p/azure-apim-ai-resilience/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/p/azure-apim-ai-resilience/"
+                />
+  </url><url>
     <loc>http://localhost:4002/tags/ai/</loc>
     <lastmod>2026-04-03T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -52,19 +65,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="http://localhost:4002/tags/azure/"
-                />
-  </url><url>
-    <loc>http://localhost:4002/p/azure-apim-ai-resilience/</loc>
-    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost:4002/zh/p/azure-apim-ai-resilience/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:4002/p/azure-apim-ai-resilience/"
                 />
   </url><url>
     <loc>http://localhost:4002/categories/</loc>
@@ -431,20 +431,31 @@
                 href="http://localhost:4002/p/wordpress-genai-plus/"
                 />
   </url><url>
-    <loc>http://localhost:4002/tags/architecture/</loc>
-    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:4002/p/photography-city-lights/</loc>
     <lastmod>2024-01-15T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:4002/tags/night/</loc>
-    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/p/photography-city-lights/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/p/photography-city-lights/"
+                />
   </url><url>
     <loc>http://localhost:4002/categories/photography/</loc>
     <lastmod>2024-01-15T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:4002/tags/urban/</loc>
-    <lastmod>2024-01-15T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/categories/photography/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/categories/photography/"
+                />
   </url><url>
     <loc>http://localhost:4002/p/cloudfront-ssl-plugin-deployment-guide/</loc>
     <lastmod>2023-11-15T00:00:00+08:00</lastmod>
