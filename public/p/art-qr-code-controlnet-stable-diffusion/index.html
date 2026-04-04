@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Generate artistic QR codes using ControlNet and Stable Diffusion.">
 <title>Art QR Code with ControlNet and Stable Diffusion</title>
 
@@ -331,6 +331,7 @@
       </ul>
     </li>
     <li><a href="#references">References</a></li>
+    <li><a href="#authors">Authors</a></li>
   </ul>
 
             </nav>
@@ -489,6 +490,7 @@
       </ul>
     </li>
     <li><a href="#references">References</a></li>
+    <li><a href="#authors">Authors</a></li>
   </ul>
 
             </nav>
@@ -499,7 +501,13 @@
     <section class="article-content">
     
     
-    <h2 id="background">Background
+    
+    <blockquote>
+        <p>Original post: <a class="link" href="https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/"  target="_blank" rel="noopener"
+    >Art QR Code Generation with ControlNet - AI Painting Solution Based on Stable Diffusion</a></p>
+
+    </blockquote>
+<h2 id="background">Background
 </h2><p>In the past few months, AWS has published multiple blog posts on deploying Stable Diffusion on AWS, or combining Amazon SageMaker with Stable Diffusion for model training and inference tasks.</p>
 <p>To help customers quickly and securely build, deploy, and manage applications on AWS, numerous partners work closely with AWS. They provide a wide range of services, deep technical knowledge, best practices, and solutions, including infrastructure migration, application modernization, security and compliance, data analytics, machine learning, AI, cloud hosting, DevOps, consulting, and training.</p>
 <p>Recently, AWS Premier Tier Services Partner eCloudrover launched an AI painting solution based on Stable Diffusion called imAgine, featuring extensively validated and easily deployable advanced AI algorithm models, along with rich and cost-effective cloud resources to optimize costs, aiming to help industries such as gaming, e-commerce, media, film, advertising, and communications rapidly build AIGC application pipelines and create leading productivity in the AI era.</p>
@@ -523,21 +531,21 @@
 </ul>
 <h4 id="adjusting-prompt-weights">Adjusting Prompt Weights
 </h4><ul>
-<li>Default weight is 1, decreasing left to right</li>
-<li>Prompt weights significantly affect results</li>
-<li>Use parentheses + colon + number for weights, e.g. <code>(one girl:1.5)</code></li>
+<li>Default weight is 1, decreasing left to right.</li>
+<li>Prompt weights significantly affect results.</li>
+<li>Use parentheses + colon + number to specify prompt weights, e.g. <code>(one girl:1.5)</code>.</li>
 </ul>
 <p>The default weight of each token is 1, decreasing from left to right. Prompt weights significantly affect the generated image. You can specify prompt weight using parentheses + colon + number, e.g., <code>(one girl:1.5)</code>.</p>
 <h4 id="mind-the-prompt-order">Mind the Prompt Order
 </h4><ul>
-<li>Landscape tags first = smaller characters</li>
-<li>Correct order and syntax produce better results</li>
+<li>Landscape tags first = smaller characters.</li>
+<li>Correct order and syntax produce better results.</li>
 </ul>
 <p>For example, if landscape tags come first, the character will be small; conversely, the character will be larger or shown as half-body. Choosing the correct order and syntax for prompts will more effectively render the desired scene.</p>
 <h4 id="emojis-in-prompts">Emojis in Prompts
 </h4><ul>
-<li>Emojis work well for expressions</li>
-<li>Prioritize emojis over complex syntax</li>
+<li>Emojis work well for expressions and certain facial expressions or actions.</li>
+<li>Prioritize emojis over complex syntax.</li>
 </ul>
 <p>Prompts support emojis with good expressiveness. For specific facial expressions or actions, you can achieve the desired effect by adding emoji. To prevent semantic drift, prefer emoji and minimize unnecessary complex syntax like &ldquo;with&rdquo;.</p>
 <h4 id="recommended-camera-angle-prompts">Recommended Camera Angle Prompts
@@ -610,22 +618,14 @@
 <h4 id="image-size-optimization">Image Size Optimization
 </h4><ul>
 <li>Quality is not directly tied to size.</li>
-<li>Size influences subject category/content because it implicitly represents the category (e.g., portrait for vertical, landscape for horizontal, small resolution for stickers).</li>
+<li>Size influences the subject category/content because it implicitly represents the chosen format.</li>
 <li>Too wide may produce multiple subjects.</li>
 <li>Image quality is not directly tied to image size. However, size somewhat affects the subject/content, as it implicitly represents the category (e.g., portrait for vertical, landscape for horizontal, small resolution for stickers). When the output size is too wide, multiple subjects may appear. Sizes above 1024 may produce undesirable results with significant GPU memory pressure. Small resolution + upscaling is recommended.</li>
 </ul>
 <h4 id="optimizing-multi-and-wide-character-generation">Optimizing Multi and Wide Character Generation
-</h4><ul>
-<li>txt2img alone cannot specify individual features in multi-character scenes.</li>
-<li>Recommended: draft + img2img or ControlNet.</li>
-<li>For wide-format single-character generation, draft a sketch with color blocking to determine the main subject, or use ControlNet&rsquo;s OpenPose for character skeleton.</li>
-<li>For multi-character scenes, use ControlNet&rsquo;s OpenPose to specify character count; this also works for three-view drawings of the same character.</li>
-</ul>
-<p>Using txt2img alone cannot effectively specify individual character features in multi-character scenarios. The recommended approach is to create a draft + img2img or ControlNet. For wide-format single-character generation, draft a sketch with color blocking to determine the main subject, or use ControlNet&rsquo;s OpenPose for character skeleton. For multi-character scenes, use ControlNet&rsquo;s OpenPose to specify character count; this also works for three-view drawings of the same character.</p>
+</h4><p>Using txt2img alone cannot effectively specify individual character features in multi-character scenarios. The recommended approach is to create a draft + img2img or ControlNet. For wide-format single-character generation, draft a sketch with color blocking to determine the main subject, or use ControlNet&rsquo;s OpenPose for character skeleton. For multi-character scenes, use ControlNet&rsquo;s OpenPose to specify character count; this also works for three-view drawings of the same character.</p>
 <h4 id="hand-repair">Hand Repair
-</h4><ul>
-<li>Send the image to img2img inpaint with similar prompts, placing &ldquo;hand&rdquo; prompts at the front. Set denoising strength based on how much you want hand features to change (below 0.25 for just completeness). For more precise hand control, find a satisfactory hand reference image and use ControlNet&rsquo;s Canny or OpenPose_hands preprocessor + model combined with inpaint.</li>
-</ul>
+</h4><p>Send the image to img2img inpaint with similar prompts, placing &ldquo;hand&rdquo; prompts at the front. Set denoising strength based on how much you want hand features to change (below 0.25 for just completeness). For more precise hand control, find a satisfactory hand reference image and use ControlNet&rsquo;s Canny or OpenPose_hands preprocessor + model combined with inpaint.</p>
 <h4 id="face-repair">Face Repair
 </h4><p>When drawing images with small character subjects, facial distortion frequently occurs. Especially in the artistic QR code generation process described later, faces often break due to QR code data points. For facial inpainting, the ADetailer plugin is recommended. It uses YOLO algorithm for object detection, identifies faces, and performs localized inpainting with specified prompts and models. ADetailer can handle both face and hand detection and repair, and can also reference LoRA models for localized inpainting.</p>
 <p><img alt="ADetailer 面部修复" class="gallery-image" data-flex-basis="445px" data-flex-grow="185" height="1078" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_6367fc31bcade539.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_5676d0dce49e6a81.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg 2000w" width="2000"></p>
@@ -705,16 +705,16 @@
 </div><h3 id="step-4-import-qr-code-into-controlnet">Step 4: Import QR Code into ControlNet
 </h3><p>After confirming the image style, we upload the unprocessed QR code to ControlNet. Pay attention to the following configuration options:</p>
 <ul>
-<li><strong>&ldquo;Enable&rdquo; button</strong>: Check to ensure ControlNet is active during generation</li>
-<li><strong>Model selector</strong>: Select &ldquo;control_v1p_sd15_qrcode_monster&rdquo; to strengthen QR code control</li>
-<li><strong>Control weight</strong>: For qrcode_monster model, we recommend setting between 1.1-1.6</li>
-<li><strong>Guidance start/end timing</strong>: Start timing recommended between 0-0.1, end timing recommended at 1</li>
+<li><strong>&ldquo;Enable&rdquo; button</strong>: Check it to ensure ControlNet is active during generation.</li>
+<li><strong>Model selector</strong>: Select <code>control_v1p_sd15_qrcode_monster</code> to strengthen QR code control.</li>
+<li><strong>Control weight</strong>: For the <code>qrcode_monster</code> model, we recommend setting it between 1.1 and 1.6.</li>
+<li><strong>Guidance start/end timing</strong>: Start is recommended between 0 and 0.1, and end is recommended at 1.</li>
 </ul>
 <p><img alt="ControlNet 配置" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="1997" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_25f078fb5a3943d7.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_f4879ef6b64e3a2e.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg 2000w" width="2000"></p>
 <p>In txt2img configuration, we recommend adjusting two sets of values:</p>
 <ul>
-<li><strong>Sampling steps</strong>: recommended 30-50, default 20 is insufficient for high-quality QR code images</li>
-<li><strong>Width/Height</strong>: recommended to send the original QR code aspect ratio from ControlNet</li>
+<li><strong>Sampling steps</strong>: We recommend 30-50. The default value of 20 is insufficient for generating a high-quality QR code image.</li>
+<li><strong>Width/Height</strong>: We recommend sending the original QR code aspect ratio from ControlNet.</li>
 </ul>
 <p><img alt="文生图参数调整" class="gallery-image" data-flex-basis="251px" data-flex-grow="104" height="1909" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_ed705bdb20a2cff1.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_e4b0ba433aa581d9.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg 2000w" width="2000"></p>
 <p>After all parameters are configured, click generate. Here we can see a good result — the QR code passes scanning tests on mobile phones.</p>
@@ -752,26 +752,24 @@
 <h2 id="references">References
 </h2><ul>
 <li><a class="link" href="https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa"  target="_blank" rel="noopener"
-    >Stable Diffusion AI Solution MarketPlace</a></li>
+    >Stable Diffusion AI 方案 MarketPlace</a></li>
 <li><a class="link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"  target="_blank" rel="noopener"
-    >Stable Diffusion AI Solution Workshop</a></li>
+    >Stable Diffusion AI 方案 Workshop</a></li>
 <li><a class="link" href="https://www.ecloudrover.com/aigc/"  target="_blank" rel="noopener"
-    >imAgine Official Website</a></li>
+    >imAgine 解决方案官网</a></li>
 <li><a class="link" href="https://antfu.me/posts/ai-qrcode-101"  target="_blank" rel="noopener"
-    >QR Toolkit Co-creation Document by Anthony Fu</a></li>
+    >QR Toolkit 插件作者 Anthony Fu 的 QRCode 共创文档</a></li>
 <li><a class="link" href="https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw"  target="_blank" rel="noopener"
-    >IoC Lab Model Showcase</a></li>
+    >IoC Lab 模型展示</a></li>
 <li><a class="link" href="http://aigc.ioclab.com/"  target="_blank" rel="noopener"
-    >IoC Lab Stable Diffusion Documentation</a></li>
+    >IoC Lab Stable Diffusion 文档</a></li>
 </ul>
-<p>Zhuge Ruilin — Solutions Architect Manager at eCloudrover, focusing on AWS cloud-native architecture design and solution practices.</p>
+<h2 id="authors">Authors
+</h2><p>Zhuge Ruilin — Solutions Architect Manager at eCloudrover, focusing on AWS cloud-native architecture design and solution practices.</p>
 <p>Su Zhe — AWS Solutions Architect, responsible for cloud computing solution architecture consulting and design.</p>
 <p>Yu Tao — AWS Solutions Architect, focusing on application modernization and machine learning.</p>
 <p>Su Lijun — Senior AWS Solutions Architect, dedicated to cloud technology promotion and ecosystem development.</p>
 <p>Jiang Meng — AWS Partner Solutions Architect, responsible for partner solution consulting and design.</p>
-<hr>
-<p>Original post: <a class="link" href="https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/"  target="_blank" rel="noopener"
-    >Art QR Code Generation with ControlNet - AI Painting Solution Based on Stable Diffusion</a></p>
 
 </section>
 
@@ -856,7 +854,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
 
 
     </body>

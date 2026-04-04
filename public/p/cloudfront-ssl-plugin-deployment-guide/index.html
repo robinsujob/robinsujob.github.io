@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Deployment guide for the China CloudFront SSL Plugin - free SSL certificate automation.">
 <title>China CloudFront SSL Plugin Deployment Guide</title>
 
@@ -322,7 +322,8 @@
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
-    <li><a href="#references">References</a>
+    <li><a href="#references">References</a></li>
+    <li><a href="#authors">Authors</a>
       <ul>
         <li><a href="#su-zhe">Su Zhe</a></li>
         <li><a href="#jin-zexuan">Jin Zexuan</a></li>
@@ -485,7 +486,8 @@
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
-    <li><a href="#references">References</a>
+    <li><a href="#references">References</a></li>
+    <li><a href="#authors">Authors</a>
       <ul>
         <li><a href="#su-zhe">Su Zhe</a></li>
         <li><a href="#jin-zexuan">Jin Zexuan</a></li>
@@ -506,7 +508,9 @@
     
     
     <blockquote>
-        <p><strong>GitHub:</strong> <a class="link" href="https://github.com/aws-samples/China-CloudFront-SSL-Plugin"  target="_blank" rel="noopener"
+        <p><strong>Original Post:</strong> <a class="link" href="https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/"  target="_blank" rel="noopener"
+    >Amazon CloudFront Deployment Guide (8) - Deploy Free Certificates with China CloudFront and the CloudFront SSL Plugin</a></p>
+<p><strong>GitHub:</strong> <a class="link" href="https://github.com/aws-samples/China-CloudFront-SSL-Plugin"  target="_blank" rel="noopener"
     >aws-samples/China-CloudFront-SSL-Plugin</a></p>
 
     </blockquote>
@@ -554,7 +558,7 @@
 </h3><p>In this section, you will create an EC2 instance with a web server, then bind an Elastic IP to fix the public DNS hostname.</p>
 <h4 id="step-1-launch-ec2-instance">Step 1: Launch EC2 Instance
 </h4><p>Launch an EC2 instance from the EC2 console.</p>
-<p><img alt="EC2 Console Launch Instance" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="1183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_4bad2cd2999e9a49.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_524d8415a1264fef.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg 1965w" width="1965"></p>
+<p><img alt="Launch EC2 Instance" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="1183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_4bad2cd2999e9a49.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_524d8415a1264fef.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg 1965w" width="1965"></p>
 <p>Name your instance, e.g., &ldquo;web-server&rdquo;.</p>
 <p>You can keep the default AMI and instance type.</p>
 <ul>
@@ -565,7 +569,7 @@
 <p>Select an existing key pair or create a new one for SSH access.</p>
 <p><img alt="Key Pair Settings" class="gallery-image" data-flex-basis="639px" data-flex-grow="266" height="651" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3_hu_9f6ea6be1004f543.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3_hu_cd1424e493dd60e4.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3.jpg 1734w" width="1734"></p>
 <p>For network settings, ensure the EC2 instance is in a public subnet and check &ldquo;Allow HTTP traffic from the internet&rdquo; to make port 80 accessible.</p>
-<p><img alt="Network Configuration" class="gallery-image" data-flex-basis="260px" data-flex-grow="108" height="1532" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_6eb00b634c3b6715.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_daaf7b7b2d61cf19.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg 1663w" width="1663"></p>
+<p><img alt="Network Settings" class="gallery-image" data-flex-basis="260px" data-flex-grow="108" height="1532" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_6eb00b634c3b6715.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_daaf7b7b2d61cf19.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg 1663w" width="1663"></p>
 <p>Expand the &ldquo;Advanced details&rdquo; section at the bottom:</p>
 <p><img alt="Advanced Details" class="gallery-image" data-flex-basis="592px" data-flex-grow="246" height="622" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5_hu_b78cc41ef9237432.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5.jpg 1536w" width="1536"></p>
 <p>Paste the following user data script to install a web server on first boot, then click &ldquo;Launch instance&rdquo;.</p>
@@ -604,7 +608,7 @@
 </h3><p>In this section, you will create a CloudFront distribution and associate it with your EC2 instance to accelerate content delivery.</p>
 <h4 id="step-1-create-cloudfront-distribution">Step 1: Create CloudFront Distribution
 </h4><p>Next, you&rsquo;ll quickly set up a CloudFront distribution. Go to the CloudFront console and create a distribution:</p>
-<p><img alt="CloudFront Create Distribution" class="gallery-image" data-flex-basis="606px" data-flex-grow="252" height="1325" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_a8367bef1aae0926.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_4d508bb4a235ad8d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_5453637f6d5fbdeb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg 3351w" width="3351"></p>
+<p><img alt="Create CloudFront Distribution" class="gallery-image" data-flex-basis="606px" data-flex-grow="252" height="1325" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_a8367bef1aae0926.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_4d508bb4a235ad8d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_5453637f6d5fbdeb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg 3351w" width="3351"></p>
 <p>On the CloudFront configuration page, you&rsquo;ll see the basic configuration elements:</p>
 <ul>
 <li><strong>Origin</strong> – The origin server, supporting S3, EC2, ELB, API Gateway, and third-party origins</li>
@@ -621,15 +625,15 @@
 
     </blockquote>
 <p>In the settings section, enter your ICP-filed domain as the alternate domain name (CNAME):</p>
-<p><img alt="Alternate Domain Settings" class="gallery-image" data-flex-basis="286px" data-flex-grow="119" height="1438" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_14196fd7b272dfcd.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_94de9764e2460cf6.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg 1716w" width="1716"></p>
+<p><img alt="Alternate Domain Name Settings" class="gallery-image" data-flex-basis="286px" data-flex-grow="119" height="1438" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_14196fd7b272dfcd.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_94de9764e2460cf6.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg 1716w" width="1716"></p>
 <p>After creation, wait for deployment. Once complete, check your alternate domain name — if ICP-filed, you should see a &ldquo;green checkmark&rdquo;.</p>
-<p><img alt="ICP Filing Green Checkmark" class="gallery-image" data-flex-basis="153px" data-flex-grow="63" height="1698" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17_hu_acad7026d9b16373.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg 1086w" width="1086"></p>
+<p><img alt="ICP Verification" class="gallery-image" data-flex-basis="153px" data-flex-grow="63" height="1698" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17_hu_acad7026d9b16373.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg 1086w" width="1086"></p>
 <p>After deployment, go to Route 53 (or your DNS provider) to update DNS records. Create a new record in the hosted zone.</p>
-<p><img alt="Route53 Create Record" class="gallery-image" data-flex-basis="405px" data-flex-grow="168" height="956" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_970077f08855e81d.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_995f1b9e1c60399.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg 1615w" width="1615"></p>
+<p><img alt="Create Route 53 Record" class="gallery-image" data-flex-basis="405px" data-flex-grow="168" height="956" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_970077f08855e81d.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_995f1b9e1c60399.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg 1615w" width="1615"></p>
 <p>Fill in the DNS record:</p>
 <p><img alt="DNS Record Configuration" class="gallery-image" data-flex-basis="693px" data-flex-grow="289" height="1085" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_b37ebdfd46e25cb.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_490015ade77f4a67.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_d75cfeda12c8ce18.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19.jpg 3136w" width="3136"></p>
 <p>After DNS update, access your ICP-filed domain in the browser:</p>
-<p><img alt="Browser Access Domain" class="gallery-image" data-flex-basis="539px" data-flex-grow="224" height="1010" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_36b565ec92948586.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_58b3a2674e642329.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg 2270w" width="2270"></p>
+<p><img alt="Access Domain in Browser" class="gallery-image" data-flex-basis="539px" data-flex-grow="224" height="1010" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_36b565ec92948586.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_58b3a2674e642329.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg 2270w" width="2270"></p>
 
     <blockquote>
         <p><strong>Note:</strong> If you get a 502 error, check whether EC2 has an SSL certificate installed or if the origin port is correct. See <a class="link" href="https://docs.amazonaws.cn/AmazonCloudFront/latest/DeveloperGuide/http-502-bad-gateway.html"  target="_blank" rel="noopener"
@@ -640,7 +644,7 @@
 </h4><p>In this section, you&rsquo;ll use <a class="link" href="https://docs.amazonaws.cn/vpc/latest/userguide/working-with-aws-managed-prefix-lists.html#available-aws-managed-prefix-lists"  target="_blank" rel="noopener"
     >AWS-managed prefix lists</a> to enhance EC2 security. You can use the CloudFront managed prefix list to restrict inbound HTTP/HTTPS traffic to CloudFront origin-facing IP addresses only.</p>
 <p>Edit the security group inbound rules: add an HTTP rule with <code>com.amazonaws.global.cloudfront.origin-facing</code> prefix list as the source, and remove the existing <code>0.0.0.0/0</code> rule.</p>
-<p><img alt="Security Group Prefix List" class="gallery-image" data-flex-basis="382px" data-flex-grow="159" height="1065" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_f948369aa9eb93d9.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_aa508796cb61f82d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg 1696w" width="1696"></p>
+<p><img alt="Security Group Prefix List Configuration" class="gallery-image" data-flex-basis="382px" data-flex-grow="159" height="1065" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_f948369aa9eb93d9.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_aa508796cb61f82d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg 1696w" width="1696"></p>
 <p>You can also associate SSL/TLS certificates with CloudFront to enhance website security. In the following section, you&rsquo;ll deploy free SSL certificates using the China CloudFront SSL Plugin.</p>
 <h2 id="deploy-free-ssl-certificates-with-china-cloudfront-ssl-plugin">Deploy Free SSL Certificates with China CloudFront SSL Plugin
 </h2><p>Before starting, confirm you&rsquo;re using Amazon Route 53 for DNS. This section covers deployment only. For more details, see the <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
@@ -666,7 +670,7 @@
 </h3><p>During deployment, check your email for an SNS subscription confirmation from <a class="link" href="mailto:no-reply@sns.amazonaws.com" >no-reply@sns.amazonaws.com</a>. Click the confirmation link promptly.</p>
 <p><img alt="SNS Subscription Email" class="gallery-image" data-flex-basis="753px" data-flex-grow="313" height="1579" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_cdde9165045830e8.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_bb88619825b58bb2.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_f203472c7d3c1c50.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25.jpg 4956w" width="4956"></p>
 <p>Successful subscription confirmation:</p>
-<p><img alt="Subscription Success" class="gallery-image" data-flex-basis="1331px" data-flex-grow="554" height="566" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_745d769f4f147290.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_af2c5877f6070985.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_2b7bfecfa67898b.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg 3140w" width="3140"></p>
+<p><img alt="Subscription Confirmed" class="gallery-image" data-flex-basis="1331px" data-flex-grow="554" height="566" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_745d769f4f147290.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_af2c5877f6070985.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_2b7bfecfa67898b.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg 3140w" width="3140"></p>
 <h3 id="check-stack-deployment-progress">Check Stack Deployment Progress
 </h3><p>When the stack status turns to green <code>CREATE_COMPLETE</code>, the deployment is finished.</p>
 <p>Check the &ldquo;Outputs&rdquo; tab for quick links:</p>
@@ -678,13 +682,13 @@
 <p><img alt="Stack Outputs" class="gallery-image" data-flex-basis="1089px" data-flex-grow="453" height="526" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27_hu_e4a40fc578f3a1ff.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27_hu_d7c6996c56f5d4b4.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27.jpg 2387w" width="2387"></p>
 <h3 id="bind-ssl-certificate-in-cloudfront-console">Bind SSL Certificate in CloudFront Console
 </h3><p>After stack deployment, an SSL certificate is automatically requested for your domain. If subscribed to SNS, you&rsquo;ll receive an email confirming certificate issuance. The certificate name consists of the stack name and expiry time, e.g., <code>Certbot-2023-11-14-1540</code>.</p>
-<p><img alt="SSL Certificate Email" class="gallery-image" data-flex-basis="532px" data-flex-grow="221" height="542" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28_hu_eea6111e60dfb38a.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg 1202w" width="1202"></p>
+<p><img alt="SSL Certificate Email Notification" class="gallery-image" data-flex-basis="532px" data-flex-grow="221" height="542" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28_hu_eea6111e60dfb38a.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg 1202w" width="1202"></p>
 <p>Open the CloudFront console, select your distribution, and find the option to edit alternate domain names and SSL certificate.</p>
-<p><img alt="CloudFront Edit Settings" class="gallery-image" data-flex-basis="551px" data-flex-grow="229" height="1403" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_9832edb84636551.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_e1912aa46e2c65d8.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_ab611836b6a34937.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg 3222w" width="3222"></p>
+<p><img alt="Edit CloudFront Settings" class="gallery-image" data-flex-basis="551px" data-flex-grow="229" height="1403" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_9832edb84636551.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_e1912aa46e2c65d8.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_ab611836b6a34937.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg 3222w" width="3222"></p>
 <p>Select the corresponding SSL certificate from the custom SSL certificate dropdown, then save changes.</p>
 <p><img alt="Select SSL Certificate" class="gallery-image" data-flex-basis="444px" data-flex-grow="185" height="1743" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_5dae4bd224493381.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_26ea4d3b5146beb3.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_4517dfc367337036.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30.jpg 3226w" width="3226"></p>
 <p>After deployment, you can access your CloudFront-accelerated site via HTTPS and verify the Let&rsquo;s Encrypt SSL certificate, valid for 90 days.</p>
-<p><img alt="HTTPS Verification" class="gallery-image" data-flex-basis="437px" data-flex-grow="182" height="1492" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_1eee86b177ad311b.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_3c5134eb5ca760eb.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_532535a6568d9bb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg 2720w" width="2720"></p>
+<p><img alt="HTTPS Access Verification" class="gallery-image" data-flex-basis="437px" data-flex-grow="182" height="1492" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_1eee86b177ad311b.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_3c5134eb5ca760eb.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_532535a6568d9bb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg 2720w" width="2720"></p>
 <p>For more information on using the China CloudFront SSL Plugin, see the <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
     >plugin documentation</a>.</p>
 <h2 id="summary">Summary
@@ -700,7 +704,8 @@
 <li><a class="link" href="https://www.amazonaws.cn/getting-started/use-cases/cloudfront-network-acceleration/?nc1=h_ls"  target="_blank" rel="noopener"
     >Network Acceleration with CloudFront in China</a></li>
 </ul>
-<h3 id="su-zhe">Su Zhe
+<h2 id="authors">Authors
+</h2><h3 id="su-zhe">Su Zhe
 </h3><p>AWS Solutions Architect, responsible for cloud architecture consulting and design. Focused on promoting AWS services in e-commerce, education, and developer communities. Previously worked at IBM as an IT Solutions Architect on cloud-native and container architecture.</p>
 <h3 id="jin-zexuan">Jin Zexuan
 </h3><p>AWS Solutions Architect with years of experience in enterprise cloud migration project management and delivery. Specializes in cloud architecture design, consulting, and implementation. Extensive practical experience in DevOps, microservices, and containers.</p>
@@ -710,9 +715,6 @@
 </h3><p>AWS Solutions Architect, focused on cloud architecture consulting and design, dedicated to promoting AWS services among innovative growth customers, with extensive experience solving real customer challenges.</p>
 <h3 id="zhao-yunxi">Zhao Yunxi
 </h3><p>AWS Solutions Consultant, responsible for cloud market exploration, providing digital transformation consulting to help accelerate business growth and innovation.</p>
-<hr>
-<p><strong>Original Post:</strong> <a class="link" href="https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/"  target="_blank" rel="noopener"
-    >Amazon CloudFront Deployment Guide (Part 8) - Deploy Free Certificates Using China CloudFront and SSL Plugin</a></p>
 
 </section>
 
@@ -795,7 +797,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
 
 
     </body>

@@ -540,11 +540,31 @@
     <loc>http://localhost:4002/about/</loc>
   </url><url>
     <loc>http://localhost:4002/archives/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/archives/"
+                />
   </url><url>
     <loc>http://localhost:4002/page/</loc>
   </url><url>
     <loc>http://localhost:4002/projects/</loc>
   </url><url>
     <loc>http://localhost:4002/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/search/"
+                />
   </url>
 </urlset>

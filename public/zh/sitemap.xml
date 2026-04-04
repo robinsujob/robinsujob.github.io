@@ -521,5 +521,29 @@
                 hreflang="zh"
                 href="http://localhost:4002/zh/p/art-qr-code-controlnet-stable-diffusion/"
                 />
+  </url><url>
+    <loc>http://localhost:4002/zh/archives/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/archives/"
+                />
+  </url><url>
+    <loc>http://localhost:4002/zh/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/search/"
+                />
   </url>
 </urlset>
