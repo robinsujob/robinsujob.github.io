@@ -17,7 +17,7 @@ I work at the intersection of cloud and AI — designing architectures that scal
 
 Currently a Senior Solutions Engineer at Microsoft. Previously at AWS, where I served ISV and SMB clients as Solutions Architect — helping them migrate workloads, launch AI products, and optimize cloud spend. Before that, I spent years at IBM as Technical Solutions Architect at the Client Center and Innovation Studio, building demo platforms, leading PoC projects, and exploring new technologies to deliver business value.
 
-I'm driven by curiosity and craft. Whether it's a serverless architecture, an open source tool, or a perfectly composed photograph — I believe the details matter. I write about what I learn on this blog, share code on GitHub, and shoot street photography on Instagram.
+I'm driven by curiosity and conviction. Whether it's a serverless architecture, an open source tool, or a perfectly composed photograph — I believe the details matter. I write about what I learn on this blog, share code on GitHub, and shoot street photography on Instagram.
 
 ## Explore
 
