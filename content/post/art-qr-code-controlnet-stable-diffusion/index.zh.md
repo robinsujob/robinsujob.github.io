@@ -21,9 +21,8 @@ tags:
 
 为了帮助客户快速、安全地在亚马逊云科技上构建、部署和管理应用程序，众多合作伙伴与亚马逊云科技紧密合作。他们提供各种各样的服务、深入的技术知识、最佳实践和解决方案，包括基础设施迁移、应用程序现代化、安全和合规性、数据分析、机器学习、人工智能、云托管、DevOps、咨询和培训。
 
-最近，亚马逊云科技核心级服务合作伙伴 eCloudrover（伊克罗德）推出了基于 Stable Diffusion 的 AI 绘画解决方案——imAgine，既拥有经过广泛验证且易于部署的先进 AI 算法模型，又提供丰富且高性价比的云端资源以优化成本，旨在帮助游戏、电商、媒体、影视、广告、传媒等行业快速构建 AIGC 应用通路，打造 AI 时代的领先生产力。
 
-本文主要分享我们在帮助客户使用 Stable Diffusion 时总结的实战经验，以及使用基于 Stable Diffusion 研发的 imAgine 产品生成艺术二维码的最佳实践。
+本文主要分享使用 Stable Diffusion 的实战经验，以及生成艺术二维码的最佳实践。
 
 我们将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 阅读器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：
 
@@ -245,7 +244,9 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 上面右侧图片使用的提示词：
 
 ```text
-school girl walking, a car
+(school girl:1.6, walking), (a car, side view, to left), (residential area, cherry trees)
+Negative prompt: (worst quality:1.6),(low quality:1.6), (inaccurate limb:1.2),bad composition, inaccurate eyes, easynegative
+Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3408317133, Size: 900x540, Model: cetusMix_Whalefall2
 ```
 
 ### 环境准备：开启多个 ControlNet Unit
@@ -344,7 +345,6 @@ extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, d
 
 - [Stable Diffusion AI 方案 MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
 - [Stable Diffusion AI 方案 Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
-- [imAgine 解决方案官网](https://www.ecloudrover.com/aigc/)
 - [QR Toolkit 插件作者 Anthony Fu 的 QRCode 共创文档](https://antfu.me/posts/ai-qrcode-101)
 - [IoC Lab 模型展示](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw)
 - [IoC Lab Stable Diffusion 文档](http://aigc.ioclab.com/)
