@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="使用 API Management 网关构建 Azure AI 韧性架构Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.">
 <title>Building Resilient Azure AI Architecture with API Management Gateway</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.9e1aaad4f0d84df027eafaddb7a8e407fadfeddf032716adebfc7db13ddc55ce.css"><meta property='og:title' content="Building Resilient Azure AI Architecture with API Management Gateway">
-<meta property='og:description' content="使用 API Management 网关构建 Azure AI 韧性架构Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。">
+<meta property='og:description' content="Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.">
 <meta property='og:url' content='http://localhost:4002/p/azure-apim-ai-resilience/'>
 <meta property='og:site_name' content='Robin&#39;s Space'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='azure' /><meta property='article:tag' content='api-management' /><meta property='article:tag' content='ai' /><meta property='article:tag' content='high-availability' /><meta property='article:tag' content='load-balancing' /><meta property='article:tag' content='managed-identity' /><meta property='article:tag' content='microsoft-foundry' /><meta property='article:tag' content='enterprise-architecture' /><meta property='article:published_time' content='2026-04-03T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-04-03T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
 <meta name="twitter:title" content="Building Resilient Azure AI Architecture with API Management Gateway">
-<meta name="twitter:description" content="使用 API Management 网关构建 Azure AI 韧性架构Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.\n通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:4002/' />
     <link rel="shortcut icon" href="/img/avatar.jpg" />
 
@@ -225,13 +225,19 @@
                                         
                                     
                                 
+                                    
+                                
                                 <option value="/p/azure-apim-ai-resilience/" selected>English</option>
                             
                                 
                                 
                                     
                                 
-                                <option value="/zh/" >简体中文</option>
+                                    
+                                        
+                                    
+                                
+                                <option value="/zh/p/azure-apim-ai-resilience/" >简体中文</option>
                             
                         </select>
                     </li>
@@ -286,31 +292,31 @@
             <nav class="toc-nav" id="TableOfContents">
                 
   <ul>
-    <li><a href="#architecture-overview--架构概览">Architecture Overview / 架构概览</a></li>
-    <li><a href="#create-apim-instance--创建-apim-实例">Create APIM Instance / 创建 APIM 实例</a></li>
-    <li><a href="#create-foundry-resources--创建-foundry-资源">Create Foundry Resources / 创建 Foundry 资源</a></li>
-    <li><a href="#deploy-models--部署模型">Deploy Models / 部署模型</a></li>
-    <li><a href="#configure-rbac--配置-rbac">Configure RBAC / 配置 RBAC</a></li>
-    <li><a href="#configure-backend--lb-pool--配置-backend--load-balancing-pool">Configure Backend + LB Pool / 配置 Backend + Load Balancing Pool</a>
+    <li><a href="#architecture-overview">Architecture Overview</a></li>
+    <li><a href="#create-apim-instance">Create APIM Instance</a></li>
+    <li><a href="#create-foundry-resources">Create Foundry Resources</a></li>
+    <li><a href="#deploy-models">Deploy Models</a></li>
+    <li><a href="#configure-rbac">Configure RBAC</a></li>
+    <li><a href="#configure-backend--lb-pool">Configure Backend + LB Pool</a>
       <ul>
-        <li><a href="#create-backend--创建-backend">Create Backend / 创建 Backend</a></li>
-        <li><a href="#create-lb-pool--创建-load-balancing-pool">Create LB Pool / 创建 Load Balancing Pool</a></li>
+        <li><a href="#create-backend">Create Backend</a></li>
+        <li><a href="#create-lb-pool">Create LB Pool</a></li>
       </ul>
     </li>
-    <li><a href="#create-api--policy--创建-api--policy">Create API + Policy / 创建 API + Policy</a>
+    <li><a href="#create-api--policy">Create API + Policy</a>
       <ul>
-        <li><a href="#create-api--创建-api">Create API / 创建 API</a></li>
-        <li><a href="#configure-policy--配置-policy">Configure Policy / 配置 Policy</a></li>
+        <li><a href="#create-api">Create API</a></li>
+        <li><a href="#configure-policy">Configure Policy</a></li>
       </ul>
     </li>
-    <li><a href="#test-and-validate--测试与验证">Test and Validate / 测试与验证</a>
+    <li><a href="#test-and-validate">Test and Validate</a>
       <ul>
-        <li><a href="#test-1-load-balancing--测试-1负载均衡">Test 1: Load Balancing / 测试 1：负载均衡</a></li>
-        <li><a href="#test-2-pinned-backend-routing--测试-2指定后端路由">Test 2: Pinned Backend Routing / 测试 2：指定后端路由</a></li>
+        <li><a href="#test-1-load-balancing">Test 1: Load Balancing</a></li>
+        <li><a href="#test-2-pinned-backend-routing">Test 2: Pinned Backend Routing</a></li>
       </ul>
     </li>
-    <li><a href="#faq--常见问题">FAQ / 常见问题</a></li>
-    <li><a href="#reference-documentation--参考文档">Reference Documentation / 参考文档</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#reference-documentation">Reference Documentation</a></li>
   </ul>
 
             </nav>
@@ -353,7 +359,7 @@
     
         
         <h3 class="article-subtitle">
-            <span class=cn-title>使用 API Management 网关构建 Azure AI 韧性架构</span>Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.<br>通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。
+            Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.
         </h3>
         
     </div>
@@ -391,12 +397,29 @@
 
 
                     <time class="article-time--reading">
-                        9 minutes read
+                        8 minutes read
                     </time>
                 
             </div>
         
 
+        
+            <div class="inline-meta">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                
+                    <a href="/zh/p/azure-apim-ai-resilience/" class="link">简体中文</a>
+                
+            </div>
         
 
         
@@ -418,31 +441,31 @@
             <nav class="toc-nav">
                 
   <ul>
-    <li><a href="#architecture-overview--架构概览">Architecture Overview / 架构概览</a></li>
-    <li><a href="#create-apim-instance--创建-apim-实例">Create APIM Instance / 创建 APIM 实例</a></li>
-    <li><a href="#create-foundry-resources--创建-foundry-资源">Create Foundry Resources / 创建 Foundry 资源</a></li>
-    <li><a href="#deploy-models--部署模型">Deploy Models / 部署模型</a></li>
-    <li><a href="#configure-rbac--配置-rbac">Configure RBAC / 配置 RBAC</a></li>
-    <li><a href="#configure-backend--lb-pool--配置-backend--load-balancing-pool">Configure Backend + LB Pool / 配置 Backend + Load Balancing Pool</a>
+    <li><a href="#architecture-overview">Architecture Overview</a></li>
+    <li><a href="#create-apim-instance">Create APIM Instance</a></li>
+    <li><a href="#create-foundry-resources">Create Foundry Resources</a></li>
+    <li><a href="#deploy-models">Deploy Models</a></li>
+    <li><a href="#configure-rbac">Configure RBAC</a></li>
+    <li><a href="#configure-backend--lb-pool">Configure Backend + LB Pool</a>
       <ul>
-        <li><a href="#create-backend--创建-backend">Create Backend / 创建 Backend</a></li>
-        <li><a href="#create-lb-pool--创建-load-balancing-pool">Create LB Pool / 创建 Load Balancing Pool</a></li>
+        <li><a href="#create-backend">Create Backend</a></li>
+        <li><a href="#create-lb-pool">Create LB Pool</a></li>
       </ul>
     </li>
-    <li><a href="#create-api--policy--创建-api--policy">Create API + Policy / 创建 API + Policy</a>
+    <li><a href="#create-api--policy">Create API + Policy</a>
       <ul>
-        <li><a href="#create-api--创建-api">Create API / 创建 API</a></li>
-        <li><a href="#configure-policy--配置-policy">Configure Policy / 配置 Policy</a></li>
+        <li><a href="#create-api">Create API</a></li>
+        <li><a href="#configure-policy">Configure Policy</a></li>
       </ul>
     </li>
-    <li><a href="#test-and-validate--测试与验证">Test and Validate / 测试与验证</a>
+    <li><a href="#test-and-validate">Test and Validate</a>
       <ul>
-        <li><a href="#test-1-load-balancing--测试-1负载均衡">Test 1: Load Balancing / 测试 1：负载均衡</a></li>
-        <li><a href="#test-2-pinned-backend-routing--测试-2指定后端路由">Test 2: Pinned Backend Routing / 测试 2：指定后端路由</a></li>
+        <li><a href="#test-1-load-balancing">Test 1: Load Balancing</a></li>
+        <li><a href="#test-2-pinned-backend-routing">Test 2: Pinned Backend Routing</a></li>
       </ul>
     </li>
-    <li><a href="#faq--常见问题">FAQ / 常见问题</a></li>
-    <li><a href="#reference-documentation--参考文档">Reference Documentation / 参考文档</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#reference-documentation">Reference Documentation</a></li>
   </ul>
 
             </nav>
@@ -454,98 +477,92 @@
     
     
     <p>As enterprise demand for AI capabilities grows, organizations are deeply integrating Microsoft Foundry model services into core business systems. As AI moves from experimentation to production, <strong>high availability, elastic scaling, unified governance, and security controls</strong> become unavoidable themes.</p>
-<p>随着企业对 AI 能力的需求日益增长，越来越多的组织开始将 Microsoft Foundry 中的模型服务深度集成到核心业务系统中。当 AI 服务从实验阶段迈向生产环境时，架构设计的关注点也随之发生转变——<strong>高可用性、弹性伸缩、统一治理与安全管控</strong>成为企业级 AI 架构不可回避的关键主题。</p>
 <p>In production, a single subscription instance fails to meet requirements for <strong>continuity, stability, and throughput</strong>. A mature architecture consolidates resources across subscriptions, <strong>aggregating AI quotas</strong> to maximize throughput, with traffic distribution, automatic failover, and unified access control.</p>
-<p>在生产级 AI 架构中，依赖单一订阅下的单一服务实例往往难以满足企业对<strong>服务连续性、稳定性以及大规模吞吐容量</strong>的要求——<strong>配额有限</strong>难以支撑大规模并发、<strong>单点故障</strong>影响服务可用性、<strong>单区域部署</strong>缺乏容灾能力。一个成熟的架构应当具备跨订阅的资源整合能力，通过<strong>聚合多个订阅下的 AI 资源配额</strong>来最大化可用吞吐量，同时结合流量分发、故障自动转移以及统一的身份认证与访问控制，确保 AI 服务在面对各种运行时挑战时依然能够稳定响应。</p>
 <p>Azure API Management (APIM), as Azure&rsquo;s native API gateway, is naturally suited for this role. By deploying APIM as the unified entry point, combined with the following capabilities, we can build an <strong>enterprise-grade, highly resilient AI architecture</strong>:</p>
-<p><strong>Azure API Management（APIM）</strong> 作为 Azure 原生的 API 网关服务，天然适合承担这一角色。通过将 APIM 部署为 AI 服务的统一入口，并结合以下核心能力，我们可以构建一套<strong>企业级、高韧性的 AI 服务架构</strong>：</p>
 <ul>
-<li>🔀 <strong>Backend Load Balancing Pool</strong> — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas / 跨多个订阅、多个 Microsoft Foundry 资源实例实现负载均衡与故障转移，聚合分散在不同订阅下的配额容量</li>
-<li>🔐 <strong>Managed Identity</strong> — Zero-key secure authentication between APIM and backend AI services / 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担</li>
-<li>🛡️ <strong>Unified API Governance</strong> — Request routing, traffic control, log auditing, and policy management at the gateway layer / 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力</li>
+<li>🔀 <strong>Backend Load Balancing Pool</strong> — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas</li>
+<li>🔐 <strong>Managed Identity</strong> — Zero-key secure authentication between APIM and backend AI services</li>
+<li>🛡️ <strong>Unified API Governance</strong> — Request routing, traffic control, log auditing, and policy management at the gateway layer</li>
 </ul>
 <p>This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.</p>
-<p>本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。</p>
-<h2 id="architecture-overview--架构概览">Architecture Overview / 架构概览
+<h2 id="architecture-overview">Architecture Overview
 </h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="289px" data-flex-grow="120" height="683" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/1-Architecture-en.png" srcset="/p/azure-apim-ai-resilience/images/1-Architecture-en_hu_10ff4595295ffe34.png 800w, /p/azure-apim-ai-resilience/images/1-Architecture-en.png 823w" width="823"></p>
 <p>This architecture uses a <strong>centralized API gateway + multi-subscription backend pattern</strong>, with APIM as the unified entry point, distributing requests round-robin to Foundry instances across multiple subscriptions and regions.</p>
-<p>本架构采用<strong>集中式 API 网关 + 多订阅后端模式</strong>，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。</p>
-<p>Core design principles / 核心设计理念：</p>
+<p>Core design principles:</p>
 <ul>
-<li><strong>Unified Entry Point</strong> — Clients only need the APIM endpoint; the pool uses Round-Robin by default / 客户端只需访问 APIM 端点，无需感知后端资源的位置和数量；后端负载均衡池默认采用 Round-Robin 轮询策略，将请求均匀分发到所有健康实例</li>
-<li><strong>Simplified Security Authentication</strong> — Zero-key communication via Managed Identity; clients only need a single API Key / APIM 与后端 Foundry 资源之间通过托管标识（Managed Identity）实现零密钥安全通信；对外仅由 APIM 统一提供 API Key</li>
-<li><strong>Cross-Subscription Quota Aggregation</strong> — Aggregate quotas across subscriptions into a unified capacity pool / 将分散在不同订阅下的 Foundry 资源配额汇聚为统一容量池，突破单一订阅的配额上限</li>
-<li><strong>Cross-Region Disaster Recovery</strong> — APIM automatically routes to healthy instances when a region becomes unavailable / 资源分布在不同区域，当某个区域不可用时，APIM 自动将流量路由到健康实例</li>
+<li><strong>Unified Entry Point</strong> — Clients only need the APIM endpoint; the pool uses Round-Robin by default</li>
+<li><strong>Simplified Security Authentication</strong> — Zero-key communication via Managed Identity; clients only need a single API Key</li>
+<li><strong>Cross-Subscription Quota Aggregation</strong> — Aggregate quotas across subscriptions into a unified capacity pool</li>
+<li><strong>Cross-Region Disaster Recovery</strong> — APIM automatically routes to healthy instances when a region becomes unavailable</li>
 </ul>
-<p>APIM&rsquo;s Policy engine also provides flexible traffic control / APIM 的 Policy 策略引擎还为本架构提供了灵活的流量控制能力：</p>
+<p>APIM&rsquo;s Policy engine also provides flexible traffic control:</p>
 <ul>
-<li><strong>Pinned Routing</strong> — via <code>X-AI-Foundry-Target</code> header / 通过 <code>X-AI-Foundry-Target</code> 请求头精确路由到指定后端实例</li>
-<li><strong>Auto Failover</strong> — Auto-retry with exponential backoff on 4xx/5xx / <code>retry</code> 策略自动重试并切换到健康后端，指数退避</li>
-<li><strong>Request Tracing</strong> — <code>X-AI-Foundry-Backend</code> response header for tracing / <code>X-AI-Foundry-Backend</code> 响应头返回实际处理后端</li>
+<li><strong>Pinned Routing</strong> — via <code>X-AI-Foundry-Target</code> header</li>
+<li><strong>Auto Failover</strong> — Auto-retry with exponential backoff on 4xx/5xx</li>
+<li><strong>Request Tracing</strong> — <code>X-AI-Foundry-Backend</code> response header for tracing</li>
 </ul>
-<p>Architecture setup steps / 接下来按以下步骤完成架构搭建：</p>
+<p>Architecture setup steps:</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>Section / 章节</th>
-          <th>Action / 操作</th>
-          <th>Goal / 目标</th>
-          <th>Platform / 平台</th>
+          <th>Section</th>
+          <th>Action</th>
+          <th>Goal</th>
+          <th>Platform</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>1</td>
-          <td>Create APIM instance / 创建 APIM 实例</td>
-          <td>Set up the unified gateway entry point and enable Managed Identity / 搭建统一网关入口，启用 Managed Identity</td>
+          <td>Create APIM instance</td>
+          <td>Set up the unified gateway entry point and enable Managed Identity</td>
           <td>Azure Portal</td>
       </tr>
       <tr>
           <td>2</td>
-          <td>Create Foundry resources / 创建 Foundry 资源</td>
-          <td>Build the backend resource pool across multiple subscriptions and regions / 在多个订阅和区域中构建后端资源池</td>
+          <td>Create Foundry resources</td>
+          <td>Build the backend resource pool across multiple subscriptions and regions</td>
           <td>Azure Portal</td>
       </tr>
       <tr>
           <td>3</td>
-          <td>Deploy AI models / 部署 AI 模型</td>
-          <td>Enable AI service capability on backend resources (using Sora2 as an example) / 使后端资源具备 AI 服务能力（以 Sora2 为例）</td>
+          <td>Deploy AI models</td>
+          <td>Enable AI service capability on backend resources (using Sora2 as an example)</td>
           <td>Foundry Portal</td>
       </tr>
       <tr>
           <td>4</td>
-          <td>Configure RBAC / 配置 RBAC</td>
-          <td>Grant APIM Managed Identity permission to access backends / 授予 APIM 托管标识访问后端的权限</td>
+          <td>Configure RBAC</td>
+          <td>Grant APIM Managed Identity permission to access backends</td>
           <td>Azure Portal</td>
       </tr>
       <tr>
           <td>5</td>
-          <td>Configure Backend + LB Pool / 配置 Backend + LB Pool</td>
-          <td>Register backends and create the load balancing pool / 注册后端并组建负载均衡池</td>
+          <td>Configure Backend + LB Pool</td>
+          <td>Register backends and create the load balancing pool</td>
           <td>Azure Portal (APIM)</td>
       </tr>
       <tr>
           <td>6</td>
-          <td>Create API + Policy / 创建 API + Policy</td>
-          <td>Define the API entry point and configure routing and failover / 定义 API 入口，配置路由与故障转移</td>
+          <td>Create API + Policy</td>
+          <td>Define the API entry point and configure routing and failover</td>
           <td>Azure Portal (APIM)</td>
       </tr>
       <tr>
           <td>7</td>
-          <td>Test and validate / 测试与验证</td>
-          <td>Verify load balancing and pinned backend routing / 验证负载均衡、指定后端路由</td>
+          <td>Test and validate</td>
+          <td>Verify load balancing and pinned backend routing</td>
           <td>curl / Postman</td>
       </tr>
   </tbody>
 </table></div>
 <hr>
-<h2 id="create-apim-instance--创建-apim-实例">Create APIM Instance / 创建 APIM 实例
+<h2 id="create-apim-instance">Create APIM Instance
 </h2><p>Create an API Management instance in Azure Portal, selecting v2 Tier, and enable <strong>System Assigned Managed Identity</strong> during creation.</p>
-<p>在 Azure Portal 中创建 API Management 实例，选择 v2 Tier（Basicv2 / Standardv2 / Premiumv2），并在创建时启用 <strong>System Assigned Managed Identity</strong>。</p>
-<p><strong>Portal Steps / Portal 操作：</strong> 搜索 <code>API Management Service</code> → + Create → 填写配置 → Managed identity 页签启用 → Review + install</p>
+<p><strong>Portal Steps:</strong> Search <code>API Management Service</code> → + Create → Fill in configuration → Enable on the Managed identity tab → Review + install</p>
 <p><img class="gallery-image" data-flex-basis="185px" data-flex-grow="77" height="1506" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-3-basics-config.png" srcset="/p/azure-apim-ai-resilience/images/2-3-basics-config_hu_14e08ccbc5610987.png 800w, /p/azure-apim-ai-resilience/images/2-3-basics-config.png 1163w" width="1163"></p>
 <p><img class="gallery-image" data-flex-basis="475px" data-flex-grow="198" height="562" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-4-managed-identity.png" srcset="/p/azure-apim-ai-resilience/images/2-4-managed-identity_hu_4043f457949cc774.png 800w, /p/azure-apim-ai-resilience/images/2-4-managed-identity.png 1114w" width="1114"></p>
-<p><strong>CLI Alternative / CLI 替代方式：</strong></p>
+<p><strong>CLI Alternative:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -574,20 +591,19 @@
 </span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>After Creation / 创建完成后确认：</strong></p>
+</div><p><strong>After Creation:</strong></p>
 <ul>
-<li>Status: <strong>Online</strong> / 状态为 <strong>Online</strong></li>
-<li>Record <strong>Gateway URL</strong> / 记录 <strong>Gateway URL</strong>（如 <code>https://&lt;apim-name&gt;.azure-api.net</code>）</li>
-<li>Record Managed Identity <strong>Object (principal) ID</strong> for RBAC / 记录 Managed Identity 的 <strong>Object (principal) ID</strong>（后续 RBAC 需要）</li>
+<li>Status: <strong>Online</strong></li>
+<li>Record <strong>Gateway URL</strong> (for example: <code>https://&lt;apim-name&gt;.azure-api.net</code>)</li>
+<li>Record the Managed Identity <strong>Object (principal) ID</strong> for RBAC</li>
 </ul>
 <p><img class="gallery-image" data-flex-basis="728px" data-flex-grow="303" height="644" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png" srcset="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_2b05d081fb5fa317.png 800w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_e21fb9797c99f7a2.png 1600w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png 1956w" width="1956"></p>
 <hr>
-<h2 id="create-foundry-resources--创建-foundry-资源">Create Foundry Resources / 创建 Foundry 资源
+<h2 id="create-foundry-resources">Create Foundry Resources
 </h2><p>Create Foundry resources across multiple subscriptions and regions, each with a corresponding project.</p>
-<p>在多个订阅和区域中创建 Foundry 资源，每个资源需创建对应的项目。</p>
-<p><strong>Portal Steps / Portal 操作：</strong> 搜索 <code>Microsoft Foundry</code> → Create a resource → 填写 Subscription / Region / Name / Project name → Create</p>
+<p><strong>Portal Steps:</strong> Search <code>Microsoft Foundry</code> → Create a resource → Fill in Subscription / Region / Name / Project name → Create</p>
 <p><img class="gallery-image" data-flex-basis="220px" data-flex-grow="91" height="1512" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/3-3-create-foundry-resource.png" srcset="/p/azure-apim-ai-resilience/images/3-3-create-foundry-resource_hu_e040e90bd75b1db3.png 800w, /p/azure-apim-ai-resilience/images/3-3-create-foundry-resource.png 1386w" width="1386"></p>
-<p><strong>CLI Alternative / CLI 替代方式：</strong></p>
+<p><strong>CLI Alternative:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -622,13 +638,13 @@
 </span></span></span><span class="line"><span class="cl">  --location &lt;region-code&gt;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>Example Resource Distribution / 示例资源分布：</strong></p>
+</div><p><strong>Example Resource Distribution:</strong></p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>Subscription / 订阅</th>
-          <th>Region / 区域</th>
-          <th>Resource Name / 资源名称</th>
+          <th>Subscription</th>
+          <th>Region</th>
+          <th>Resource Name</th>
       </tr>
   </thead>
   <tbody>
@@ -655,14 +671,13 @@
   </tbody>
 </table></div>
 <hr>
-<h2 id="deploy-models--部署模型">Deploy Models / 部署模型
+<h2 id="deploy-models">Deploy Models
 </h2><p>Deploy AI models in each Foundry resource via the Foundry Portal.</p>
-<p>在 Foundry Portal 中为每个资源部署 AI 模型。</p>
-<p><strong>Portal Steps / Portal 操作：</strong> 在 <a class="link" href="https://ai.azure.com/nextgen/"  target="_blank" rel="noopener"
-    >Foundry Portal</a> 中选择目标项目 → Build → Models → Deploy a base model → 搜索模型（如 <code>sora-2</code>）→ Deploy → Default settings</p>
+<p><strong>Portal Steps:</strong> In <a class="link" href="https://ai.azure.com/nextgen/"  target="_blank" rel="noopener"
+    >Foundry Portal</a>, select the target project → Build → Models → Deploy a base model → Search for a model (for example <code>sora-2</code>) → Deploy → Default settings</p>
 <p><img class="gallery-image" data-flex-basis="491px" data-flex-grow="204" height="924" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/4-2-search-sora2.png" srcset="/p/azure-apim-ai-resilience/images/4-2-search-sora2_hu_e7087db313cdf721.png 800w, /p/azure-apim-ai-resilience/images/4-2-search-sora2_hu_956f92a0935b1b90.png 1600w, /p/azure-apim-ai-resilience/images/4-2-search-sora2.png 1891w" width="1891"></p>
 <p><img class="gallery-image" data-flex-basis="455px" data-flex-grow="189" height="1006" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/4-5-playground.png" srcset="/p/azure-apim-ai-resilience/images/4-5-playground_hu_b6ecf169c4389d93.png 800w, /p/azure-apim-ai-resilience/images/4-5-playground_hu_50733a65436bad42.png 1600w, /p/azure-apim-ai-resilience/images/4-5-playground.png 1911w" width="1911"></p>
-<p><strong>CLI Alternative / CLI 替代方式：</strong></p>
+<p><strong>CLI Alternative:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -693,18 +708,15 @@
     <blockquote>
         <p>Model names, versions, and SKUs vary by region. See: <a class="link" href="https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"  target="_blank" rel="noopener"
     >Models and Region Availability</a></p>
-<p>模型名称、版本、SKU 等参数因区域而异，详见：<a class="link" href="https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"  target="_blank" rel="noopener"
-    >模型与区域可用性</a></p>
 
     </blockquote>
 <hr>
-<h2 id="configure-rbac--配置-rbac">Configure RBAC / 配置 RBAC
+<h2 id="configure-rbac">Configure RBAC
 </h2><p>Grant the <code>Cognitive Services OpenAI User</code> role to APIM&rsquo;s Managed Identity on <strong>each Foundry resource</strong>.</p>
-<p>在<strong>每个 Foundry 资源</strong>上为 APIM 的 Managed Identity 授予 <code>Cognitive Services OpenAI User</code> 角色。</p>
-<p><strong>Portal Steps / Portal 操作：</strong> 进入 Foundry 资源 → Access control (IAM) → + Add → Add role assignment → 搜索 <code>Cognitive Services OpenAI User</code> → Members 选 Managed identity → 选择 API Management service → Review + assign</p>
+<p><strong>Portal Steps:</strong> Go to the Foundry resource → Access control (IAM) → + Add → Add role assignment → Search <code>Cognitive Services OpenAI User</code> → In Members choose Managed identity → Select the API Management service → Review + assign</p>
 <p><img class="gallery-image" data-flex-basis="296px" data-flex-grow="123" height="1042" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/5-3-select-role.png" srcset="/p/azure-apim-ai-resilience/images/5-3-select-role_hu_7d310acac9aba761.png 800w, /p/azure-apim-ai-resilience/images/5-3-select-role.png 1287w" width="1287"></p>
 <p><img class="gallery-image" data-flex-basis="378px" data-flex-grow="157" height="1166" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/5-4-select-managed-identity.png" srcset="/p/azure-apim-ai-resilience/images/5-4-select-managed-identity_hu_d617d34d874084d4.png 800w, /p/azure-apim-ai-resilience/images/5-4-select-managed-identity_hu_66bfce957da67b8d.png 1600w, /p/azure-apim-ai-resilience/images/5-4-select-managed-identity.png 1840w" width="1840"></p>
-<p><strong>CLI Alternative / CLI 替代方式：</strong></p>
+<p><strong>CLI Alternative:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -721,14 +733,14 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get APIM Managed Identity Principal ID / 获取 APIM Managed Identity Principal ID</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get APIM Managed Identity Principal ID</span>
 </span></span><span class="line"><span class="cl">az apim show <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --subscription &lt;subscription-id&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --name &lt;apim-name&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --resource-group &lt;resource-group&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --query <span class="s2">&#34;identity.principalId&#34;</span> -o tsv
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Assign role for each Foundry resource / 为每个 Foundry 资源分配角色</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Assign role for each Foundry resource</span>
 </span></span><span class="line"><span class="cl">az role assignment create <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --assignee &lt;principal-id&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --role <span class="s2">&#34;Cognitive Services OpenAI User&#34;</span> <span class="se">\
@@ -738,16 +750,14 @@
 </div>
     <blockquote>
         <p><code>Cognitive Services OpenAI User</code> is the minimum permission role—allows inference calls but not resource configuration changes.</p>
-<p><code>Cognitive Services OpenAI User</code> 是最小权限角色，允许推理调用但不允许修改资源配置。</p>
 
     </blockquote>
 <hr>
-<h2 id="configure-backend--lb-pool--配置-backend--load-balancing-pool">Configure Backend + LB Pool / 配置 Backend + Load Balancing Pool
-</h2><h3 id="create-backend--创建-backend">Create Backend / 创建 Backend
+<h2 id="configure-backend--lb-pool">Configure Backend + LB Pool
+</h2><h3 id="create-backend">Create Backend
 </h3><p>Create a Backend for each Foundry resource with Managed Identity authentication.</p>
-<p>为每个 Foundry 资源创建一个 Backend，配置 Managed Identity 认证。</p>
-<p><strong>Get OpenAI Endpoint / 获取 OpenAI 端点：</strong> 在 <a class="link" href="https://ai.azure.com/nextgen/"  target="_blank" rel="noopener"
-    >Foundry Portal</a> 的项目 Home 页面找到 <strong>Azure OpenAI endpoint</strong>，或通过 CLI：</p>
+<p><strong>Get OpenAI Endpoint:</strong> On the project Home page in <a class="link" href="https://ai.azure.com/nextgen/"  target="_blank" rel="noopener"
+    >Foundry Portal</a>, find <strong>Azure OpenAI endpoint</strong>, or use the CLI:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -764,41 +774,41 @@
 </span></span></span><span class="line"><span class="cl">  --query <span class="s2">&#34;properties.endpoints.\&#34;OpenAI Language Model Instance API\&#34;&#34;</span> -o tsv
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>Portal Steps / Portal 操作：</strong> APIM → Backends → + Create new backend → 填写 Name / Runtime URL → Managed Identity 标签页 → Client identity 选 System assigned → Resource ID 填 <code>https://cognitiveservices.azure.com</code> → Create</p>
+</div><p><strong>Portal Steps:</strong> APIM → Backends → + Create new backend → Fill in Name / Runtime URL → Managed Identity tab → Client identity = System assigned → Resource ID = <code>https://cognitiveservices.azure.com</code> → Create</p>
 <p><img class="gallery-image" data-flex-basis="299px" data-flex-grow="124" height="1647" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/6-3-create-backend.png" srcset="/p/azure-apim-ai-resilience/images/6-3-create-backend_hu_6b4ff1c24b7d40ce.png 800w, /p/azure-apim-ai-resilience/images/6-3-create-backend_hu_3c50fe44b4ab8742.png 1600w, /p/azure-apim-ai-resilience/images/6-3-create-backend.png 2052w" width="2052"></p>
-<p><strong>Key Configuration / 关键配置说明：</strong></p>
+<p><strong>Key Configuration:</strong></p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>Configuration / 配置项</th>
-          <th>Example Value / 示例值</th>
-          <th>Description / 说明</th>
+          <th>Configuration</th>
+          <th>Example Value</th>
+          <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>Name</td>
           <td><code>&lt;foundry-resource-name&gt;</code></td>
-          <td>Recommended to match the Foundry resource name / 建议与 Foundry 资源名一致</td>
+          <td>Recommended to match the Foundry resource name</td>
       </tr>
       <tr>
           <td>Runtime URL</td>
           <td><code>https://&lt;foundry-resource-name&gt;.openai.azure.com/openai/v1</code></td>
-          <td>Foundry OpenAI endpoint (+<code>openai/v1</code>) / Foundry OpenAI 端点（+<code>openai/v1</code>）</td>
+          <td>Foundry OpenAI endpoint (+ <code>openai/v1</code>)</td>
       </tr>
       <tr>
           <td>Client identity</td>
           <td>System assigned identity</td>
-          <td>Use APIM system-assigned managed identity / 使用 APIM 系统托管标识</td>
+          <td>Use APIM system-assigned managed identity</td>
       </tr>
       <tr>
           <td>Resource ID</td>
           <td><code>https://cognitiveservices.azure.com</code></td>
-          <td>Token audience, <strong>fixed value</strong> / Token audience，<strong>固定值</strong></td>
+          <td>Token audience, <strong>fixed value</strong></td>
       </tr>
   </tbody>
 </table></div>
-<p><strong>CLI Alternative / CLI 替代方式：</strong></p>
+<p><strong>CLI Alternative:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -833,30 +843,26 @@
 </span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="create-lb-pool--创建-load-balancing-pool">Create LB Pool / 创建 Load Balancing Pool
-</h3><p><strong>Portal Steps / Portal 操作：</strong> APIM → Backends → Load balancer 标签页 → + Create new pool → 填写 Pool Name → 勾选所有 Backend → Send requests evenly (Round-robin) → Create</p>
+</div><h3 id="create-lb-pool">Create LB Pool
+</h3><p><strong>Portal Steps:</strong> APIM → Backends → Load balancer tab → + Create new pool → Fill in Pool Name → Select all Backends → Send requests evenly (Round-robin) → Create</p>
 <p><img class="gallery-image" data-flex-basis="375px" data-flex-grow="156" height="774" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/6-6-create-pool.png" srcset="/p/azure-apim-ai-resilience/images/6-6-create-pool_hu_3af9a6228e0fc588.png 800w, /p/azure-apim-ai-resilience/images/6-6-create-pool.png 1212w" width="1212"></p>
 
     <blockquote>
         <p>Portal provides two options: <strong>Send requests evenly</strong> (Round-robin) or <strong>Customize weight and priority</strong>.</p>
-<p>Portal 提供两种选项：<strong>Send requests evenly</strong>（Round-robin 均匀分发）和 <strong>Customize weight and priority</strong>（自定义权重与优先级）。</p>
 
     </blockquote>
 <hr>
-<h2 id="create-api--policy--创建-api--policy">Create API + Policy / 创建 API + Policy
-</h2><h3 id="create-api--创建-api">Create API / 创建 API
-</h3><p><strong>Portal Steps / Portal 操作：</strong> APIM → APIs → + Add API → HTTP → 填写 Display name / API URL suffix (<code>openai/v1</code>) → Web service URL 留空 → Create</p>
-<p>Then add Operations: create <code>/*</code> wildcard path for POST, GET, DELETE.</p>
-<p>然后添加 Operations：+ Add operation → 为 POST / GET / DELETE 各创建 <code>/*</code> 通配符路径。</p>
+<h2 id="create-api--policy">Create API + Policy
+</h2><h3 id="create-api">Create API
+</h3><p><strong>Portal Steps:</strong> APIM → APIs → + Add API → HTTP → Fill in Display name / API URL suffix (<code>openai/v1</code>) → Leave Web service URL empty → Create</p>
+<p>Then add Operations: create <code>/*</code> wildcard path for POST, GET, and DELETE.</p>
 
     <blockquote>
         <p>This example uses wildcard <code>/*</code> to proxy all requests. For finer control, create operations for specific paths like <code>/videos/*</code> for Sora2.</p>
-<p>本示例使用泛路径 <code>/*</code> 统一代理所有请求。如需更细粒度控制，可针对特定场景创建操作，例如仅匹配 Sora2 的 <code>/videos/*</code> 路径。</p>
 
     </blockquote>
-<h3 id="configure-policy--配置-policy">Configure Policy / 配置 Policy
-</h3><p>Select All operations → click <code>&lt;/&gt;</code> in Inbound processing → paste the policy below, update pool name → Save</p>
-<p>选择 All operations → 点击 Inbound processing 的 <code>&lt;/&gt;</code> → 粘贴以下 Policy，修改 Pool 名称 → Save</p>
+<h3 id="configure-policy">Configure Policy
+</h3><p>Select All operations → click <code>&lt;/&gt;</code> in Inbound processing → paste the policy below, update the pool name → Save</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -903,9 +909,9 @@
 <pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;policies&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;inbound&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- 读取请求头，允许调用方指定特定后端 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Read request header so callers can pin a backend --&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;set-variable</span> <span class="na">name=</span><span class="s">&#34;target&#34;</span> <span class="na">value=</span><span class="s">&#34;@(context.Request.Headers.GetValueOrDefault(&#34;</span><span class="err">X-AI-Foundry-Target&#34;,</span> <span class="err">&#34;&#34;))&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- 后端负载均衡池名称 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Backend load balancing pool name --&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;set-variable</span> <span class="na">name=</span><span class="s">&#34;pool_name&#34;</span> <span class="na">value=</span><span class="s">&#34;&lt;your-ai-hub-pool-name&gt;&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;choose&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nt">&lt;when</span> <span class="na">condition=</span><span class="s">&#34;@(context.Variables.GetValueOrDefault&lt;string&gt;(&#34;</span><span class="err">target&#34;)</span> <span class="err">!=</span> <span class="err">&#34;&#34;)&#34;</span><span class="nt">&gt;</span>
@@ -942,41 +948,40 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img class="gallery-image" data-flex-basis="370px" data-flex-grow="154" height="1848" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png" srcset="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_bf4c944bd3751b2f.png 800w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_82283df76f27d876.png 1600w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_fc16f38167941c1d.png 2400w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png 2851w" width="2851"></p>
-<p><strong>Policy Logic / Policy 核心逻辑：</strong></p>
+<p><strong>Policy Logic:</strong></p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>Area / 区域</th>
-          <th>Function / 功能</th>
+          <th>Area</th>
+          <th>Function</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td><strong>inbound</strong></td>
-          <td>Route to pinned backend or round-robin pool / 读取 <code>X-AI-Foundry-Target</code>，有值则路由到指定后端，否则使用 LB Pool 轮询</td>
+          <td>Read <code>X-AI-Foundry-Target</code>; if present, route to the specified backend, otherwise use the LB Pool round-robin</td>
       </tr>
       <tr>
           <td><strong>outbound</strong></td>
-          <td>Return actual backend in response header / <code>X-AI-Foundry-Backend</code> 响应头返回实际后端名称</td>
+          <td>Return the actual backend name in the <code>X-AI-Foundry-Backend</code> response header</td>
       </tr>
       <tr>
           <td><strong>backend</strong></td>
-          <td>Direct forward for pinned; auto-retry with exponential backoff for pool / 指定后端直接转发；轮询模式遇错误自动重试切换（最多 3 次，指数退避）</td>
+          <td>Forward directly for pinned routing; in pool mode, auto-retry and switch backend on failure (up to 3 attempts with exponential backoff)</td>
       </tr>
   </tbody>
 </table></div>
 <hr>
-<h2 id="test-and-validate--测试与验证">Test and Validate / 测试与验证
-</h2><p><strong>Prerequisites / 准备工作：</strong></p>
-<p>Gather the following before testing / 测试前准备以下信息：</p>
+<h2 id="test-and-validate">Test and Validate
+</h2><p><strong>Prerequisites:</strong></p>
+<p>Gather the following before testing:</p>
 <ul>
-<li>Get Gateway URL: APIM → Overview → Gateway URL / 获取 Gateway URL：APIM → Overview → Gateway URL</li>
-<li>Get API Key: APIM → Subscriptions → Built-in all-access → Show keys → Primary key / 获取 API Key：APIM → Subscriptions → Built-in all-access → Show keys → Primary key</li>
+<li>Get Gateway URL: APIM → Overview → Gateway URL</li>
+<li>Get API Key: APIM → Subscriptions → Built-in all-access → Show keys → Primary key</li>
 </ul>
 <p><img class="gallery-image" data-flex-basis="506px" data-flex-grow="211" height="1116" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-2-subscription-key.png" srcset="/p/azure-apim-ai-resilience/images/8-2-subscription-key_hu_73484fdc0f89d8c9.png 800w, /p/azure-apim-ai-resilience/images/8-2-subscription-key_hu_a8585cc5e1155571.png 1600w, /p/azure-apim-ai-resilience/images/8-2-subscription-key.png 2355w" width="2355"></p>
-<h3 id="test-1-load-balancing--测试-1负载均衡">Test 1: Load Balancing / 测试 1：负载均衡
-</h3><p>Send consecutive requests without <code>X-AI-Foundry-Target</code>, observe <code>X-AI-Foundry-Backend</code> rotating across backends:</p>
-<p>连续发送请求，观察 <code>X-AI-Foundry-Backend</code> 响应头在多个后端间轮换：</p>
+<h3 id="test-1-load-balancing">Test 1: Load Balancing
+</h3><p>Send consecutive requests without <code>X-AI-Foundry-Target</code>, and observe <code>X-AI-Foundry-Backend</code> rotating across backends:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -990,11 +995,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Expected: <code>X-AI-Foundry-Backend</code> changes with each request, confirming Round-robin is working.</p>
-<p>预期：每次请求的 <code>X-AI-Foundry-Backend</code> 值不同，证明 Round-robin 轮询生效。</p>
 <p><img class="gallery-image" data-flex-basis="295px" data-flex-grow="123" height="1961" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-3-round-robin-test.png" srcset="/p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_7f93d3fde652e814.png 800w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_a47e59e6a4cc2c60.png 1600w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test_hu_54b55a659d650932.png 2400w, /p/azure-apim-ai-resilience/images/8-3-round-robin-test.png 2415w" width="2415"></p>
-<h3 id="test-2-pinned-backend-routing--测试-2指定后端路由">Test 2: Pinned Backend Routing / 测试 2：指定后端路由
+<h3 id="test-2-pinned-backend-routing">Test 2: Pinned Backend Routing
 </h3><p>Use <code>X-AI-Foundry-Target</code> header to pin to a specific backend:</p>
-<p>通过 <code>X-AI-Foundry-Target</code> 请求头锁定特定后端：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1016,36 +1019,33 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Expected: <code>X-AI-Foundry-Backend</code> consistently returns the specified backend name.</p>
-<p>预期：多次请求的 <code>X-AI-Foundry-Backend</code> 始终返回指定的后端名称。</p>
 <p><img class="gallery-image" data-flex-basis="423px" data-flex-grow="176" height="1056" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/8-4-pinned-backend-test.png" srcset="/p/azure-apim-ai-resilience/images/8-4-pinned-backend-test_hu_dfc5dea219569ee5.png 800w, /p/azure-apim-ai-resilience/images/8-4-pinned-backend-test_hu_f665edd6a0ac1aeb.png 1600w, /p/azure-apim-ai-resilience/images/8-4-pinned-backend-test.png 1865w" width="1865"></p>
 <hr>
-<h2 id="faq--常见问题">FAQ / 常见问题
-</h2><p><strong>Q: Why not use APIM Backend&rsquo;s Circuit Breaker? / 为什么不使用 APIM Backend 的 Circuit Breaker？</strong></p>
+<h2 id="faq">FAQ
+</h2><p><strong>Q: Why not use APIM Backend&rsquo;s Circuit Breaker?</strong></p>
 <p>This architecture targets load balancing and quota aggregation. Circuit Breaker would &ldquo;break&rdquo; on backend failure, but a 429 on one model shouldn&rsquo;t block other models on the same backend. Simple failover via <code>retry</code> + <code>set-backend-service</code> is more appropriate.</p>
-<p>本架构目标是负载均衡与配额聚合。Circuit Breaker 会在后端故障时“断路”，但在我们的场景中，一个后端的某个模型限流（429）不应阻断对该后端其他模型的访问。通过 <code>retry</code> + <code>set-backend-service</code> 实现的简单故障转移更适合此场景。</p>
-<p><strong>Q: Is this architecture only for Sora2? / 这个架构仅适用于 Sora2 吗？</strong></p>
+<p><strong>Q: Is this architecture only for Sora2?</strong></p>
 <p>No. It applies to any Foundry / Azure OpenAI model service (Responses API, Chat Completions, Embeddings, Image Generation, etc.)—just point the Backend URL to the corresponding endpoint.</p>
-<p>不是。适用于任何 Foundry / Azure OpenAI 模型服务（Responses API、Chat Completions、Embeddings、Image Generation 等），只需将 Backend URL 指向对应端点即可。</p>
 <hr>
-<h2 id="reference-documentation--参考文档">Reference Documentation / 参考文档
+<h2 id="reference-documentation">Reference Documentation
 </h2><ul>
-<li>Microsoft Foundry Overview / Microsoft Foundry 概述: <a class="link" href="https://learn.microsoft.com/azure/foundry/what-is-foundry"  target="_blank" rel="noopener"
+<li>Microsoft Foundry Overview: <a class="link" href="https://learn.microsoft.com/azure/foundry/what-is-foundry"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/foundry/what-is-foundry</a></li>
 <li>Foundry RBAC: <a class="link" href="https://learn.microsoft.com/azure/foundry-classic/openai/how-to/role-based-access-control"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/foundry-classic/openai/how-to/role-based-access-control</a></li>
 <li>APIM v2 Tier: <a class="link" href="https://learn.microsoft.com/azure/api-management/v2-service-tiers-overview"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/api-management/v2-service-tiers-overview</a></li>
-<li>Backends &amp; LB Pool / 后端与负载均衡池: <a class="link" href="https://learn.microsoft.com/azure/api-management/backends"  target="_blank" rel="noopener"
+<li>Backends &amp; LB Pool: <a class="link" href="https://learn.microsoft.com/azure/api-management/backends"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/api-management/backends</a></li>
-<li>Managed Identity / APIM 托管标识: <a class="link" href="https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity"  target="_blank" rel="noopener"
+<li>Managed Identity: <a class="link" href="https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity</a></li>
-<li>Retry Policy / 重试策略: <a class="link" href="https://learn.microsoft.com/azure/api-management/retry-policy"  target="_blank" rel="noopener"
+<li>Retry Policy: <a class="link" href="https://learn.microsoft.com/azure/api-management/retry-policy"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/api-management/retry-policy</a></li>
-<li>Video Generation / Sora2 视频生成: <a class="link" href="https://learn.microsoft.com/azure/foundry/openai/concepts/video-generation"  target="_blank" rel="noopener"
+<li>Video Generation / Sora2: <a class="link" href="https://learn.microsoft.com/azure/foundry/openai/concepts/video-generation"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/foundry/openai/concepts/video-generation</a></li>
-<li>Models &amp; Regions / 模型与区域可用性: <a class="link" href="https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"  target="_blank" rel="noopener"
+<li>Models &amp; Regions: <a class="link" href="https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure</a></li>
-<li>Error Codes / Azure OpenAI 错误码: <a class="link" href="https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling"  target="_blank" rel="noopener"
+<li>Error Codes: <a class="link" href="https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling"  target="_blank" rel="noopener"
     >https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling</a></li>
 </ul>
 <hr>

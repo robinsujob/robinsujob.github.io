@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cors on Robin&#39;s Space</title>
+        <link>http://localhost:4002/zh/tags/cors/</link>
+        <description>Recent content in Cors on Robin&#39;s Space</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh</language>
+        <lastBuildDate>Mon, 28 Oct 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:4002/zh/tags/cors/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>API Gateway 跨域访问（CORS）配置指南</title>
+            <link>http://localhost:4002/zh/p/api-gateway-cors-configuration/</link>
+            <pubDate>Mon, 28 Oct 2024 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/zh/p/api-gateway-cors-configuration/</guid>
+            <description>&lt;img src=&#34;http://localhost:4002/&#34; alt=&#34;Featured image of post API Gateway 跨域访问（CORS）配置指南&#34; /&gt;&#xA;    &lt;blockquote&gt;&#xA;        &lt;p&gt;原文链接：&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;Amazon API Gateway 跨域请求（CORS）配置 - 亚马逊AWS官方博客&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;    &lt;/blockquote&gt;&#xA;&lt;p&gt;CORS，全称为跨源资源共享，是一种基于 HTTP 标头的机制，用来声明哪些外部源可以访问服务器资源。它用于在浏览器同源策略的基础上，安全地放开合法的跨域访问。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/api-gateway/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;Amazon API Gateway&lt;/a&gt; 是一项全托管服务，可帮助开发者轻松创建、发布、维护、监控和保护任意规模的 API。由于它常被用作后端服务的统一入口，因此在 API Gateway 上配置 CORS 是一个非常常见的需求。&lt;/p&gt;&#xA;&lt;p&gt;本文将介绍如何在 Amazon API Gateway 的 REST API 和 HTTP API 中配置跨域访问，并重点说明两者在 CORS 配置上的差异，以及开启授权后的处理要点。&lt;/p&gt;&#xA;&lt;h2 id=&#34;cors-原理&#34;&gt;CORS 原理&#xA;&lt;/h2&gt;&lt;p&gt;CORS 主要依赖以下几个 HTTP 标头：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Origin&lt;/strong&gt;：指示请求来源。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Access-Control-Allow-Origin&lt;/strong&gt;：指定哪些来源可以访问资源。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Access-Control-Allow-Methods&lt;/strong&gt;：列出允许访问资源的 HTTP 方法。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Access-Control-Allow-Headers&lt;/strong&gt;：指示允许使用的自定义请求头。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Access-Control-Allow-Credentials&lt;/strong&gt;：指示是否允许携带 Cookie 等凭据。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Access-Control-Max-Age&lt;/strong&gt;：指示预检结果可缓存的时长。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;</description>
+        </item></channel>
+</rss>
