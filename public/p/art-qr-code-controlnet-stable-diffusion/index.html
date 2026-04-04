@@ -316,6 +316,16 @@
         <li><a href="#appendix-2-how-to-use-the-stable-diffusion-ai-drawing-solution">Appendix 2: How to Use the Stable Diffusion AI Drawing Solution</a></li>
       </ul>
     </li>
+    <li><a href="#enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose</a>
+      <ul>
+        <li><a href="#environment-setup-enable-multiple-controlnet-units">Environment Setup: Enable Multiple ControlNet Units</a></li>
+        <li><a href="#import-skeleton-data-and-enable-openpose">Import Skeleton Data and Enable OpenPose</a></li>
+        <li><a href="#import-qr-code-and-configure-generation">Import QR Code and Configure Generation</a></li>
+        <li><a href="#prompts-and-generation">Prompts and Generation</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#fine-tuning-tips">Fine-Tuning Tips</a></li>
+      </ul>
+    </li>
     <li><a href="#references">References</a></li>
   </ul>
 
@@ -397,7 +407,7 @@
 
 
                     <time class="article-time--reading">
-                        11 minutes read
+                        13 minutes read
                     </time>
                 
             </div>
@@ -478,6 +488,16 @@
       <ul>
         <li><a href="#appendix-1-choosing-controlnet-qr-code-models">Appendix 1: Choosing ControlNet QR Code Models</a></li>
         <li><a href="#appendix-2-how-to-use-the-stable-diffusion-ai-drawing-solution">Appendix 2: How to Use the Stable Diffusion AI Drawing Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose</a>
+      <ul>
+        <li><a href="#environment-setup-enable-multiple-controlnet-units">Environment Setup: Enable Multiple ControlNet Units</a></li>
+        <li><a href="#import-skeleton-data-and-enable-openpose">Import Skeleton Data and Enable OpenPose</a></li>
+        <li><a href="#import-qr-code-and-configure-generation">Import QR Code and Configure Generation</a></li>
+        <li><a href="#prompts-and-generation">Prompts and Generation</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#fine-tuning-tips">Fine-Tuning Tips</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
@@ -741,6 +761,111 @@
 <p>It also integrates with AWS serverless services like Amazon API Gateway and DynamoDB, seamlessly forwarding training and inference requests from the WebUI frontend to dedicated SageMaker backend servers, enabling seamless compute scaling and precise cost management.</p>
 <p>For detailed steps to subscribe to the imAgine solution, please refer to the Workshop page: <a class="link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"  target="_blank" rel="noopener"
     >imAgine Workshop</a></p>
+<h2 id="enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose
+</h2><p>Building on the QR code generation techniques from the previous section, this section demonstrates how to combine <strong>OpenPose</strong> with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which can be used as an additional ControlNet input to control character poses in the generated image.</p>
+<p>Here are some example results combining OpenPose pose control with QR code generation:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><img alt="OpenPose + QR Code" class="gallery-image" data-flex-basis="400px" data-flex-grow="166" height="540" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code_hu_1827644c6b490e79.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code.png 900w" width="900"></td>
+          <td style="text-align: center"><img alt="Girl with Car" class="gallery-image" data-flex-basis="401px" data-flex-grow="167" height="536" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car_hu_d779f7fe9c1958a9.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png 896w" width="896"></td>
+      </tr>
+  </tbody>
+</table></div>
+<p>The prompt used for the example above:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">(school girl walking on the street:1.6), city background, anime style, masterpiece, best quality
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="environment-setup-enable-multiple-controlnet-units">Environment Setup: Enable Multiple ControlNet Units
+</h3><p>To use OpenPose and QR Code ControlNet simultaneously, you need at least <strong>2 ControlNet Units</strong> enabled:</p>
+<ol>
+<li>Go to <strong>Settings</strong> → <strong>ControlNet</strong></li>
+<li>Set the <strong>Multi ControlNet</strong> unit count to <strong>2</strong> (or more)</li>
+<li>Click <strong>Apply Settings</strong>, then <strong>Reload UI</strong></li>
+</ol>
+<p><img alt="Settings" class="gallery-image" data-flex-basis="753px" data-flex-grow="313" height="801" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/3-setting.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/3-setting_hu_b5e6a63896ebda6.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/3-setting_hu_8b6d41a6102ea411.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/3-setting_hu_ecc7edb38c7f398b.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/3-setting.png 2514w" width="2514"></p>
+<p><img alt="Set Multi ControlNet Units" class="gallery-image" data-flex-basis="910px" data-flex-grow="379" height="855" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/4-set-multi-unit.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/4-set-multi-unit_hu_b5d1b2f4387cd450.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/4-set-multi-unit_hu_26545b7bcc39a476.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/4-set-multi-unit_hu_1bdf0964a8df41e6.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/4-set-multi-unit.png 3245w" width="3245"></p>
+<p><img alt="Reload UI" class="gallery-image" data-flex-basis="534px" data-flex-grow="222" height="1486" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/5-reload-ui.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/5-reload-ui_hu_3b3ab1cb73bf46f3.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/5-reload-ui_hu_e849a8fb6bba1f41.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/5-reload-ui_hu_f3f3f518f7878675.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/5-reload-ui.png 3310w" width="3310"></p>
+<p><img alt="Verify Result" class="gallery-image" data-flex-basis="376px" data-flex-grow="156" height="1030" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/6-check-result.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/6-check-result_hu_1ab84bcffc2484d0.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/6-check-result_hu_85b1c58013b0518d.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/6-check-result.png 1616w" width="1616"></p>
+<h3 id="import-skeleton-data-and-enable-openpose">Import Skeleton Data and Enable OpenPose
+</h3><ol>
+<li>Open the <strong>OpenPose Editor</strong> extension</li>
+<li>Click <strong>Load JSON</strong> to import your prepared skeleton pose data</li>
+<li>Click <strong>Send to txt2img</strong> to transfer the pose to ControlNet</li>
+<li>In ControlNet <strong>Unit 0</strong>, enable ControlNet and select the model <strong>control_v11p_sd15_openpose</strong></li>
+</ol>
+<p><img alt="Import Pose Data" class="gallery-image" data-flex-basis="547px" data-flex-grow="227" height="1448" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/7-import-pose.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/7-import-pose_hu_b2a0db80c07e8fdd.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/7-import-pose_hu_536c91b4faef4e8e.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/7-import-pose_hu_e0f0e9ff4141a491.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/7-import-pose.png 3301w" width="3301"></p>
+<p><img alt="Enable OpenPose ControlNet" class="gallery-image" data-flex-basis="220px" data-flex-grow="91" height="1735" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/8-enable-openpose.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/8-enable-openpose_hu_f0fb744ed7c07583.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/8-enable-openpose.png 1595w" width="1595"></p>
+<h3 id="import-qr-code-and-configure-generation">Import QR Code and Configure Generation
+</h3><ol>
+<li>Switch to <strong>ControlNet Unit 1</strong></li>
+<li>Upload your QR code image</li>
+<li>Select the model <strong>control_v1p_sd15_qrcode_monster</strong> with a <strong>Control Weight of 1.7</strong></li>
+<li>Set <strong>Sampling Steps</strong> to 30–50 for better quality</li>
+<li>Adjust <strong>Width/Height</strong> to match your desired output resolution</li>
+</ol>
+<p><img alt="Enable QR Code Monster" class="gallery-image" data-flex-basis="233px" data-flex-grow="97" height="1716" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/9-enable-qr-monster.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/9-enable-qr-monster_hu_48432b44047ff4a8.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/9-enable-qr-monster_hu_5ed8c8f73f0276dc.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/9-enable-qr-monster.png 1668w" width="1668"></p>
+<p><img alt="Set Width and Height" class="gallery-image" data-flex-basis="228px" data-flex-grow="95" height="1737" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/10-set-hw.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/10-set-hw_hu_e0393aac628b989a.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/10-set-hw_hu_f56c4be88d52317e.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/10-set-hw.png 1656w" width="1656"></p>
+<h3 id="prompts-and-generation">Prompts and Generation
+</h3><p>Set your prompts for the final generation:</p>
+<p><strong>Positive prompt:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">(1girl:1.6, side lying sleep, on the garden, sunflowers), wooden floor, masterpiece, best quality
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Negative prompt:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">extra hands, extra fingers, deformed hands, bad anatomy, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img alt="Set Prompts" class="gallery-image" data-flex-basis="1108px" data-flex-grow="461" height="719" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/11-set-prompt.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/11-set-prompt_hu_140869ed3fe0cac5.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/11-set-prompt_hu_811ca3a0bd1bbe33.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/11-set-prompt_hu_c793fa54f7ad3c77.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/11-set-prompt.png 3320w" width="3320"></p>
+<h3 id="results">Results
+</h3><p>Here is the final generated result combining OpenPose and QR code:</p>
+<p><img alt="OpenPose + QR Code Result" class="gallery-image" data-flex-basis="453px" data-flex-grow="189" height="1739" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/12-openpose-qrcode.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/12-openpose-qrcode_hu_1dda73f82d03b7f1.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/12-openpose-qrcode_hu_559208d515c67a7d.png 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/12-openpose-qrcode_hu_a9a88a4430cb2aa3.png 2400w, /p/art-qr-code-controlnet-stable-diffusion/images/12-openpose-qrcode.png 3288w" width="3288"></p>
+<p><strong>Design notes:</strong> By using composition techniques to shift the viewer&rsquo;s visual focus away from the QR code&rsquo;s core functional area, we can create images that are both aesthetically pleasing and maintain QR code scannability. The key is to avoid placing important visual elements directly over the QR code&rsquo;s positioning markers and data modules.</p>
+<p>For comparison, here are the individual components:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><img alt="Lying Sleep Pose" class="gallery-image" data-flex-basis="355px" data-flex-grow="148" height="675" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/13-lying-sleep-openpose.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/13-lying-sleep-openpose_hu_aea52875040ebca6.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/13-lying-sleep-openpose.png 1000w" width="1000"></td>
+          <td style="text-align: center"><img alt="OpenPose Skeleton" class="gallery-image" data-flex-basis="357px" data-flex-grow="148" height="672" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/14-openpose.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/14-openpose_hu_3e8ab8bf2aeed12d.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/14-openpose.png 1000w" width="1000"></td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="fine-tuning-tips">Fine-Tuning Tips
+</h3><p>To achieve the best results when combining OpenPose with QR codes, consider adjusting these parameters:</p>
+<ul>
+<li><strong>Prompts</strong>: Experiment with different scene descriptions and character poses</li>
+<li><strong>Sampling method</strong>: Try different samplers (Euler a, DPM++ 2M Karras, etc.)</li>
+<li><strong>Skeleton structure and position</strong>: Adjust the pose skeleton to avoid overlapping with QR code critical areas</li>
+<li><strong>Control weight</strong>: Balance between OpenPose (pose accuracy) and QR code (scannability) weights</li>
+<li><strong>Guidance start/end timing</strong>: Fine-tune when each ControlNet kicks in during the denoising process to achieve better blending</li>
+</ul>
 <h2 id="references">References
 </h2><ul>
 <li><a class="link" href="https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa"  target="_blank" rel="noopener"

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在本次动手训练营，将使用 eCloudrover imAgine 产品生成艺术二维码，您将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 扫描器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：\n">
+<title>2.1 生成艺术二维码</title>
+
+
+<link rel="canonical" href="http://localhost:4002/zh/p/2.1-%E7%94%9F%E6%88%90%E8%89%BA%E6%9C%AF%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.9e1aaad4f0d84df027eafaddb7a8e407fadfeddf032716adebfc7db13ddc55ce.css"><meta property='og:title' content="2.1 生成艺术二维码">
+<meta property='og:description' content="在本次动手训练营，将使用 eCloudrover imAgine 产品生成艺术二维码，您将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 扫描器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：\n">
+<meta property='og:url' content='http://localhost:4002/zh/p/2.1-%E7%94%9F%E6%88%90%E8%89%BA%E6%9C%AF%E4%BA%8C%E7%BB%B4%E7%A0%81/'>
+<meta property='og:site_name' content='Robin&#39;s Space'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' />
+<meta name="twitter:title" content="2.1 生成艺术二维码">
+<meta name="twitter:description" content="在本次动手训练营，将使用 eCloudrover imAgine 产品生成艺术二维码，您将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 扫描器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：\n">
+    <link rel="shortcut icon" href="/img/avatar.jpg" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/zh/">
+                    <img src="/img/avatar.jpg" 
+                        width="600"
+                        height="400"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+                    <span class="emoji">🚀</span>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh/">Robin&#39;s Space</a></h1>
+            <h2 class="site-description">AWS 解决方案架构师 | 云计算 &amp; AI</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+
+                
+                <span>技术</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>项目</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                <span></span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    <li id="i18n-switch">  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            
+                                
+                                
+                                    
+                                
+                                <option value="/" >English</option>
+                            
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                <option value="/zh/p/2.1-%E7%94%9F%E6%88%90%E8%89%BA%E6%9C%AF%E4%BA%8C%E7%BB%B4%E7%A0%81/" selected>简体中文</option>
+                            
+                        </select>
+                    </li>
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-优化二维码">1. 优化二维码</a></li>
+            <li><a href="#2-制作基础二维码">2. 制作基础二维码</a></li>
+            <li><a href="#3-确定艺术风格">3. 确定艺术风格</a></li>
+            <li><a href="#4-生成艺术二维码">4. 生成艺术二维码</a></li>
+            <li><a href="#5-结果调优">5. 结果调优</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh/p/2.1-%E7%94%9F%E6%88%90%E8%89%BA%E6%9C%AF%E4%BA%8C%E7%BB%B4%E7%A0%81/">2.1 生成艺术二维码</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        阅读时长: 6 分钟
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span>目录</span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-优化二维码">1. 优化二维码</a></li>
+            <li><a href="#2-制作基础二维码">2. 制作基础二维码</a></li>
+            <li><a href="#3-确定艺术风格">3. 确定艺术风格</a></li>
+            <li><a href="#4-生成艺术二维码">4. 生成艺术二维码</a></li>
+            <li><a href="#5-结果调优">5. 结果调优</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <p>在本次动手训练营，将使用 eCloudrover imAgine 产品生成艺术二维码，您将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 扫描器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></th>
+          <th><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></div>
+<h4 id="1-优化二维码">1. 优化二维码
+</h4><p>二维码是一种借助特定几何图形分配，在二维空间上分布的、黑白相间的、记录数据符号信息的图形。二维码有多种不同的编码方式，我们此处采用通用度最高也是最基础的编码方式：QR Code。</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>输入的二维码是借助 SD 生成艺术二维码过程中最重要的部分之一。在使用ControlNet生成艺术二维码需要考虑以下两个特点：</p>
+<ol>
+<li><strong>二维码中包含的信息量</strong></li>
+</ol>
+<p>无论二维码采用何种编码方式，承载的字符信息越多，二维码在视觉上呈现的黑白结构就越复杂。复杂的结构很容易导致我们在生成艺术创意时，极大地收到二维码本身信息的掣肘。因此我们首先要想办法<strong>精简二维码中包含的字符长度</strong>。</p>
+<p>对于最广泛的应用场景，二维码通常会包含一个网页链接；为了提升二维码生成的美观性，首先需要对网页链接进行缩短。市面上的链接缩短工具有很多，您可以自由选择。</p>
+<p>::alert{header=&ldquo;注意：在中国大陆境内使用短链，请选择有域名备案的缩链平台，否则会被微信、浏览器等阻挡。&rdquo; type=&ldquo;warning&rdquo;}</p>
+<p>例如我们有一个希望制作成二维码的网址：https://www.ecloudrover.com/aigc/ 通过缩链处理后为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">http://c.suo.nz/7KZrF
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过下图可以比较直观地看出链接长短对于二维码视觉的影响，缩短的链接将更有利于我们接下来的创作。</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<ol start="2">
+<li><strong>二维码的呈现形式</strong></li>
+</ol>
+<p>随着技术发展，二维码不仅只支持黑白方块状的图案样式，定位点和码元都支持多样化的呈现，例如以下几种样式</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在实际操作中，我们可以尝试多种不同的码点形式，以使得生图效果符合我们的预期。</p>
+<p>下图展示了不同的二维码形式对最终效果图的影响：</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mountain, green grassland, sky, cloud, bird, blue sky, no human, day, wide shot, flying, border, outdoors, white bird, scenery
+</span></span><span class="line"><span class="cl">Negative prompt: easynegative
+</span></span><span class="line"><span class="cl">Steps: 40, Sampler: DPM++ 2M Karras, CFG scale: 6, Seed: 3943213078, Size: 872x872, Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, ControlNet: <span class="s2">&#34;preprocessor: none, model: control_v1p_sd15_qrcode_monster [a6e58995], weight: 1.35-1.5, starting/ending: (0.05, 1), resize mode: Resize and Fill, pixel perfect: True, control mode: Balanced, preprocessor params: (512, 64, 64)&#34;</span>, Version: v1.3.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-制作基础二维码">2. 制作基础二维码
+</h4><p>了解了上述要点后，您将开始使用二维码制作工具，生成一个输入给 SD 的基础二维码。</p>
+<p>互联网有多种网页二维码生成工具，您可以自由选择。同时为了方便您使用，在本次动手训练营准备的 专用的 AMI 中已经预装了 QRCode 生成插件，只要您从正确的版本中启用 AMI，都可以直接在 Webui 上看到下述的 QRCode Toolkit：</p>
+<ul>
+<li>
+<p>Anthony&rsquo;s QR Toolkit：整合在 Webui 的 QRCode 生成与优化工具</p>
+<p><a class="link" href="https://github.com/antfu/sd-webui-qrcode-toolkit"  target="_blank" rel="noopener"
+    >https://github.com/antfu/sd-webui-qrcode-toolkit</a></p>
+</li>
+</ul>
+<p>接下来我们演示如何使用 Anthony&rsquo;s QR Toolkit 来生成二维码，请选中Webui中的<code>QR Toolkit</code>标签页，并参考下图完成二维码参数的配置。</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>完成二维码制作后，点击 “Send to ControlNet”，直接将二维码发送至 ControlNet，或点击右侧的 “Download” 以下载到本地以进行下一步操作。</p>
+<h4 id="3-确定艺术风格">3. 确定艺术风格
+</h4><p>使用 Stable Diffusion 进行艺术创作的核心是选择合适的模型+提示词。您在创作艺术二维码之前，建议先不使用 ControlNet，先进行一次普通的图片生成，以测试生图效果。</p>
+<p>此处我们希望二维码中有山川、蓝天、白云等自然景观，因此先使用以下参数，测试提示词和模型的生成效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mountain, green grassland, sky, cloud, bird, blue sky, no human, day, wide shot, flying, border, outdoors, white bird, scenery
+</span></span><span class="line"><span class="cl">Negative prompt: easynegative
+</span></span><span class="line"><span class="cl">Steps: 20, Sampler: Euler a, CFG scale: 7, Seed: 4078355702, Face restoration: CodeFormer, Size: 512x512, Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<h4 id="4-生成艺术二维码">4. 生成艺术二维码
+</h4><p>确认好图片风格后，我们将未经处理的二维码上传 ControlNet。请在“文生图”标签页中展开ControlNet标签，并注意以下几个选项的配置：</p>
+<ul>
+<li>勾选 <strong>“启用” 按钮</strong> ：以确保 ControlNet 在图片生成过程中生效；</li>
+<li>模型选框：请选择 <strong>“control_v1p_sd15_qrcode_monster”</strong> 来使用ControlNet二维码控制模型；</li>
+<li>控制权重：对于 qrcode_monster 模型，建议设置在 <strong>1.1-1.6</strong> 之间；</li>
+<li>引导介入/终止时机：介入时机建议在 <strong>0-0.1</strong> 之间，终止时机建议为 <strong>1</strong>。</li>
+</ul>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>在文生图配置中建议调整两组数值：</p>
+<ul>
+<li>迭代步数：在 <strong>30-50</strong> 之间，默认值 20 不足以引导生成一个高质量的二维码图片</li>
+<li>宽度/高度：直接从 ControlNet 发送二维码原图的宽高比至上方</li>
+</ul>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>参数全部配置完成后，点击生成即可，可以看到此处我们生成了一个效果不错的图片，使用手机扫码测试也完全通过。</p>
+<p><img alt="11-qrcode" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<h4 id="5-结果调优">5. 结果调优
+</h4><p>ControlNet 的参数会影响何时以及如何将控制应用于生成过程。</p>
+<ul>
+<li><strong>控制权重</strong> - ControlNet 的权重。   权重越高，输出受 ControlNet 的影响就越大。</li>
+<li><strong>开始控制步骤</strong> - ControlNet 开始生效时生成过程的百分比。</li>
+<li><strong>结束控制步骤</strong> - ControlNet 停止生效时生成过程的百分比。</li>
+</ul>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>启动控制步骤将允许提示和模型在知道 QR 码控件存在之前发挥创意。  最终控制步骤将允许模型尝试将 QR 码更多地融入到艺术品中（但会使二维码更难扫描）。 它需要几次尝试和错误才能找到适当的平衡，以便 ControlNet 有足够的时间进行干预，但又不能太多，这样代码就足够艺术化。</p>
+<p>如果生成的二维码不能够达到期望，可以选择微调以下几个参数，并增加生成的总批次数，不断尝试抽卡以逼近最终期望的效果：</p>
+<ul>
+<li>提示词</li>
+<li>采样方法</li>
+<li>ControlNet 控制权重</li>
+<li>ControlNet 引导介入/终止时机</li>
+</ul>
+<p>必要时可以选择使用 “脚本” 中的 X/Y/Z Plot，来对比不同参数下生成二维码的效果。要使用X/Y/Z Plot，请在WebUI页面底部“脚本”处选择X/Y/Z Plot，您可以尝试通过选中X与Y轴的类型（Type），以控制ControlNet 控制权重（ControlNet Weight）和 ControlNet引导介入/终止时机（ContolNet Guidance Start）来观察不同生成的效果。</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>选中X与Y轴的类型后之后，轴值（Value）部分的设置可以参考以下数值类型的写法：</p>
+<ul>
+<li>区间写法1，单调递增1：<code>1-5 = 1, 2, 3, 4, 5</code></li>
+<li>区间写法2，根据指定值递增：
+<ul>
+<li><code>1-5 (+2) = 1, 3, 5</code></li>
+<li><code>10-5 (-3) = 10, 7</code></li>
+<li><code>1-3 (+0.5) = 1, 1.5, 2, 2.5, 3</code></li>
+</ul>
+</li>
+<li>区间写法3，生成范围内n个数值
+<ul>
+<li><code>1-10 [5] = 1, 3, 5, 7, 10</code></li>
+<li><code>0.0-1.0 [6] = 0.0, 0.2, 0.4, 0.6, 0.8, 1.0</code></li>
+</ul>
+</li>
+</ul>
+<p>::alert{header=&ldquo;注意：如果您输入较细粒度的递增指标，则最终结果生成时间较长，请选择适合您的参数。&rdquo; type=&ldquo;warning&rdquo;}</p>
+<p>我们此处对比了 ControlNet 的控制权重和引导介入时机。将生成X轴为ControlNet 控制权重<code>1.0-1.8</code>按照<code>0.1</code>递增，共9个数据点；Y轴ControlNet 引导介入/终止时机 <code>0-0.1</code> 按照 <code>0.01</code>递增，共3个数据点。共计27张对比图。</p>
+<p><img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"></p>
+<p>::alert{header=&ldquo;通过优化，您可以选中您喜好的参数以生成最终效果图。&rdquo; type=&ldquo;success&rdquo;}</p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2026 Robin&#39;s Space
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
+
+
+    </body>
+</html>

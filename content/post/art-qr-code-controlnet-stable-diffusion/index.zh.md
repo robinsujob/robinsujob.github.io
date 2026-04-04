@@ -254,6 +254,99 @@ imAgine 是一款由亚马逊云科技核心级服务合作伙伴伊克罗德（
 
 订阅 imAgine 解决方案的详细操作流程请参考 WorkShop 页面：[imAgine Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 
+## 使用 OpenPose 优化人物二维码
+
+在上一节中，我们体验了如何使用 ControlNet 生成艺术二维码。本节将进一步介绍如何将 **OpenPose** 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。
+
+### 效果展示
+
+| ![OpenPose + QR Code](images/1-open-pose-code.png) | ![Girl with Car](images/2-girl-with-car.png) |
+|:---:|:---:|
+| OpenPose + QR Code | Girl with Car |
+
+上面右侧图片使用的提示词：
+
+```text
+school girl walking, a car
+```
+
+### 环境准备：开启多个 ControlNet Unit
+
+要同时使用 OpenPose 和 QR Code 两个 ControlNet 模型，需要启用多个 ControlNet Unit：
+
+1. 进入 **Settings**（设置）标签页
+2. 在左侧找到 **ControlNet** 选项
+3. 将 **Multi ControlNet** 的 Unit 数量设置为不小于 **2**
+4. 点击 **Apply Settings**（保存设置）
+5. 点击 **Reload UI**（重载前端）使设置生效
+
+![进入设置](images/3-setting.png)
+
+![设置多 Unit](images/4-set-multi-unit.png)
+
+![重载前端](images/5-reload-ui.png)
+
+![确认生效](images/6-check-result.png)
+
+### 导入骨架数据并启用 OpenPose
+
+1. 在 ControlNet 区域点击 **OpenPose Editor**（OpenPose 编辑器）
+2. 加载预设的 JSON 骨架数据
+3. 点击 **Send to txt2img**（发送到文生图）
+4. 启用 ControlNet，选择预处理器为 `none`，模型选择 `control_v11p_sd15_openpose`
+
+![导入骨架数据](images/7-import-pose.png)
+
+![启用 OpenPose](images/8-enable-openpose.png)
+
+### 导入二维码并生成
+
+1. 切换到 **ControlNet Unit 1**
+2. 上传你的二维码图片
+3. 选择模型 `control_v1p_sd15_qrcode_monster`，将 **Control Weight**（控制权重）设置为 **1.7**
+4. 设置迭代步数为 **30-50** 步
+5. 根据需要调整生成图片的宽高比
+
+![启用 QR Code Monster](images/9-enable-qr-monster.png)
+
+![设置宽高](images/10-set-hw.png)
+
+### 设置提示词并生成
+
+**正向提示词（Positive Prompt）：**
+
+```text
+(1girl:1.6, side lying sleep, on the garden, sunflowers), wooden floor
+```
+
+**反向提示词（Negative Prompt）：**
+
+```text
+extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, deformed
+```
+
+![设置提示词](images/11-set-prompt.png)
+
+### 最终效果
+
+![OpenPose + QR Code 最终效果](images/12-openpose-qrcode.png)
+
+通过巧妙地偏移二维码位置和运用构图技巧，可以有效地将观众的视觉焦点从二维码转移到角色本身，让整体画面更加自然协调。
+
+| ![侧躺姿势效果](images/13-lying-sleep-openpose.png) | ![OpenPose 骨架](images/14-openpose.png) |
+|:---:|:---:|
+| 侧躺姿势生成效果 | 对应的 OpenPose 骨架 |
+
+### 调优建议
+
+在实际创作中，可以从以下几个方面进行调优：
+
+- **提示词**：调整角色描述、场景、风格等关键词的权重
+- **采样方法**：尝试不同的采样器（如 Euler a、DPM++ 2M Karras 等）
+- **骨架结构与位置**：调整 OpenPose 骨架的姿势和在画面中的位置
+- **控制权重**：分别调整 OpenPose 和 QR Code 的 Control Weight
+- **引导介入与终止时机**：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导
+
 ## 参考链接
 
 - [Stable Diffusion AI 方案 MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)

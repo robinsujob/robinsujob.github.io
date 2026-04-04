@@ -261,6 +261,101 @@ It also integrates with AWS serverless services like Amazon API Gateway and Dyna
 
 For detailed steps to subscribe to the imAgine solution, please refer to the Workshop page: [imAgine Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 
+## Enhancing QR Codes with OpenPose
+
+Building on the QR code generation techniques from the previous section, this section demonstrates how to combine **OpenPose** with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which can be used as an additional ControlNet input to control character poses in the generated image.
+
+Here are some example results combining OpenPose pose control with QR code generation:
+
+| | |
+|:---:|:---:|
+| ![OpenPose + QR Code](images/1-open-pose-code.png) | ![Girl with Car](images/2-girl-with-car.png) |
+
+The prompt used for the example above:
+
+```text
+(school girl walking on the street:1.6), city background, anime style, masterpiece, best quality
+```
+
+### Environment Setup: Enable Multiple ControlNet Units
+
+To use OpenPose and QR Code ControlNet simultaneously, you need at least **2 ControlNet Units** enabled:
+
+1. Go to **Settings** → **ControlNet**
+2. Set the **Multi ControlNet** unit count to **2** (or more)
+3. Click **Apply Settings**, then **Reload UI**
+
+![Settings](images/3-setting.png)
+
+![Set Multi ControlNet Units](images/4-set-multi-unit.png)
+
+![Reload UI](images/5-reload-ui.png)
+
+![Verify Result](images/6-check-result.png)
+
+### Import Skeleton Data and Enable OpenPose
+
+1. Open the **OpenPose Editor** extension
+2. Click **Load JSON** to import your prepared skeleton pose data
+3. Click **Send to txt2img** to transfer the pose to ControlNet
+4. In ControlNet **Unit 0**, enable ControlNet and select the model **control_v11p_sd15_openpose**
+
+![Import Pose Data](images/7-import-pose.png)
+
+![Enable OpenPose ControlNet](images/8-enable-openpose.png)
+
+### Import QR Code and Configure Generation
+
+1. Switch to **ControlNet Unit 1**
+2. Upload your QR code image
+3. Select the model **control_v1p_sd15_qrcode_monster** with a **Control Weight of 1.7**
+4. Set **Sampling Steps** to 30–50 for better quality
+5. Adjust **Width/Height** to match your desired output resolution
+
+![Enable QR Code Monster](images/9-enable-qr-monster.png)
+
+![Set Width and Height](images/10-set-hw.png)
+
+### Prompts and Generation
+
+Set your prompts for the final generation:
+
+**Positive prompt:**
+```text
+(1girl:1.6, side lying sleep, on the garden, sunflowers), wooden floor, masterpiece, best quality
+```
+
+**Negative prompt:**
+```text
+extra hands, extra fingers, deformed hands, bad anatomy, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality
+```
+
+![Set Prompts](images/11-set-prompt.png)
+
+### Results
+
+Here is the final generated result combining OpenPose and QR code:
+
+![OpenPose + QR Code Result](images/12-openpose-qrcode.png)
+
+**Design notes:** By using composition techniques to shift the viewer's visual focus away from the QR code's core functional area, we can create images that are both aesthetically pleasing and maintain QR code scannability. The key is to avoid placing important visual elements directly over the QR code's positioning markers and data modules.
+
+For comparison, here are the individual components:
+
+| | |
+|:---:|:---:|
+| ![Lying Sleep Pose](images/13-lying-sleep-openpose.png) | ![OpenPose Skeleton](images/14-openpose.png) |
+
+### Fine-Tuning Tips
+
+To achieve the best results when combining OpenPose with QR codes, consider adjusting these parameters:
+
+- **Prompts**: Experiment with different scene descriptions and character poses
+- **Sampling method**: Try different samplers (Euler a, DPM++ 2M Karras, etc.)
+- **Skeleton structure and position**: Adjust the pose skeleton to avoid overlapping with QR code critical areas
+- **Control weight**: Balance between OpenPose (pose accuracy) and QR code (scannability) weights
+- **Guidance start/end timing**: Fine-tune when each ControlNet kicks in during the denoising process to achieve better blending
+
 ## References
 
 - [Stable Diffusion AI Solution MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
