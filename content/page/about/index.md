@@ -10,10 +10,12 @@ Builder, photographer, and lifelong tinkerer.
 ENTJ — I thrive on turning ideas into reality, moving fast, and solving problems that matter. If there's a better way to do something, I'll find it (or build it).
 
 > *Live fully. Stay true.*
+>
+> Life's too short to play it safe. I want to make every moment count and stay honest to what I believe in — my ideas, my craft, and my curiosity.
 
 I work at the intersection of cloud and AI — designing architectures that scale, shipping products that solve real problems, and making complex technology feel simple.
 
-Currently a Senior Solutions Engineer at Microsoft. Previously at AWS, where I served ISV and SMB clients as Solutions Architect — helping them migrate workloads, launch AI products, and optimize cloud spend. Before that, I spent six years at IBM as Technical Solutions Architect, building demo platforms and leading PoC projects across Asia-Pacific.
+Currently a Senior Solutions Engineer at Microsoft. Previously at AWS, where I served ISV and SMB clients as Solutions Architect — helping them migrate workloads, launch AI products, and optimize cloud spend. Before that, I spent years at IBM as Technical Solutions Architect at the Client Center and Innovation Studio, building demo platforms, leading PoC projects, and exploring new technologies to deliver business value.
 
 I'm driven by curiosity and craft. Whether it's a serverless architecture, an open source tool, or a perfectly composed photograph — I believe the details matter. I write about what I learn on this blog, share code on [GitHub](https://github.com/robinsujob), and shoot street photography on [Instagram](https://www.instagram.com/robinsu77/).
 
