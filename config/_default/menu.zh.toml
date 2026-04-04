@@ -8,7 +8,7 @@
 
 [[main]]
     identifier = "tech"
-    name       = "技术"
+    name       = "文章"
     url        = "/zh/"
     weight     = -90
     [main.params]

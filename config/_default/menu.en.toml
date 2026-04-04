@@ -8,7 +8,7 @@
 
 [[main]]
     identifier = "tech"
-    name       = "Tech"
+    name       = "Posts"
     url        = "/"
     weight     = -90
     [main.params]
