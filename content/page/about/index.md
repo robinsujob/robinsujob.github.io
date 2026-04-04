@@ -19,4 +19,4 @@ I spend my days building products at the intersection of technology and creativi
 
 ## Get in Touch
 
-Feel free to reach out via [GitHub](https://github.com/) or [LinkedIn](https://linkedin.com/).
+Feel free to reach out via [GitHub](https://github.com/robinsujob), [LinkedIn](https://www.linkedin.com/in/robin-su/), or [Instagram](https://www.instagram.com/robinsu77/).

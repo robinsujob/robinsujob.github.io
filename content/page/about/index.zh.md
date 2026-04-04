@@ -19,4 +19,4 @@ Builder、摄影师、终身折腾者。
 
 ## 联系我
 
-欢迎通过 [GitHub](https://github.com/) 或 [LinkedIn](https://linkedin.com/) 联系我。
+欢迎通过 [GitHub](https://github.com/robinsujob)、[LinkedIn](https://www.linkedin.com/in/robin-su/) 或 [Instagram](https://www.instagram.com/robinsu77/) 联系我。
