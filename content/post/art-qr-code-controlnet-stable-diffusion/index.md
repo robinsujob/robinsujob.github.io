@@ -36,19 +36,26 @@ Prompts are divided into **positive prompts** (what you want) and **negative pro
 
 #### Common Misconceptions
 
-Prompts are about precision, not quantity — using the shortest words to describe the scene is more effective than natural language. Quality-improving descriptors should not be mindlessly stacked. Common starters like "masterpiece" and "best quality" were meaningful in the NovelAI era when they were heavily used for image evaluation during training, but after continuous model refinement on Civitai, these prompts barely show their intended effect in modern models.
+- Precision over quantity — use the shortest words to describe the scene, more effective than natural language.
+- Quality-improving descriptors should not be mindlessly stacked — more is not better.
+- Common starters like "masterpiece" and "best quality" were meaningful in the NovelAI era when they were heavily used for image evaluation during training, but after continuous model refinement on Civitai, these prompts barely show their intended effect in modern models.
 
 #### Adjusting Prompt Weights
 
-The default weight of each token is 1, decreasing from left to right. Prompt weights significantly affect the generated image. You can specify weight using parentheses + colon + number, e.g., `(one girl:1.5)`.
+- Default weight of each token is 1, decreasing from left to right.
+- Prompt weights significantly affect the generated image.
+- Use parentheses + colon + number to specify weight, e.g., `(one girl:1.5)`.
 
 #### Mind the Prompt Order
 
-If landscape tags come first, the character will appear small; conversely, the character will be larger or shown as half-body. Choosing the correct order and syntax for prompts will more effectively render the desired scene.
+- Landscape tags first = smaller characters; character tags first = larger/half-body.
+- Choose the correct order and syntax for prompts to more effectively render the desired scene.
 
 #### Emojis in Prompts
 
-Prompts support emojis with good expressiveness. For specific facial expressions or actions, adding emojis can achieve the desired effect. To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax like "with".
+- Emojis work well in prompts with good expressiveness.
+- For specific facial expressions or actions, adding emojis can achieve the desired effect.
+- To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax like "with".
 
 #### Recommended Camera Angle Prompts
 

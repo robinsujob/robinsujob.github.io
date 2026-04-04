@@ -537,13 +537,28 @@
 <h4 id="basic-concepts">Basic Concepts
 </h4><p>Prompts are divided into <strong>positive prompts</strong> (what you want) and <strong>negative prompts</strong> (what you don&rsquo;t want).</p>
 <h4 id="common-misconceptions">Common Misconceptions
-</h4><p>Prompts are about precision, not quantity — using the shortest words to describe the scene is more effective than natural language. Quality-improving descriptors should not be mindlessly stacked. Common starters like &ldquo;masterpiece&rdquo; and &ldquo;best quality&rdquo; were meaningful in the NovelAI era when they were heavily used for image evaluation during training, but after continuous model refinement on Civitai, these prompts barely show their intended effect in modern models.</p>
+</h4><ul>
+<li>Precision over quantity — use the shortest words to describe the scene, more effective than natural language.</li>
+<li>Quality-improving descriptors should not be mindlessly stacked — more is not better.</li>
+<li>Common starters like &ldquo;masterpiece&rdquo; and &ldquo;best quality&rdquo; were meaningful in the NovelAI era when they were heavily used for image evaluation during training, but after continuous model refinement on Civitai, these prompts barely show their intended effect in modern models.</li>
+</ul>
 <h4 id="adjusting-prompt-weights">Adjusting Prompt Weights
-</h4><p>The default weight of each token is 1, decreasing from left to right. Prompt weights significantly affect the generated image. You can specify weight using parentheses + colon + number, e.g., <code>(one girl:1.5)</code>.</p>
+</h4><ul>
+<li>Default weight of each token is 1, decreasing from left to right.</li>
+<li>Prompt weights significantly affect the generated image.</li>
+<li>Use parentheses + colon + number to specify weight, e.g., <code>(one girl:1.5)</code>.</li>
+</ul>
 <h4 id="mind-the-prompt-order">Mind the Prompt Order
-</h4><p>If landscape tags come first, the character will appear small; conversely, the character will be larger or shown as half-body. Choosing the correct order and syntax for prompts will more effectively render the desired scene.</p>
+</h4><ul>
+<li>Landscape tags first = smaller characters; character tags first = larger/half-body.</li>
+<li>Choose the correct order and syntax for prompts to more effectively render the desired scene.</li>
+</ul>
 <h4 id="emojis-in-prompts">Emojis in Prompts
-</h4><p>Prompts support emojis with good expressiveness. For specific facial expressions or actions, adding emojis can achieve the desired effect. To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax like &ldquo;with&rdquo;.</p>
+</h4><ul>
+<li>Emojis work well in prompts with good expressiveness.</li>
+<li>For specific facial expressions or actions, adding emojis can achieve the desired effect.</li>
+<li>To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax like &ldquo;with&rdquo;.</li>
+</ul>
 <h4 id="recommended-camera-angle-prompts">Recommended Camera Angle Prompts
 </h4><div class="table-wrapper"><table>
   <thead>
