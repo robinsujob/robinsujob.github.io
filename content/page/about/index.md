@@ -11,7 +11,7 @@ ENTJ — I thrive on turning ideas into reality, moving fast, and solving proble
 
 > *Live fully. Stay true.*
 >
-> Life is short — no room for hesitation. Every step should be deliberate, every choice true to the heart. We get one shot at this; make it count.
+> Life's too short to play it safe. I want to make every moment count and stay honest to what I believe in — my ideas, my craft, and my curiosity.
 
 I work at the intersection of cloud and AI — designing architectures that scale, shipping products that solve real problems, and making complex technology feel simple.
 
