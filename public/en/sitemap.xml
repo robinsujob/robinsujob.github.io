@@ -496,6 +496,19 @@
                 href="http://localhost:4002/tags/controlnet/"
                 />
   </url><url>
+    <loc>http://localhost:4002/tags/openpose/</loc>
+    <lastmod>2023-09-01T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/tags/openpose/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/tags/openpose/"
+                />
+  </url><url>
     <loc>http://localhost:4002/tags/qr-code/</loc>
     <lastmod>2023-09-01T00:00:00+08:00</lastmod>
     <xhtml:link
