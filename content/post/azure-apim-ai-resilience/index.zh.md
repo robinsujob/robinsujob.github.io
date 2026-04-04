@@ -2,6 +2,7 @@
 slug: "azure-apim-ai-resilience"
 title: "使用 API Management 网关构建 Azure AI 韧性架构"
 date: 2026-04-03
+weight: 1
 description: "通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"
 image: images/cover.png
 categories:

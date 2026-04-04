@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Complete guide to configuring CORS for AWS API Gateway.">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Complete guide to configuring CORS for REST API and HTTP API in Amazon API Gateway, including authorization scenarios.">
 <title>API Gateway CORS Configuration Guide</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.389e156f5e9bb13df5a924cfa99dfb9c39f3e01e68d9e146cd65bdae963be145.css"><meta property='og:title' content="API Gateway CORS Configuration Guide">
-<meta property='og:description' content="Complete guide to configuring CORS for AWS API Gateway.">
+<meta property='og:description' content="Complete guide to configuring CORS for REST API and HTTP API in Amazon API Gateway, including authorization scenarios.">
 <meta property='og:url' content='http://localhost:4002/p/api-gateway-cors-configuration/'>
 <meta property='og:site_name' content='Robin&#39;s Space'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='api-gateway' /><meta property='article:tag' content='cors' /><meta property='article:tag' content='serverless' /><meta property='article:published_time' content='2024-10-28T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-10-28T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="API Gateway CORS Configuration Guide">
-<meta name="twitter:description" content="Complete guide to configuring CORS for AWS API Gateway.">
+<meta name="twitter:description" content="Complete guide to configuring CORS for REST API and HTTP API in Amazon API Gateway, including authorization scenarios.">
     </head>
     <body class="
     article-page
@@ -320,6 +320,7 @@
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
+    <li><a href="#related-resources">Related Resources</a></li>
   </ul>
 
             </nav>
@@ -356,7 +357,7 @@
     
         
         <h3 class="article-subtitle">
-            Complete guide to configuring CORS for AWS API Gateway.
+            Complete guide to configuring CORS for REST API and HTTP API in Amazon API Gateway, including authorization scenarios.
         </h3>
         
     </div>
@@ -394,7 +395,7 @@
 
 
                     <time class="article-time--reading">
-                        4 minutes read
+                        9 minutes read
                     </time>
                 
             </div>
@@ -464,6 +465,7 @@
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
+    <li><a href="#related-resources">Related Resources</a></li>
   </ul>
 
             </nav>
@@ -474,41 +476,48 @@
     <section class="article-content">
     
     
-    <p>CORS, or Cross-Origin Resource Sharing, is an HTTP header-based mechanism that allows servers to indicate which external origins can access their resources. It helps browsers safely make cross-origin requests while still protecting users through the same-origin policy.</p>
-<p><a class="link" href="https://aws.amazon.com/cn/api-gateway/"  target="_blank" rel="noopener"
-    >Amazon API Gateway</a> is a fully managed service for creating, publishing, maintaining, monitoring, and securing APIs at any scale. Because API Gateway is commonly used as the front door for backend services, configuring CORS correctly is a frequent requirement.</p>
-<p>This article explains how to configure CORS in Amazon API Gateway REST API and HTTP API, including the differences between the two products and the special handling required when authorization is enabled.</p>
+    <p>CORS, or Cross-Origin Resource Sharing, is an HTTP header-based mechanism that allows servers to indicate which external origins (domains, protocols, or ports) can access their resources. CORS addresses the inconvenience caused by the same-origin policy — a browser security mechanism that restricts web pages from loading resources from different origins to prevent malicious websites from stealing sensitive data. However, this restriction also blocks legitimate cross-origin requests. Complex applications often reference third-party APIs and resources in their client-side code, and CORS is needed when the client domain does not match the server domain. Through CORS, browsers can safely perform cross-origin data transfers, bypassing the limitations of the same-origin policy. CORS allows client browsers to check with third-party servers whether a request is authorized before any data is transferred. Due to the complexity of CORS configuration, developers often set overly permissive cross-origin access permissions — for example, using &ldquo;*&rdquo; in allowed headers to permit all access — which can compromise application security.</p>
+<p><a class="link" href="https://aws.amazon.com/cn/api-gateway/?nc1=h_ls"  target="_blank" rel="noopener"
+    >Amazon API Gateway</a> is a fully managed service that helps developers easily manage APIs at any scale. It is commonly used for backend service management and routing. Therefore, configuring CORS on API Gateway is a very common requirement. In Amazon API Gateway, different API types have different CORS configuration methods, which adds to the complexity of CORS configuration.</p>
+<p>This article explains how to configure cross-origin resource sharing in Amazon API Gateway&rsquo;s <a class="link" href="https://docs.aws.amazon.com/zh_cn/apigateway/latest/developerguide/how-to-cors.html"  target="_blank" rel="noopener"
+    >REST API</a> and <a class="link" href="https://docs.aws.amazon.com/zh_cn/apigateway/latest/developerguide/http-api-cors.html"  target="_blank" rel="noopener"
+    >HTTP API</a>, with a focus on the differences between REST API and HTTP API in CORS configuration, as well as how to configure CORS when authorization is enabled. By reading this article, you will master the CORS configuration techniques in Amazon API Gateway, enabling cross-origin access configurations that meet the <a class="link" href="https://docs.aws.amazon.com/zh_cn/wellarchitected/latest/framework/sec_permissions_least_privileges.html"  target="_blank" rel="noopener"
+    >principle of least privilege</a>.</p>
 <h2 id="how-cors-works">How CORS Works
-</h2><p>CORS mainly relies on these HTTP headers:</p>
+</h2><p>CORS is an HTTP header-based mechanism where servers use header information to restrict access. CORS works primarily through the following <a class="link" href="https://developer.mozilla.org/zh-CN/docs/Glossary/CORS#cors_%E6%A0%87%E5%A4%B4"  target="_blank" rel="noopener"
+    >key HTTP headers</a>:</p>
 <ul>
 <li><strong>Origin</strong>: Indicates the request origin.</li>
 <li><strong>Access-Control-Allow-Origin</strong>: Specifies which origins can access the resource.</li>
 <li><strong>Access-Control-Allow-Methods</strong>: Lists the HTTP methods allowed to access the resource.</li>
 <li><strong>Access-Control-Allow-Headers</strong>: Indicates which custom request headers are allowed.</li>
 <li><strong>Access-Control-Allow-Credentials</strong>: Indicates whether credentials such as cookies are allowed.</li>
-<li><strong>Access-Control-Max-Age</strong>: Indicates how long preflight results can be cached.</li>
+<li><strong>Access-Control-Max-Age</strong>: Indicates how long preflight request results can be cached.</li>
 </ul>
-<p>CORS requests are usually divided into two categories:</p>
+<p>Based on the complexity of the request, CORS divides them into two categories:</p>
 <ul>
-<li><strong>Simple requests</strong>: No preflight is needed.</li>
-<li><strong>Non-simple requests</strong>: A browser sends an OPTIONS preflight request before the actual request.</li>
+<li><strong>Simple requests</strong>: No preflight is needed. These requests use GET/POST/HEAD methods and only use specific safe headers (such as Accept, Content-Type).</li>
+<li><strong>Non-simple requests</strong>: Preflight is required. Any cross-origin request that is not a simple request is considered a non-simple request. Before sending the actual request, the browser first sends an OPTIONS request to confirm whether the server allows the actual request. This preflight mechanism prevents unauthorized cross-origin operations from having side effects on server data.</li>
 </ul>
-<p>For non-simple requests, the flow is as follows:</p>
+<p>For non-simple requests, the server relies on the browser to send a <a class="link" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Preflight_request"  target="_blank" rel="noopener"
+    >CORS preflight</a> or OPTIONS request. A complete request flow is as follows:</p>
 <p><img alt="Complete CORS Request Flow" class="gallery-image" data-flex-basis="649px" data-flex-grow="270" height="335" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-1.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-1_hu_90f15b3de6560802.png 800w, /p/api-gateway-cors-configuration/images/cors-config-1.png 906w" width="906"></p>
+<p>The complete CORS flow for non-simple requests:</p>
 <ol>
 <li>Client application initiates the request</li>
-<li>Browser sends a preflight request</li>
-<li>Server returns a preflight response</li>
+<li>Browser sends the preflight request</li>
+<li>Server returns the preflight response</li>
 <li>Browser sends the actual request</li>
 <li>Server returns the actual response</li>
 <li>Client receives the actual response</li>
 </ol>
 <h2 id="introduction-to-api-gateway">Introduction to API Gateway
-</h2><p>Amazon API Gateway supports multiple API styles and backend integration types. In this article we focus on two RESTful products: <strong>REST API</strong> and <strong>HTTP API</strong>.</p>
+</h2><p><a class="link" href="https://aws.amazon.com/cn/api-gateway/?nc1=h_ls"  target="_blank" rel="noopener"
+    >Amazon API Gateway</a> is a fully managed service that helps developers easily create, publish, maintain, monitor, and secure APIs at any scale. Without the need to maintain the underlying infrastructure, API Gateway can accept and process thousands of concurrent API calls. API Gateway supports both RESTful and WebSocket API types, as well as multiple backend integration types such as containerized services, serverless workloads, and HTTP endpoints. Other key features of API Gateway include traffic management, CORS support, authorization and access control, throttling, monitoring, and API version management.</p>
 <h3 id="rest-api-vs-http-api">REST API vs HTTP API
-</h3><p>Both are API Gateway products, but they differ in capability and operating model.</p>
+</h3><p>REST API and HTTP API are both RESTful API products of Amazon API Gateway. Their differences are as follows.</p>
 <h4 id="features">Features
-</h4><p>REST API unique features include:</p>
+</h4><p>REST API&rsquo;s unique features include:</p>
 <ul>
 <li>API key support</li>
 <li>Per-client throttling</li>
@@ -516,66 +525,101 @@
 <li>AWS WAF integration</li>
 <li>Private API endpoints</li>
 </ul>
-<p>HTTP API is designed with a more minimal feature set:</p>
+<p>HTTP API is designed with a minimalist feature set. Its characteristics include:</p>
 <ul>
 <li>Automatic deployment</li>
 <li>Default stage support</li>
 </ul>
 <h4 id="performance-and-pricing">Performance and Pricing
-</h4><p>Because HTTP API is more streamlined, it generally offers lower latency and lower cost.</p>
+</h4><p>Because HTTP API has a more streamlined feature set, it offers faster speeds and lower prices.</p>
 <h2 id="configuring-cors-in-api-gateway">Configuring CORS in API Gateway
-</h2><h3 id="rest-api-cors-configuration">REST API CORS Configuration
-</h3><p>In a REST API, you usually configure CORS on specific resources and methods. In this example, a POST method under <code>/</code> is integrated with Lambda.</p>
+</h2><p>To resolve cross-origin issues in Amazon API Gateway, you need to perform CORS configuration. API Gateway will automatically use the OPTIONS method and attempt to add CORS headers to existing method integration responses, which helps you handle preflight requests and actual responses. In Amazon API Gateway, REST API and HTTP API have different CORS configuration methods.</p>
+<h3 id="rest-api-cors-configuration">REST API CORS Configuration
+</h3><ul>
+<li>As shown in the following figure, the REST API has a default / resource, under which we created a POST method integrated with a Lambda function as the backend service.</li>
+</ul>
 <p><img alt="REST API Resource Configuration" class="gallery-image" data-flex-basis="488px" data-flex-grow="203" height="703" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-2.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-2_hu_b125e11b39350d.png 800w, /p/api-gateway-cors-configuration/images/cors-config-2.png 1431w" width="1431"></p>
-<p>To enable CORS for that method, go back to the resource overview page and click <strong>Enable CORS</strong>.</p>
+<ul>
+<li>To configure CORS for the POST method under the / resource, we need to go back to the resource overview page and click Enable CORS.</li>
+</ul>
 <p><img alt="Enable CORS Button" class="gallery-image" data-flex-basis="521px" data-flex-grow="217" height="658" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-3.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-3_hu_d101f4d084b25eb2.png 800w, /p/api-gateway-cors-configuration/images/cors-config-3.png 1431w" width="1431"></p>
-<p>Then configure allowed methods, headers, and origins. OPTIONS is enabled by default so API Gateway can answer preflight requests.</p>
+<ul>
+<li>On the Enable CORS page, first configure the allowed methods for access control. To correctly respond to preflight requests, the OPTIONS method is enabled by default. We select the POST method that needs CORS configuration. Then, we configure the allowed headers and origins for access control — the specific allowed values depend on your backend application. Click Save after configuration.</li>
+</ul>
 <p><img alt="CORS Configuration Page" class="gallery-image" data-flex-basis="282px" data-flex-grow="117" height="1218" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-4.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-4_hu_8f5620fe90f1d472.png 800w, /p/api-gateway-cors-configuration/images/cors-config-4.png 1432w" width="1432"></p>
-<p>After saving, the POST method integration response shows the configured CORS headers.</p>
+<ul>
+<li>After saving, on the POST method&rsquo;s integration response page, you can see that in the header mapping, the Access-Control-Allow-Origin mapping value is the allowed origin configured in the previous step.</li>
+</ul>
 <p><img alt="Integration Response Header Mapping" class="gallery-image" data-flex-basis="405px" data-flex-grow="169" height="846" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-5.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-5_hu_3e8077200db8ada.png 800w, /p/api-gateway-cors-configuration/images/cors-config-5.png 1430w" width="1430"></p>
-<p>API Gateway also creates an OPTIONS method automatically. It uses mock integration to return a 200 response together with the required preflight headers.</p>
+<ul>
+<li>In the resource list, we can also see that after enabling CORS, API Gateway automatically created an OPTIONS method for us. This method is used to correctly respond to preflight requests. The OPTIONS method&rsquo;s integration type is mock integration, which returns a 200 status code for requests and returns all relevant preflight response headers. The header mapping values are determined by the settings in step 3.</li>
+</ul>
 <p><img alt="OPTIONS Method Configuration" class="gallery-image" data-flex-basis="408px" data-flex-grow="170" height="839" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-6.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-6_hu_cdf3509b959456e6.png 800w, /p/api-gateway-cors-configuration/images/cors-config-6.png 1429w" width="1429"></p>
-<p>When tested from an allowed origin, both the preflight request and the actual request return the expected CORS headers.</p>
+<ul>
+<li>Testing a cross-origin POST request from the allowed origin endpoint configured in step 3, we can see that for both the preflight request and the actual request, the REST API returns the corresponding headers.</li>
+</ul>
 <p><img alt="Preflight Request Response" class="gallery-image" data-flex-basis="1424px" data-flex-grow="593" height="241" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-7.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-7_hu_d46b95e540d3781a.png 800w, /p/api-gateway-cors-configuration/images/cors-config-7.png 1430w" width="1430"></p>
 <p><img alt="Actual Request Response" class="gallery-image" data-flex-basis="1926px" data-flex-grow="802" height="178" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-8.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-8_hu_dc031d25f9d16a4a.png 800w, /p/api-gateway-cors-configuration/images/cors-config-8.png 1429w" width="1429"></p>
-<p>For non-root paths, you can also check CORS when creating the resource so that API Gateway creates the OPTIONS method for you.</p>
+<ul>
+<li>For non-root paths, you can also check CORS (Cross-Origin Resource Sharing) when creating the resource, so that API Gateway automatically creates an OPTIONS method under this resource to handle preflight requests.</li>
+</ul>
 <p><img alt="Check CORS When Creating Resource" class="gallery-image" data-flex-basis="486px" data-flex-grow="202" height="706" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-9.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-9_hu_6be09ed5e09f6b5f.png 800w, /p/api-gateway-cors-configuration/images/cors-config-9.png 1430w" width="1430"></p>
-<p>That automatically created OPTIONS method is permissive by default. If you need tighter access control, edit it manually.</p>
+<p>Note that the OPTIONS method created using this approach will accept cross-origin requests from all origins and all methods by default. If you need to tighten the permissions, you can click Edit in the upper right corner to modify it.</p>
 <p><img alt="Edit OPTIONS Method" class="gallery-image" data-flex-basis="612px" data-flex-grow="255" height="561" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-10.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-10_hu_c3791a9f73aa0d53.png 800w, /p/api-gateway-cors-configuration/images/cors-config-10.png 1431w" width="1431"></p>
-<p>Even if you check CORS while creating the resource, you still need to configure the specific business methods, such as POST.</p>
+<p>After checking CORS (Cross-Origin Resource Sharing) when creating the resource, you still need to click Enable CORS in the upper right corner of the resource overview page (following the same method as step 3) to configure the CORS-related headers for the specific request method (such as POST).</p>
 <p><img alt="Configure CORS Headers for Specific Methods" class="gallery-image" data-flex-basis="1635px" data-flex-grow="681" height="210" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-11.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-11_hu_16695efaae835e00.png 800w, /p/api-gateway-cors-configuration/images/cors-config-11.png 1431w" width="1431"></p>
 <h4 id="cors-configuration-with-authorization">CORS Configuration with Authorization
-</h4><p>If your REST API uses Lambda authorizers or Cognito authorizers, enable authorization only on the methods that require it. Do <strong>not</strong> enable authorization on the OPTIONS method, otherwise preflight requests will fail with 401.</p>
+</h4><p>You can integrate <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html"  target="_blank" rel="noopener"
+    >Lambda authorizers</a> or <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html"  target="_blank" rel="noopener"
+    >Cognito authorizers</a> with your REST API. When enabling authorization, be sure to only enable it for the methods that need it — do not enable authorization for the OPTIONS method, otherwise preflight requests (which are unauthorized) will result in 401 errors.</p>
 <p><img alt="Enable Authorization for POST Method" class="gallery-image" data-flex-basis="469px" data-flex-grow="195" height="730" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-12.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-12_hu_f126b76e649ca0a7.png 800w, /p/api-gateway-cors-configuration/images/cors-config-12.png 1428w" width="1428"></p>
+<p>Enable authorization for the POST method.</p>
 <p><img alt="OPTIONS Authorization Error" class="gallery-image" data-flex-basis="2365px" data-flex-grow="985" height="145" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-13.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-13_hu_1c92ddbc0a1b9ce1.png 800w, /p/api-gateway-cors-configuration/images/cors-config-13.png 1429w" width="1429"></p>
+<p>If authorization is enabled for the OPTIONS method, preflight requests will fail with errors.</p>
 <p><img alt="Do Not Authorize OPTIONS" class="gallery-image" data-flex-basis="469px" data-flex-grow="195" height="731" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-14.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-14_hu_9207afd8a90f3ad.png 800w, /p/api-gateway-cors-configuration/images/cors-config-14.png 1429w" width="1429"></p>
+<p>Do not enable authorization for the OPTIONS method.</p>
 <h3 id="http-api-cors-configuration">HTTP API CORS Configuration
-</h3><p>HTTP API CORS configuration is simpler. Once CORS is enabled, API Gateway automatically handles browser preflight requests and adds the necessary CORS headers to backend responses.</p>
-<p>Go to the HTTP API page, click <strong>CORS</strong> in the left navigation bar, and then click <strong>Configure</strong>.</p>
+</h3><p>In this section, we continue to use configuring CORS for the POST method under the / resource as an example to demonstrate how to configure CORS for HTTP API.</p>
+<p>HTTP API CORS configuration is relatively simple because once you enable CORS for your HTTP API, API Gateway will automatically respond to preflight requests from browsers and automatically add CORS-related headers to your backend responses. You will not see the configuration of the OPTIONS method that API Gateway uses to automatically respond to preflight requests in your API resources, nor will you see the response header configuration for the POST method.</p>
+<p>The following are the detailed steps to enable HTTP API CORS:</p>
+<ul>
+<li>Go to the HTTP API page, click CORS in the left navigation bar, then click Configure in the upper right corner.</li>
+</ul>
 <p><img alt="HTTP API CORS Configuration Entry" class="gallery-image" data-flex-basis="590px" data-flex-grow="246" height="581" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-15.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-15_hu_e81433b783b1027a.png 800w, /p/api-gateway-cors-configuration/images/cors-config-15.png 1430w" width="1430"></p>
-<p>Enter the allowed origins, headers, and methods. You can also optionally configure exposed headers, max age, and credentials.</p>
+<ul>
+<li>On the CORS configuration page, enter the allowed origins, headers, and methods for access control. In our example, we need to allow POST method access. Depending on your needs, you can also optionally configure exposed headers, max age, and credentials. After configuration, click Save in the lower right corner.</li>
+</ul>
 <p><img alt="HTTP API CORS Configuration Page" class="gallery-image" data-flex-basis="382px" data-flex-grow="159" height="897" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-16.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-16_hu_54f563eb5ffd4d90.png 800w, /p/api-gateway-cors-configuration/images/cors-config-16.png 1430w" width="1430"></p>
-<p>After saving, you will not see an OPTIONS route configuration in the console.</p>
+<ul>
+<li>After configuration, we cannot see the OPTIONS method configuration on the HTTP API routes page.</li>
+</ul>
 <p><img alt="HTTP API Routes Page" class="gallery-image" data-flex-basis="437px" data-flex-grow="182" height="785" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-17.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-17_hu_6a3deb6db50e33bd.png 800w, /p/api-gateway-cors-configuration/images/cors-config-17.png 1432w" width="1432"></p>
-<p>Testing a cross-origin POST request confirms that both the preflight OPTIONS request and the actual request are handled correctly.</p>
+<ul>
+<li>Testing a cross-origin POST request from the allowed origin endpoint of the HTTP API, we can see that both the preflight OPTIONS request and the actual POST request receive correct responses. This is because API Gateway handles the HTTP API&rsquo;s response to preflight requests and adds the CORS-related headers for us.</li>
+</ul>
 <p><img alt="HTTP API CORS Test Results" class="gallery-image" data-flex-basis="1875px" data-flex-grow="781" height="183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-18.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-18_hu_63a7ec1f82bd643a.png 800w, /p/api-gateway-cors-configuration/images/cors-config-18.png 1430w" width="1430"></p>
 <h4 id="cors-configuration-with-authorization-1">CORS Configuration with Authorization
-</h4><p>HTTP API supports Lambda, JWT, and IAM authorization. In most cases, preflight requests are handled automatically. The main exception is an authorized <strong>ANY</strong> route. In that case, the preflight request may be handled by the ANY route instead of the built-in CORS logic, causing a 401 response.</p>
+</h4><p>Similar to REST API, HTTP API supports authorization for specific methods through <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html"  target="_blank" rel="noopener"
+    >Lambda</a>, <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-jwt-authorizer.html"  target="_blank" rel="noopener"
+    >JWT</a>, and <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-access-control-iam.html"  target="_blank" rel="noopener"
+    >IAM</a> authorizers. If you want to enable CORS for an HTTP API with integrated authorizers, in most cases, HTTP API will automatically handle preflight requests for you. Therefore, no special configuration is needed — simply follow the steps above to enable CORS for an HTTP API with integrated authorizers. The only exception is when you create an authorized ANY method (as shown below). In this case, note that preflight requests will be handled by the ANY method rather than by HTTP API. Since preflight requests do not contain authorization information, the authorized ANY method will not return the correct status code and CORS headers, and the preflight request will fail with a 401 error.</p>
 <p><img alt="Authorized ANY Method" class="gallery-image" data-flex-basis="724px" data-flex-grow="301" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-19.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-19_hu_6d078dcc831f02c8.png 800w, /p/api-gateway-cors-configuration/images/cors-config-19.png 1430w" width="1430"></p>
 <p><img alt="ANY Method 401 Error" class="gallery-image" data-flex-basis="1383px" data-flex-grow="576" height="248" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-20.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-20_hu_722d8b7eaa811aee.png 800w, /p/api-gateway-cors-configuration/images/cors-config-20.png 1430w" width="1430"></p>
-<p>There are two practical solutions:</p>
+<p>In this case, there are two solutions:</p>
 <ol>
-<li><strong>Recommended</strong>: Create explicit routes for the methods you need, such as POST, instead of using ANY.</li>
-<li>Create an unauthorized OPTIONS route on the same path and attach any backend integration so it can answer preflight requests.</li>
+<li><strong>(Recommended)</strong> Create a specific route for each method and resource as needed, and avoid using the ANY method. For example, in our case, we only need to create a route for the POST method.</li>
 </ol>
 <p><img alt="Create Route for Specific Method" class="gallery-image" data-flex-basis="723px" data-flex-grow="301" height="475" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-21.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-21_hu_a4f4c7744f5d9fe0.png 800w, /p/api-gateway-cors-configuration/images/cors-config-21.png 1432w" width="1432"></p>
+<ol start="2">
+<li>Create an unauthorized OPTIONS method route under the same resource path, and add any backend integration to the OPTIONS method (as shown below). This way, the unauthorized OPTIONS route will capture preflight requests.</li>
+</ol>
 <p><img alt="Create Unauthorized OPTIONS Route" class="gallery-image" data-flex-basis="504px" data-flex-grow="210" height="680" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-22.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-22_hu_1e0063c55466db2f.png 800w, /p/api-gateway-cors-configuration/images/cors-config-22.png 1428w" width="1428"></p>
 <h2 id="summary">Summary
-</h2><p>REST API and HTTP API support CORS in different ways:</p>
+</h2><p>This article introduced the CORS configuration methods for REST API and HTTP API in Amazon API Gateway, with special attention to how to configure both API types to ensure preflight requests are correctly responded to when authorization is enabled. The differences in CORS configuration between the two API types are as follows:</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>Type</th>
+          <th>API Type</th>
           <th>CORS Configuration Method</th>
           <th>Configuration Features</th>
           <th>Authorization Notes</th>
@@ -584,18 +628,20 @@
   <tbody>
       <tr>
           <td>REST API</td>
-          <td>Configure CORS on specific routes with <strong>Enable CORS</strong></td>
-          <td>OPTIONS method and headers are visible in the console</td>
-          <td>Do not enable authorization for OPTIONS</td>
+          <td>Configure CORS for specific routes in the REST API by clicking Enable CORS in the upper right corner of the route.</td>
+          <td>You can see the OPTIONS method used to respond to preflight requests and its response header settings under the configured route. You can also see the CORS header settings in the response of the methods that allow cross-origin access.</td>
+          <td>Do not enable authorization for the OPTIONS method.</td>
       </tr>
       <tr>
           <td>HTTP API</td>
-          <td>Configure CORS from the left-side <strong>CORS</strong> page</td>
-          <td>Preflight handling is automatic and hidden</td>
-          <td>Avoid ANY, or add an unauthorized OPTIONS route</td>
+          <td>Configure CORS for the entire HTTP API by clicking CORS in the left navigation bar to enter the CORS configuration page.</td>
+          <td>Preflight requests are automatically handled by API Gateway, and the automatically responding OPTIONS method configuration is not visible in the console. CORS headers are automatically added by API Gateway, and the CORS header settings are also not visible in the response of the methods that allow cross-origin access.</td>
+          <td>Avoid using the ANY method. If you must use it, create an additional unauthorized OPTIONS method for handling preflight requests.</td>
       </tr>
   </tbody>
 </table></div>
+<h2 id="related-resources">Related Resources
+</h2><p>To enable CORS for other AWS resources, refer to:</p>
 <ul>
 <li><a class="link" href="https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/"  target="_blank" rel="noopener"
     >Enable CORS for CloudFront</a></li>
@@ -693,7 +739,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
 
 
     </body>
