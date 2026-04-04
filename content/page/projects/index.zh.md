@@ -32,9 +32,3 @@ slug: "projects"
 
 ---
 
-### WordPress GenAI Plus
-为 WordPress 添加 AI 内容生成能力的插件，集成 Amazon Bedrock 的 Claude 3 和 Stable Diffusion。
-
-🔗 [博客文章](/zh/p/wordpress-genai-plus/)
-
-**标签:** WordPress, GenAI, AWS Bedrock

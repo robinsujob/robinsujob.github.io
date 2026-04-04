@@ -32,9 +32,3 @@ Deploy quantized GGUF models on SageMaker using llama.cpp for efficient LLM infe
 
 ---
 
-### WordPress GenAI Plus
-WordPress plugin that adds AI content generation capabilities powered by AWS Bedrock.
-
-🔗 [Blog Post](/p/wordpress-genai-plus/)
-
-**Tags:** WordPress, GenAI, AWS Bedrock
