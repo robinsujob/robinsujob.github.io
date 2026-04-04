@@ -3,7 +3,7 @@ slug: "art-qr-code-controlnet-stable-diffusion"
 title: "借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案"
 date: 2023-09-01
 description: "借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。"
-image: images/sample1.jpg
+image: images/2-girl-with-car.png
 categories:
   - AI/ML
 tags:
