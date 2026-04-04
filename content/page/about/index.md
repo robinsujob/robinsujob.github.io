@@ -11,7 +11,7 @@ Builder, photographer, and lifelong tinkerer. ENTJ.
 
 I build things at the intersection of cloud and AI.
 
-Currently a Senior Solutions Engineer at **Microsoft**. Previously at **AWS** serving ISV and SMB clients as Solutions Architect, and before that at **IBM** as Technical Solutions Architect. I design cloud-native architectures, ship AI-powered products, and help organizations make the most of their cloud investment.
+Currently a Senior Solutions Engineer at Microsoft. Previously at AWS serving ISV and SMB clients as Solutions Architect, and before that at IBM as Technical Solutions Architect. I design cloud-native architectures, ship AI-powered products, and help organizations make the most of their cloud investment.
 
 I care about clean architecture, developer experience, and making complex technology accessible.
 
