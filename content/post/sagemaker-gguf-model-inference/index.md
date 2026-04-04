@@ -347,5 +347,5 @@ This article demonstrated how to deploy GGUF format models on Amazon SageMaker A
 
 ---
 
-Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
+> Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
 

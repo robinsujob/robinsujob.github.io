@@ -178,5 +178,5 @@ REST API and HTTP API support CORS in different ways:
 
 ---
 
-Original article: [Amazon API Gateway CORS Configuration - AWS Blog](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
+> Original article: [Amazon API Gateway CORS Configuration - AWS Blog](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
 
