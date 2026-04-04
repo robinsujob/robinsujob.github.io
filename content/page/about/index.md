@@ -5,25 +5,30 @@ slug: "about"
 
 # Hey, I'm Robin 👋
 
-Cloud architect, builder, and photographer based in China.
+Cloud Solutions Architect with a passion for building things that matter.
 
-With 9+ years in the IT industry, I've worn many hats — from IBM solutions architect to AWS ISV partner architect, and now at Microsoft. I spend my days designing cloud-native architectures, building AI-powered solutions, and helping organizations navigate their cloud journey.
+I specialize in designing cloud-native architectures, AI-powered solutions, and developer tools. My work spans AWS and Azure — from serverless transformations and API governance to AIGC product launches and enterprise migration strategies.
 
-## What I Do
+## What I Focus On
 
-🏗 **Cloud Architecture** — Designing enterprise-grade solutions across AWS and Azure, with deep expertise in serverless, API management, and AI integration.
+☁️ **Cloud Architecture & Migration** — Helping organizations design and implement production-grade cloud solutions. From network architecture optimization to security framework design with API Gateway and Cognito.
 
-🤖 **AI & Open Source** — Creator of [China CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2) and contributor to [GGUF model deployment on SageMaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker). Passionate about making AI accessible through practical, production-ready solutions.
+🤖 **AI & Machine Learning** — Building practical AI solutions including AIGC image generation pipelines, vector database architectures for semantic search, and LLM model deployment on cloud infrastructure.
 
-🏆 **Competitive Programming** — Three-time national champion in computer game AI (Checkers) at the National University Computer Games Championship. National Scholarship recipient and Outstanding Graduate of Beijing.
+⚡ **Serverless & Modern Applications** — Driving serverless architecture transformations, building with AWS SAM and Lambda Web Adapter, and accelerating application modernization.
 
-## What You'll Find Here
+🔧 **Open Source & Developer Community** — Publishing technical blogs, open-source tools, and hands-on workshops. Creator of [China CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2) and [GGUF Model Deployment on SageMaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker).
 
-📝 **Tech Blog** — Deep dives into cloud architecture, AI/ML, and developer tools. Bilingual (English + 中文).
+## Certifications
 
-🛠 **Projects** — Open source tools and solutions I've built, from SSL automation to LLM deployment.
+- AWS Certified Solutions Architect / DevOps Engineer / ML Engineer / Developer / Database Specialist
+- IBM Certified Architect / Open Group Certified Solutions Architect
+- Enterprise Design Thinking Certified Co-Creator
+- [View all certifications on Credly](https://www.credly.com/users/su-zhe/badges)
 
-📷 **Photography** — Street scenes, travel moments, and urban architecture through my lens. Follow me on [Instagram](https://www.instagram.com/robinsu77/) for more.
+## Beyond Work
+
+📷 I shoot street photography, travel moments, and urban architecture. Follow me on [Instagram](https://www.instagram.com/robinsu77/).
 
 ## Get in Touch
 

@@ -5,25 +5,30 @@ slug: "about"
 
 # 嘿，我是 Robin 👋
 
-云架构师、Builder、摄影爱好者，坐标中国。
+云解决方案架构师，热衷于构建有价值的产品。
 
-9 年+ IT 行业经验，从 IBM 解决方案架构师到 AWS ISV 合作伙伴架构师，现在在 Microsoft。日常工作是设计云原生架构、构建 AI 驱动的解决方案，帮助企业完成云上旅程。
+我专注于云原生架构设计、AI 驱动的解决方案和开发者工具。工作横跨 AWS 和 Azure——从无服务器架构转型、API 治理，到 AIGC 产品上线和企业迁移策略。
 
-## 我在做什么
+## 我专注的方向
 
-🏗 **云架构** — 在 AWS 和 Azure 上设计企业级解决方案，擅长无服务器架构、API 管理和 AI 集成。
+☁️ **云架构与迁移** — 帮助企业设计和落地生产级云解决方案。从网络架构优化到基于 API Gateway 和 Cognito 的安全框架设计。
 
-🤖 **AI & 开源** — [China CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2) 作者，[SageMaker GGUF 模型部署方案](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker) 贡献者。热衷于通过实用的、生产级的方案让 AI 触手可及。
+🤖 **AI 与机器学习** — 构建实用的 AI 解决方案，包括 AIGC 图像生成流水线、面向语义搜索的向量数据库架构、以及 LLM 模型的云端部署。
 
-🏆 **竞赛经历** — 三届全国大学生计算机博弈大赛冠军🏆（西洋跳棋），国家奖学金获得者，北京市优秀毕业生。
+⚡ **Serverless 与现代应用** — 推动无服务器架构转型，使用 AWS SAM 和 Lambda Web Adapter 构建应用，加速应用现代化进程。
 
-## 这里有什么
+🔧 **开源与开发者社区** — 发布技术博客、开源工具和动手实验。[China CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2) 和 [SageMaker GGUF 模型部署方案](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker) 的作者。
 
-📝 **技术博客** — 云架构、AI/ML、开发者工具的深度文章。中英双语。
+## 认证
 
-🛠 **项目** — 我构建的开源工具和解决方案，从 SSL 自动化到 LLM 部署。
+- AWS Certified Solutions Architect / DevOps Engineer / ML Engineer / Developer / Database Specialist
+- IBM Certified Architect / Open Group Certified Solutions Architect
+- Enterprise Design Thinking Certified Co-Creator
+- [在 Credly 查看全部认证](https://www.credly.com/users/su-zhe/badges)
 
-📷 **摄影** — 街拍、旅行瞬间、城市建筑。更多作品在 [Instagram](https://www.instagram.com/robinsu77/)。
+## 工作之外
+
+📷 我喜欢拍街景、旅行瞬间和城市建筑。更多作品在 [Instagram](https://www.instagram.com/robinsu77/)。
 
 ## 联系我
 
