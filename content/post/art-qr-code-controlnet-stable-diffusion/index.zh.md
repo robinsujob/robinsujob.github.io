@@ -301,7 +301,7 @@ Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3408317133, Size: 900x540, Mode
 **反向提示词（Negative Prompt）：**
 
 ```text
-extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, deformed
+extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quality:1.4), (bad anatomy), (inaccurate limb:1.2),bad composition, inaccurate eyes, extra digit,fewer digits,(extra arms:1.2), signature, easynegative
 ```
 
 ![设置提示词](images/11-set-prompt.png)
