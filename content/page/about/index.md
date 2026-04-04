@@ -5,7 +5,7 @@ slug: "about"
 
 # Hey, I'm Robin 👋
 
-Builder, photographer, and lifelong tinkerer.
+Builder, photographer, and lifelong tinkerer. ENTJ.
 
 I build things at the intersection of cloud and AI.
 

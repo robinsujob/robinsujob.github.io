@@ -5,7 +5,7 @@ slug: "about"
 
 # 嘿，我是 Robin 👋
 
-Builder、摄影师、终身折腾者。
+Builder、摄影师、终身折腾者。ENTJ。
 
 我在云计算和 AI 的交叉领域造东西。
 
