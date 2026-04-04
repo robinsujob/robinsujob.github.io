@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="全面介绍 Amazon API Gateway 中 REST API 和 HTTP API 的 CORS 配置方法，以及开启授权时的注意事项。">
 <title>API Gateway 跨域访问（CORS）配置指南</title>
 
@@ -312,9 +312,15 @@
             <li><a href="#附加授权的跨域配置场景">附加授权的跨域配置场景</a></li>
           </ul>
         </li>
-        <li><a href="#http-apis-跨域访问配置">HTTP APIs 跨域访问配置</a></li>
+        <li><a href="#http-apis-跨域访问配置">HTTP APIs 跨域访问配置</a>
+          <ul>
+            <li><a href="#附加授权的跨域配置场景-1">附加授权的跨域配置场景</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#相关资源">相关资源</a></li>
   </ul>
 
             </nav>
@@ -389,7 +395,7 @@
 
 
                     <time class="article-time--reading">
-                        阅读时长: 6 分钟
+                        阅读时长: 8 分钟
                     </time>
                 
             </div>
@@ -451,9 +457,15 @@
             <li><a href="#附加授权的跨域配置场景">附加授权的跨域配置场景</a></li>
           </ul>
         </li>
-        <li><a href="#http-apis-跨域访问配置">HTTP APIs 跨域访问配置</a></li>
+        <li><a href="#http-apis-跨域访问配置">HTTP APIs 跨域访问配置</a>
+          <ul>
+            <li><a href="#附加授权的跨域配置场景-1">附加授权的跨域配置场景</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#相关资源">相关资源</a></li>
   </ul>
 
             </nav>
@@ -586,6 +598,64 @@
 <li>在 HTTP API 允许的跨域访问来源端点上测试跨域 POST 请求，可以看到，preflight 的 OPTIONS 请求和实际的 POST 请求都能得到正确响应。这是因为 API Gateway 替我们完成了 HTTP API 对 preflight 请求的响应和 CORS 相关的标头的添加。</li>
 </ul>
 <p><img alt="HTTP API CORS 测试结果" class="gallery-image" data-flex-basis="1875px" data-flex-grow="781" height="183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-18.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-18_hu_63a7ec1f82bd643a.png 800w, /p/api-gateway-cors-configuration/images/cors-config-18.png 1430w" width="1430"></p>
+<h4 id="附加授权的跨域配置场景-1">附加授权的跨域配置场景
+</h4><p>类似于 REST API，HTTP API 支持通过 <a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html"  target="_blank" rel="noopener"
+    >Lambda</a>，<a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-jwt-authorizer.html"  target="_blank" rel="noopener"
+    >JWT</a>，<a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-access-control-iam.html"  target="_blank" rel="noopener"
+    >IAM</a> 三种授权方为特定的方法授权。如果您想为集成了授权方的 HTTP API 开启跨域访问，在大多数情况下，HTTP API 会自动为您处理 preflight 请求。因此，您无需进行特殊配置，按照上述步骤即可为集成了授权方的 HTTP API 开启跨域访问。唯一的例外是，当您创建了授权的 ANY 方法时（如下图），则需要注意，这种情况下，preflight 请求也会由 ANY 方法而不会由 HTTP API 处理。而 preflight 请求中不包含授权信息，因此授权的 ANY 方法不会返回正确的状态码和跨域标头，preflight 请求会出现 401 错误。</p>
+<p><img alt="授权的 ANY 方法" class="gallery-image" data-flex-basis="724px" data-flex-grow="301" height="474" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-19.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-19_hu_6d078dcc831f02c8.png 800w, /p/api-gateway-cors-configuration/images/cors-config-19.png 1430w" width="1430"></p>
+<p><img alt="ANY 方法导致的 401 错误" class="gallery-image" data-flex-basis="1383px" data-flex-grow="576" height="248" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-20.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-20_hu_722d8b7eaa811aee.png 800w, /p/api-gateway-cors-configuration/images/cors-config-20.png 1430w" width="1430"></p>
+<p>这种情况下，有两种解决方法：</p>
+<ul>
+<li>（推荐方法）根据需要为每种方法和资源创建一个特定的路由，尽量避免使用 ANY 方法。比如，在本文的例子中，我只需要为 POST 方法创建路由。</li>
+</ul>
+<p><img alt="为特定方法创建路由" class="gallery-image" data-flex-basis="723px" data-flex-grow="301" height="475" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-21.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-21_hu_a4f4c7744f5d9fe0.png 800w, /p/api-gateway-cors-configuration/images/cors-config-21.png 1432w" width="1432"></p>
+<ul>
+<li>在同一资源路径下创建一个无需授权的 OPTIONS 方法路由，并为 OPTIONS 方法添加一个任意后端集成（如下图）。这样无授权的 OPTIONS 路由会捕捉 preflight 请求。</li>
+</ul>
+<p><img alt="创建无授权的 OPTIONS 路由" class="gallery-image" data-flex-basis="504px" data-flex-grow="210" height="680" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/api-gateway-cors-configuration/images/cors-config-22.png" srcset="/p/api-gateway-cors-configuration/images/cors-config-22_hu_1e0063c55466db2f.png 800w, /p/api-gateway-cors-configuration/images/cors-config-22.png 1428w" width="1428"></p>
+<h2 id="总结">总结
+</h2><p>本文介绍了 Amazon API Gateway 中 REST API 和 HTTP API 的跨域访问配置方式，并特别介绍了开启授权的情况下两种 API 要如何设置才能保证 preflight 请求被正确响应。两种 API 的跨域访问配置方式区别如下：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>API 类型</th>
+          <th>跨域访问配置方法</th>
+          <th>跨域访问配置特点</th>
+          <th>授权方法跨域访问注意事项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>REST API</td>
+          <td>可以为 REST API 特定路由配置跨域，具体方法为在该路由下点击右上角启用 CORS 对跨域访问进行配置。</td>
+          <td>可以在所配置的路由下看到用于响应 preflight 请求的 OPTIONS 方法及其响应的标头设置。可以在允许跨域访问的方法下看到其响应中跨域标头的设置。</td>
+          <td>不要为 OPTIONS 方法开启授权。</td>
+      </tr>
+      <tr>
+          <td>HTTP API</td>
+          <td>可以为整个 HTTP API 配置跨域，具体方法点击左侧导航栏的 CORS 进入跨域访问的配置页面。</td>
+          <td>preflight 请求由 API Gateway 自动响应，在控制台中看不到自动响应的 OPTIONS 方法的配置。跨域访问的标头由 API Gateway 自动添加，在允许跨域访问的方法下也看不到其响应中跨域标头的设置。</td>
+          <td>尽量避免使用 ANY 方法，如果必须使用，则另外创建一个不需要授权的 OPTIONS 方法用于 preflight 请求的响应。</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="相关资源">相关资源
+</h2><ul>
+<li><a class="link" href="https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/"  target="_blank" rel="noopener"
+    >为 CloudFront 开启 CORS</a></li>
+<li><a class="link" href="https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/"  target="_blank" rel="noopener"
+    >为 Lambda 函数 URL 开启 CORS</a></li>
+<li><a class="link" href="https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/cors.html"  target="_blank" rel="noopener"
+    >为托管静态网站的 S3 开启 CORS</a></li>
+</ul>
+<hr>
+
+    <blockquote>
+        <p>原文链接：<a class="link" href="https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/"  target="_blank" rel="noopener"
+    >Amazon API Gateway 跨域请求（CORS）配置 - 亚马逊AWS官方博客</a></p>
+
+    </blockquote>
 
 </section>
 
@@ -668,7 +738,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
 
 
     </body>

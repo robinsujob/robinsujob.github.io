@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:4002/zh/p/azure-apim-ai-resilience/</loc>
+    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/p/azure-apim-ai-resilience/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/p/azure-apim-ai-resilience/"
+                />
+  </url><url>
     <loc>http://localhost:4002/zh/tags/ai/</loc>
     <lastmod>2026-04-03T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -169,19 +182,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="http://localhost:4002/zh/tags/"
-                />
-  </url><url>
-    <loc>http://localhost:4002/zh/p/azure-apim-ai-resilience/</loc>
-    <lastmod>2026-04-03T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:4002/p/azure-apim-ai-resilience/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost:4002/zh/p/azure-apim-ai-resilience/"
                 />
   </url><url>
     <loc>http://localhost:4002/zh/categories/aws/</loc>
