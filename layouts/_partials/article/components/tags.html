@@ -1,0 +1,13 @@
+{{ if .Params.Tags }}
+    <section class="article-tags">
+        {{ range (.GetTerms "tags") }}
+            {{ $slug := .Page.Title | urlize }}
+            {{ $tagData := index site.Data.tag_colors $slug }}
+            {{ if $tagData }}
+                <a href="{{ .RelPermalink }}" style="background-color: {{ $tagData.color }}; color: #fff;">{{ .LinkTitle }}</a>
+            {{ else }}
+                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{ end }}
+        {{ end }}
+    </section>
+{{ end }}

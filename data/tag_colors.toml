@@ -1,0 +1,63 @@
+# Azure - Microsoft Blue
+[azure]
+color = "#0078D4"
+[api-management]
+color = "#0078D4"
+[managed-identity]
+color = "#0078D4"
+[high-availability]
+color = "#0078D4"
+[load-balancing]
+color = "#0078D4"
+[enterprise-architecture]
+color = "#0078D4"
+[microsoft-foundry]
+color = "#0078D4"
+
+# AWS - Amazon Orange
+[cloudfront]
+color = "#FF9900"
+[ssl]
+color = "#FF9900"
+[serverless]
+color = "#FF9900"
+[api-gateway]
+color = "#FF9900"
+[cors]
+color = "#FF9900"
+[sagemaker]
+color = "#FF9900"
+[bedrock]
+color = "#FF9900"
+[deployment]
+color = "#FF9900"
+[china]
+color = "#FF9900"
+
+# AI/ML - Purple
+[ai]
+color = "#7B2FBE"
+[gguf]
+color = "#7B2FBE"
+[llm]
+color = "#7B2FBE"
+[stable-diffusion]
+color = "#7B2FBE"
+[controlnet]
+color = "#7B2FBE"
+[openpose]
+color = "#7B2FBE"
+[qr-code]
+color = "#7B2FBE"
+[art]
+color = "#7B2FBE"
+[genai]
+color = "#7B2FBE"
+
+# WordPress Blue
+[wordpress]
+color = "#21759B"
+
+# llama.cpp
+[llama-cpp]
+color = "#7B2FBE"
