@@ -310,12 +310,6 @@
         <li><a href="#第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码</a></li>
       </ul>
     </li>
-    <li><a href="#附录">附录</a>
-      <ul>
-        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
-        <li><a href="#附录2如何使用-stable-diffusion-ai-绘图解决方案">附录2：如何使用 Stable Diffusion AI 绘图解决方案</a></li>
-      </ul>
-    </li>
     <li><a href="#使用-openpose-优化人物二维码">使用 OpenPose 优化人物二维码</a>
       <ul>
         <li><a href="#效果展示">效果展示</a></li>
@@ -325,6 +319,11 @@
         <li><a href="#设置提示词并生成">设置提示词并生成</a></li>
         <li><a href="#最终效果">最终效果</a></li>
         <li><a href="#调优建议">调优建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录">附录</a>
+      <ul>
+        <li><a href="#controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择</a></li>
       </ul>
     </li>
     <li><a href="#参考链接">参考链接</a></li>
@@ -408,7 +407,7 @@
 
 
                     <time class="article-time--reading">
-                        阅读时长: 11 分钟
+                        阅读时长: 10 分钟
                     </time>
                 
             </div>
@@ -485,12 +484,6 @@
         <li><a href="#第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码</a></li>
       </ul>
     </li>
-    <li><a href="#附录">附录</a>
-      <ul>
-        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
-        <li><a href="#附录2如何使用-stable-diffusion-ai-绘图解决方案">附录2：如何使用 Stable Diffusion AI 绘图解决方案</a></li>
-      </ul>
-    </li>
     <li><a href="#使用-openpose-优化人物二维码">使用 OpenPose 优化人物二维码</a>
       <ul>
         <li><a href="#效果展示">效果展示</a></li>
@@ -500,6 +493,11 @@
         <li><a href="#设置提示词并生成">设置提示词并生成</a></li>
         <li><a href="#最终效果">最终效果</a></li>
         <li><a href="#调优建议">调优建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录">附录</a>
+      <ul>
+        <li><a href="#controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择</a></li>
       </ul>
     </li>
     <li><a href="#参考链接">参考链接</a></li>
@@ -740,28 +738,8 @@
 <img alt="参数微调" class="gallery-image" data-flex-basis="418px" data-flex-grow="174" height="1146" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_ad317a8ce958a578.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_e79e5ee60f7554ba.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg 2000w" width="2000"></p>
 <p>必要时可以选择使用“脚本”中的 X/Y/Z Plot，来对比不同参数下生成二维码的效果。我们此处对比了 ControlNet 的控制权重和引导介入时机：</p>
 <p><img alt="X/Y/Z Plot 对比" class="gallery-image" data-flex-basis="740px" data-flex-grow="308" height="648" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_30abd11948c76d54.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_ee7d7898db9411be.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg 2000w" width="2000"></p>
-<h2 id="附录">附录
-</h2><h3 id="附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择
-</h3><p>为方便您使用，我们在 Blog 专用的 AMI 中已经完成了 ControlNet QRCode 模型的植入，只要您从正确的版本中启用 AMI，都可以直接在 ControlNet 中选择模型。</p>
-<p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
-<ul>
-<li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
-    >QRCode Monster - HuggingFace</a></li>
-</ul>
-<p>市面上也有另一个二维码模型：<strong>QR Pattern v2.0</strong>。该模型我们建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：</p>
-<ul>
-<li><a class="link" href="https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes"  target="_blank" rel="noopener"
-    >QR Pattern v2.0 - Civitai</a></li>
-<li><a class="link" href="https://huggingface.co/ioclab/ioc-controlnet"  target="_blank" rel="noopener"
-    >IoC Lab ControlNet - HuggingFace</a></li>
-</ul>
-<h3 id="附录2如何使用-stable-diffusion-ai-绘图解决方案">附录2：如何使用 Stable Diffusion AI 绘图解决方案
-</h3><p>imAgine 是一款由亚马逊云科技核心级服务合作伙伴伊克罗德（eCloudrover），基于 Automatic1111 Stable Diffusion Webui，结合亚马逊云科技多种托管服务定制开发的 AI 绘图解决方案。imAgine 目前已经上线亚马逊云科技 MarketPlace，用户能够在 Marketplace 中一键订阅，快速启动，无需进行复杂的环境配置，敏捷地在云上部署 AI 绘画环境。</p>
-<p>同时还结合亚马逊云科技无服务器服务 Amazon API Gateway、AWS DynamoDB 等，将 WebUI 前端的训练、推理请求，无缝转发到 Amazon SageMaker 后端的专用推理、训练服务器上，实现算力的无缝扩展，并基于此架构基础实现前后端分离、精确的成本管控。</p>
-<p>订阅 imAgine 解决方案的详细操作流程请参考 WorkShop 页面：<a class="link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"  target="_blank" rel="noopener"
-    >imAgine Workshop</a></p>
 <h2 id="使用-openpose-优化人物二维码">使用 OpenPose 优化人物二维码
-</h2><p>在上一节中，我们体验了如何使用 ControlNet 生成艺术二维码。本节将进一步介绍如何将 <strong>OpenPose</strong> 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。</p>
+</h2><p>在掌握了基础的艺术二维码生成技巧后，我们可以进一步探索如何将 <strong>OpenPose</strong> 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。</p>
 <h3 id="效果展示">效果展示
 </h3><div class="table-wrapper"><table>
   <thead>
@@ -863,6 +841,21 @@
 <li><strong>骨架结构与位置</strong>：调整 OpenPose 骨架的姿势和在画面中的位置</li>
 <li><strong>控制权重</strong>：分别调整 OpenPose 和 QR Code 的 Control Weight</li>
 <li><strong>引导介入与终止时机</strong>：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导</li>
+</ul>
+<h2 id="附录">附录
+</h2><h3 id="controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择
+</h3><p>为方便您使用，我们在 Blog 专用的 AMI 中已经完成了 ControlNet QRCode 模型的植入，只要您从正确的版本中启用 AMI，都可以直接在 ControlNet 中选择模型。</p>
+<p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
+<ul>
+<li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
+    >QRCode Monster - HuggingFace</a></li>
+</ul>
+<p>市面上也有另一个二维码模型：<strong>QR Pattern v2.0</strong>。该模型我们建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：</p>
+<ul>
+<li><a class="link" href="https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes"  target="_blank" rel="noopener"
+    >QR Pattern v2.0 - Civitai</a></li>
+<li><a class="link" href="https://huggingface.co/ioclab/ioc-controlnet"  target="_blank" rel="noopener"
+    >IoC Lab ControlNet - HuggingFace</a></li>
 </ul>
 <h2 id="参考链接">参考链接
 </h2><ul>

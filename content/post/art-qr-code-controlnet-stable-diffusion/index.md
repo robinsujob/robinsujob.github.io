@@ -208,30 +208,9 @@ When necessary, use the X/Y/Z Plot in "Scripts" to compare QR code generation ef
 
 ![X/Y/Z Plot Comparison](images/image16.jpg)
 
-## Appendix
-
-### Appendix 1: Choosing ControlNet QR Code Models
-
-To date, **QRCode Monster** is the model with the highest QR code control success rate and best image fusion effect. It can be downloaded from HuggingFace:
-
-- [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
-
-Another option is **QR Pattern v2.0**, best used with IoC Lab's Brightness model as an auxiliary to improve local contrast. However, based on our testing, this model introduces more interference that may significantly alter the image style. Downloads:
-
-- [QR Pattern v2.0 - Civitai](https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes)
-- [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
-
-### Appendix 2: imAgine AI Drawing Solution
-
-imAgine is an AI drawing solution based on Automatic1111 Stable Diffusion WebUI, integrated with multiple AWS managed services. It is available on AWS MarketPlace for one-click subscription and rapid deployment.
-
-It integrates with AWS serverless services like Amazon API Gateway and DynamoDB, forwarding training and inference requests from the WebUI frontend to dedicated SageMaker backend servers for seamless compute scaling and cost management.
-
-For detailed steps, refer to the Workshop page: [imAgine Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
-
 ## Enhancing QR Codes with OpenPose
 
-Building on the QR code generation techniques above, this section demonstrates how to combine **OpenPose** with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which serve as an additional ControlNet input to control character poses in the generated image.
+Building on the QR code techniques above, we can take it further by combining **OpenPose** with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which serve as an additional ControlNet input to control character poses in the generated image.
 
 Here are some example results combining OpenPose pose control with QR code generation:
 
@@ -324,10 +303,19 @@ To achieve the best results when combining OpenPose with QR codes, consider adju
 - **Control weight**: Balance between OpenPose (pose accuracy) and QR code (scannability) weights
 - **Guidance start/end timing**: Fine-tune when each ControlNet kicks in during the denoising process
 
+## Appendix: ControlNet QRCode Model Selection
+
+To date, **QRCode Monster** is the model with the highest QR code control success rate and best image fusion effect. It can be downloaded from HuggingFace:
+
+- [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
+
+Another option is **QR Pattern v2.0**, best used with IoC Lab's Brightness model as an auxiliary to improve local contrast. However, based on our testing, this model introduces more interference that may significantly alter the image style. Downloads:
+
+- [QR Pattern v2.0 - Civitai](https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes)
+- [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
+
 ## References
 
-- [Stable Diffusion AI Solution MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
-- [Stable Diffusion AI Solution Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 - [QR Toolkit by Anthony Fu](https://antfu.me/posts/ai-qrcode-101)
 - [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
 - [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)

@@ -310,12 +310,6 @@
         <li><a href="#step-4-import-qr-code-into-controlnet">Step 4: Import QR Code into ControlNet</a></li>
       </ul>
     </li>
-    <li><a href="#appendix">Appendix</a>
-      <ul>
-        <li><a href="#appendix-1-choosing-controlnet-qr-code-models">Appendix 1: Choosing ControlNet QR Code Models</a></li>
-        <li><a href="#appendix-2-imagine-ai-drawing-solution">Appendix 2: imAgine AI Drawing Solution</a></li>
-      </ul>
-    </li>
     <li><a href="#enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose</a>
       <ul>
         <li><a href="#environment-setup-enable-multiple-controlnet-units">Environment Setup: Enable Multiple ControlNet Units</a></li>
@@ -326,6 +320,7 @@
         <li><a href="#fine-tuning-tips">Fine-Tuning Tips</a></li>
       </ul>
     </li>
+    <li><a href="#appendix-controlnet-qrcode-model-selection">Appendix: ControlNet QRCode Model Selection</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 
@@ -484,12 +479,6 @@
         <li><a href="#step-4-import-qr-code-into-controlnet">Step 4: Import QR Code into ControlNet</a></li>
       </ul>
     </li>
-    <li><a href="#appendix">Appendix</a>
-      <ul>
-        <li><a href="#appendix-1-choosing-controlnet-qr-code-models">Appendix 1: Choosing ControlNet QR Code Models</a></li>
-        <li><a href="#appendix-2-imagine-ai-drawing-solution">Appendix 2: imAgine AI Drawing Solution</a></li>
-      </ul>
-    </li>
     <li><a href="#enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose</a>
       <ul>
         <li><a href="#environment-setup-enable-multiple-controlnet-units">Environment Setup: Enable Multiple ControlNet Units</a></li>
@@ -500,6 +489,7 @@
         <li><a href="#fine-tuning-tips">Fine-Tuning Tips</a></li>
       </ul>
     </li>
+    <li><a href="#appendix-controlnet-qrcode-model-selection">Appendix: ControlNet QRCode Model Selection</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 
@@ -702,27 +692,8 @@
 <img alt="Parameter Fine-tuning" class="gallery-image" data-flex-basis="418px" data-flex-grow="174" height="1146" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_ad317a8ce958a578.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_e79e5ee60f7554ba.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg 2000w" width="2000"></p>
 <p>When necessary, use the X/Y/Z Plot in &ldquo;Scripts&rdquo; to compare QR code generation effects under different parameters. Here we compared ControlNet&rsquo;s control weight and guidance start timing:</p>
 <p><img alt="X/Y/Z Plot Comparison" class="gallery-image" data-flex-basis="740px" data-flex-grow="308" height="648" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_30abd11948c76d54.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_ee7d7898db9411be.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg 2000w" width="2000"></p>
-<h2 id="appendix">Appendix
-</h2><h3 id="appendix-1-choosing-controlnet-qr-code-models">Appendix 1: Choosing ControlNet QR Code Models
-</h3><p>To date, <strong>QRCode Monster</strong> is the model with the highest QR code control success rate and best image fusion effect. It can be downloaded from HuggingFace:</p>
-<ul>
-<li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
-    >QRCode Monster - HuggingFace</a></li>
-</ul>
-<p>Another option is <strong>QR Pattern v2.0</strong>, best used with IoC Lab&rsquo;s Brightness model as an auxiliary to improve local contrast. However, based on our testing, this model introduces more interference that may significantly alter the image style. Downloads:</p>
-<ul>
-<li><a class="link" href="https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes"  target="_blank" rel="noopener"
-    >QR Pattern v2.0 - Civitai</a></li>
-<li><a class="link" href="https://huggingface.co/ioclab/ioc-controlnet"  target="_blank" rel="noopener"
-    >IoC Lab ControlNet - HuggingFace</a></li>
-</ul>
-<h3 id="appendix-2-imagine-ai-drawing-solution">Appendix 2: imAgine AI Drawing Solution
-</h3><p>imAgine is an AI drawing solution based on Automatic1111 Stable Diffusion WebUI, integrated with multiple AWS managed services. It is available on AWS MarketPlace for one-click subscription and rapid deployment.</p>
-<p>It integrates with AWS serverless services like Amazon API Gateway and DynamoDB, forwarding training and inference requests from the WebUI frontend to dedicated SageMaker backend servers for seamless compute scaling and cost management.</p>
-<p>For detailed steps, refer to the Workshop page: <a class="link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"  target="_blank" rel="noopener"
-    >imAgine Workshop</a></p>
 <h2 id="enhancing-qr-codes-with-openpose">Enhancing QR Codes with OpenPose
-</h2><p>Building on the QR code generation techniques above, this section demonstrates how to combine <strong>OpenPose</strong> with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which serve as an additional ControlNet input to control character poses in the generated image.</p>
+</h2><p>Building on the QR code techniques above, we can take it further by combining <strong>OpenPose</strong> with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which serve as an additional ControlNet input to control character poses in the generated image.</p>
 <p>Here are some example results combining OpenPose pose control with QR code generation:</p>
 <div class="table-wrapper"><table>
   <thead>
@@ -826,12 +797,21 @@
 <li><strong>Control weight</strong>: Balance between OpenPose (pose accuracy) and QR code (scannability) weights</li>
 <li><strong>Guidance start/end timing</strong>: Fine-tune when each ControlNet kicks in during the denoising process</li>
 </ul>
+<h2 id="appendix-controlnet-qrcode-model-selection">Appendix: ControlNet QRCode Model Selection
+</h2><p>To date, <strong>QRCode Monster</strong> is the model with the highest QR code control success rate and best image fusion effect. It can be downloaded from HuggingFace:</p>
+<ul>
+<li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
+    >QRCode Monster - HuggingFace</a></li>
+</ul>
+<p>Another option is <strong>QR Pattern v2.0</strong>, best used with IoC Lab&rsquo;s Brightness model as an auxiliary to improve local contrast. However, based on our testing, this model introduces more interference that may significantly alter the image style. Downloads:</p>
+<ul>
+<li><a class="link" href="https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes"  target="_blank" rel="noopener"
+    >QR Pattern v2.0 - Civitai</a></li>
+<li><a class="link" href="https://huggingface.co/ioclab/ioc-controlnet"  target="_blank" rel="noopener"
+    >IoC Lab ControlNet - HuggingFace</a></li>
+</ul>
 <h2 id="references">References
 </h2><ul>
-<li><a class="link" href="https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa"  target="_blank" rel="noopener"
-    >Stable Diffusion AI Solution MarketPlace</a></li>
-<li><a class="link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"  target="_blank" rel="noopener"
-    >Stable Diffusion AI Solution Workshop</a></li>
 <li><a class="link" href="https://antfu.me/posts/ai-qrcode-101"  target="_blank" rel="noopener"
     >QR Toolkit by Anthony Fu</a></li>
 <li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"

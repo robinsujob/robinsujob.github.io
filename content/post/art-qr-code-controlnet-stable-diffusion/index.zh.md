@@ -232,32 +232,9 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 
 ![X/Y/Z Plot 对比](images/image16.jpg)
 
-## 附录
-
-### 附录1：ControlNet QRCode 模型的选择
-
-为方便您使用，我们在 Blog 专用的 AMI 中已经完成了 ControlNet QRCode 模型的植入，只要您从正确的版本中启用 AMI，都可以直接在 ControlNet 中选择模型。
-
-截至目前，**QRCode Monster** 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：
-
-- [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
-
-市面上也有另一个二维码模型：**QR Pattern v2.0**。该模型我们建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：
-
-- [QR Pattern v2.0 - Civitai](https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes)
-- [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
-
-### 附录2：如何使用 Stable Diffusion AI 绘图解决方案
-
-imAgine 是一款由亚马逊云科技核心级服务合作伙伴伊克罗德（eCloudrover），基于 Automatic1111 Stable Diffusion Webui，结合亚马逊云科技多种托管服务定制开发的 AI 绘图解决方案。imAgine 目前已经上线亚马逊云科技 MarketPlace，用户能够在 Marketplace 中一键订阅，快速启动，无需进行复杂的环境配置，敏捷地在云上部署 AI 绘画环境。
-
-同时还结合亚马逊云科技无服务器服务 Amazon API Gateway、AWS DynamoDB 等，将 WebUI 前端的训练、推理请求，无缝转发到 Amazon SageMaker 后端的专用推理、训练服务器上，实现算力的无缝扩展，并基于此架构基础实现前后端分离、精确的成本管控。
-
-订阅 imAgine 解决方案的详细操作流程请参考 WorkShop 页面：[imAgine Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
-
 ## 使用 OpenPose 优化人物二维码
 
-在上一节中，我们体验了如何使用 ControlNet 生成艺术二维码。本节将进一步介绍如何将 **OpenPose** 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。
+在掌握了基础的艺术二维码生成技巧后，我们可以进一步探索如何将 **OpenPose** 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。
 
 ### 效果展示
 
@@ -348,6 +325,21 @@ extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, d
 - **控制权重**：分别调整 OpenPose 和 QR Code 的 Control Weight
 - **引导介入与终止时机**：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导
 
+## 附录
+
+### ControlNet QRCode 模型的选择
+
+为方便您使用，我们在 Blog 专用的 AMI 中已经完成了 ControlNet QRCode 模型的植入，只要您从正确的版本中启用 AMI，都可以直接在 ControlNet 中选择模型。
+
+截至目前，**QRCode Monster** 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：
+
+- [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
+
+市面上也有另一个二维码模型：**QR Pattern v2.0**。该模型我们建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：
+
+- [QR Pattern v2.0 - Civitai](https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes)
+- [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
+
 ## 参考链接
 
 - [Stable Diffusion AI 方案 MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
@@ -362,3 +354,5 @@ extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, d
 ---
 
 > 原文链接：[借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)
+
+
