@@ -230,7 +230,9 @@ Here are some example results combining OpenPose pose control with QR code gener
 The prompt used for the example above:
 
 ```text
-(school girl walking on the street:1.6), city background, anime style, masterpiece, best quality
+(school girl:1.6, walking), (a car, side view, to left), (residential area, cherry trees)
+Negative prompt: (worst quality:1.6),(low quality:1.6), (inaccurate limb:1.2),bad composition, inaccurate eyes, easynegative
+Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3408317133, Size: 900x540, Model: cetusMix_Whalefall2
 ```
 
 ### Environment Setup: Enable Multiple ControlNet Units
