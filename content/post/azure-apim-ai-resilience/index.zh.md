@@ -32,7 +32,7 @@ tags:
 
 ## 架构概览
 
-![1-Architecture](images/1-Architecture-en.png)
+![1-Architecture](images/1-Architecture-cn.png)
 
 本架构采用**集中式 API 网关 + 多订阅后端模式**，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。
 
@@ -311,7 +311,7 @@ az rest --method PUT \
 </policies>
 ```
 
-![](images/7-5-policy-editor-en.png)
+![](images/7-5-policy-editor-cn.png)
 
 **Policy 核心逻辑：**
 

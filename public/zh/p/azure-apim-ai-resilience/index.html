@@ -489,7 +489,7 @@
 </ul>
 <p>本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。</p>
 <h2 id="架构概览">架构概览
-</h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="289px" data-flex-grow="120" height="683" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/1-Architecture-en.png" srcset="/p/azure-apim-ai-resilience/images/1-Architecture-en_hu_10ff4595295ffe34.png 800w, /p/azure-apim-ai-resilience/images/1-Architecture-en.png 823w" width="823"></p>
+</h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="290px" data-flex-grow="121" height="680" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/1-Architecture-cn.png" srcset="/p/azure-apim-ai-resilience/images/1-Architecture-cn_hu_708ea3c14cb66510.png 800w, /p/azure-apim-ai-resilience/images/1-Architecture-cn.png 823w" width="823"></p>
 <p>本架构采用<strong>集中式 API 网关 + 多订阅后端模式</strong>，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。</p>
 <p>核心设计理念：</p>
 <ul>
@@ -950,7 +950,7 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/policies&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img class="gallery-image" data-flex-basis="370px" data-flex-grow="154" height="1848" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png" srcset="/p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_bf4c944bd3751b2f.png 800w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_82283df76f27d876.png 1600w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en_hu_fc16f38167941c1d.png 2400w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-en.png 2851w" width="2851"></p>
+</div><p><img class="gallery-image" data-flex-basis="382px" data-flex-grow="159" height="1873" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/7-5-policy-editor-cn.png" srcset="/p/azure-apim-ai-resilience/images/7-5-policy-editor-cn_hu_d0ca7d7fffe19bfa.png 800w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-cn_hu_72485746bb82c7eb.png 1600w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-cn_hu_f86a8c2ba1e7d848.png 2400w, /p/azure-apim-ai-resilience/images/7-5-policy-editor-cn.png 2986w" width="2986"></p>
 <p><strong>Policy 核心逻辑：</strong></p>
 <div class="table-wrapper"><table>
   <thead>
