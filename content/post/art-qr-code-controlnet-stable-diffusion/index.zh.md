@@ -2,7 +2,7 @@
 slug: "art-qr-code-controlnet-stable-diffusion"
 title: "借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案"
 date: 2023-09-01
-description: "借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码。"
+description: "借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。"
 image: images/sample1.jpg
 categories:
   - AI/ML
@@ -11,6 +11,7 @@ tags:
   - controlnet
   - qr-code
   - art
+  - openpose
 ---
 
 
@@ -132,7 +133,7 @@ tags:
 
 ## 借助 ControlNet 生成艺术二维码
 
-### Step1：优化二维码
+### 第一步：优化二维码
 
 二维码是一种借助特定几何图形分配，在二维空间上分布的、黑白相间的、记录数据符号信息的图形。二维码有多种不同的编码方式，我们此处采用通用度最高也是最基础的编码方式：QR Code。
 
@@ -170,7 +171,7 @@ pixel perfect: True, control mode: Balanced, preprocessor params: (512, 64, 64)"
 Version: v1.3.
 ```
 
-### Step2：制作基础二维码
+### 第二步：制作基础二维码
 
 了解了上述要点后，我们将要开始使用二维码制作工具，生成一个输入给 SD 的基础二维码。互联网上有多种网页二维码生成工具，您可以自由选择。同时为了方便您使用，我们在 Blog 专用的 AMI 中已经预装了 QRCode 生成插件：
 
@@ -181,7 +182,7 @@ Version: v1.3.
 
 完成二维码制作后，可以点击右侧的 "Download" 以下载到本地。或点击 "Send to ControlNet"，直接将二维码发送至 ControlNet 以进行下一步操作。
 
-### Step3：确定艺术风格
+### 第三步：确定艺术风格
 
 使用 Stable Diffusion 进行艺术创作的核心是选择合适的模型 + 提示词。我们在创作艺术二维码之前，建议先不使用 ControlNet，先进行一次普通的图片生成，以测试生图效果。
 
@@ -197,7 +198,7 @@ Face restoration: CodeFormer, Size: 512x512,
 Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.2
 ```
 
-### Step4：在 ControlNet 中导入二维码
+### 第四步：在 ControlNet 中导入二维码
 
 确认好图片风格后，我们将未经处理的二维码上传 ControlNet。请注意以下几个选项的配置：
 
@@ -358,5 +359,6 @@ extra hands, extra fingers, bad anatomy, missing fingers, fused fingers, ugly, d
 
 
 
-原文链接：[借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)
+---
 
+> 原文链接：[借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)

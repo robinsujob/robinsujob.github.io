@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。">
 <title>借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.9e1aaad4f0d84df027eafaddb7a8e407fadfeddf032716adebfc7db13ddc55ce.css"><meta property='og:title' content="借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案">
-<meta property='og:description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码。">
+<meta property='og:description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。">
 <meta property='og:url' content='http://localhost:4002/zh/p/art-qr-code-controlnet-stable-diffusion/'>
 <meta property='og:site_name' content='Robin&#39;s Space'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='stable-diffusion' /><meta property='article:tag' content='controlnet' /><meta property='article:tag' content='qr-code' /><meta property='article:tag' content='art' /><meta property='article:published_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='stable-diffusion' /><meta property='article:tag' content='controlnet' /><meta property='article:tag' content='qr-code' /><meta property='article:tag' content='art' /><meta property='article:tag' content='openpose' /><meta property='article:published_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
 <meta name="twitter:title" content="借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案">
-<meta name="twitter:description" content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:4002/' />
     <link rel="shortcut icon" href="/img/avatar.jpg" />
 
@@ -304,10 +304,10 @@
     </li>
     <li><a href="#借助-controlnet-生成艺术二维码">借助 ControlNet 生成艺术二维码</a>
       <ul>
-        <li><a href="#step1优化二维码">Step1：优化二维码</a></li>
-        <li><a href="#step2制作基础二维码">Step2：制作基础二维码</a></li>
-        <li><a href="#step3确定艺术风格">Step3：确定艺术风格</a></li>
-        <li><a href="#step4在-controlnet-中导入二维码">Step4：在 ControlNet 中导入二维码</a></li>
+        <li><a href="#第一步优化二维码">第一步：优化二维码</a></li>
+        <li><a href="#第二步制作基础二维码">第二步：制作基础二维码</a></li>
+        <li><a href="#第三步确定艺术风格">第三步：确定艺术风格</a></li>
+        <li><a href="#第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码</a></li>
       </ul>
     </li>
     <li><a href="#附录">附录</a>
@@ -370,7 +370,7 @@
     
         
         <h3 class="article-subtitle">
-            借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码。
+            借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。
         </h3>
         
     </div>
@@ -479,10 +479,10 @@
     </li>
     <li><a href="#借助-controlnet-生成艺术二维码">借助 ControlNet 生成艺术二维码</a>
       <ul>
-        <li><a href="#step1优化二维码">Step1：优化二维码</a></li>
-        <li><a href="#step2制作基础二维码">Step2：制作基础二维码</a></li>
-        <li><a href="#step3确定艺术风格">Step3：确定艺术风格</a></li>
-        <li><a href="#step4在-controlnet-中导入二维码">Step4：在 ControlNet 中导入二维码</a></li>
+        <li><a href="#第一步优化二维码">第一步：优化二维码</a></li>
+        <li><a href="#第二步制作基础二维码">第二步：制作基础二维码</a></li>
+        <li><a href="#第三步确定艺术风格">第三步：确定艺术风格</a></li>
+        <li><a href="#第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码</a></li>
       </ul>
     </li>
     <li><a href="#附录">附录</a>
@@ -641,7 +641,7 @@
 </h4><p>在绘制人物主体较小的图片时，经常会出现面部崩坏的情况。尤其是本文之后会介绍的生成艺术二维码流程，人物的面部经常会因为二维码码点的存在而崩坏。对面部的重绘，更推荐使用 ADetailer 插件实现。该插件会使用 yolo 算法对图片中的物体进行识别，我们设定其识别人物面部，并提供面部重绘的提示词和模型；该插件会在识别到的面部位置进行局部重绘，完成面部修复。ADetailer 插件可以满足面部和手部的识别与修复。在 ADetailer 中也能引用 Lora 模型进行局部重绘生成。</p>
 <p><img alt="ADetailer 面部修复" class="gallery-image" data-flex-basis="445px" data-flex-grow="185" height="1078" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_6367fc31bcade539.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_5676d0dce49e6a81.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg 2000w" width="2000"></p>
 <h2 id="借助-controlnet-生成艺术二维码">借助 ControlNet 生成艺术二维码
-</h2><h3 id="step1优化二维码">Step1：优化二维码
+</h2><h3 id="第一步优化二维码">第一步：优化二维码
 </h3><p>二维码是一种借助特定几何图形分配，在二维空间上分布的、黑白相间的、记录数据符号信息的图形。二维码有多种不同的编码方式，我们此处采用通用度最高也是最基础的编码方式：QR Code。</p>
 <p>输入的二维码是借助 SD 生成艺术二维码过程中最重要的部分之一。我们主要关心输入的二维码的以下两个特点：</p>
 <p><img alt="QR Code 结构" class="gallery-image" data-flex-basis="463px" data-flex-grow="193" height="1035" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_b52fdd4bc2347dd6.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_4f11b8a8789a497c.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg 2000w" width="2000"></p>
@@ -681,7 +681,7 @@
 </span></span><span class="line"><span class="cl">Version: v1.3.
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="step2制作基础二维码">Step2：制作基础二维码
+</div><h3 id="第二步制作基础二维码">第二步：制作基础二维码
 </h3><p>了解了上述要点后，我们将要开始使用二维码制作工具，生成一个输入给 SD 的基础二维码。互联网上有多种网页二维码生成工具，您可以自由选择。同时为了方便您使用，我们在 Blog 专用的 AMI 中已经预装了 QRCode 生成插件：</p>
 <ul>
 <li><strong>Anthony&rsquo;s QR Toolkit</strong>：整合在 Webui 的 QRCode 生成与优化工具
@@ -693,7 +693,7 @@
 </ul>
 <p><img alt="QR Toolkit 配置" class="gallery-image" data-flex-basis="352px" data-flex-grow="146" height="1363" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_7dd3f5c4533a8b1f.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_a9e7cdd31e40fc49.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg 2000w" width="2000"></p>
 <p>完成二维码制作后，可以点击右侧的 &ldquo;Download&rdquo; 以下载到本地。或点击 &ldquo;Send to ControlNet&rdquo;，直接将二维码发送至 ControlNet 以进行下一步操作。</p>
-<h3 id="step3确定艺术风格">Step3：确定艺术风格
+<h3 id="第三步确定艺术风格">第三步：确定艺术风格
 </h3><p>使用 Stable Diffusion 进行艺术创作的核心是选择合适的模型 + 提示词。我们在创作艺术二维码之前，建议先不使用 ControlNet，先进行一次普通的图片生成，以测试生图效果。</p>
 <p><img alt="测试生图效果" class="gallery-image" data-flex-basis="506px" data-flex-grow="210" height="948" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_67bbdab4025fc3f5.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_c83f3b551e0924d7.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg 2000w" width="2000"></p>
 <p>生成参数：</p>
@@ -713,7 +713,7 @@
 </span></span><span class="line"><span class="cl">Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.2
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="step4在-controlnet-中导入二维码">Step4：在 ControlNet 中导入二维码
+</div><h3 id="第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码
 </h3><p>确认好图片风格后，我们将未经处理的二维码上传 ControlNet。请注意以下几个选项的配置：</p>
 <ul>
 <li><strong>“启用” 按钮</strong>：勾选以确保 ControlNet 在图片生成过程中生效</li>
@@ -879,8 +879,13 @@
 <li><a class="link" href="http://aigc.ioclab.com/"  target="_blank" rel="noopener"
     >IoC Lab Stable Diffusion 文档</a></li>
 </ul>
-<p>原文链接：<a class="link" href="https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/"  target="_blank" rel="noopener"
+<hr>
+
+    <blockquote>
+        <p>原文链接：<a class="link" href="https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/"  target="_blank" rel="noopener"
     >借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案</a></p>
+
+    </blockquote>
 
 </section>
 
@@ -896,6 +901,8 @@
             <a href="/zh/tags/qr-code/">Qr-Code</a>
         
             <a href="/zh/tags/art/">Art</a>
+        
+            <a href="/zh/tags/openpose/">Openpose</a>
         
     </section>
 
