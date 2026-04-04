@@ -1,6 +1,6 @@
 ---
 title: "Azure"
 style:
-  background: "#0078D4"
-  color: "#fff"
+  background: "#E3F2FD"
+  color: "#0D47A1"
 ---

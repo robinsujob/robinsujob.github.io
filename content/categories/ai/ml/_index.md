@@ -1,6 +1,6 @@
 ---
 title: "AI/ML"
 style:
-  background: "#7B2FBE"
-  color: "#fff"
+  background: "#F3E5F5"
+  color: "#6A1B9A"
 ---
