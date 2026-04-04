@@ -7,7 +7,9 @@ slug: "about"
 
 I build things at the intersection of cloud and AI.
 
-As a solutions architect, I help organizations design and ship production-grade cloud infrastructure — from API platforms and serverless systems to AI-powered products. I care about clean architecture, developer experience, and making complex technology accessible.
+Currently a Senior Solutions Engineer at **Microsoft**. Previously at **AWS** as ISV Solutions Architect, and before that at **IBM** as Technical Solutions Architect. Across these roles, I've designed cloud-native architectures, shipped AI-powered products, and helped organizations navigate their cloud journey.
+
+I care about clean architecture, developer experience, and making complex technology accessible.
 
 When I'm not architecting systems, I'm writing about what I learn, contributing to open source, or capturing the world through my camera.
 
