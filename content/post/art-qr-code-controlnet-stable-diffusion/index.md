@@ -212,6 +212,8 @@ When necessary, use the X/Y/Z Plot in "Scripts" to compare QR code generation ef
 
 Building on the QR code techniques above, we can take it further by combining **OpenPose** with QR codes to create even more dynamic and artistic results. OpenPose generates skeleton maps of human poses, which serve as an additional ControlNet input to control character poses in the generated image.
 
+
+### Example Showcase
 Here are some example results combining OpenPose pose control with QR code generation:
 
 | | |
