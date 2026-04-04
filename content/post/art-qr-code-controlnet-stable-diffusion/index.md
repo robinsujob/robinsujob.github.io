@@ -324,6 +324,7 @@ Another option is **QR Pattern v2.0**, best used with IoC Lab's Brightness model
 
 ## References
 
+- [AIGC Stable Diffusion Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 - [QR Toolkit by Anthony Fu](https://antfu.me/posts/ai-qrcode-101)
 - [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
 - [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
