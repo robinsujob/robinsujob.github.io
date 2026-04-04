@@ -5,7 +5,7 @@
 
     [en.params.sidebar]
         emoji    = ""
-        subtitle = "AWS Solutions Architect | Cloud & AI"
+        subtitle = "Cloud & AI Solutions Architect"
         avatar   = "img/avatar.png"
 
 [zh]
@@ -15,5 +15,5 @@
 
     [zh.params.sidebar]
         emoji    = ""
-        subtitle = "AWS 解决方案架构师 | 云计算 & AI"
+        subtitle = "云与 AI 解决方案架构师"
         avatar   = "img/avatar.png"
