@@ -13,21 +13,10 @@ Builder、摄影师、终身折腾者。ENTJ。
 
 现任 Microsoft 高级解决方案工程师。此前在 AWS 服务 ISV 与中小企业客户，担任解决方案架构师；更早在 IBM 担任技术解决方案架构师。我设计云原生架构、交付 AI 驱动的产品、帮助企业最大化云上投资的价值。
 
-我关注架构的优雅、开发者体验、以及让复杂技术变得触手可及。
-
-工作之外，我写技术博客、做开源、用相机记录世界。
-
-## 这个站点
-
-📝 **技术** — 架构实践、AI/ML 深度文章、来自一线的经验。中英双语。
-
-🛠 **项目** — 我构建的开源工具：[CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2)、[GGUF on SageMaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker) 等。
-
-📷 **摄影** — 街拍、旅行、建筑。更多在 [Instagram](https://www.instagram.com/robinsu77/)。
+我关注架构的优雅、开发者体验、以及让复杂技术变得触手可及。工作之外，我写技术博客、做[开源项目](https://github.com/robinsujob)、用[相机](https://www.instagram.com/robinsu77/)记录世界。
 
 ## 联系
 
 - [GitHub](https://github.com/robinsujob)
 - [LinkedIn](https://www.linkedin.com/in/robin-su/)
 - [Instagram](https://www.instagram.com/robinsu77/)
-
