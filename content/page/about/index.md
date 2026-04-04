@@ -5,32 +5,21 @@ slug: "about"
 
 # Hey, I'm Robin 👋
 
-Cloud Solutions Architect with a passion for building things that matter.
+I build things at the intersection of cloud and AI.
 
-I specialize in designing cloud-native architectures, AI-powered solutions, and developer tools. My work spans AWS and Azure — from serverless transformations and API governance to AIGC product launches and enterprise migration strategies.
+As a solutions architect, I help organizations design and ship production-grade cloud infrastructure — from API platforms and serverless systems to AI-powered products. I care about clean architecture, developer experience, and making complex technology accessible.
 
-## What I Focus On
+When I'm not architecting systems, I'm writing about what I learn, contributing to open source, or capturing the world through my camera.
 
-☁️ **Cloud Architecture & Migration** — Helping organizations design and implement production-grade cloud solutions. From network architecture optimization to security framework design with API Gateway and Cognito.
+## On This Site
 
-🤖 **AI & Machine Learning** — Building practical AI solutions including AIGC image generation pipelines, vector database architectures for semantic search, and LLM model deployment on cloud infrastructure.
+📝 **Tech** — Architecture patterns, AI/ML deep dives, and lessons from the field. Bilingual.
 
-⚡ **Serverless & Modern Applications** — Driving serverless architecture transformations, building with AWS SAM and Lambda Web Adapter, and accelerating application modernization.
+🛠 **Projects** — Open source tools I've built: [CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2), [GGUF on SageMaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker), and more.
 
-🔧 **Open Source & Developer Community** — Publishing technical blogs, open-source tools, and hands-on workshops. Creator of [China CloudFront SSL Plugin](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2) and [GGUF Model Deployment on SageMaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker).
+📷 **Photography** — Street, travel, architecture. More on [Instagram](https://www.instagram.com/robinsu77/).
 
-## Certifications
-
-- AWS Certified Solutions Architect / DevOps Engineer / ML Engineer / Developer / Database Specialist
-- IBM Certified Architect / Open Group Certified Solutions Architect
-- Enterprise Design Thinking Certified Co-Creator
-- [View all certifications on Credly](https://www.credly.com/users/su-zhe/badges)
-
-## Beyond Work
-
-📷 I shoot street photography, travel moments, and urban architecture. Follow me on [Instagram](https://www.instagram.com/robinsu77/).
-
-## Get in Touch
+## Connect
 
 - [GitHub](https://github.com/robinsujob)
 - [LinkedIn](https://www.linkedin.com/in/robin-su/)
