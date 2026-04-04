@@ -5,7 +5,7 @@
 
     [en.params.sidebar]
         emoji    = ""
-        subtitle = "Cloud & AI Solutions Architect"
+        subtitle = "Cloud & AI | Builder & Tinkerer"
         avatar   = "img/avatar.png"
 
 [zh]
@@ -15,5 +15,5 @@
 
     [zh.params.sidebar]
         emoji    = ""
-        subtitle = "云与 AI 解决方案架构师"
+        subtitle = "Cloud & AI | Builder & Tinkerer"
         avatar   = "img/avatar.png"
