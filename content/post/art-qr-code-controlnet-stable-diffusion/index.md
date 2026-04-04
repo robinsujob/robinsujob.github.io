@@ -25,9 +25,9 @@ This post mainly shares practical experience we've summarized while helping cust
 
 We will use QR codes as ControlNet input, integrating QR code data points into artistic images while still being scannable by QR code readers. With this technology, you can transform any QR code into a unique work of art, expressing and conveying information in a completely new way. Here are some example images:
 
-![示例1](images/sample1.jpg)
-![示例2](images/sample2.jpg)
-![示例3](images/sample3.jpg)
+![Sample 1](images/sample1.jpg)
+![Sample 2](images/sample2.jpg)
+![Sample 3](images/sample3.jpg)
 
 ## Stable Diffusion Practical Tips
 
@@ -108,7 +108,7 @@ Often we generate an image that's not quite satisfactory and want to further opt
 
 Use X/Y/Z plots to find optimal parameters: By using X/Y/Z plots, we can clearly compare results under different parameters, quickly locate suitable parameter ranges, and perform further generation control.
 
-![X/Y/Z 图对比](images/image4.jpg)
+![X/Y/Z Plot Comparison](images/image4.jpg)
 
 #### Image Size Optimization
 
@@ -134,7 +134,7 @@ Using txt2img alone cannot effectively specify individual character features in 
 
 When drawing images with small character subjects, facial distortion frequently occurs. Especially in the artistic QR code generation process described later, faces often break due to QR code data points. For facial inpainting, the ADetailer plugin is recommended. It uses YOLO algorithm for object detection, identifies faces, and performs localized inpainting with specified prompts and models. ADetailer can handle both face and hand detection and repair, and can also reference LoRA models for localized inpainting.
 
-![ADetailer 面部修复](images/image5.jpg)
+![ADetailer Face Repair](images/image5.jpg)
 
 ## Generating Artistic QR Codes with ControlNet
 
@@ -144,7 +144,7 @@ A QR code is a pattern of black and white geometric shapes distributed in 2D spa
 
 The input QR code is one of the most important parts of generating artistic QR codes with SD. We mainly care about two characteristics of the input QR code:
 
-![QR Code 结构](images/image6.jpg)
+![QR Code Structure](images/image6.jpg)
 
 1. Information contained in the QR code
 
@@ -152,7 +152,7 @@ Regardless of the encoding method, the more character information a QR code carr
 
 For the most common use case, QR codes usually contain a web link. To improve the aesthetics of the generated QR code, we first need to shorten the URL. There are many URL shortening tools available. Note that within mainland China, choose platforms with registered domain names, otherwise they may be blocked by WeChat, browsers, etc.
 
-![链接长短对比](images/image7.jpg)
+![URL Length Comparison](images/image7.jpg)
 
 2. How the QR code is presented
 
@@ -160,8 +160,8 @@ With technological development, QR codes no longer only support black and white 
 
 In practice, we can try different module styles to achieve the desired image generation effect. The following image shows how different QR code styles affect the final result:
 
-![不同码点形式](images/image8.jpg)
-![不同二维码形式对比](images/image9.jpg)
+![Different Module Styles](images/image8.jpg)
+![Different QR Code Style Comparison](images/image9.jpg)
 
 Generation parameters:
 
@@ -183,7 +183,7 @@ After understanding the above key points, we will start using QR code generation
 - **Anthony's QR Toolkit**: Integrated QR code generation and optimization tool in Webui
   - [https://github.com/antfu/sd-webui-qrcode-toolkit](https://github.com/antfu/sd-webui-qrcode-toolkit)
 
-![QR Toolkit 配置](images/image10.jpg)
+![QR Toolkit Configuration](images/image10.jpg)
 
 After creating the QR code, you can click "Download" on the right to save it locally, or click "Send to ControlNet" to send it directly to ControlNet for the next step.
 
@@ -191,7 +191,7 @@ After creating the QR code, you can click "Download" on the right to save it loc
 
 The core of creating art with Stable Diffusion is choosing the right model + prompts. Before creating artistic QR codes, we recommend first generating an image without ControlNet to test the generation effect.
 
-![测试生图效果](images/image11.jpg)
+![Test Generation Result](images/image11.jpg)
 
 Generation parameters:
 
@@ -212,14 +212,14 @@ After confirming the image style, we upload the unprocessed QR code to ControlNe
 - **Control weight**: For qrcode_monster model, we recommend setting between 1.1-1.6
 - **Guidance start/end timing**: Start timing recommended between 0-0.1, end timing recommended at 1
 
-![ControlNet 配置](images/image12.jpg)
+![ControlNet Configuration](images/image12.jpg)
 
 In txt2img configuration, we recommend adjusting two sets of values:
 
 - **Sampling steps**: recommended 30-50, default 20 is insufficient for high-quality QR code images
 - **Width/Height**: recommended to send the original QR code aspect ratio from ControlNet
 
-![文生图参数调整](images/image13.jpg)
+![txt2img Parameter Adjustment](images/image13.jpg)
 
 After all parameters are configured, click generate. Here we can see a good result — the QR code passes scanning tests on mobile phones.
 
@@ -230,12 +230,12 @@ If the generated QR code doesn't meet expectations, try fine-tuning the followin
 - ControlNet control weight
 - ControlNet guidance start/end timing
 
-![生成效果](images/image14.jpg)
-![参数微调](images/image15.jpg)
+![Generation Result](images/image14.jpg)
+![Parameter Fine-tuning](images/image15.jpg)
 
 When necessary, use the X/Y/Z Plot in "Scripts" to compare QR code generation effects under different parameters. Here we compared ControlNet's control weight and guidance start timing:
 
-![X/Y/Z Plot 对比](images/image16.jpg)
+![X/Y/Z Plot Comparison](images/image16.jpg)
 
 ## Appendix
 
