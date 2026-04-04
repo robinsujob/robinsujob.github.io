@@ -12,7 +12,7 @@
     url        = "/"
     weight     = -90
     [main.params]
-        icon = "home"
+        icon = "code"
 
 [[main]]
     identifier = "projects"
@@ -28,7 +28,7 @@
     url        = "/categories/photography/"
     weight     = -70
     [main.params]
-        icon = "infinity"
+        icon = "camera"
 
 [[social]]
     identifier = "github"
