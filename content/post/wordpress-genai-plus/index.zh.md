@@ -190,7 +190,7 @@ WordPress 部署完成后，在 CloudFormation 堆栈输出中查找 InstallWord
 
 相关资源：
 
-- [AWS Generative AI](https://aws.amazon.com/cn/generative-ai/)
+- [亚马逊云科技 AIGC](https://aws.amazon.com/cn/campaigns/aigc)
 
 ---
 

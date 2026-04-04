@@ -186,7 +186,7 @@ Through this tutorial, you can deploy WordPress GenAI Plus on AWS with one click
 
 Related Resources:
 
-- [AWS Generative AI](https://aws.amazon.com/cn/generative-ai/)
+- [AWS AIGC](https://aws.amazon.com/cn/campaigns/aigc)
 
 ---
 
