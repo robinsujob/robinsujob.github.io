@@ -21,7 +21,7 @@ I'm driven by curiosity and craft. Whether it's a serverless architecture, an op
 
 ## Explore
 
-📝 [Tech](/post/) — Architecture patterns, AI/ML deep dives, and lessons from the field.
+📝 [Blog](/post/) — Architecture patterns, AI/ML deep dives, and lessons from the field.
 
 🛠 [Projects](/projects/) — Open source tools and solutions I've built.
 

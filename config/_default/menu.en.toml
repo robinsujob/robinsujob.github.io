@@ -8,11 +8,11 @@
 
 [[main]]
     identifier = "tech"
-    name       = "Posts"
+    name       = "Blog"
     url        = "/"
     weight     = -90
     [main.params]
-        icon = "code"
+        icon = "messages"
 
 [[main]]
     identifier = "projects"
@@ -20,7 +20,7 @@
     url        = "/projects/"
     weight     = -80
     [main.params]
-        icon = "link"
+        icon = "code"
 
 [[social]]
     identifier = "github"
