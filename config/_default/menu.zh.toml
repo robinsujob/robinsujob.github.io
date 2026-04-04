@@ -26,6 +26,7 @@
     identifier = "github"
     name       = "GitHub"
     url        = "https://github.com/robinsujob"
+        weight = 1
     [social.params]
         icon = "brand-github"
         newTab = true
@@ -34,6 +35,7 @@
     identifier = "linkedin"
     name       = "LinkedIn"
     url        = "https://www.linkedin.com/in/robin-su/"
+        weight = 2
     [social.params]
         icon = "brand-linkedin"
         newTab = true
@@ -42,6 +44,7 @@
     identifier = "instagram"
     name       = "Instagram"
     url        = "https://www.instagram.com/robinsu77/"
+        weight = 3
     [social.params]
         icon = "brand-instagram"
         newTab = true
