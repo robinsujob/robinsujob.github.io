@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Generate artistic QR codes using ControlNet and Stable Diffusion, with OpenPose for dynamic character poses.">
 <title>Art QR Code with ControlNet and Stable Diffusion</title>
 
@@ -523,7 +523,7 @@
     
     <h2 id="background">Background
 </h2><p>Over the past few months, there has been growing interest in combining Stable Diffusion with ControlNet to create artistic QR codes. This post was originally developed as part of an AWS workshop demonstrating how to deploy and use Stable Diffusion on AWS infrastructure.</p>
-<p>This post shares practical tips for working with Stable Diffusion and walks through the best practices for generating artistic QR codes.</p>
+<p>This post shares practical tips for working with Stable Diffusion and walks through the best practices for generating artistic QR codes. The eCloudRover imAgine platform provided the cloud computing resources used in this hands-on practice.</p>
 <p>We will use QR codes as ControlNet input, integrating QR code data points into artistic images while keeping them scannable by QR code readers. With this technology, you can transform any QR code into a unique piece of art, expressing and conveying information in an entirely new way. Here are some examples:</p>
 <p><img alt="Sample 1" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_55ce0a96d66b54da.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_76a851db4e696861.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg 2000w" width="2000">
 <img alt="Sample 2" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_58726bd2cf5fe70d.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_4c6be33718f82540.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg 2000w" width="2000">
@@ -756,6 +756,10 @@
           <td style="text-align: center"><img alt="OpenPose + QR Code" class="gallery-image" data-flex-basis="400px" data-flex-grow="166" height="540" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code_hu_1827644c6b490e79.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/1-open-pose-code.png 900w" width="900"></td>
           <td style="text-align: center"><img alt="Girl with Car" class="gallery-image" data-flex-basis="401px" data-flex-grow="167" height="536" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car_hu_d779f7fe9c1958a9.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png 896w" width="896"></td>
       </tr>
+      <tr>
+          <td style="text-align: center">OpenPose + QR Code</td>
+          <td style="text-align: center">Girl with Car</td>
+      </tr>
   </tbody>
 </table></div>
 <p>The prompt used for the example above:</p>
@@ -962,7 +966,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
 
 
     </body>

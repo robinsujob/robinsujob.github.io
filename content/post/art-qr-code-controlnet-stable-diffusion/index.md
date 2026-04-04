@@ -19,7 +19,7 @@ tags:
 
 Over the past few months, there has been growing interest in combining Stable Diffusion with ControlNet to create artistic QR codes. This post was originally developed as part of an AWS workshop demonstrating how to deploy and use Stable Diffusion on AWS infrastructure.
 
-This post shares practical tips for working with Stable Diffusion and walks through the best practices for generating artistic QR codes.
+This post shares practical tips for working with Stable Diffusion and walks through the best practices for generating artistic QR codes. The eCloudRover imAgine platform provided the cloud computing resources used in this hands-on practice.
 
 We will use QR codes as ControlNet input, integrating QR code data points into artistic images while keeping them scannable by QR code readers. With this technology, you can transform any QR code into a unique piece of art, expressing and conveying information in an entirely new way. Here are some examples:
 
@@ -239,6 +239,7 @@ Here are some example results combining OpenPose pose control with QR code gener
 | | |
 |:---:|:---:|
 | ![OpenPose + QR Code](images/1-open-pose-code.png) | ![Girl with Car](images/2-girl-with-car.png) |
+| OpenPose + QR Code | Girl with Car |
 
 The prompt used for the example above:
 
