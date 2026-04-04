@@ -184,8 +184,6 @@ This article introduced the CORS configuration methods for REST API and HTTP API
 | REST API | Configure CORS for specific routes in the REST API by clicking Enable CORS in the upper right corner of the route. | You can see the OPTIONS method used to respond to preflight requests and its response header settings under the configured route. You can also see the CORS header settings in the response of the methods that allow cross-origin access. | Do not enable authorization for the OPTIONS method. |
 | HTTP API | Configure CORS for the entire HTTP API by clicking CORS in the left navigation bar to enter the CORS configuration page. | Preflight requests are automatically handled by API Gateway, and the automatically responding OPTIONS method configuration is not visible in the console. CORS headers are automatically added by API Gateway, and the CORS header settings are also not visible in the response of the methods that allow cross-origin access. | Avoid using the ANY method. If you must use it, create an additional unauthorized OPTIONS method for handling preflight requests. |
 
-## Related Resources
-
 To enable CORS for other AWS resources, refer to:
 
 - [Enable CORS for CloudFront](https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/)

@@ -295,7 +295,7 @@
             <nav class="toc-nav" id="TableOfContents">
                 
   <ul>
-    <li><a href="#为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront？</a></li>
+    <li><a href="#为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront?</a></li>
     <li><a href="#使用中国区-cloudfront-的注意事项">使用中国区 CloudFront 的注意事项</a></li>
     <li><a href="#前提条件">前提条件</a></li>
     <li><a href="#将-ec2-与-cloudfront-集成">将 EC2 与 CloudFront 集成</a>
@@ -406,7 +406,7 @@
 
 
                     <time class="article-time--reading">
-                        阅读时长: 8 分钟
+                        阅读时长: 10 分钟
                     </time>
                 
             </div>
@@ -450,7 +450,7 @@
             <nav class="toc-nav">
                 
   <ul>
-    <li><a href="#为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront？</a></li>
+    <li><a href="#为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront?</a></li>
     <li><a href="#使用中国区-cloudfront-的注意事项">使用中国区 CloudFront 的注意事项</a></li>
     <li><a href="#前提条件">前提条件</a></li>
     <li><a href="#将-ec2-与-cloudfront-集成">将 EC2 与 CloudFront 集成</a>
@@ -493,7 +493,7 @@
     
     <p>本文适用于亚马逊云科技中国区服务，阅读本文您将了解到如何使用中国区 Amazon CloudFront 将部署在 EC2 网站上的流量进行加速与分发，并使用 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
     >China CloudFront SSL 插件</a>提供的免费证书保护您的站点。该插件可以帮助您在亚马逊云科技中国区域生成、更新和下载免费的 SSL 证书，并支持与 Amazon CloudFront 的集成及关联 SSL 证书的自动更新。您亦可参考本文的将 EC2 与 CloudFront 集成部分，用于亚马逊云科技全球区域使用 CloudFront 分发 EC2 网站流量的配置操作。</p>
-<h2 id="为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront？
+<h2 id="为什么选用-amazon-cloudfront">为什么选用 Amazon CloudFront?
 </h2><p>Amazon CloudFront 是亚马逊云科技提供的一项内容分发网络（CDN）服务。使用 CDN 可以减少网站的加载时间，降低跳出率，增加流量和收益；同时还可以减轻源服务器的负载，提高网站的稳定性和安全性，并保证网站的可用性和可靠性。Amazon CloudFront 可以在开发人员友好环境中以低延迟和高传输速度向全球客户安全分发数据、视频、应用程序和 API，同时可以与 Amazon S3、Elastic Load Balancer 或 Amazon EC2 等服务无缝协作。</p>
 <p>Amazon CloudFront 不仅可以加速您的网站，减轻源服务器的负载，还可以降低您部署在亚马逊云中的网站传出至互联网的数据传输费用。以 EC2 为例，相比较 EC2 的传出至互联网的数据传输费用，在亚马逊云科技中国区域使用 Amazon CloudFront 可以帮助您降低至少 67% 的传出至互联网的数据传输费用。具体费用可参考亚马逊云科技中国区官方网站 <a class="link" href="https://www.amazonaws.cn/ec2/pricing/#Amazon_EC2_.E6.95.B0.E6.8D.AE.E4.BC.A0.E8.BE.93"  target="_blank" rel="noopener"
     >EC2 数据传输费用</a>与 <a class="link" href="https://www.amazonaws.cn/cloudfront/pricing/#On-demand_Pricing"  target="_blank" rel="noopener"
@@ -511,7 +511,7 @@
 <p><strong>CloudFront 集成 SSL/TLS 证书：</strong> 中国区域的 Amazon CloudFront 目前不支持 <a class="link" href="https://www.amazonaws.cn/certificate-manager/features/"  target="_blank" rel="noopener"
     >Amazon Certificate Manager</a>。如果您需要在 CloudFront 使用 SSL/TLS 证书，您可以通过第三方证书机构获取 SSL/TLS 证书，并<a class="link" href="https://docs.amazonaws.cn/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-procedures.html#cnames-and-https-uploading-certificates"  target="_blank" rel="noopener"
     >导入 SSL/TLS 证书</a>。您也可以通过 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/"  target="_blank" rel="noopener"
-    >China CloudFront SSL 插件</a>来获取免费的 SSL/TLS 证书，本篇文章“使用 China CloudFront SSL 插件部署免费证书”将进行重点介绍。</p>
+    >China CloudFront SSL 插件</a>来获取免费的 SSL/TLS 证书，本篇文章&quot;使用 China CloudFront SSL 插件部署免费证书&quot;将进行重点介绍。</p>
 </li>
 <li>
 <p><strong>CloudFront 中国区域和全球区域的功能差异：</strong> 在中国区域 Amazon CloudFront 目前不支持 Lambda@Edge、Amazon WAF 等功能，更多详情请<a class="link" href="https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff"  target="_blank" rel="noopener"
@@ -521,11 +521,11 @@
 <h2 id="前提条件">前提条件
 </h2><p>为了确保您完成本篇的全部内容，获得亚马逊云科技的各种服务带来的一致性体验，请确保您已经满足前提条件。</p>
 <ul>
-<li>您的亚马逊云科技中国区账号已经完成了 ICP 备案的相关事项，确保 80/443 端口已经开放</li>
-<li>您拥有经过 ICP 备案过域名</li>
+<li>您的亚马逊云科技中国区账号已经完成了 ICP 备案的相关事项，确保 80/443 端口已经开放；</li>
+<li>您拥有经过 ICP 备案过域名；</li>
 <li>使用 <a class="link" href="https://www.amazonaws.cn/route53/"  target="_blank" rel="noopener"
     >Amazon Route 53</a> 作为您的域名解析服务。如果您尚未将域名解析迁移至亚马逊云科技 Amazon Route 53，请点击<a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/migrate-domain-to-amazon-route53/"  target="_blank" rel="noopener"
-    >参考文档</a></li>
+    >参考文档</a>。</li>
 </ul>
 <h2 id="将-ec2-与-cloudfront-集成">将 EC2 与 CloudFront 集成
 </h2><p>在本篇文章的后续内容您将跟随文档操作，开启一个 EC2 并搭建一个 Web 服务器，随后将 EC2 与 CloudFront 进行集成，并利用 China CloudFront SSL 插件部署免费证书。</p>
@@ -537,20 +537,21 @@
 <h4 id="一启动-ec2-实例">一、启动 EC2 实例
 </h4><p>您可以通过 EC2 控制台启动一个 EC2 实例。</p>
 <p><img alt="EC2 控制台启动实例" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="1183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_4bad2cd2999e9a49.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create_hu_524d8415a1264fef.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/ec2-create.jpg 1965w" width="1965"></p>
-<p>请为您的实例命名，例如“web-server”。</p>
+<p>请为您的实例命名，例如&quot;web-server&quot;。</p>
+<p><img alt="实例命名" class="gallery-image" data-flex-basis="399px" data-flex-grow="166" height="391" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-1.jpg" width="651"></p>
 <p>系统映像（AMI）与实例类型，您可以保持默认。</p>
 <ul>
-<li>AMI：Amazon Linux 2023</li>
+<li>AMI: Amazon Linux 2023</li>
 <li>实例类型：micro</li>
 </ul>
 <p><img alt="AMI 与实例类型" class="gallery-image" data-flex-basis="398px" data-flex-grow="166" height="1183" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-2.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-2_hu_4bad2cd2999e9a49.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-2_hu_524d8415a1264fef.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-2.jpg 1965w" width="1965"></p>
-<p>在“密钥对”处选择已有或者创建新的密钥对，用于您后续操作系统的运维。</p>
+<p>在&quot;密钥对&quot;处选择已有或者创建新的密钥对，用于您后续操作系统的运维。</p>
 <p><img alt="密钥对设置" class="gallery-image" data-flex-basis="639px" data-flex-grow="266" height="651" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3_hu_9f6ea6be1004f543.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3_hu_cd1424e493dd60e4.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-3.jpg 1734w" width="1734"></p>
-<p>关于网络配置，请确保您的 EC2 实例部署在公有子网，同时请勾选“允许来自互联网的 HTTP 流量”，以确保 EC2 的 80 端口互联网可达。</p>
+<p>关于网络配置，请确保您的 EC2 实例部署在公有子网，同时请勾选&quot;允许来自互联网的 HTTP 流量&quot;，以确保 EC2 的 80 端口互联网可达。</p>
 <p><img alt="网络配置" class="gallery-image" data-flex-basis="260px" data-flex-grow="108" height="1532" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_6eb00b634c3b6715.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4_hu_daaf7b7b2d61cf19.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-4.jpg 1663w" width="1663"></p>
-<p>请在底部展开“高级详细信息”部分：</p>
+<p>请在底部展开&quot;高级详细信息&quot;部分：</p>
 <p><img alt="高级详细信息" class="gallery-image" data-flex-basis="592px" data-flex-grow="246" height="622" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5_hu_b78cc41ef9237432.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-5.jpg 1536w" width="1536"></p>
-<p>在页面底部“用户数据”处，粘贴以下代码，用于在实例首次启动时安装 Web 服务器。随后点击“启动实例”按钮，执行实例启动。</p>
+<p>在页面底部&quot;用户数据&quot;处，粘贴以下代码，用于在实例首次启动时安装 Web 服务器。随后点击&quot;启动实例&quot;按钮，执行实例启动。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -569,15 +570,15 @@
 <h4 id="二创建弹性-ip-并关联-ec2-实例">二、创建弹性 IP 并关联 EC2 实例
 </h4><p><a class="link" href="https://docs.amazonaws.cn/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html"  target="_blank" rel="noopener"
     >弹性 IP</a> 地址是专为云计算设计的静态 IPv4 地址，利用弹性 IP 可保证您的 EC2 实例的公有 IP 地址和公有 DNS 主机名不会发生变化。在本节中您将了解到如何使用弹性 IP 关联 EC2 实例，并利用 EC2 实例的公有 DNS 主机名访问您的站点。</p>
-<p>您可以在 EC2 控制台中，左侧“网络与安全”菜单中找到弹性 IP。</p>
+<p>您可以在 EC2 控制台中，左侧&quot;网络与安全&quot;菜单中找到弹性 IP。</p>
 <p><img alt="弹性 IP 菜单" class="gallery-image" data-flex-basis="1917px" data-flex-grow="799" height="201" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-7.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-7_hu_dcee5b048214ea12.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-7_hu_a09c30cd09c9bc23.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-7.jpg 1606w" width="1606"></p>
-<p>点击右上角“分配弹性 IP 地址”，随后点击“分配”来获得弹性 IP。</p>
+<p>点击右上角&quot;分配弹性 IP 地址&quot;，随后点击&quot;分配&quot;来获得弹性 IP。</p>
 <p><img alt="分配弹性 IP" class="gallery-image" data-flex-basis="542px" data-flex-grow="226" height="1058" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-8.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-8_hu_ef1e899f2d63465d.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-8_hu_77727674391f39a8.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-8.jpg 2392w" width="2392"></p>
-<p>随后选中您的弹性 IP，点击右上角“操作”按钮，选择“关联弹性 IP 地址”。</p>
+<p>随后选中您的弹性 IP，点击右上角&quot;操作&quot;按钮，选择&quot;关联弹性 IP 地址&quot;。</p>
 <p><img alt="关联弹性 IP" class="gallery-image" data-flex-basis="423px" data-flex-grow="176" height="1375" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-9.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-9_hu_c73c28e244703e66.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-9_hu_db6574310cf99be4.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-9_hu_152a186740569800.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-9.jpg 2426w" width="2426"></p>
 <p>然后请选择您先前创建的 EC2 实例，并点击关联按钮，以保证 EC2 实例的公有 IP 地址不会变化。</p>
 <p><img alt="选择 EC2 实例" class="gallery-image" data-flex-basis="338px" data-flex-grow="141" height="1256" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-10.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-10_hu_bf400582c310b418.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-10_hu_d5b93b8eec98cf94.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-10.jpg 1772w" width="1772"></p>
-<p>随后您可以点击左侧“实例”菜单，返回到实例列表中，选中您的实例，并复制公有 IPv4 DNS。</p>
+<p>随后您可以点击左侧&quot;实例&quot;菜单，返回到实例列表中，选中您的实例，并复制公有 IPv4 DNS。</p>
 <p><img alt="复制公有 DNS" class="gallery-image" data-flex-basis="856px" data-flex-grow="356" height="782" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-11.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-11_hu_e13e176090677f6.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-11_hu_2eacf8c682b2ccda.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-11_hu_1b2b525001061f85.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-11.jpg 2791w" width="2791"></p>
 <p>最后您可以使用公有 DNS 主机名，在浏览器中进行访问，以确保 Web 服务器安装完成。在这里您可以看到，当前的站点使用的是 80 端口，同时没有关联 SSL/TLS 证书。</p>
 <p><img alt="浏览器访问验证" class="gallery-image" data-flex-basis="274px" data-flex-grow="114" height="1485" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-12.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-12_hu_4b723108790f6ed8.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-12_hu_da4cc718ccb5b425.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-12.jpg 1699w" width="1699"></p>
@@ -589,28 +590,29 @@
 <p><img alt="CloudFront 创建分配" class="gallery-image" data-flex-basis="606px" data-flex-grow="252" height="1325" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_a8367bef1aae0926.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_4d508bb4a235ad8d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13_hu_5453637f6d5fbdeb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-13.jpg 3351w" width="3351"></p>
 <p>在 CloudFront 的配置初始化页面，您将看到一个 CloudFront 配置需要具备的所有基本配置元素，分别为：</p>
 <ul>
-<li><strong>源</strong>：源服务器，可支持多种类型的亚马逊云科技服务，包括并不仅限于 S3、EC2、ELB、API Gateway 等，并可支持第三方源站</li>
-<li><strong>缓存行为</strong>：通过路径匹配制定缓存行为、启用传输压缩、允许请求方法、访问控制等</li>
-<li><strong>设置</strong>：别名（CNAME）、SSL 证书、默认根对象、日志记录等</li>
+<li><strong>源</strong> – 源服务器，可支持多种类型的亚马逊云科技服务，包括并不仅限于 S3 / EC2 / ELB / API Gateway 等，并可支持第三方源站。</li>
+<li><strong>缓存行为</strong> – 在此设置中，您可以快速通过路径匹配的方式，灵活的制定缓存行为 / 启用传输压缩 / 允许请求方法 / 访问控制等功能。</li>
+<li><strong>设置</strong> – 其他配置，例如别名（CNAME）/ SSL 证书 / 默认根对象 / 日志记录等。</li>
 </ul>
-<p>在源服务器设置中，使用绑定弹性 IP 地址的 EC2 的公有 DNS 来作为源域，同时确保源协议为 HTTP。</p>
+<p>您可先参考以下配置进行初始化配置，在源服务器设置的部分，您将使用上一步创建的绑定弹性 IP 地址的 EC2 的公有 DNS 来作为源域，同时确保您选择的源协议为 HTTP。</p>
 <p><img alt="源服务器设置" class="gallery-image" data-flex-basis="414px" data-flex-grow="172" height="978" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-14.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-14_hu_c12930d6d67ea46.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-14_hu_8583eeaa9f5891e9.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-14.jpg 1690w" width="1690"></p>
-<p>在默认缓存行为中，您可保持默认设置：</p>
+<p>在默认缓存行为中，您可参考如下截图保持默认设置即可：</p>
 <p><img alt="缓存行为设置" class="gallery-image" data-flex-basis="711px" data-flex-grow="296" height="909" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-15.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-15_hu_12c7444888d92324.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-15_hu_65ebbbf0958e115e.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-15_hu_20aef0f435f57651.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-15.jpg 2694w" width="2694"></p>
 
     <blockquote>
-        <p><strong>注：</strong> 由于合规性要求，中国北京/中国宁夏区域的 CloudFront 提供的分配默认域名无法直接访问，需完成域名的 ICP 备案并通过 CNAME 域名解析后才可进行访问。</p>
+        <p><strong>注：</strong> 由于合规性要求，中国北京/中国宁夏区域的 CloudFront 提供的分配默认域名无法直接访问，需完成域名的 ICP 备案并通过 CNAME 域名解析后才可进行访问。请通过下述操作配置 CloudFront 备用域名以通过&quot;CNAME 审核&quot;。</p>
 
     </blockquote>
-<p>在设置部分，您需要在备用域名（CNAME）中填写 ICP 备案过的域名：</p>
+<p>在设置部分，您需要在备用域名（CNAME）中填写 ICP 备案过的域名，关于证书部分，您可以参见本文&quot;使用 China CloudFront SSL 插件部署免费证书&quot;部分查看。</p>
 <p><img alt="备用域名设置" class="gallery-image" data-flex-basis="286px" data-flex-grow="119" height="1438" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_14196fd7b272dfcd.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16_hu_94de9764e2460cf6.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-16.jpg 1716w" width="1716"></p>
-<p>创建完毕后，等待部署完成。部署完成之后，检查您的备用域名，若域名已通过 ICP 备案，您应能看到“绿色标记”。</p>
+<p>创建完毕后，您将返回到 Distribution 的设置页面，等待部署完成。</p>
+<p>部署完成之后，您可在您的 CloudFront 分配的设置界面中中检查您的填写的备用域名，若您的域名已经通过 ICP 备案，您应能看到如图所示&quot;绿色标记&quot;。</p>
 <p><img alt="ICP 备案绿色标记" class="gallery-image" data-flex-basis="153px" data-flex-grow="63" height="1698" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17_hu_acad7026d9b16373.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-17.jpg 1086w" width="1086"></p>
-<p>等待部署完成之后进入 Route 53 或您的域名解析提供商，更新解析配置。以 Route 53 为例，进入对应域名的托管区域并创建一个新记录。</p>
+<p>等待部署完成之后进入 Route53 或您的域名解析提供商，更新解析配置。以下本文以 Route53 为例。您可以进入 Route53 对应域名的托管区域并创建一个新记录。</p>
 <p><img alt="Route53 创建记录" class="gallery-image" data-flex-basis="405px" data-flex-grow="168" height="956" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_970077f08855e81d.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18_hu_995f1b9e1c60399.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-18.jpg 1615w" width="1615"></p>
-<p>填写对应的解析记录：</p>
+<p>您可以通过如图所示填写对应的解析记录。</p>
 <p><img alt="解析记录配置" class="gallery-image" data-flex-basis="693px" data-flex-grow="289" height="1085" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_b37ebdfd46e25cb.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_490015ade77f4a67.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19_hu_d75cfeda12c8ce18.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-19.jpg 3136w" width="3136"></p>
-<p>完成域名解析更新后，打开浏览器访问 ICP 备案的域名：</p>
+<p>完成域名解析更新后，打开浏览器访问 ICP 备案的域名，您应当能看到如下界面。</p>
 <p><img alt="浏览器访问域名" class="gallery-image" data-flex-basis="539px" data-flex-grow="224" height="1010" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_36b565ec92948586.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20_hu_58b3a2674e642329.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-20.jpg 2270w" width="2270"></p>
 
     <blockquote>
@@ -620,55 +622,57 @@
     </blockquote>
 <h4 id="二提升-ec2-与网站的安全">二、提升 EC2 与网站的安全
 </h4><p>在本章节您将使用 <a class="link" href="https://docs.amazonaws.cn/vpc/latest/userguide/working-with-aws-managed-prefix-lists.html#available-aws-managed-prefix-lists"  target="_blank" rel="noopener"
-    >Amazon 托管式前缀列表</a>来加强 EC2 的安全性。您可以借助 Amazon CloudFront 的 AWS 托管式前缀列表，从而将源的入站 HTTP/HTTPS 流量限定为属于 CloudFront 面向源的服务器的 IP 地址。</p>
-<p>请选中实例，进入 EC2 的安全组，编辑入站规则：新建一条 HTTP 规则，源中输入“cloudfront”，选中 <code>com.amazonaws.global.cloudfront.origin-facing</code> 的前缀列表，同时删除原有面向 <code>0.0.0.0/0</code> 的规则。</p>
+    >Amazon 托管式前缀列表</a>来加强 EC2 的安全性。托管式前缀列表是包含一个或多个 CIDR 块的集合。您可以使用前缀列表更轻松地配置和维护安全组和路由表，而 Amazon 托管前缀列表为 Amazon 服务的 IP 地址范围集。例如您可以借助 Amazon CloudFront 的 AWS 托管式前缀列表，从而将源的入站 HTTP/HTTPS 流量限定为属于 CloudFront 面向源的服务器的 IP 地址。</p>
+<p>请选中您需要修改的实例，进入 EC2 的安全组，点击入站规则-编辑，新建一条 HTTP 的规则，源中输入&quot;cloudfront&quot;，并选中 <code>com.amazonaws.global.cloudfront.origin-facing</code> 的前缀列表，同时删除原有 HTTP 80 端口面向互联网 <code>0.0.0.0/0</code> 的规则，以确保您的 EC2 仅仅接受来源于 CloudFront 流量，从而加强您 EC2 的安全性。</p>
 <p><img alt="安全组前缀列表配置" class="gallery-image" data-flex-basis="382px" data-flex-grow="159" height="1065" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_f948369aa9eb93d9.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21_hu_aa508796cb61f82d.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-21.jpg 1696w" width="1696"></p>
-<p>此外您也可以在 CloudFront 上关联 SSL/TLS 证书，来加强网站的安全。在后面的部分，您将利用 China CloudFront SSL 插件部署免费的 SSL 证书。</p>
+<p>此外您也可以在 CloudFront 上关联 SSL/TLS 证书，来加强网站的安全。在后面的部分，您将利用 China CloudFront SSL 插件部署免费的 SSL 证书，为您的网站安全性增加保障。</p>
 <h2 id="使用-china-cloudfront-ssl-插件部署免费证书">使用 China CloudFront SSL 插件部署免费证书
-</h2><p>在开始操作前，请再次确认您使用 Amazon Route 53 解析您的域名。本篇仅介绍部署部分，有关更多详情请查看 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
-    >China CloudFront SSL 插件</a>。</p>
+</h2><p>在开始操作前，请再次确认您使用 Amazon Route 53 解析您的域名。如果您尚未将域名解析迁移至亚马逊云科技 Amazon Route 53，请点击<a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/migrate-domain-to-amazon-route53/"  target="_blank" rel="noopener"
+    >参考文档</a>。本篇仅介绍部署部分，有关更多详情请查看 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
+    >China CloudFront SSL 插件</a>查找有关信息。</p>
 <h3 id="1-初始化部署">1. 初始化部署
 </h3><p>通过 CloudFormation 服务部署模板，点击<a class="link" href="https://console.amazonaws.cn/cloudformation/home?#/stacks/create/template?templateURL=https://aws-cn-getting-started.s3.cn-northwest-1.amazonaws.com.cn/china-cloudfront-ssl-plugin/ChinaCloudFrontSslPluginStack.json"  target="_blank" rel="noopener"
-    >链接</a>，将跳转至 CloudFormation 控制台创建堆栈。</p>
+    >链接</a>，随后将跳转至中国区 CloudFormation 控制台创建堆栈。</p>
 <p><img alt="CloudFormation 部署" class="gallery-image" data-flex-basis="381px" data-flex-grow="158" height="898" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-22.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-22_hu_c48fc7de493a412d.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-22.jpg 1426w" width="1426"></p>
 <h3 id="2-输入部署参数信息">2. 输入部署参数信息
-</h3><p>为堆栈指定详细信息，请注意以下参数：</p>
+</h3><p>为堆栈指定详细信息，请注意以下参数信息。</p>
 <ul>
-<li><strong>堆栈名称：</strong> 请为堆栈命名</li>
-<li><strong>邮箱：</strong> 输入您的邮箱用于订阅 SNS 邮件提醒，仅支持一个邮箱</li>
-<li><strong>域名：</strong> 输入域名用于获取 SSL 证书，支持通配符域名和多个域名（英文逗号分隔）</li>
-<li><strong>证书更新周期：</strong> 输入更新证书的周期。Let&rsquo;s Encrypt 证书有效期为 90 天，请确保输入 1-89 内的数字。推荐默认 80 天。</li>
+<li><strong>堆栈名称：</strong> 请为堆栈命名，例如您的网站项目名称</li>
+<li><strong>Email：</strong> 输入您的邮箱用于订阅 SNS 邮件提醒以了解证书颁发和更新的状态，仅支持一个邮箱</li>
+<li><strong>Domain Name：</strong> 输入域名用于获取 SSL 证书，域名支持通配符域名和多个域名。请使用英文逗号分隔。例如：example.com, *.example.com</li>
+<li><strong>SSL Renew Interval Days：</strong> 输入更新证书的周期。Let&rsquo;s encrypt 颁发的证书有效期为 90 天，请确保输入的数字在 1-89 内，从而可以及时更新证书。推荐的默认情况为每 80 天更新一次</li>
 </ul>
+<p>信息确认完毕后点击，请点击下一步，直接进入第 4 步&quot;堆栈审核&quot;。</p>
 <p><img alt="堆栈参数配置" class="gallery-image" data-flex-basis="547px" data-flex-grow="228" height="1408" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-23.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-23_hu_df0d35d2e1320a42.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-23_hu_fb9028b1c9581b35.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-23_hu_98d013332fd98823.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-23.jpg 3211w" width="3211"></p>
 <h3 id="3-确认部署信息">3. 确认部署信息
-</h3><p>请在当前页面确认部署信息，在底部勾选“我确认”，并点击【提交】。</p>
+</h3><p>请在当前页面确认您的部署信息，确认完毕后在页面底部勾选最下方蓝色窗口内的&quot;我确认&quot;，并点击右下角【提交】按钮进行提交。</p>
 <p><img alt="确认部署信息" class="gallery-image" data-flex-basis="540px" data-flex-grow="225" height="1500" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-24.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-24_hu_97040fb6988a5f8.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-24_hu_3530ff7150daad0c.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-24_hu_8c5bc23ad109306f.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-24.jpg 3378w" width="3378"></p>
-<p>提交完毕后，将在该堆栈事件栏内看到资源正在陆续创建。等待约 3 分钟。</p>
+<p>提交完毕后，将在该堆栈事件栏内看到堆栈内资源正在陆续创建。等待约 3 分钟。</p>
 <h3 id="4-及时订阅消息通知服务">4. 及时订阅消息通知服务
-</h3><p>等待堆栈部署过程中请及时查看您的邮箱，您将收到由 <a class="link" href="mailto:no-reply@sns.amazonaws.com" >no-reply@sns.amazonaws.com</a> 发送的 SNS 订阅确认请求。请尽快点击确认链接。</p>
+</h3><p>等待堆栈部署过程请及时查看您的邮箱，您将收到由 <a class="link" href="mailto:no-reply@sns.amazonaws.com" >no-reply@sns.amazonaws.com</a> 发送的 SNS 邮件提醒订阅的确认请求。请尽快点击订阅确认链接以便及时接收 SNS 消息通知，否则您可能会错过首次证书颁发的信息。</p>
 <p><img alt="SNS 订阅邮件" class="gallery-image" data-flex-basis="753px" data-flex-grow="313" height="1579" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_cdde9165045830e8.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_bb88619825b58bb2.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25_hu_f203472c7d3c1c50.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-25.jpg 4956w" width="4956"></p>
-<p>订阅成功后的提示：</p>
+<p>订阅成功后的提示如下。</p>
 <p><img alt="订阅成功" class="gallery-image" data-flex-basis="1331px" data-flex-grow="554" height="566" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_745d769f4f147290.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_af2c5877f6070985.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26_hu_2b7bfecfa67898b.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-26.jpg 3140w" width="3140"></p>
 <h3 id="5-查看堆栈部署进度">5. 查看堆栈部署进度
-</h3><p>当堆栈状态转变为绿色的 <code>CREATE_COMPLETE</code> 即为创建完毕。</p>
-<p>您可以在堆栈“输出”标签页中查看快速链接：</p>
+</h3><p>订阅完毕后，您可以返回堆栈，继续查看堆栈状态。当堆栈状态转变为绿色的 <code>CREATE_COMPLETE</code> 即为创建完毕。</p>
+<p>您可以在堆栈&quot;输出&quot;标签页中查看解决方案为您提供的快速链接：</p>
 <ul>
-<li><strong>CloudfrontConsole：</strong> 访问 CloudFront 控制台，快速绑定已颁发的证书</li>
+<li><strong>CloudfrontConsole：</strong> 访问 Amazon CloudFront 控制台，快速绑定已经颁发的证书</li>
 <li><strong>ManagementWebURL：</strong> 访问 SwaggerUI，查看或删除 IAM 中已有的 SSL 证书</li>
-<li><strong>S3BucketURL：</strong> 访问 S3 控制台，下载颁发的 SSL 证书</li>
+<li><strong>S3BucketURL：</strong> 访问 Amazon S3 控制台，下载颁发的 SSL 证书</li>
 </ul>
 <p><img alt="堆栈输出" class="gallery-image" data-flex-basis="1089px" data-flex-grow="453" height="526" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27_hu_e4a40fc578f3a1ff.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27_hu_d7c6996c56f5d4b4.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-27.jpg 2387w" width="2387"></p>
 <h3 id="6-在-amazon-cloudfront-控制台中绑定-ssl-证书">6. 在 Amazon CloudFront 控制台中绑定 SSL 证书
-</h3><p>堆栈部署完毕后，将自动为您的域名申请 SSL 证书。如果已订阅 SNS 主题，您会收到邮件提醒证书颁发成功。证书名称由堆栈名称与过期时间组成，例如：<code>Certbot-2023-11-14-1540</code>。</p>
+</h3><p>堆栈部署完毕后，将自动为您的域名申请 SSL 证书。如果已经及时在邮件中订阅 SNS 主题，您会收到由 <a class="link" href="mailto:no-reply@sns.amazonaws.com" >no-reply@sns.amazonaws.com</a> 发送的邮件提醒，以提示您成功颁发 SSL 证书。证书名称由堆栈名称与 SSL 证书过期时间组成。例如：Certbot-2023-11-14-1540，名称后的数字代表证书过期时间，如图所示为 2023 年 11 月 14 日 15 点 40 分。</p>
 <p><img alt="SSL 证书邮件通知" class="gallery-image" data-flex-basis="532px" data-flex-grow="221" height="542" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28_hu_eea6111e60dfb38a.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-28.jpg 1202w" width="1202"></p>
-<p>打开 CloudFront 控制台，选择您的分配，找到编辑备用域名与 SSL 证书的选项。</p>
+<p>打开 CloudFront 控制台，创建或选择您已有的分配，找到编辑备用域名与 SSL 证书的选项入口。</p>
 <p><img alt="CloudFront 编辑设置" class="gallery-image" data-flex-basis="551px" data-flex-grow="229" height="1403" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_9832edb84636551.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_e1912aa46e2c65d8.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29_hu_ab611836b6a34937.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-29.jpg 3222w" width="3222"></p>
-<p>在自定义 SSL 证书的下拉菜单中选择对应的 SSL 证书，随后保存更改。</p>
+<p>请在设置在自定义 SSL 证书的下拉菜单中选择对应的 SSL 证书，随后将更改进行保存。</p>
 <p><img alt="选择 SSL 证书" class="gallery-image" data-flex-basis="444px" data-flex-grow="185" height="1743" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_5dae4bd224493381.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_26ea4d3b5146beb3.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30_hu_4517dfc367337036.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-30.jpg 3226w" width="3226"></p>
-<p>部署完毕后，您可以使用浏览器通过 HTTPS 协议访问由 CloudFront 加速的站点，查看由 Let&rsquo;s Encrypt 颁发的 SSL 证书信息，有效时长为 90 天。</p>
+<p>部署完毕后，您可以使用浏览器访问由 Amazon CloudFront 加速的站点并使用 HTTPS 协议访问您的域名，同时查看由 Let&rsquo;s Encrypt 颁发的 SSL 证书信息，有效时长为 90 天。</p>
 <p><img alt="HTTPS 访问验证" class="gallery-image" data-flex-basis="437px" data-flex-grow="182" height="1492" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg" srcset="/p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_1eee86b177ad311b.jpg 800w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_3c5134eb5ca760eb.jpg 1600w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31_hu_532535a6568d9bb.jpg 2400w, /p/cloudfront-ssl-plugin-deployment-guide/images/cloudfront-ssl-31.jpg 2720w" width="2720"></p>
-<p>有关更多 China CloudFront SSL 插件的使用方式，请查看 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
-    >China CloudFront SSL 插件文档</a>。</p>
+<p>有关更多 China CloudFront SSL 插件的使用方式，您可以查看 <a class="link" href="https://www.amazonaws.cn/getting-started/tutorials/create-ssl-with-cloudfront/?nc1=h_ls"  target="_blank" rel="noopener"
+    >China CloudFront SSL 插件</a>查找有关信息。</p>
 <h2 id="总结">总结
 </h2><p>通过本篇文章相信您已经了解了 Amazon CloudFront 的基本操作，并了解到如何将您部署在 EC2 上的网站访问流量转移到 CloudFront，从而实现访问加速和成本节省。此外您也了解到了通过 EC2 安全组中的 Amazon 托管式前缀列表来确保您的 EC2 仅接受来源于 CloudFront 流量，并通过 China CloudFront SSL 插件来申请免费 SSL 证书，利用 HTTPS 协议来保护您的站点。</p>
 <h2 id="参考文档">参考文档

@@ -343,12 +343,6 @@ print(f"response: {response}")
 8. [Community AWS Article](https://community.aws/content/2eazHYzSfcY9flCGKsuGjpwqq1B)
 
 ---
-
-> 原文链接：[使用 SageMaker AI 运行 GGUF 格式的模型推理实践](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
-
-
----
-
 > 原文链接：[使用 SageMaker AI 运行 GGUF 格式的模型推理实践](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
 >
 > GitHub 仓库：[aws-samples/deploy-gguf-model-to-sagemaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker)
