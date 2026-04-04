@@ -3,7 +3,7 @@ slug: "china-cloudfront-ssl-plugin-v2"
 title: "China CloudFront SSL Plugin V2 - One-Stop Free SSL Certificate Management"
 date: 2025-08-19
 description: "A comprehensive SSL certificate management solution for China region CloudFront distributions."
-image: images/architecture.png
+image: images/architecture-v2.png
 categories:
   - AWS
 tags:
@@ -51,7 +51,7 @@ While bringing new features, we retained the most popular characteristics:
 
 Built on serverless architecture with one-click CloudFormation deployment.
 
-![Architecture](images/architecture.png)
+![Architecture](images/architecture-v2.png)
 
 **Core Components**: Let's Encrypt + Certbot + Lambda + API Gateway
 
