@@ -28,7 +28,7 @@ This post shares practical tips for working with Stable Diffusion and walks thro
 
 ### Prompt Engineering
 
-As Stable Diffusion versions continue to evolve, the requirements for effective prompts have changed significantly. Many old prompt conventions can actually hurt image quality with modern models.
+As Stable Diffusion versions continue to evolve and AI's understanding of semantics gets closer to "common sense," the requirements for effective prompts are becoming increasingly demanding. Many common prompt misconceptions can sometimes have adverse effects on image generation.
 
 #### Basic Concepts
 
