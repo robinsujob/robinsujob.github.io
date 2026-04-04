@@ -5,9 +5,7 @@ slug: "about"
 
 # Hey, I'm Robin 👋
 
-ENTJ. Builder, photographer, and lifelong tinkerer.
-
-I thrive on turning ideas into reality, moving fast, and solving problems that matter. If there's a better way to do something, I'll find it (or build it).
+ENTJ. Builder, photographer, and lifelong tinkerer. Ideas don't count until they ship. I move fast, focus on what truly matters, and if there's a better way — I'll find it. If not, I'll build one.
 
 > *Live fully. Stay true.*
 >
