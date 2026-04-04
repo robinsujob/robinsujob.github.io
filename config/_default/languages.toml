@@ -6,7 +6,7 @@
     [en.params.sidebar]
         emoji    = "🚀"
         subtitle = "AWS Solutions Architect | Cloud & AI"
-        avatar   = "img/avatar.jpg"
+        avatar   = "img/avatar.png"
 
 [zh]
     languageName = "简体中文"
@@ -16,4 +16,4 @@
     [zh.params.sidebar]
         emoji    = "🚀"
         subtitle = "AWS 解决方案架构师 | 云计算 & AI"
-        avatar   = "img/avatar.jpg"
+        avatar   = "img/avatar.png"

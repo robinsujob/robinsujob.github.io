@@ -1,13 +1,13 @@
 mainSections   = ["post"]
 rssFullContent = true
-favicon        = "img/avatar.jpg"
+favicon        = "img/avatar.png"
 
 [footer]
     since = 2023
 
 [sidebar]
     emoji    = "🚀"
-    avatar   = "img/avatar.jpg"
+    avatar   = "img/avatar.png"
 
 [article]
     toc         = true
