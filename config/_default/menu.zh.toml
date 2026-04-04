@@ -28,6 +28,7 @@
     url        = "https://github.com/robinsujob"
     [social.params]
         icon = "brand-github"
+        newTab = true
 
 [[social]]
     identifier = "linkedin"
@@ -35,6 +36,7 @@
     url        = "https://www.linkedin.com/in/robin-su/"
     [social.params]
         icon = "brand-linkedin"
+        newTab = true
 
 [[social]]
     identifier = "instagram"
@@ -42,3 +44,4 @@
     url        = "https://www.instagram.com/robinsu77/"
     [social.params]
         icon = "brand-instagram"
+        newTab = true
