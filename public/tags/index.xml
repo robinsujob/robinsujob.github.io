@@ -6,13 +6,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 03 Apr 2026 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:4002/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>Ai</title>
+            <title>AI</title>
             <link>http://localhost:4002/tags/ai/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/ai/</guid>
             <description></description>
         </item><item>
-            <title>Api-Management</title>
+            <title>API Management</title>
             <link>http://localhost:4002/tags/api-management/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/api-management/</guid>
@@ -24,31 +24,31 @@
             <guid>http://localhost:4002/tags/azure/</guid>
             <description></description>
         </item><item>
-            <title>Enterprise-Architecture</title>
+            <title>Enterprise Architecture</title>
             <link>http://localhost:4002/tags/enterprise-architecture/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/enterprise-architecture/</guid>
             <description></description>
         </item><item>
-            <title>High-Availability</title>
+            <title>High Availability</title>
             <link>http://localhost:4002/tags/high-availability/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/high-availability/</guid>
             <description></description>
         </item><item>
-            <title>Load-Balancing</title>
+            <title>Load Balancing</title>
             <link>http://localhost:4002/tags/load-balancing/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/load-balancing/</guid>
             <description></description>
         </item><item>
-            <title>Managed-Identity</title>
+            <title>Managed Identity</title>
             <link>http://localhost:4002/tags/managed-identity/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/managed-identity/</guid>
             <description></description>
         </item><item>
-            <title>Microsoft-Foundry</title>
+            <title>Microsoft Foundry</title>
             <link>http://localhost:4002/tags/microsoft-foundry/</link>
             <pubDate>Fri, 03 Apr 2026 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/microsoft-foundry/</guid>
@@ -60,7 +60,7 @@
             <guid>http://localhost:4002/tags/china/</guid>
             <description></description>
         </item><item>
-            <title>Cloudfront</title>
+            <title>CloudFront</title>
             <link>http://localhost:4002/tags/cloudfront/</link>
             <pubDate>Tue, 19 Aug 2025 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/cloudfront/</guid>
@@ -72,13 +72,13 @@
             <guid>http://localhost:4002/tags/serverless/</guid>
             <description></description>
         </item><item>
-            <title>Ssl</title>
+            <title>SSL</title>
             <link>http://localhost:4002/tags/ssl/</link>
             <pubDate>Tue, 19 Aug 2025 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/ssl/</guid>
             <description></description>
         </item><item>
-            <title>Gguf</title>
+            <title>GGUF</title>
             <link>http://localhost:4002/tags/gguf/</link>
             <pubDate>Wed, 12 Feb 2025 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/gguf/</guid>
@@ -90,25 +90,25 @@
             <guid>http://localhost:4002/tags/llama.cpp/</guid>
             <description></description>
         </item><item>
-            <title>Llm</title>
+            <title>LLM</title>
             <link>http://localhost:4002/tags/llm/</link>
             <pubDate>Wed, 12 Feb 2025 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/llm/</guid>
             <description></description>
         </item><item>
-            <title>Sagemaker</title>
+            <title>SageMaker</title>
             <link>http://localhost:4002/tags/sagemaker/</link>
             <pubDate>Wed, 12 Feb 2025 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/sagemaker/</guid>
             <description></description>
         </item><item>
-            <title>Api-Gateway</title>
+            <title>API Gateway</title>
             <link>http://localhost:4002/tags/api-gateway/</link>
             <pubDate>Mon, 28 Oct 2024 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/api-gateway/</guid>
             <description></description>
         </item><item>
-            <title>Cors</title>
+            <title>CORS</title>
             <link>http://localhost:4002/tags/cors/</link>
             <pubDate>Mon, 28 Oct 2024 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/cors/</guid>
@@ -120,13 +120,13 @@
             <guid>http://localhost:4002/tags/bedrock/</guid>
             <description></description>
         </item><item>
-            <title>Genai</title>
+            <title>GenAI</title>
             <link>http://localhost:4002/tags/genai/</link>
             <pubDate>Mon, 29 Apr 2024 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/genai/</guid>
             <description></description>
         </item><item>
-            <title>Wordpress</title>
+            <title>WordPress</title>
             <link>http://localhost:4002/tags/wordpress/</link>
             <pubDate>Mon, 29 Apr 2024 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/wordpress/</guid>
@@ -144,25 +144,25 @@
             <guid>http://localhost:4002/tags/art/</guid>
             <description></description>
         </item><item>
-            <title>Controlnet</title>
+            <title>ControlNet</title>
             <link>http://localhost:4002/tags/controlnet/</link>
             <pubDate>Fri, 01 Sep 2023 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/controlnet/</guid>
             <description></description>
         </item><item>
-            <title>Openpose</title>
+            <title>OpenPose</title>
             <link>http://localhost:4002/tags/openpose/</link>
             <pubDate>Fri, 01 Sep 2023 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/openpose/</guid>
             <description></description>
         </item><item>
-            <title>Qr-Code</title>
+            <title>QR Code</title>
             <link>http://localhost:4002/tags/qr-code/</link>
             <pubDate>Fri, 01 Sep 2023 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/qr-code/</guid>
             <description></description>
         </item><item>
-            <title>Stable-Diffusion</title>
+            <title>Stable Diffusion</title>
             <link>http://localhost:4002/tags/stable-diffusion/</link>
             <pubDate>Fri, 01 Sep 2023 00:00:00 +0800</pubDate>
             <guid>http://localhost:4002/tags/stable-diffusion/</guid>

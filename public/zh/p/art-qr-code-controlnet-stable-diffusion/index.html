@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4002&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。">
 <title>借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案</title>
 
@@ -16,7 +16,7 @@
 <meta property='og:description' content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。">
 <meta property='og:url' content='http://localhost:4002/zh/p/art-qr-code-controlnet-stable-diffusion/'>
 <meta property='og:site_name' content='Robin&#39;s Space'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='stable-diffusion' /><meta property='article:tag' content='controlnet' /><meta property='article:tag' content='qr-code' /><meta property='article:tag' content='art' /><meta property='article:tag' content='openpose' /><meta property='article:published_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Stable Diffusion' /><meta property='article:tag' content='ControlNet' /><meta property='article:tag' content='QR Code' /><meta property='article:tag' content='Art' /><meta property='article:tag' content='OpenPose' /><meta property='article:published_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-09-01T00:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:4002/' />
 <meta name="twitter:title" content="借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案">
 <meta name="twitter:description" content="借助 ControlNet 和 Stable Diffusion 生成可扫描的艺术二维码，并结合 OpenPose 控制人物姿态，创造更具艺术感的作品。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:4002/' />
@@ -295,7 +295,6 @@
             <nav class="toc-nav" id="TableOfContents">
                 
   <ul>
-    <li><a href="#ose">ose</a></li>
     <li><a href="#背景介绍">背景介绍</a></li>
     <li><a href="#stable-diffusion-实战技巧">Stable Diffusion 实战技巧</a>
       <ul>
@@ -358,7 +357,7 @@
     <header class="article-header">
     <div class="article-image">
         <a href="/zh/p/art-qr-code-controlnet-stable-diffusion/">
-            <img alt="Featured image of post 借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_55ce0a96d66b54da.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_76a851db4e696861.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg 2000w" width="2000">
+            <img alt="Featured image of post 借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案" height="536" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car_hu_d779f7fe9c1958a9.png 800w, /p/art-qr-code-controlnet-stable-diffusion/images/2-girl-with-car.png 896w" width="896">
         </a>
     </div>
     
@@ -466,7 +465,6 @@
             <nav class="toc-nav">
                 
   <ul>
-    <li><a href="#ose">ose</a></li>
     <li><a href="#背景介绍">背景介绍</a></li>
     <li><a href="#stable-diffusion-实战技巧">Stable Diffusion 实战技巧</a>
       <ul>
@@ -523,8 +521,7 @@
     <section class="article-content">
     
     
-    <h2 id="ose">ose
-</h2><h2 id="背景介绍">背景介绍
+    <h2 id="背景介绍">背景介绍
 </h2><p>近年来，结合 Stable Diffusion 与 ControlNet 生成艺术二维码的技术引发了广泛关注——这类二维码不仅可以被正常扫描，同时也是视觉上令人惊艳的艺术作品。本文最初作为 AWS Workshop 的一部分开发，展示如何在亚马逊云科技基础设施上部署和使用 Stable Diffusion。</p>
 <p>本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。</p>
 <p>我们将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 阅读器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：</p>
@@ -875,8 +872,7 @@
 
     <blockquote>
         <p>原文链接：<a class="link" href="https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/"  target="_blank" rel="noopener"
-    >借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案</a>
-�������������������������������������������������������������������������������������������������������������������������</p>
+    >借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案</a></p>
 
     </blockquote>
 
@@ -887,15 +883,15 @@
     
     <section class="article-tags">
         
-            <a href="/zh/tags/stable-diffusion/">Stable-Diffusion</a>
+            <a href="/zh/tags/stable-diffusion/">Stable Diffusion</a>
         
-            <a href="/zh/tags/controlnet/">Controlnet</a>
+            <a href="/zh/tags/controlnet/">ControlNet</a>
         
-            <a href="/zh/tags/qr-code/">Qr-Code</a>
+            <a href="/zh/tags/qr-code/">QR Code</a>
         
             <a href="/zh/tags/art/">Art</a>
         
-            <a href="/zh/tags/openpose/">Openpose</a>
+            <a href="/zh/tags/openpose/">OpenPose</a>
         
     </section>
 
@@ -965,7 +961,7 @@
             </main>
         </div>
         
-<script type="text/javascript" src="/ts/main.70379e48741aee54eb8502ac94e0f11e052c1d47bcc37b2464d6c7e8203d7aa4.js" defer></script>
+<script type="text/javascript" src="/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
 
 
     </body>

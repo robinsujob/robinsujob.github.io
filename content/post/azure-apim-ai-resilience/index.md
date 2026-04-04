@@ -8,14 +8,14 @@ image: images/cover.png
 categories:
   - Azure
 tags:
-  - azure
-  - api-management
-  - ai
-  - high-availability
-  - load-balancing
-  - managed-identity
-  - microsoft-foundry
-  - enterprise-architecture
+  - Azure
+  - API Management
+  - AI
+  - High Availability
+  - Load Balancing
+  - Managed Identity
+  - Microsoft Foundry
+  - Enterprise Architecture
 ---
 
 As enterprise demand for AI capabilities grows, organizations are deeply integrating Microsoft Foundry model services into core business systems. As AI moves from experimentation to production, **high availability, elastic scaling, unified governance, and security controls** become unavoidable themes.

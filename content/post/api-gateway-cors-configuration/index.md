@@ -6,9 +6,9 @@ description: "Complete guide to configuring CORS for REST API and HTTP API in Am
 categories:
   - AWS
 tags:
-  - api-gateway
-  - cors
-  - serverless
+  - API Gateway
+  - CORS
+  - Serverless
 ---
 
 CORS, or Cross-Origin Resource Sharing, is an HTTP header-based mechanism that allows servers to indicate which external origins (domains, protocols, or ports) can access their resources. CORS addresses the inconvenience caused by the same-origin policy — a browser security mechanism that restricts web pages from loading resources from different origins to prevent malicious websites from stealing sensitive data. However, this restriction also blocks legitimate cross-origin requests. Complex applications often reference third-party APIs and resources in their client-side code, and CORS is needed when the client domain does not match the server domain. Through CORS, browsers can safely perform cross-origin data transfers, bypassing the limitations of the same-origin policy. CORS allows client browsers to check with third-party servers whether a request is authorized before any data is transferred. Due to the complexity of CORS configuration, developers often set overly permissive cross-origin access permissions — for example, using "*" in allowed headers to permit all access — which can compromise application security.

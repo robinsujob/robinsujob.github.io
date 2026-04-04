@@ -7,11 +7,11 @@ image: images/2-girl-with-car.png
 categories:
   - AI/ML
 tags:
-  - stable-diffusion
-  - controlnet
-  - qr-code
-  - art
-  - openpose
+  - Stable Diffusion
+  - ControlNet
+  - QR Code
+  - Art
+  - OpenPose
 ---
 
 

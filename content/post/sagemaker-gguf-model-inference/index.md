@@ -8,10 +8,10 @@ categories:
   - AWS
   - AI/ML
 tags:
-  - sagemaker
-  - gguf
+  - SageMaker
+  - GGUF
   - llama.cpp
-  - llm
+  - LLM
 ---
 With the rapid development of artificial intelligence, LLM models have demonstrated powerful capabilities in natural language processing, machine translation, and intelligent assistants. These models are typically developed using frameworks like PyTorch, with pre-trained results stored in specific binary formats such as PyTorch's .pt files. However, as model sizes continue to grow, traditional file formats face challenges in storage, transmission, and loading — large file sizes, slow loading speeds, and poor cross-platform compatibility.
 

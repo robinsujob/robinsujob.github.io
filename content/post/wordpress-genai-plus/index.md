@@ -7,9 +7,9 @@ categories:
   - AWS
   - AI/ML
 tags:
-  - wordpress
-  - genai
-  - bedrock
+  - WordPress
+  - GenAI
+  - Bedrock
 ---
 
 Generative AI (GenAI) has risen rapidly since 2022, sweeping the globe and demonstrating enormous potential across multiple domains — text-to-image, text-to-text, image-to-image, and more. Models like Stable Diffusion and DALL-E can generate realistic images from natural-language descriptions, opening new possibilities for creative design and visual arts. Meanwhile, large language models such as Claude and GPT enable natural, fluent conversational interactions, empowering content creation and Q&A applications.

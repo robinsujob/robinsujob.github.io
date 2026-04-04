@@ -8,14 +8,14 @@ image: images/cover.png
 categories:
   - Azure
 tags:
-  - azure
-  - api-management
-  - ai
-  - high-availability
-  - load-balancing
-  - managed-identity
-  - microsoft-foundry
-  - enterprise-architecture
+  - Azure
+  - API Management
+  - AI
+  - High Availability
+  - Load Balancing
+  - Managed Identity
+  - Microsoft Foundry
+  - Enterprise Architecture
 ---
 
 随着企业对 AI 能力的需求日益增长，越来越多的组织开始将 Microsoft Foundry 中的模型服务深度集成到核心业务系统中。当 AI 服务从实验阶段迈向生产环境时，架构设计的关注点也随之发生转变——**高可用性、弹性伸缩、统一治理与安全管控**成为企业级 AI 架构不可回避的关键主题。

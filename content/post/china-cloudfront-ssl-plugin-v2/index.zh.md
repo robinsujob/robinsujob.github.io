@@ -7,10 +7,10 @@ image: images/architecture-v2.png
 categories:
   - AWS
 tags:
-  - cloudfront
-  - ssl
-  - serverless
-  - china
+  - CloudFront
+  - SSL
+  - Serverless
+  - China
 ---
 
 在当今数字时代，网站安全至关重要。SSL 证书作为保护网站数据传输安全的重要工具，其管理和更新一直是开发运维人员关注的焦点。在 2023 年我们发布了 China CloudFront SSL Plugin 方便中国区 CloudFront 与免费 SSL 证书的集成。我们持续迭代我们的方案。现在，我们很高兴地宣布 China CloudFront SSL Plugin 的第二代版本正式发布。

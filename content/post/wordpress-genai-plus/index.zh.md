@@ -7,9 +7,9 @@ categories:
   - AWS
   - AI/ML
 tags:
-  - wordpress
-  - genai
-  - bedrock
+  - WordPress
+  - GenAI
+  - Bedrock
 ---
 
 生成式人工智能（Generative AI，GenAI）自 2022 年以来迅速兴起并风靡全球，在多个领域中展现出巨大的潜力和影响力。例如文生图、文生文、图生图等等多个技术领域，都已经或正在被 GenAI 所改变和重塑。以文生图技术为例，Stable Diffusion、DALL-E 等 AI 模型能够根据语言描述生成逼真的图像，为创意设计、视觉艺术等领域带来全新体验。与此同时，文生文技术也获得了长足进步，以 Claude、GPT 等为代表的大语言模型能够与人类进行自然流畅的对话交互，为内容创作、问答服务等应用场景提供了强大助力。

@@ -6,9 +6,9 @@ description: "全面介绍 Amazon API Gateway 中 REST API 和 HTTP API 的 CORS
 categories:
   - AWS
 tags:
-  - api-gateway
-  - cors
-  - serverless
+  - API Gateway
+  - CORS
+  - Serverless
 ---
 
 CORS，全称为跨源资源共享（Cross-Origin Resource Sharing），是一种基于 HTTP 标头的机制，允许服务器标示哪些外部源（域、协议或端口）可以访问其资源。CORS 可以解决同源策略带来的不便，同源策略是浏览器的一种安全机制，它限制网页从不同的来源加载资源，以防止恶意网站窃取敏感数据。然而，这种限制也阻碍了合法的跨域请求。复杂的应用程序通常会在其客户端代码中引用第三方 API 和资源，当客户端域与服务器域不匹配时就需要 CORS。通过 CORS，浏览器能够安全地进行跨源数据传输，从而突破同源策略的限制。CORS 允许客户端浏览器在任何数据传输之前，先向第三方服务器检查请求是否被授权。由于 CORS 配置的复杂性，开发人员往往将跨域访问的权限设置得过大，比如在允许访问的标头中使用 "*" 来允许全部访问，这会对应用的安全性造成损害。
