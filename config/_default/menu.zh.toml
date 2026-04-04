@@ -48,3 +48,12 @@
     [social.params]
         icon = "brand-instagram"
         newTab = true
+
+[[social]]
+    identifier = "email"
+    name       = "Email"
+    url        = "mailto:robinsujob@outlook.com"
+    weight     = 4
+    [social.params]
+        icon = "mail"
+        newTab = true
