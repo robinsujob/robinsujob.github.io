@@ -538,6 +538,16 @@
                 />
   </url><url>
     <loc>http://localhost:4002/about/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/about/"
+                />
   </url><url>
     <loc>http://localhost:4002/archives/</loc>
     <xhtml:link
@@ -552,8 +562,28 @@
                 />
   </url><url>
     <loc>http://localhost:4002/page/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/page/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/page/"
+                />
   </url><url>
     <loc>http://localhost:4002/projects/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:4002/zh/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:4002/projects/"
+                />
   </url><url>
     <loc>http://localhost:4002/search/</loc>
     <xhtml:link

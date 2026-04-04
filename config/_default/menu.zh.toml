@@ -7,6 +7,14 @@
         icon = "home"
 
 [[main]]
+    identifier = "about"
+    name       = "关于"
+    url        = "/zh/about/"
+    weight     = -95
+    [main.params]
+        icon = "user"
+
+[[main]]
     identifier = "projects"
     name       = "项目"
     url        = "/zh/projects/"

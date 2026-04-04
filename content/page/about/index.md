@@ -1,11 +1,6 @@
 ---
 title: "About"
 slug: "about"
-menu:
-  main:
-    weight: -90
-    params:
-      icon: user
 ---
 
 # Hey, I'm Robin 👋

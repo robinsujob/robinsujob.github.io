@@ -7,6 +7,14 @@
         icon = "home"
 
 [[main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about/"
+    weight     = -95
+    [main.params]
+        icon = "user"
+
+[[main]]
     identifier = "projects"
     name       = "Projects"
     url        = "/projects/"

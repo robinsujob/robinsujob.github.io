@@ -5,6 +5,12 @@
         <description>Recent content in Pages on Robin&#39;s Space</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh</language><atom:link href="http://localhost:4002/zh/page/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>关于</title>
+            <link>http://localhost:4002/zh/about/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/zh/about/</guid>
+            <description>&lt;h1 id=&#34;嘿我是-robin-&#34;&gt;嘿，我是 Robin 👋&#xA;&lt;/h1&gt;&lt;p&gt;Builder、摄影师、终身折腾者。&lt;/p&gt;&#xA;&lt;p&gt;我的日常是在技术与创意的交汇点造产品。这个站点记录我在学什么、在造什么、以及通过镜头看到了什么。&lt;/p&gt;&#xA;&lt;h2 id=&#34;这里有什么&#34;&gt;这里有什么&#xA;&lt;/h2&gt;&lt;p&gt;📝 &lt;strong&gt;博客&lt;/strong&gt; — 技术深潜：AI、云架构、以及偶尔的辣评。&lt;/p&gt;&#xA;&lt;p&gt;🛠 &lt;strong&gt;项目&lt;/strong&gt; — 我造过的东西，从个人项目到正经产品。&lt;/p&gt;&#xA;&lt;p&gt;📷 &lt;strong&gt;摄影&lt;/strong&gt; — 捕捉的瞬间。主要是街拍、旅行和建筑。&lt;/p&gt;&#xA;&lt;h2 id=&#34;联系我&#34;&gt;联系我&#xA;&lt;/h2&gt;&lt;p&gt;欢迎通过 &lt;a class=&#34;link&#34; href=&#34;https://github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; 或 &lt;a class=&#34;link&#34; href=&#34;https://linkedin.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;LinkedIn&lt;/a&gt; 联系我。&lt;/p&gt;&#xA;</description>
+        </item><item>
             <title>归档</title>
             <link>http://localhost:4002/zh/archives/</link>
             <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -16,5 +22,11 @@
             <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
             <guid>http://localhost:4002/zh/search/</guid>
             <description></description>
+        </item><item>
+            <title>项目</title>
+            <link>http://localhost:4002/zh/projects/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:4002/zh/projects/</guid>
+            <description>&lt;h2 id=&#34;aws-解决方案&#34;&gt;AWS 解决方案&#xA;&lt;/h2&gt;&lt;h3 id=&#34;china-cloudfront-ssl-plugin-v2&#34;&gt;China CloudFront SSL Plugin V2&#xA;&lt;/h3&gt;&lt;p&gt;面向中国区 CloudFront 的一站式免费 SSL 证书管理方案。V2 带来多项目统一管理、GUI 界面和 Access Key 认证。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/zh/p/china-cloudfront-ssl-plugin-v2/&#34; &gt;博客文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;标签:&lt;/strong&gt; AWS, CloudFront, SSL, Serverless&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;china-cloudfront-ssl-plugin&#34;&gt;China CloudFront SSL Plugin&#xA;&lt;/h3&gt;&lt;p&gt;中国区 CloudFront 免费 SSL 证书部署插件（第一代）。解决免费 SSL 证书使用和自动更新的功能缺失问题。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;https://github.com/aws-samples/China-CloudFront-SSL-Plugin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/zh/p/cloudfront-ssl-plugin-deployment-guide/&#34; &gt;博客文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;标签:&lt;/strong&gt; AWS, CloudFront, SSL&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;deploy-gguf-model-to-sagemaker&#34;&gt;Deploy GGUF Model to SageMaker&#xA;&lt;/h3&gt;&lt;p&gt;使用 llama.cpp 在 SageMaker 上部署 GGUF 量化模型进行推理。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/zh/p/sagemaker-gguf-model-inference/&#34; &gt;博客文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;标签:&lt;/strong&gt; AWS, SageMaker, LLM, GGUF&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;wordpress-genai-plus&#34;&gt;WordPress GenAI Plus&#xA;&lt;/h3&gt;&lt;p&gt;为 WordPress 添加 AI 内容生成能力的插件，集成 Amazon Bedrock 的 Claude 3 和 Stable Diffusion。&lt;/p&gt;&#xA;&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;http://localhost:4002/zh/p/wordpress-genai-plus/&#34; &gt;博客文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;标签:&lt;/strong&gt; WordPress, GenAI, AWS Bedrock&lt;/p&gt;&#xA;</description>
         </item></channel>
 </rss>
