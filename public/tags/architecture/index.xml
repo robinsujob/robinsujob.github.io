@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture on Robin's Space</title><link>http://localhost:4002/tags/architecture/</link><description>Recent content in Architecture on Robin's Space</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:4002/tags/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>City Lights</title><link>http://localhost:4002/p/photography-city-lights/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0800</pubDate><guid>http://localhost:4002/p/photography-city-lights/</guid><description>&lt;img src="http://localhost:4002/" alt="Featured image of post City Lights" /&gt;&lt;p&gt;A collection of urban nightscapes captured across different cities.&lt;/p&gt;
-&lt;p&gt;城市的夜色，每一帧都是故事。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Urban nightscapes — every frame tells a story.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="City Lights 1" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="City Lights 2" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="City Lights 3" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px"&gt;&lt;/p&gt;
-
- &lt;blockquote&gt;
- &lt;p&gt;💡 这些是占位图片，替换成你的真实摄影作品后，Stack 主题会自动生成带 lightbox 的画廊效果——点击任意图片可全屏浏览、左右切换。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;These are placeholder images. Replace with your real photos and Stack will auto-generate a lightbox gallery — click any image for full-screen browsing.&lt;/em&gt;&lt;/p&gt;
-
- &lt;/blockquote&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Architecture on Robin&#39;s Space</title>
+        <link>http://localhost:4002/tags/architecture/</link>
+        <description>Recent content in Architecture on Robin&#39;s Space</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:4002/tags/architecture/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>City Lights</title>
+            <link>http://localhost:4002/p/photography-city-lights/</link>
+            <pubDate>Mon, 15 Jan 2024 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/p/photography-city-lights/</guid>
+            <description>&lt;img src=&#34;http://localhost:4002/&#34; alt=&#34;Featured image of post City Lights&#34; /&gt;&lt;p&gt;A collection of urban nightscapes captured across different cities.&lt;/p&gt;&#xA;&lt;p&gt;城市的夜色，每一帧都是故事。&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Urban nightscapes — every frame tells a story.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;City Lights 1&#34; loading=&#34;lazy&#34; sizes=&#34;(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;City Lights 2&#34; loading=&#34;lazy&#34; sizes=&#34;(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;City Lights 3&#34; loading=&#34;lazy&#34; sizes=&#34;(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px&#34;&gt;&lt;/p&gt;&#xA;&#xA;    &lt;blockquote&gt;&#xA;        &lt;p&gt;💡 这些是占位图片，替换成你的真实摄影作品后，Stack 主题会自动生成带 lightbox 的画廊效果——点击任意图片可全屏浏览、左右切换。&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;These are placeholder images. Replace with your real photos and Stack will auto-generate a lightbox gallery — click any image for full-screen browsing.&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;    &lt;/blockquote&gt;&#xA;</description>
+        </item></channel>
+</rss>
