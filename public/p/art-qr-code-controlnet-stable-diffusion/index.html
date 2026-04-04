@@ -421,7 +421,7 @@
 
 
                     <time class="article-time--reading">
-                        10 minutes read
+                        11 minutes read
                     </time>
                 
             </div>
@@ -522,38 +522,41 @@
     
     
     <h2 id="background">Background
-</h2><p>In the past few months, there has been growing interest in combining Stable Diffusion with ControlNet to create artistic QR codes — QR codes that are not only scannable but also visually stunning works of art.</p>
-<p>This post shares practical tips for working with Stable Diffusion and walks through the process of generating artistic QR codes using ControlNet. We will use QR codes as ControlNet input, integrating QR code data points into artistic images while maintaining scannability. With this technology, you can transform any QR code into a unique piece of art. Here are some examples:</p>
+</h2><p>Over the past few months, there has been growing interest in combining Stable Diffusion with ControlNet to create artistic QR codes. This post was originally developed as part of an AWS workshop demonstrating how to deploy and use Stable Diffusion on AWS infrastructure.</p>
+<p>This post shares practical tips for working with Stable Diffusion and walks through the best practices for generating artistic QR codes.</p>
+<p>We will use QR codes as ControlNet input, integrating QR code data points into artistic images while keeping them scannable by QR code readers. With this technology, you can transform any QR code into a unique piece of art, expressing and conveying information in an entirely new way. Here are some examples:</p>
 <p><img alt="Sample 1" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_55ce0a96d66b54da.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_76a851db4e696861.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg 2000w" width="2000">
 <img alt="Sample 2" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_58726bd2cf5fe70d.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_4c6be33718f82540.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg 2000w" width="2000">
 <img alt="Sample 3" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_aa92c1059d5785be.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_52c82c010083f7a4.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg 2000w" width="2000"></p>
 <h2 id="stable-diffusion-practical-tips">Stable Diffusion Practical Tips
-</h2><h3 id="prompt-engineering">Prompt Engineering
+</h2><p>As the ancient Chinese saying goes: &ldquo;The beginning is always the hardest&rdquo; and &ldquo;Seek breadth while perfecting the details.&rdquo; These correspond to the two most common challenges when working with Stable Diffusion: first, how to choose the right prompt strategy to generate images that meet expectations; and second, how to fine-tune image details so the final output meets production-quality requirements.</p>
+<p>Based on our experience helping users work with Stable Diffusion, we have compiled the following best practices for reference.</p>
+<h3 id="prompt-engineering">Prompt Engineering
 </h3><p>As Stable Diffusion versions continue to evolve and AI&rsquo;s understanding of semantics gets closer to &ldquo;common sense,&rdquo; the requirements for effective prompts are becoming increasingly demanding. Many common prompt misconceptions can sometimes have adverse effects on image generation.</p>
 <h4 id="basic-concepts">Basic Concepts
-</h4><p>Prompts are divided into <strong>positive prompts</strong> (what you want) and <strong>negative prompts</strong> (what you don&rsquo;t want).</p>
+</h4><p>Prompts are divided into <strong>positive prompts</strong> (what you want) and <strong>negative prompts</strong> (what you don&rsquo;t want), telling the AI what to include and what to exclude.</p>
 <h4 id="common-misconceptions">Common Misconceptions
 </h4><ul>
-<li>Precision over quantity — use the shortest words to describe the scene, more effective than natural language.</li>
-<li>Quality-improving descriptors should not be mindlessly stacked — more is not better.</li>
-<li>Common starters like &ldquo;masterpiece&rdquo; and &ldquo;best quality&rdquo; were meaningful in the NovelAI era when they were heavily used for image evaluation during training, but after continuous model refinement on Civitai, these prompts barely show their intended effect in modern models.</li>
+<li>Precision over quantity — describing a scene with the shortest words is more effective than natural language.</li>
+<li>Quality-improving descriptors should not be mindlessly stacked; more is not better.</li>
+<li>Common starters like &ldquo;masterpiece&rdquo; and &ldquo;best quality&rdquo; often become dead weight in prompts. These words were meaningful in the NovelAI era, when they were heavily used during model training for image evaluation. However, after continuous model refinement by authors on Civitai, these prompts barely show their intended effect in modern models.</li>
 </ul>
 <h4 id="adjusting-prompt-weights">Adjusting Prompt Weights
 </h4><ul>
-<li>Default weight of each token is 1, decreasing from left to right.</li>
+<li>The default weight of each token is 1, decreasing from left to right.</li>
 <li>Prompt weights significantly affect the generated image.</li>
 <li>Use parentheses + colon + number to specify weight, e.g., <code>(one girl:1.5)</code>.</li>
 </ul>
 <h4 id="mind-the-prompt-order">Mind the Prompt Order
 </h4><ul>
-<li>Landscape tags first = smaller characters; character tags first = larger/half-body.</li>
+<li>Landscape tags first = smaller characters; character tags first = larger characters or half-body shots.</li>
 <li>Choose the correct order and syntax for prompts to more effectively render the desired scene.</li>
 </ul>
 <h4 id="emojis-in-prompts">Emojis in Prompts
 </h4><ul>
-<li>Emojis work well in prompts with good expressiveness.</li>
+<li>Prompts support emojis, and they work with good expressiveness.</li>
 <li>For specific facial expressions or actions, adding emojis can achieve the desired effect.</li>
-<li>To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax like &ldquo;with&rdquo;.</li>
+<li>To prevent semantic drift, prefer emojis and minimize unnecessary complex syntax.</li>
 </ul>
 <h4 id="recommended-camera-angle-prompts">Recommended Camera Angle Prompts
 </h4><div class="table-wrapper"><table>
@@ -595,50 +598,60 @@
   </tbody>
 </table></div>
 <h3 id="image-optimization">Image Optimization
-</h3><p>Often we generate an image that&rsquo;s not quite satisfactory and want to further optimize it. Here are some best practices for parameter tuning:</p>
+</h3><p>Often we generate an image that&rsquo;s not quite satisfactory and want to further optimize it, but don&rsquo;t know where to start. Here are some best practices for parameter tuning:</p>
 <h4 id="which-parameters-to-adjust">Which Parameters to Adjust
 </h4><ul>
-<li><strong>CFG Scale</strong>: The correlation between the image and the prompt. Higher values mean greater prompt influence.
+<li><strong>CFG Scale</strong>: The correlation between the image and the prompt. Higher values mean greater prompt influence and closer adherence to the prompt.
 <ul>
-<li>CFG 2–6: Creative but may be too distorted. Fun for short prompts.</li>
-<li>CFG 7–10: Recommended for most prompts. Good creativity-guidance balance.</li>
+<li>CFG 2–6: Creative but may be too distorted, not following the prompt. Fun for short prompts.</li>
+<li>CFG 7–10: Recommended for most prompts.</li>
 <li>CFG 10–15: Use when the prompt is detailed and clear.</li>
-<li>CFG 16–20: Generally not recommended. May affect quality.</li>
+<li>CFG 16–20: Not recommended unless the prompt is very detailed.</li>
 <li>CFG &gt;20: Almost unusable.</li>
 </ul>
 </li>
-<li><strong>Sampling Steps</strong>: More steps mean smaller, more precise adjustments per step, but proportionally increase generation time. Beyond 50 steps, improvements become negligible.</li>
-<li><strong>Sampling Method</strong>: Different methods have different optimal step counts.
+<li><strong>Sampling Steps</strong>: More steps mean smaller, more precise adjustments per step, but proportionally increase generation time. For most samplers, more iterations produce better results, but beyond 50 steps, improvements become negligible.</li>
+<li><strong>Sampling Method</strong>: Different methods have different optimal step counts; comprehensive comparison is needed.
 <ul>
-<li>Euler a: Creative, good for quick prompt testing.</li>
+<li>Euler a: Creative; different step counts produce different images. An efficient method for quickly testing prompt effects.</li>
 <li>DPM2 a Karras: Good for realistic models, hard to control after 30 steps.</li>
 <li>DPM++ 2M Karras: Excellent at high step counts, more details.</li>
-<li>DDIM: Fast convergence but needs many steps; good for inpainting.</li>
-<li>Different model and sampler combinations produce different results; use X/Y/Z plots for comparison.</li>
+<li>DDIM: Fast convergence but low efficiency; good for inpainting.</li>
+<li>Different model and sampler combinations produce different results; the above is for reference only. When choosing sampling methods, it&rsquo;s best to use X/Y/Z plots for comparison.</li>
 </ul>
 </li>
-<li><strong>Seed</strong>: The random seed has a huge impact on composition and is the main source of randomness in SD. With the same seed and all other parameters fixed, you can reproduce (nearly) identical images. Once you find a suitable composition, fix the seed and fine-tune details.</li>
+<li><strong>Seed</strong>: The random seed often has a huge impact on composition and is the main source of randomness in SD. With the same seed and all other parameters fixed, you can reproduce (nearly) identical images. Once you find a suitable composition, fix the seed and fine-tune details — this is the recommended approach.</li>
 </ul>
 <h4 id="how-to-find-optimal-parameters">How to Find Optimal Parameters
 </h4><p>Use X/Y/Z plots to clearly compare results under different parameters, quickly locate suitable parameter ranges, and perform further generation control.</p>
 <p><img alt="X/Y/Z Plot Comparison" class="gallery-image" data-flex-basis="353px" data-flex-grow="147" height="1358" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image4.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image4_hu_77502e0855ea324.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image4_hu_f3805d232f87f8e3.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image4.jpg 2000w" width="2000"></p>
 <h4 id="image-size-optimization">Image Size Optimization
-</h4><p>Image quality is not directly tied to image size. However, size somewhat affects the subject and content, as it implicitly represents the category (e.g., portrait for vertical, landscape for horizontal, small resolution for stickers). When the output size is too wide, multiple subjects may appear. Sizes above 1024 may produce undesirable results with significant GPU memory pressure. Small resolution + upscaling is recommended.</p>
+</h4><ul>
+<li>Image quality is not directly tied to image size.</li>
+<li>However, size does affect the subject and content to some extent.</li>
+<li>When the output size is too wide, multiple subjects may appear.</li>
+<li>Sizes above 1024 may produce undesirable results, and GPU memory pressure becomes significant. Small resolution + upscaling is recommended.</li>
+</ul>
 <h4 id="optimizing-multi-character-and-wide-format-generation">Optimizing Multi-Character and Wide-Format Generation
-</h4><p>Using txt2img alone cannot effectively specify individual character features in multi-character scenarios. The recommended approach is to create a draft + img2img or ControlNet. For wide-format single-character generation, draft a sketch with color blocking to determine the main subject, or use ControlNet&rsquo;s OpenPose for character skeleton. For multi-character scenes, use ControlNet&rsquo;s OpenPose to specify character count; this also works for three-view drawings of the same character.</p>
+</h4><ul>
+<li>Using txt2img alone cannot effectively specify individual character features in multi-character scenarios.</li>
+<li>The recommended approach is to create a draft + img2img or ControlNet.</li>
+<li>For wide-format single-character generation, draft a sketch with color blocking to determine the main subject, or use ControlNet&rsquo;s OpenPose for character skeleton.</li>
+<li>For multi-character scenes, use ControlNet&rsquo;s OpenPose to specify character count; this also works for three-view drawings of the same character.</li>
+</ul>
 <h4 id="hand-repair">Hand Repair
-</h4><p>Send the image to img2img inpaint with similar prompts, placing &ldquo;hand&rdquo; prompts at the front. Set denoising strength based on how much you want hand features to change (below 0.25 for just completeness). For more precise hand control, find a satisfactory hand reference image and use ControlNet&rsquo;s Canny or OpenPose_hands preprocessor + model combined with inpaint.</p>
+</h4><p>Send the image to img2img inpaint with similar prompts, placing &ldquo;hand&rdquo; prompts at the front. Set denoising strength based on how much you want hand features to change (below 0.25 if you just want completeness), keeping steps and CFG the same as txt2img. For more precise hand control, find a satisfactory hand reference image and use ControlNet&rsquo;s Canny or OpenPose_hands preprocessor + model combined with inpaint.</p>
 <h4 id="face-repair">Face Repair
-</h4><p>When drawing images with small character subjects, facial distortion frequently occurs. Especially in the artistic QR code generation process described later, faces often break due to QR code data points. For facial inpainting, the <strong>ADetailer</strong> plugin is recommended. It uses YOLO for object detection, identifies faces, and performs localized inpainting with specified prompts and models. ADetailer can handle both face and hand detection and repair, and can also reference LoRA models for localized inpainting.</p>
+</h4><p>When drawing images with small character subjects, facial distortion frequently occurs. Especially in the artistic QR code generation process described later, faces often break due to QR code data points. For facial inpainting, the <strong>ADetailer</strong> plugin is recommended. It uses the YOLO algorithm for object detection — we configure it to detect character faces and provide prompts and models for facial inpainting. The plugin performs localized inpainting at detected face locations to complete the repair. ADetailer can handle both face and hand detection and repair, and can also reference LoRA models for localized inpainting.</p>
 <p><img alt="ADetailer Face Repair" class="gallery-image" data-flex-basis="445px" data-flex-grow="185" height="1078" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_6367fc31bcade539.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_5676d0dce49e6a81.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg 2000w" width="2000"></p>
 <h2 id="generating-artistic-qr-codes-with-controlnet">Generating Artistic QR Codes with ControlNet
 </h2><h3 id="step-1-optimize-the-qr-code">Step 1: Optimize the QR Code
-</h3><p>A QR code is a pattern of black and white geometric shapes distributed in 2D space that records symbolic data. There are multiple encoding methods; we use the most universal one: QR Code.</p>
-<p>The input QR code is one of the most important factors in generating artistic QR codes. We mainly care about two characteristics:</p>
+</h3><p>A QR code is a pattern of black and white geometric shapes distributed in 2D space that records symbolic data. There are multiple encoding methods; we use the most universal and fundamental one: QR Code.</p>
+<p>The input QR code is one of the most important factors when generating artistic QR codes with SD. We mainly care about two characteristics:</p>
 <p><img alt="QR Code Structure" class="gallery-image" data-flex-basis="463px" data-flex-grow="193" height="1035" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_b52fdd4bc2347dd6.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_4f11b8a8789a497c.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg 2000w" width="2000"></p>
 <p><strong>1. Information contained in the QR code</strong></p>
-<p>The more character information a QR code carries, the more complex its visual structure becomes. Complex structures greatly constrain artistic creativity during generation. Therefore, we first need to simplify the content length.</p>
-<p>For the most common use case — web links — shorten the URL first. There are many URL shortening tools available.</p>
+<p>Regardless of the encoding method, the more character information a QR code carries, the more complex its visual black-and-white structure becomes. Complex structures heavily constrain artistic creativity during generation. Therefore, we first need to simplify the content length.</p>
+<p>For the most common use case — web links — shorten the URL first. There are many URL shortening tools available; choose freely. Note that within mainland China, use platforms with registered domain names, otherwise links may be blocked by WeChat, browsers, etc.</p>
 <p><img alt="URL Length Comparison" class="gallery-image" data-flex-basis="434px" data-flex-grow="180" height="1105" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_994cc7c8be691b7a.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_5ecf3e0fd8a69b85.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg 2000w" width="2000"></p>
 <p><strong>2. How the QR code is presented</strong></p>
 <p>With technological development, QR codes no longer only support black and white square patterns; both positioning points and modules support diverse presentation styles.</p>
@@ -669,7 +682,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="step-2-create-the-base-qr-code">Step 2: Create the Base QR Code
-</h3><p>After understanding the key points above, use a QR code generation tool to create a base QR code for SD input. There are many web-based generators available. For convenience, here&rsquo;s a useful WebUI plugin:</p>
+</h3><p>After understanding the key points above, use a QR code generation tool to create a base QR code for SD input. There are many web-based generators available; choose freely. For convenience, here is a useful WebUI plugin:</p>
 <ul>
 <li><strong>Anthony&rsquo;s QR Toolkit</strong>: Integrated QR code generation and optimization tool for WebUI
 <ul>
@@ -681,7 +694,7 @@
 <p><img alt="QR Toolkit Configuration" class="gallery-image" data-flex-basis="352px" data-flex-grow="146" height="1363" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_7dd3f5c4533a8b1f.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_a9e7cdd31e40fc49.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg 2000w" width="2000"></p>
 <p>After creating the QR code, click &ldquo;Download&rdquo; to save it locally, or click &ldquo;Send to ControlNet&rdquo; to pass it directly for the next step.</p>
 <h3 id="step-3-determine-the-art-style">Step 3: Determine the Art Style
-</h3><p>The core of creating art with Stable Diffusion is choosing the right model + prompts. Before creating artistic QR codes, generate an image without ControlNet first to test the style.</p>
+</h3><p>The core of creating art with Stable Diffusion is choosing the right model + prompts. Before creating artistic QR codes, we recommend generating an image without ControlNet first to test the style.</p>
 <p><img alt="Test Generation Result" class="gallery-image" data-flex-basis="506px" data-flex-grow="210" height="948" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_67bbdab4025fc3f5.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_c83f3b551e0924d7.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg 2000w" width="2000"></p>
 <p>Generation parameters:</p>
 <div class="highlight"><div class="chroma">
@@ -704,19 +717,19 @@
 </h3><p>After confirming the image style, upload the unprocessed QR code to ControlNet. Pay attention to these configuration options:</p>
 <ul>
 <li><strong>&ldquo;Enable&rdquo; button</strong>: Check to ensure ControlNet is active during generation</li>
-<li><strong>Model selector</strong>: Select &ldquo;control_v1p_sd15_qrcode_monster&rdquo; to strengthen QR code control</li>
-<li><strong>Control weight</strong>: For the qrcode_monster model, we recommend 1.1–1.6</li>
+<li><strong>Model selector</strong>: Select <code>control_v1p_sd15_qrcode_monster</code> to strengthen QR code control</li>
+<li><strong>Control weight</strong>: For the qrcode_monster model, we recommend setting it between 1.1–1.6</li>
 <li><strong>Guidance start/end timing</strong>: Start timing recommended between 0–0.1, end timing recommended at 1</li>
 </ul>
 <p><img alt="ControlNet Configuration" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="1997" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_25f078fb5a3943d7.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_f4879ef6b64e3a2e.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg 2000w" width="2000"></p>
-<p>In txt2img configuration, adjust two key values:</p>
+<p>In the txt2img configuration, adjust two key values:</p>
 <ul>
-<li><strong>Sampling steps</strong>: recommended 30–50 (default 20 is insufficient for high-quality QR code images)</li>
-<li><strong>Width/Height</strong>: match the original QR code aspect ratio from ControlNet</li>
+<li><strong>Sampling steps</strong>: Recommended 30–50 (the default of 20 is insufficient for generating high-quality QR code images)</li>
+<li><strong>Width/Height</strong>: Match the original QR code aspect ratio from ControlNet</li>
 </ul>
 <p><img alt="txt2img Parameter Adjustment" class="gallery-image" data-flex-basis="251px" data-flex-grow="104" height="1909" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_ed705bdb20a2cff1.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_e4b0ba433aa581d9.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg 2000w" width="2000"></p>
 <p>After all parameters are configured, click generate. Here we can see a good result — the QR code passes scanning tests on mobile phones.</p>
-<p>If the generated QR code doesn&rsquo;t meet expectations, try fine-tuning:</p>
+<p>If the generated QR code doesn&rsquo;t meet expectations, try fine-tuning the following parameters and increase the total batch count, iterating to approach the desired result:</p>
 <ul>
 <li>Prompts</li>
 <li>Sampling method</li>

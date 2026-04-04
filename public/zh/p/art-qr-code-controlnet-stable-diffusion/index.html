@@ -341,7 +341,7 @@
     </li>
     <li><a href="#附录">附录</a>
       <ul>
-        <li><a href="#controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择</a></li>
+        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
       </ul>
     </li>
     <li><a href="#参考链接">参考链接</a></li>
@@ -425,7 +425,7 @@
 
 
                     <time class="article-time--reading">
-                        阅读时长: 10 分钟
+                        阅读时长: 9 分钟
                     </time>
                 
             </div>
@@ -515,7 +515,7 @@
     </li>
     <li><a href="#附录">附录</a>
       <ul>
-        <li><a href="#controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择</a></li>
+        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
       </ul>
     </li>
     <li><a href="#参考链接">参考链接</a></li>
@@ -530,25 +530,21 @@
     
     
     <h2 id="背景介绍">背景介绍
-</h2><p>在过去的数月中，亚马逊云科技已经推出了多篇 Blog，来介绍如何在亚马逊云科技上部署 Stable Diffusion，或是如何结合 Amazon SageMaker 与 Stable Diffusion 进行模型训练和推理任务。</p>
-<p>为了帮助客户快速、安全地在亚马逊云科技上构建、部署和管理应用程序，众多合作伙伴与亚马逊云科技紧密合作。他们提供各种各样的服务、深入的技术知识、最佳实践和解决方案，包括基础设施迁移、应用程序现代化、安全和合规性、数据分析、机器学习、人工智能、云托管、DevOps、咨询和培训。</p>
-<p>本文主要分享使用 Stable Diffusion 的实战经验，以及生成艺术二维码的最佳实践。</p>
+</h2><p>近年来，结合 Stable Diffusion 与 ControlNet 生成艺术二维码的技术引发了广泛关注——这类二维码不仅可以被正常扫描，同时也是视觉上令人惊艳的艺术作品。本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。其中，eCloudRover 的 imAgine 平台提供了本次实践所需的云端算力支持。</p>
 <p>我们将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 阅读器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：</p>
 <p><img alt="示例1" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_55ce0a96d66b54da.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_76a851db4e696861.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg 2000w" width="2000">
 <img alt="示例2" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_58726bd2cf5fe70d.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_4c6be33718f82540.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg 2000w" width="2000">
 <img alt="示例3" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_aa92c1059d5785be.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_52c82c010083f7a4.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg 2000w" width="2000"></p>
 <h2 id="stable-diffusion-实战技巧">Stable Diffusion 实战技巧
-</h2><p>古语有云：&ldquo;万事开头难&rdquo;，&ldquo;致广大而尽精微&rdquo;。这对应了在 Stable Diffusion 实战中，客户最常遇到的两方面问题，一是如何选择合适的提示词起手式，来生成满足期望的图片；二是如何对图片进行细节优化，使最终产出的结果能够满足生产应用需求。</p>
-<p>我们根据过往服务客户使用 Stable Diffusion 的经验，整理了以下内容作为我们推荐的最佳实践，希望对读者使用 Stable Diffusion 进行创作时提供参考。</p>
-<h3 id="提示词工程">提示词工程
+</h2><h3 id="提示词工程">提示词工程
 </h3><p>随着 Stable Diffusion 版本不断迭代，AI 对语义的理解越来越接近&quot;常识&quot;之后，对提示词（Prompts）的要求也会越来越高。很多提示词上的误区有时会对绘图产生反作用。</p>
 <h4 id="prompt-的基本概念">Prompt 的基本概念
-</h4><p>提示词分为正向提示词（positive prompt）和反向提示词（negative prompt），用来告诉 AI 哪些需要，哪些不需要。</p>
+</h4><p>提示词分为<strong>正向提示词</strong>（positive prompt，告诉 AI 需要什么）和<strong>反向提示词</strong>（negative prompt，告诉 AI 不需要什么）。</p>
 <h4 id="prompt-的误区">Prompt 的误区
 </h4><ul>
 <li>Prompt 在于精确，不在于数量；用最简短的单词阐述画面，比自然语言要更有效。</li>
 <li>提升质量的描绘词绝不是无脑堆砌、越多越好。</li>
-<li>经常出现的起手式：&ldquo;masterpiece&rdquo; &ldquo;best quality&rdquo; 等，很多时候会成为提示词中的累赘。这些词语在 NovelAI 时代是有意义的，因为当时 NovelAI 训练模型时大量使用了这些词汇来对图像进行评价；但在如今，经过 Civitai 上模型作者们不断重新炼制模型，这些提示词已经很难在生图结果中展现应有的作用。</li>
+<li>经常出现的起手式：&ldquo;masterpiece&rdquo;、&ldquo;best quality&rdquo; 等，在 NovelAI 时代是有意义的，因为当时训练模型时大量使用了这些词汇来对图像进行评价；但在如今，经过 Civitai 上模型作者们不断重新炼制模型，这些提示词已经很难在生图结果中展现应有的作用。</li>
 </ul>
 <h4 id="调整提示词的权重">调整提示词的权重
 </h4><ul>
@@ -558,14 +554,14 @@
 </ul>
 <h4 id="注意提示词的顺序">注意提示词的顺序
 </h4><ul>
-<li>比如景色 Tag 在前，人物就会小，相反的人物会变大或半身</li>
-<li>选择正确的顺序、语法来使用提示词</li>
+<li>景色 Tag 在前，人物就会小；人物 Tag 在前，人物会变大或半身</li>
+<li>选择正确的顺序、语法来使用提示词，以更有效地渲染期望的画面</li>
 </ul>
 <h4 id="prompt-中的-emoji">Prompt 中的 Emoji
 </h4><ul>
 <li>Prompt 支持使用 emoji，且表现力较好</li>
-<li>对于特定的人脸表情或动作，可通过添加 emoji 图来达到效果</li>
-<li>为了防止语义偏移，优先考虑 emoji</li>
+<li>对于特定的人脸表情或动作，可通过添加 emoji 来达到效果</li>
+<li>为了防止语义偏移，优先考虑 emoji，减少不必要的复杂语法</li>
 </ul>
 <h4 id="视角-prompt-推荐">视角 Prompt 推荐
 </h4><div class="table-wrapper"><table>
@@ -610,26 +606,26 @@
 </h3><p>很多时候我们生成了一张差强人意的图片，希望对这个结果进行进一步的优化，但往往不知道从何下手。这时您或许可以参考以下图片参数调优的最佳实践：</p>
 <h4 id="哪些参数需要调整">哪些参数需要调整
 </h4><ul>
-<li><strong>CFG Scale</strong>：图像与提示词的相关度。该值越高，提示词对最终生成结果的影响越大，契合度越高。
+<li><strong>CFG Scale</strong>：图像与提示词的相关度。该值越高，提示词对最终生成结果的影响越大。
 <ul>
-<li>CFG 2-6：有创意，但可能太扭曲，没有遵循提示。</li>
-<li>CFG 7-10：推荐用于大多数提示。</li>
+<li>CFG 2-6：有创意，但可能太扭曲，适合简短提示词。</li>
+<li>CFG 7-10：推荐用于大多数提示，创意与引导的良好平衡。</li>
 <li>CFG 10-15：详细且清晰的提示时使用。</li>
-<li>CFG 16-20：除非提示非常详细，否则不推荐。</li>
+<li>CFG 16-20：一般不推荐，可能影响质量。</li>
 <li>CFG &gt;20：几乎不可用。</li>
 </ul>
 </li>
-<li><strong>Sampling Steps</strong>：迭代步数：步骤越多，每一步图像的调整也就越小、越精确。同时也会成比例地增加生成图像所需要的时间。对于大部分采样器，迭代越多次效果越好，但超过 50 步后就收效甚微。</li>
-<li><strong>Sampling method</strong>：采样方法：不同的采样方法，对应的最佳迭代步数是不同的，在进行对比时需要综合考虑。
+<li><strong>Sampling Steps</strong>：迭代步数越多，每一步图像的调整越小、越精确，但会成比例增加生成时间。超过 50 步后收效甚微。</li>
+<li><strong>Sampling method</strong>：不同的采样方法有不同的最佳迭代步数。
 <ul>
-<li>Euler a：富有创造力，不同步数可以生产出不同的图片。效率较高的采样方法，可以用来快速检查 prompt 效果。</li>
-<li>DPM2 a Karras：适合真实模型，30步后难控。</li>
-<li>DPM++ 2M Karras：高步数表现优异。</li>
-<li>DDIM：收敛快但效率低，适合重绘。</li>
-<li>不同模型与采样方法搭配出的结果也不同，以上仅供参考，在进行采样方法的选择时，最好使用 X/Y/Z 图表进行对比。</li>
+<li>Euler a：富有创造力，适合快速检查 prompt 效果。</li>
+<li>DPM2 a Karras：适合真实模型，30 步后难以控制。</li>
+<li>DPM++ 2M Karras：高步数表现优异，细节更丰富。</li>
+<li>DDIM：收敛快但需要较多步数，适合重绘。</li>
+<li>不同模型与采样方法搭配出的结果各不相同，建议使用 X/Y/Z 图表进行对比。</li>
 </ul>
 </li>
-<li><strong>Seed</strong>：随机种子值很多时候对构图的影响是巨大的，这也是 SD 生图随机性的最主要来源。保持种子不变，同样的提示词和模型，保持所有参数一致的情况下，相同的种子可以多次生成（几乎）相同的图像。在确定好一个合适的画面构图时，固定种子，对细节进行进一步打磨，是最合适的做法。</li>
+<li><strong>Seed</strong>：随机种子对构图的影响巨大，是 SD 生图随机性的主要来源。固定种子后，相同的提示词和参数可以多次生成（几乎）相同的图像。确定好构图后，固定种子再对细节进行打磨是最合适的做法。</li>
 </ul>
 <h4 id="如何对比寻找最佳参数">如何对比寻找最佳参数
 </h4><p>利用 X/Y/Z 图找最佳参数：通过使用 X/Y/Z 图，我们可以很清晰地对比不同参数下的结果，快速定位合适的参数范围，进行进一步的生成控制。</p>
@@ -637,40 +633,34 @@
 <h4 id="图片尺寸优化">图片尺寸优化
 </h4><ul>
 <li>图片质量并不直接与图像尺寸挂钩。</li>
-<li>但尺寸在一定程度上影响了主题。</li>
+<li>但尺寸在一定程度上影响了主题内容——竖图对应人像、横图对应风景、小分辨率对应贴纸等，不同尺寸隐含了不同的图像类别。</li>
 <li>当出图尺寸太宽时，图中可能会出现多个主体。</li>
-<li>1024 之上的尺寸可能会出现不理想的结果，并且对服务器显存压力是巨大的。推荐使用小尺寸分辨率 + 高清修复。</li>
+<li>1024 以上的尺寸可能会出现不理想的结果，且对显存压力较大。推荐使用小尺寸分辨率 + 高清修复。</li>
 </ul>
 <h4 id="优化多人物--宽幅单人物的生成">优化多人物 / 宽幅单人物的生成
 </h4><ul>
 <li>单纯使用 txt2img 无法有效指定多人物情况下的特征。</li>
-<li>较为推荐的方案是制作草稿 + img2img 或 ControlNet。</li>
-<li>宽幅画作 + 单人物生成最好打草图，进行色彩涂抹，确定画面主体；或使用 ControlNet 的 OpenPose 做好人物骨架。</li>
-<li>多人物确定人物数量，最好使用 ControlNet 的 OpenPose 来指定；该方案也适合画同一人物的三视图。</li>
+<li>推荐方案：制作草稿 + img2img 或 ControlNet。</li>
+<li>宽幅画作 + 单人物生成，最好打草图进行色彩涂抹以确定画面主体；或使用 ControlNet 的 OpenPose 做好人物骨架。</li>
+<li>多人物场景，建议使用 ControlNet 的 OpenPose 来指定人物数量；该方案也适合画同一人物的三视图。</li>
 </ul>
 <h4 id="进行手部修复">进行手部修复
-</h4><ul>
-<li>将图片送入 img2img inpaint，使用大致相同的提示词，将关于“手”的提示放在前面，根据希望手部特征变动多少来设置重绘幅度（如果只是希望手更完整，调至 0.25 以下），然后保留步骤和 CFG 与 txt2img 相同。找到一个满足期望的手部图片，借助 ControlNet 的 Canny 或 OpenPose_hands 等预处理器 + 模型，结合 inpaint 操作，能实现更精确的手部控制。</li>
-</ul>
+</h4><p>将图片送入 img2img inpaint，使用大致相同的提示词，将关于&quot;手&quot;的提示放在前面，根据希望手部特征变动多少来设置重绘幅度（如果只希望手更完整，调至 0.25 以下）。找到一个满足期望的手部参考图，借助 ControlNet 的 Canny 或 OpenPose_hands 等预处理器 + 模型，结合 inpaint 操作，能实现更精确的手部控制。</p>
 <h4 id="进行面部修复">进行面部修复
-</h4><p>在绘制人物主体较小的图片时，经常会出现面部崩坏的情况。尤其是本文之后会介绍的生成艺术二维码流程，人物的面部经常会因为二维码码点的存在而崩坏。对面部的重绘，更推荐使用 ADetailer 插件实现。该插件会使用 yolo 算法对图片中的物体进行识别，我们设定其识别人物面部，并提供面部重绘的提示词和模型；该插件会在识别到的面部位置进行局部重绘，完成面部修复。ADetailer 插件可以满足面部和手部的识别与修复。在 ADetailer 中也能引用 Lora 模型进行局部重绘生成。</p>
+</h4><p>在绘制人物主体较小的图片时，经常会出现面部崩坏的情况。尤其是本文之后会介绍的生成艺术二维码流程，人物的面部经常会因为二维码码点的存在而崩坏。对面部的重绘，更推荐使用 <strong>ADetailer</strong> 插件实现。该插件使用 YOLO 算法对图片中的物体进行识别，识别到人物面部后，在相应位置进行局部重绘，完成面部修复。ADetailer 同样支持手部识别与修复，也可在局部重绘中引用 LoRA 模型。</p>
 <p><img alt="ADetailer 面部修复" class="gallery-image" data-flex-basis="445px" data-flex-grow="185" height="1078" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_6367fc31bcade539.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image5_hu_5676d0dce49e6a81.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image5.jpg 2000w" width="2000"></p>
 <h2 id="借助-controlnet-生成艺术二维码">借助 ControlNet 生成艺术二维码
 </h2><h3 id="第一步优化二维码">第一步：优化二维码
-</h3><p>二维码是一种借助特定几何图形分配，在二维空间上分布的、黑白相间的、记录数据符号信息的图形。二维码有多种不同的编码方式，我们此处采用通用度最高也是最基础的编码方式：QR Code。</p>
-<p>输入的二维码是借助 SD 生成艺术二维码过程中最重要的部分之一。我们主要关心输入的二维码的以下两个特点：</p>
+</h3><p>二维码是一种借助特定几何图形分配，在二维空间上分布的、黑白相间的、记录数据符号信息的图形。此处我们采用通用度最高的编码方式：QR Code。</p>
+<p>输入的二维码是借助 SD 生成艺术二维码过程中最重要的部分之一。我们主要关心以下两个特点：</p>
 <p><img alt="QR Code 结构" class="gallery-image" data-flex-basis="463px" data-flex-grow="193" height="1035" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_b52fdd4bc2347dd6.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_4f11b8a8789a497c.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg 2000w" width="2000"></p>
-<ol>
-<li>二维码中包含的信息量</li>
-</ol>
-<p>无论二维码采用何种编码方式，承载的字符信息越多，二维码在视觉上呈现的黑白结构就越复杂。复杂的结构很容易导致我们在生成艺术创意时，极大地受到二维码本身信息的掣肘。因此我们首先要想办法精简二维码中包含的字符长度。</p>
-<p>对于最广泛的应用场景，二维码通常会包含一个网页链接；为了提升二维码生成的美观性，我们首先需要对网页链接进行缩短。市面上的链接缩短工具有很多，您可以自由选择。但需要注意，在中国大陆境内请选择有域名备案的缩链平台，否则会被微信、浏览器等阻挡。</p>
+<p><strong>1. 二维码中包含的信息量</strong></p>
+<p>承载的字符信息越多，二维码在视觉上呈现的黑白结构就越复杂。复杂的结构会极大地限制艺术创意的发挥。因此首先要想办法精简二维码中包含的字符长度。</p>
+<p>对于最广泛的应用场景——网页链接，需要先对链接进行缩短。市面上的链接缩短工具有很多，可自由选择。</p>
 <p><img alt="链接长短对比" class="gallery-image" data-flex-basis="434px" data-flex-grow="180" height="1105" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_994cc7c8be691b7a.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_5ecf3e0fd8a69b85.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg 2000w" width="2000"></p>
-<ol start="2">
-<li>二维码的呈现形式</li>
-</ol>
+<p><strong>2. 二维码的呈现形式</strong></p>
 <p>随着技术发展，二维码不仅只支持黑白方块状的图案样式，定位点和码元都支持多样化的呈现。</p>
-<p>在实际操作中，我们可以尝试多种不同的码点形式，以使得生图效果符合我们的预期。下图展示了不同的二维码形式对最终效果图的影响：</p>
+<p>在实际操作中，可以尝试多种不同的码点形式，以使得生图效果符合预期。下图展示了不同的二维码形式对最终效果图的影响：</p>
 <p><img alt="不同码点形式" class="gallery-image" data-flex-basis="665px" data-flex-grow="277" height="721" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image8.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image8_hu_f5428857b68a719e.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image8_hu_e03ceb67ae15f93d.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image8.jpg 2000w" width="2000">
 <img alt="不同二维码形式对比" class="gallery-image" data-flex-basis="474px" data-flex-grow="197" height="1012" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image9.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image9_hu_19fbc491720a35dd.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image9_hu_299366d2f08403a0.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image9.jpg 2000w" width="2000"></p>
 <p>生成参数：</p>
@@ -697,7 +687,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="第二步制作基础二维码">第二步：制作基础二维码
-</h3><p>了解了上述要点后，我们将要开始使用二维码制作工具，生成一个输入给 SD 的基础二维码。互联网上有多种网页二维码生成工具，您可以自由选择。同时为了方便您使用，我们在 Blog 专用的 AMI 中已经预装了 QRCode 生成插件：</p>
+</h3><p>了解了上述要点后，使用二维码制作工具生成一个输入给 SD 的基础二维码。互联网上有多种网页二维码生成工具可以选择。同时为了方便使用，这里推荐一个 WebUI 插件：</p>
 <ul>
 <li><strong>Anthony&rsquo;s QR Toolkit</strong>：整合在 Webui 的 QRCode 生成与优化工具
 <ul>
@@ -707,9 +697,9 @@
 </li>
 </ul>
 <p><img alt="QR Toolkit 配置" class="gallery-image" data-flex-basis="352px" data-flex-grow="146" height="1363" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_7dd3f5c4533a8b1f.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image10_hu_a9e7cdd31e40fc49.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image10.jpg 2000w" width="2000"></p>
-<p>完成二维码制作后，可以点击右侧的 &ldquo;Download&rdquo; 以下载到本地。或点击 &ldquo;Send to ControlNet&rdquo;，直接将二维码发送至 ControlNet 以进行下一步操作。</p>
+<p>完成二维码制作后，可以点击右侧的 &ldquo;Download&rdquo; 以下载到本地，或点击 &ldquo;Send to ControlNet&rdquo; 直接将二维码发送至 ControlNet 以进行下一步操作。</p>
 <h3 id="第三步确定艺术风格">第三步：确定艺术风格
-</h3><p>使用 Stable Diffusion 进行艺术创作的核心是选择合适的模型 + 提示词。我们在创作艺术二维码之前，建议先不使用 ControlNet，先进行一次普通的图片生成，以测试生图效果。</p>
+</h3><p>使用 Stable Diffusion 进行艺术创作的核心是选择合适的模型 + 提示词。在创作艺术二维码之前，建议先不使用 ControlNet，进行一次普通的图片生成，以测试生图效果。</p>
 <p><img alt="测试生图效果" class="gallery-image" data-flex-basis="506px" data-flex-grow="210" height="948" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_67bbdab4025fc3f5.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image11_hu_c83f3b551e0924d7.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image11.jpg 2000w" width="2000"></p>
 <p>生成参数：</p>
 <div class="highlight"><div class="chroma">
@@ -729,11 +719,11 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="第四步在-controlnet-中导入二维码">第四步：在 ControlNet 中导入二维码
-</h3><p>确认好图片风格后，我们将未经处理的二维码上传 ControlNet。请注意以下几个选项的配置：</p>
+</h3><p>确认好图片风格后，将未经处理的二维码上传至 ControlNet。请注意以下几个选项的配置：</p>
 <ul>
-<li><strong>“启用” 按钮</strong>：勾选以确保 ControlNet 在图片生成过程中生效</li>
+<li><strong>&ldquo;启用&rdquo; 按钮</strong>：勾选以确保 ControlNet 在图片生成过程中生效</li>
 <li><strong>模型选框</strong>：请选择 <code>control_v1p_sd15_qrcode_monster</code> 来加强二维码的控制力度</li>
-<li><strong>控制权重</strong>：对于 qrcode_monster 模型，我们建议设置在 1.1-1.6 之间</li>
+<li><strong>控制权重</strong>：对于 qrcode_monster 模型，建议设置在 1.1-1.6 之间</li>
 <li><strong>引导介入 / 终止时机</strong>：介入时机建议在 0-0.1 之间，终止时机建议为 1</li>
 </ul>
 <p><img alt="ControlNet 配置" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="1997" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_25f078fb5a3943d7.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image12_hu_f4879ef6b64e3a2e.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image12.jpg 2000w" width="2000"></p>
@@ -743,8 +733,7 @@
 <li><strong>宽度 / 高度</strong>：建议直接从 ControlNet 发送二维码原图的宽高比至上方</li>
 </ul>
 <p><img alt="文生图参数调整" class="gallery-image" data-flex-basis="251px" data-flex-grow="104" height="1909" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_ed705bdb20a2cff1.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image13_hu_e4b0ba433aa581d9.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image13.jpg 2000w" width="2000"></p>
-<p>参数全部配置完成后，点击生成即可，可以看到此处我们生成了一个效果不错的图片，使用手机扫码测试也完全通过。</p>
-<p>如果生成的二维码不能够达到期望，可以选择微调以下几个参数，并增加生成的总批次数，不断尝试抽卡以逼近最终期望的效果：</p>
+<p>参数全部配置完成后，点击生成即可。如果生成的二维码不能够达到期望，可以微调以下几个参数，并增加生成的总批次数，不断尝试以逼近最终期望的效果：</p>
 <ul>
 <li>提示词</li>
 <li>采样方法</li>
@@ -753,7 +742,7 @@
 </ul>
 <p><img alt="生成效果" class="gallery-image" data-flex-basis="259px" data-flex-grow="108" height="1849" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image14.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image14_hu_748dcd2b923a108f.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image14_hu_2ed397a762cf9367.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image14.jpg 2000w" width="2000">
 <img alt="参数微调" class="gallery-image" data-flex-basis="418px" data-flex-grow="174" height="1146" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_ad317a8ce958a578.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image15_hu_e79e5ee60f7554ba.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image15.jpg 2000w" width="2000"></p>
-<p>必要时可以选择使用“脚本”中的 X/Y/Z Plot，来对比不同参数下生成二维码的效果。我们此处对比了 ControlNet 的控制权重和引导介入时机：</p>
+<p>必要时可以选择使用&quot;脚本&quot;中的 X/Y/Z Plot，来对比不同参数下生成二维码的效果。以下对比了 ControlNet 的控制权重和引导介入时机：</p>
 <p><img alt="X/Y/Z Plot 对比" class="gallery-image" data-flex-basis="740px" data-flex-grow="308" height="648" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_30abd11948c76d54.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image16_hu_ee7d7898db9411be.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image16.jpg 2000w" width="2000"></p>
 <h2 id="使用-openpose-优化人物二维码">使用 OpenPose 优化人物二维码
 </h2><p>在掌握了基础的艺术二维码生成技巧后，我们可以进一步探索如何将 <strong>OpenPose</strong> 与二维码结合——通过人体姿势骨架图来控制生成角色的姿态，从而创造出更具艺术感和故事性的二维码作品。</p>
@@ -860,14 +849,13 @@
 <li><strong>引导介入与终止时机</strong>：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导</li>
 </ul>
 <h2 id="附录">附录
-</h2><h3 id="controlnet-qrcode-模型的选择">ControlNet QRCode 模型的选择
-</h3><p>为方便您使用，我们在 Blog 专用的 AMI 中已经完成了 ControlNet QRCode 模型的植入，只要您从正确的版本中启用 AMI，都可以直接在 ControlNet 中选择模型。</p>
-<p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
+</h2><h3 id="附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择
+</h3><p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
 <ul>
 <li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
     >QRCode Monster - HuggingFace</a></li>
 </ul>
-<p>市面上也有另一个二维码模型：<strong>QR Pattern v2.0</strong>。该模型我们建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：</p>
+<p>市面上也有另一个二维码模型：<strong>QR Pattern v2.0</strong>。该模型建议结合使用 IoC Lab 的 Brightness 模型作为辅助模型来提高局部对比度，也会产出不错的效果。但根据我们的测试，该模型自带的干扰内容较多，可能会导致图像风格发生很大的变化。这两个模型可以在下方链接下载：</p>
 <ul>
 <li><a class="link" href="https://civitai.com/models/90940/controlnet-qr-pattern-qr-codes"  target="_blank" rel="noopener"
     >QR Pattern v2.0 - Civitai</a></li>
