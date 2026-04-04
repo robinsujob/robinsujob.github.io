@@ -280,12 +280,12 @@ Set your prompts for the final generation:
 
 **Positive prompt:**
 ```text
-(1girl:1.6, side lying sleep, on the garden, sunflowers), wooden floor, masterpiece, best quality
+(1girl:1.6, side lying sleep, on the garden, sunflowers), wooden floor
 ```
 
 **Negative prompt:**
 ```text
-extra hands, extra fingers, deformed hands, bad anatomy, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality
+extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quality:1.4), (bad anatomy), (inaccurate limb:1.2),bad composition, inaccurate eyes, extra digit,fewer digits,(extra arms:1.2), signature, easynegative
 ```
 
 ![Set Prompts](images/11-set-prompt.png)
@@ -295,6 +295,8 @@ extra hands, extra fingers, deformed hands, bad anatomy, missing fingers, extra 
 Here is the final generated result combining OpenPose and QR code:
 
 ![OpenPose + QR Code Result](images/12-openpose-qrcode.png)
+
+By cleverly offsetting the QR code position and applying composition techniques, the viewer's focus is effectively shifted from the QR code to the character itself, creating a more natural and harmonious overall image.
 
 **Design notes:** By using composition techniques to shift the viewer's visual focus away from the QR code's core functional area, we can create images that are both aesthetically pleasing and maintain QR code scannability. The key is to avoid placing important visual elements directly over the QR code's positioning markers and data modules.
 
