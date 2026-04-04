@@ -263,17 +263,6 @@ imAgine 是一款由亚马逊云科技核心级服务合作伙伴伊克罗德（
 - [IoC Lab Stable Diffusion 文档](http://aigc.ioclab.com/)
 
 
-诸葛瑞麟 — 南京伊克罗德信息科技有限公司解决方案架构师经理，专注于亚马逊云原生的架构设计与解决方案实践。
-
-苏喆 — 亚马逊云科技解决方案架构师，负责亚马逊云科技的云计算方案架构咨询和设计，致力于亚马逊云科技服务在电商、教育以及开发者群体中的推广。
-
-于涛 — 亚马逊云科技解决方案架构师，负责亚马逊云科技云计算方案咨询和设计，目前主要专注在现代化应用改造和机器学习领域。
-
-苏礼军 — 亚马逊云科技资深解决方案架构师，致力于亚马逊云科技云技术的推广应用以及生态发展。
-
-姜萌 — 亚马逊云科技合作伙伴解决方案架构师，负责亚马逊云科技合作伙伴解决方案咨询和设计。
-
----
 
 原文链接：[借助 ControlNet 生成艺术二维码 – 基于 Stable Diffusion 的 AI 绘画方案](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)
 
