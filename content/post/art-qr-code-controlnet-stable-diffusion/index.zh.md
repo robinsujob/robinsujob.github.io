@@ -19,7 +19,7 @@ tags:
 
 近年来，结合 Stable Diffusion 与 ControlNet 生成艺术二维码的技术引发了广泛关注——这类二维码不仅可以被正常扫描，同时也是视觉上令人惊艳的艺术作品。本文最初作为 AWS Workshop 的一部分开发，展示如何在亚马逊云科技基础设施上部署和使用 Stable Diffusion。
 
-本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。其中，eCloudRover 的 imAgine 平台提供了本次实践所需的云端算力支持。
+本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。
 
 我们将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 阅读器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：
 
@@ -237,7 +237,6 @@ Model hash: 876b4c7ba5, Model: cetusMix_Whalefall2, Clip skip: 2, Version: v1.3.
 
 | ![OpenPose + QR Code](images/1-open-pose-code.png) | ![Girl with Car](images/2-girl-with-car.png) |
 |:---:|:---:|
-| OpenPose + QR Code | Girl with Car |
 
 上面的示例使用的提示词：
 

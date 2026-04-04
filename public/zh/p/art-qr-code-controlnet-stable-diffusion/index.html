@@ -523,7 +523,7 @@
     
     <h2 id="背景介绍">背景介绍
 </h2><p>近年来，结合 Stable Diffusion 与 ControlNet 生成艺术二维码的技术引发了广泛关注——这类二维码不仅可以被正常扫描，同时也是视觉上令人惊艳的艺术作品。本文最初作为 AWS Workshop 的一部分开发，展示如何在亚马逊云科技基础设施上部署和使用 Stable Diffusion。</p>
-<p>本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。其中，eCloudRover 的 imAgine 平台提供了本次实践所需的云端算力支持。</p>
+<p>本文将分享使用 Stable Diffusion 的实战经验，以及通过 ControlNet 生成艺术二维码的最佳实践。</p>
 <p>我们将以 QRCode 作为 ControlNet 的输入，使 QRCode 数据点融入到艺术图像中，同时仍然可以被 QRCode 阅读器扫描。借助这项技术，您可以将任何二维码转化为独特的艺术作品，以一种全新的方式来表达和传递信息。以下为几张图片案例：</p>
 <p><img alt="示例1" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_55ce0a96d66b54da.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1_hu_76a851db4e696861.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample1.jpg 2000w" width="2000">
 <img alt="示例2" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_58726bd2cf5fe70d.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_4c6be33718f82540.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg 2000w" width="2000">
@@ -751,10 +751,6 @@
       </tr>
   </thead>
   <tbody>
-      <tr>
-          <td style="text-align: center">OpenPose + QR Code</td>
-          <td style="text-align: center">Girl with Car</td>
-      </tr>
   </tbody>
 </table></div>
 <p>上面的示例使用的提示词：</p>
