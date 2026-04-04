@@ -339,11 +339,7 @@
         <li><a href="#调优建议">调优建议</a></li>
       </ul>
     </li>
-    <li><a href="#附录">附录</a>
-      <ul>
-        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
-      </ul>
-    </li>
+    <li><a href="#附录controlnet-qrcode-模型的选择">附录：ControlNet QRCode 模型的选择</a></li>
     <li><a href="#参考链接">参考链接</a></li>
   </ul>
 
@@ -513,11 +509,7 @@
         <li><a href="#调优建议">调优建议</a></li>
       </ul>
     </li>
-    <li><a href="#附录">附录</a>
-      <ul>
-        <li><a href="#附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择</a></li>
-      </ul>
-    </li>
+    <li><a href="#附录controlnet-qrcode-模型的选择">附录：ControlNet QRCode 模型的选择</a></li>
     <li><a href="#参考链接">参考链接</a></li>
   </ul>
 
@@ -536,7 +528,9 @@
 <img alt="示例2" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_58726bd2cf5fe70d.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2_hu_4c6be33718f82540.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample2.jpg 2000w" width="2000">
 <img alt="示例3" class="gallery-image" data-flex-basis="240px" data-flex-grow="100" height="2000" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_aa92c1059d5785be.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3_hu_52c82c010083f7a4.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/sample3.jpg 2000w" width="2000"></p>
 <h2 id="stable-diffusion-实战技巧">Stable Diffusion 实战技巧
-</h2><h3 id="提示词工程">提示词工程
+</h2><p>古人云：&ldquo;万事开头难&rdquo;、&ldquo;求其上者得其中&rdquo;。这两句话恰好对应了使用 Stable Diffusion 时最常见的两大挑战：第一，如何选择合适的提示词策略，以生成符合预期的图像；第二，如何对图像细节进行精细调整，使最终输出达到可用于生产的质量标准。</p>
+<p>基于我们帮助用户使用 Stable Diffusion 的经验，我们总结了以下最佳实践供参考。</p>
+<h3 id="提示词工程">提示词工程
 </h3><p>随着 Stable Diffusion 版本不断迭代，AI 对语义的理解越来越接近&quot;常识&quot;之后，对提示词（Prompts）的要求也会越来越高。很多提示词上的误区有时会对绘图产生反作用。</p>
 <h4 id="prompt-的基本概念">Prompt 的基本概念
 </h4><p>提示词分为<strong>正向提示词</strong>（positive prompt，告诉 AI 需要什么）和<strong>反向提示词</strong>（negative prompt，告诉 AI 不需要什么）。</p>
@@ -656,7 +650,7 @@
 <p><img alt="QR Code 结构" class="gallery-image" data-flex-basis="463px" data-flex-grow="193" height="1035" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_b52fdd4bc2347dd6.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image6_hu_4f11b8a8789a497c.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image6.jpg 2000w" width="2000"></p>
 <p><strong>1. 二维码中包含的信息量</strong></p>
 <p>承载的字符信息越多，二维码在视觉上呈现的黑白结构就越复杂。复杂的结构会极大地限制艺术创意的发挥。因此首先要想办法精简二维码中包含的字符长度。</p>
-<p>对于最广泛的应用场景——网页链接，需要先对链接进行缩短。市面上的链接缩短工具有很多，可自由选择。</p>
+<p>对于最广泛的应用场景——网页链接，需要先对链接进行缩短。市面上的链接缩短工具有很多，可自由选择。需要注意的是，在中国大陆使用时，请选择已备案域名的平台，否则链接可能会被微信、浏览器等屏蔽。</p>
 <p><img alt="链接长短对比" class="gallery-image" data-flex-basis="434px" data-flex-grow="180" height="1105" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg" srcset="/p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_994cc7c8be691b7a.jpg 800w, /p/art-qr-code-controlnet-stable-diffusion/images/image7_hu_5ecf3e0fd8a69b85.jpg 1600w, /p/art-qr-code-controlnet-stable-diffusion/images/image7.jpg 2000w" width="2000"></p>
 <p><strong>2. 二维码的呈现形式</strong></p>
 <p>随着技术发展，二维码不仅只支持黑白方块状的图案样式，定位点和码元都支持多样化的呈现。</p>
@@ -848,9 +842,8 @@
 <li><strong>控制权重</strong>：分别调整 OpenPose 和 QR Code 的 Control Weight</li>
 <li><strong>引导介入与终止时机</strong>：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导</li>
 </ul>
-<h2 id="附录">附录
-</h2><h3 id="附录1controlnet-qrcode-模型的选择">附录1：ControlNet QRCode 模型的选择
-</h3><p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
+<h2 id="附录controlnet-qrcode-模型的选择">附录：ControlNet QRCode 模型的选择
+</h2><p>截至目前，<strong>QRCode Monster</strong> 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：</p>
 <ul>
 <li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
     >QRCode Monster - HuggingFace</a></li>
@@ -868,6 +861,10 @@
     >Stable Diffusion AI 方案 Workshop</a></li>
 <li><a class="link" href="https://antfu.me/posts/ai-qrcode-101"  target="_blank" rel="noopener"
     >QR Toolkit 插件作者 Anthony Fu 的 QRCode 共创文档</a></li>
+<li><a class="link" href="https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster"  target="_blank" rel="noopener"
+    >QRCode Monster - HuggingFace</a></li>
+<li><a class="link" href="https://huggingface.co/ioclab/ioc-controlnet"  target="_blank" rel="noopener"
+    >IoC Lab ControlNet - HuggingFace</a></li>
 <li><a class="link" href="https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw"  target="_blank" rel="noopener"
     >IoC Lab 模型展示</a></li>
 <li><a class="link" href="http://aigc.ioclab.com/"  target="_blank" rel="noopener"

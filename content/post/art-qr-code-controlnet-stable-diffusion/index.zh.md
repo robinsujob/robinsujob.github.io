@@ -27,6 +27,10 @@ tags:
 
 ## Stable Diffusion 实战技巧
 
+古人云："万事开头难"、"求其上者得其中"。这两句话恰好对应了使用 Stable Diffusion 时最常见的两大挑战：第一，如何选择合适的提示词策略，以生成符合预期的图像；第二，如何对图像细节进行精细调整，使最终输出达到可用于生产的质量标准。
+
+基于我们帮助用户使用 Stable Diffusion 的经验，我们总结了以下最佳实践供参考。
+
 ### 提示词工程
 
 随着 Stable Diffusion 版本不断迭代，AI 对语义的理解越来越接近"常识"之后，对提示词（Prompts）的要求也会越来越高。很多提示词上的误区有时会对绘图产生反作用。
@@ -135,7 +139,7 @@ tags:
 
 承载的字符信息越多，二维码在视觉上呈现的黑白结构就越复杂。复杂的结构会极大地限制艺术创意的发挥。因此首先要想办法精简二维码中包含的字符长度。
 
-对于最广泛的应用场景——网页链接，需要先对链接进行缩短。市面上的链接缩短工具有很多，可自由选择。
+对于最广泛的应用场景——网页链接，需要先对链接进行缩短。市面上的链接缩短工具有很多，可自由选择。需要注意的是，在中国大陆使用时，请选择已备案域名的平台，否则链接可能会被微信、浏览器等屏蔽。
 
 ![链接长短对比](images/image7.jpg)
 
@@ -315,9 +319,7 @@ extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quali
 - **控制权重**：分别调整 OpenPose 和 QR Code 的 Control Weight
 - **引导介入与终止时机**：调整 ControlNet 的 Starting Control Step 和 Ending Control Step，控制模型在哪些步骤介入引导
 
-## 附录
-
-### 附录1：ControlNet QRCode 模型的选择
+## 附录：ControlNet QRCode 模型的选择
 
 截至目前，**QRCode Monster** 是我们测试后认为控制二维码成功率最高，也是二维码融入图像效果最好的模型，该模型可以在 HuggingFace 下载到：
 
@@ -332,6 +334,8 @@ extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quali
 
 - [Stable Diffusion AI 方案 Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 - [QR Toolkit 插件作者 Anthony Fu 的 QRCode 共创文档](https://antfu.me/posts/ai-qrcode-101)
+- [QRCode Monster - HuggingFace](https://huggingface.co/monster-labs/control_v1p_sd15_qrcode_monster)
+- [IoC Lab ControlNet - HuggingFace](https://huggingface.co/ioclab/ioc-controlnet)
 - [IoC Lab 模型展示](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw)
 - [IoC Lab Stable Diffusion 文档](http://aigc.ioclab.com/)
 
