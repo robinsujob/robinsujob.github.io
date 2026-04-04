@@ -12,8 +12,6 @@ tags:
   - bedrock
 ---
 
-> 作者：李方怡、苏喆 | AWS Team | 2024-04-29
-
 生成式人工智能（Generative AI，GenAI）自 2022 年以来迅速兴起并风靡全球，在多个领域中展现出巨大的潜力和影响力。例如文生图、文生文、图生图等等多个技术领域，都已经或正在被 GenAI 所改变和重塑。以文生图技术为例，Stable Diffusion、DALL-E 等 AI 模型能够根据语言描述生成逼真的图像，为创意设计、视觉艺术等领域带来全新体验。与此同时，文生文技术也获得了长足进步，以 Claude、GPT 等为代表的大语言模型能够与人类进行自然流畅的对话交互，为内容创作、问答服务等应用场景提供了强大助力。
 
 WordPress 是一个广泛使用的开源内容管理系统（CMS），非常适合创建和管理各种类型的网站，包括博客、企业网站、个人网站和在线商店。它最初于 2003 年发布，旨在为用户提供一个易于使用的平台，通过这个平台，即使是没有技术背景的用户也能轻松地发布内容。
@@ -196,5 +194,5 @@ WordPress 部署完成后，在 CloudFormation 堆栈输出中查找 InstallWord
 
 ---
 
-原文链接：[WordPress GenAI Plus：利用生成式 AI 加速您的网站内容创作](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
+> 原文链接：[WordPress GenAI Plus：利用生成式 AI 加速您的网站内容创作](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
 

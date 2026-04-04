@@ -7,7 +7,6 @@ favicon        = "img/avatar.jpg"
 
 [sidebar]
     emoji    = "🚀"
-    subtitle = "AWS Solutions Architect | Cloud & AI"
     avatar   = "img/avatar.jpg"
 
 [article]

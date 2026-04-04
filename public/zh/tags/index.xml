@@ -132,6 +132,12 @@
             <guid>http://localhost:4002/zh/tags/wordpress/</guid>
             <description></description>
         </item><item>
+            <title>Deployment</title>
+            <link>http://localhost:4002/zh/tags/deployment/</link>
+            <pubDate>Wed, 15 Nov 2023 00:00:00 +0800</pubDate>
+            <guid>http://localhost:4002/zh/tags/deployment/</guid>
+            <description></description>
+        </item><item>
             <title>Art</title>
             <link>http://localhost:4002/zh/tags/art/</link>
             <pubDate>Fri, 01 Sep 2023 00:00:00 +0800</pubDate>

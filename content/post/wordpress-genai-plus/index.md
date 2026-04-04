@@ -12,8 +12,6 @@ tags:
   - bedrock
 ---
 
-> Authors: Li Fangyi, Su Zhe | AWS Team | 2024-04-29
-
 Generative AI (GenAI) has risen rapidly since 2022, sweeping the globe and demonstrating enormous potential across multiple domains — text-to-image, text-to-text, image-to-image, and more. Models like Stable Diffusion and DALL-E can generate realistic images from natural-language descriptions, opening new possibilities for creative design and visual arts. Meanwhile, large language models such as Claude and GPT enable natural, fluent conversational interactions, empowering content creation and Q&A applications.
 
 WordPress is a widely used open-source content management system (CMS) ideal for creating and managing all types of websites — blogs, corporate sites, personal pages, and online stores. First released in 2003, it was designed to give users an easy-to-use platform for publishing content, even without a technical background.
@@ -192,5 +190,5 @@ Related Resources:
 
 ---
 
-Original article: [WordPress GenAI Plus: Accelerate Your Website Content Creation with Generative AI](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
+> Original article: [WordPress GenAI Plus: Accelerate Your Website Content Creation with Generative AI](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
 
