@@ -296,10 +296,9 @@ Here is the final generated result combining OpenPose and QR code:
 
 ![OpenPose + QR Code Result](images/12-openpose-qrcode.png)
 
+By cleverly offsetting the QR code position and applying composition techniques, the viewer's focus is effectively shifted from the QR code to the character itself, creating a more natural and harmonious overall image.
 
-| | |
-|:---:|:---:|
-| ![Lying Sleep Pose](images/13-lying-sleep-openpose.png) | ![OpenPose Skeleton](images/14-openpose.png) |
+
 
 ### Fine-Tuning Tips
 
