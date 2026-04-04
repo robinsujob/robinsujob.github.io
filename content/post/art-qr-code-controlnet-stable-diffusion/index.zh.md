@@ -343,7 +343,6 @@ extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quali
 
 ## 参考链接
 
-- [Stable Diffusion AI 方案 MarketPlace](https://aws.amazon.com/marketplace/pp/prodview-ohjyijddo2gka?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
 - [Stable Diffusion AI 方案 Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5)
 - [QR Toolkit 插件作者 Anthony Fu 的 QRCode 共创文档](https://antfu.me/posts/ai-qrcode-101)
 - [IoC Lab 模型展示](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw)
