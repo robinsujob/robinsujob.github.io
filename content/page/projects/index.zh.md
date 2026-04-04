@@ -26,7 +26,7 @@ slug: "projects"
 ### Deploy GGUF Model to SageMaker
 使用 llama.cpp 在 SageMaker 上部署 GGUF 量化模型进行推理。
 
-🔗 [博客文章](/zh/p/sagemaker-gguf-model-inference/)
+🔗 [GitHub](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker) | [博客文章](/zh/p/sagemaker-gguf-model-inference/)
 
 **标签:** AWS, SageMaker, LLM, GGUF
 
