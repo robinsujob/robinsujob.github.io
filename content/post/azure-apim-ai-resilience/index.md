@@ -392,3 +392,4 @@ No. It applies to any Foundry / Azure OpenAI model service (Responses API, Chat 
 - Error Codes: https://learn.microsoft.com/azure/foundry/openai/supported-languages#error-handling
 
 ---
+

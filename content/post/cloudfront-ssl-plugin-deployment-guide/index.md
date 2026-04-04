@@ -12,7 +12,6 @@ tags:
   - deployment
 ---
 
-> **Original Post:** [Amazon CloudFront Deployment Guide (Part 8) - Deploy Free Certificates Using China CloudFront and SSL Plugin](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
 >
 > **GitHub:** [aws-samples/China-CloudFront-SSL-Plugin](https://github.com/aws-samples/China-CloudFront-SSL-Plugin)
 
@@ -264,7 +263,6 @@ Through this article, you've learned the basics of Amazon CloudFront and how to 
 - [Amazon CloudFront China Region Differences](https://docs.amazonaws.cn/aws/latest/userguide/cloudfront.html#feature-diff)
 - [Network Acceleration with CloudFront in China](https://www.amazonaws.cn/getting-started/use-cases/cloudfront-network-acceleration/?nc1=h_ls)
 
-## Authors
 
 ### Su Zhe
 
@@ -285,3 +283,8 @@ AWS Solutions Architect, focused on cloud architecture consulting and design, de
 ### Zhao Yunxi
 
 AWS Solutions Consultant, responsible for cloud market exploration, providing digital transformation consulting to help accelerate business growth and innovation.
+
+---
+
+**Original Post:** [Amazon CloudFront Deployment Guide (Part 8) - Deploy Free Certificates Using China CloudFront and SSL Plugin](https://aws.amazon.com/cn/blogs/china/divert-website-access-traffic-from-ec2-to-amazon-cloudfront/)
+

@@ -12,7 +12,6 @@ tags:
   - bedrock
 ---
 
-> Original article: [WordPress GenAI Plus: Accelerate Your Website Content Creation with Generative AI](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
 > Authors: Li Fangyi, Su Zhe | AWS Team | 2024-04-29
 
 Generative AI (GenAI) has risen rapidly since 2022, sweeping the globe and demonstrating enormous potential across multiple domains — text-to-image, text-to-text, image-to-image, and more. Models like Stable Diffusion and DALL-E can generate realistic images from natural-language descriptions, opening new possibilities for creative design and visual arts. Meanwhile, large language models such as Claude and GPT enable natural, fluent conversational interactions, empowering content creation and Q&A applications.
@@ -191,4 +190,7 @@ Related Resources:
 
 - [AWS Generative AI](https://aws.amazon.com/cn/generative-ai/)
 
-Authors: **Li Fangyi** — AWS Solutions Architect; **Su Zhe** — AWS Solutions Architect
+---
+
+Original article: [WordPress GenAI Plus: Accelerate Your Website Content Creation with Generative AI](https://aws.amazon.com/cn/blogs/china/wordpress-genai-plus-accelerate-your-website-content-creation-with-generative-ai/)
+

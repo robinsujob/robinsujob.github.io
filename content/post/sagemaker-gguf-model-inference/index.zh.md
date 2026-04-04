@@ -13,7 +13,6 @@ tags:
   - llm
 ---
 
-> 原文链接：[使用 SageMaker AI 运行 GGUF 格式的模型推理实践](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
 >
 > GitHub 仓库：[aws-samples/deploy-gguf-model-to-sagemaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker)
 
@@ -345,3 +344,8 @@ print(f"response: {response}")
 6. [llama.cpp API Example](https://github.com/ggerganov/llama.cpp/blob/gguf-python/examples/server/api_like_OAI.py)
 7. [GenAI LLM CPU SageMaker](https://github.com/aws-samples/genai-llm-cpu-sagemaker/tree/main/docker)
 8. [Community AWS Article](https://community.aws/content/2eazHYzSfcY9flCGKsuGjpwqq1B)
+
+---
+
+原文链接：[使用 SageMaker AI 运行 GGUF 格式的模型推理实践](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
+

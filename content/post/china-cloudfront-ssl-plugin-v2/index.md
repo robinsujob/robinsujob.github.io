@@ -13,7 +13,6 @@ tags:
   - china
 ---
 
-> Original: [AWS Blog](https://aws.amazon.com/cn/blogs/china/china-cloudfront-ssl-plugin-v2-a-one-stop-certificate-solution-for-cloudfront-in-china-region/) | [GitHub](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2)
 
 In today's digital age, website security is paramount. In 2023, we released China CloudFront SSL Plugin for free SSL integration with CloudFront in China region. Now we're pleased to announce V2.
 
@@ -109,3 +108,8 @@ V2 delivers a more convenient certificate solution through multi-project archite
 - [Let's Encrypt Docs](https://letsencrypt.org/docs/)
 - [Certbot Docs](https://certbot.eff.org/pages/about)
 - [Contact Us](mailto:china-cloudfront-ssl-plugin@amazon.com)
+
+---
+
+Original: [AWS Blog](https://aws.amazon.com/cn/blogs/china/china-cloudfront-ssl-plugin-v2-a-one-stop-certificate-solution-for-cloudfront-in-china-region/) | [GitHub](https://github.com/aws-samples/sample-China-CloudFront-SSL-Plugin-V2)
+

@@ -13,7 +13,6 @@ tags:
   - llm
 ---
 
-> Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
 >
 > GitHub repo: [aws-samples/deploy-gguf-model-to-sagemaker](https://github.com/aws-samples/deploy-gguf-model-to-sagemaker)
 
@@ -345,3 +344,8 @@ This article demonstrated how to deploy GGUF format models on Amazon SageMaker A
 6. [llama.cpp API Example](https://github.com/ggerganov/llama.cpp/blob/gguf-python/examples/server/api_like_OAI.py)
 7. [GenAI LLM CPU SageMaker](https://github.com/aws-samples/genai-llm-cpu-sagemaker/tree/main/docker)
 8. [Community AWS Article](https://community.aws/content/2eazHYzSfcY9flCGKsuGjpwqq1B)
+
+---
+
+Original post: [Practice Running GGUF Format Model Inference Using SageMaker AI](https://aws.amazon.com/cn/blogs/china/practice-running-gguf-format-model-inference-using-sagemaker-ai/)
+

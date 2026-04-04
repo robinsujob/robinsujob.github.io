@@ -12,7 +12,6 @@ tags:
   - art
 ---
 
-> Original post: [Art QR Code Generation with ControlNet - AI Painting Solution Based on Stable Diffusion](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)
 
 ## Background
 
@@ -270,7 +269,6 @@ For detailed steps to subscribe to the imAgine solution, please refer to the Wor
 - [IoC Lab Model Showcase](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw)
 - [IoC Lab Stable Diffusion Documentation](http://aigc.ioclab.com/)
 
-## Authors
 
 Zhuge Ruilin — Solutions Architect Manager at eCloudrover, focusing on AWS cloud-native architecture design and solution practices.
 
@@ -281,3 +279,8 @@ Yu Tao — AWS Solutions Architect, focusing on application modernization and ma
 Su Lijun — Senior AWS Solutions Architect, dedicated to cloud technology promotion and ecosystem development.
 
 Jiang Meng — AWS Partner Solutions Architect, responsible for partner solution consulting and design.
+
+---
+
+Original post: [Art QR Code Generation with ControlNet - AI Painting Solution Based on Stable Diffusion](https://aws.amazon.com/cn/blogs/china/art-qr-code-generation-with-controlnet-ai-painting-solution-based-on-stable-diffusion/)
+

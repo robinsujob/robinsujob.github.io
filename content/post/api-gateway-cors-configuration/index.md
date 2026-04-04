@@ -12,7 +12,6 @@ tags:
   - serverless
 ---
 
-> Original article: [Amazon API Gateway CORS Configuration - AWS Blog](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
 
 CORS, or Cross-Origin Resource Sharing, is an HTTP header-based mechanism that allows servers to indicate which external origins can access their resources. It helps browsers safely make cross-origin requests while still protecting users through the same-origin policy.
 
@@ -172,14 +171,12 @@ REST API and HTTP API support CORS in different ways:
 | REST API | Configure CORS on specific routes with **Enable CORS** | OPTIONS method and headers are visible in the console | Do not enable authorization for OPTIONS |
 | HTTP API | Configure CORS from the left-side **CORS** page | Preflight handling is automatic and hidden | Avoid ANY, or add an unauthorized OPTIONS route |
 
-## Related Resources
 
 - [Enable CORS for CloudFront](https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/)
 - [Enable CORS for Lambda Function URLs](https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/)
 - [Enable CORS for S3 Static Website Hosting](https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/cors.html)
 
-## Authors
+---
 
-- **Fangyi Li** - AWS Solutions Architect, specializing in serverless architecture.
-- **Siyu Zhang** - AWS Solutions Architect, specializing in e-commerce solutions.
-- **Zhe Su** - AWS Solutions Architect, focusing on cloud-native and container architecture.
+Original article: [Amazon API Gateway CORS Configuration - AWS Blog](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
+

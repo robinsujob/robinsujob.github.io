@@ -12,7 +12,6 @@ tags:
   - serverless
 ---
 
-> 原文链接：[Amazon API Gateway 跨域请求（CORS）配置 - 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
 
 CORS，全称为跨源资源共享，是一种基于 HTTP 标头的机制，用来声明哪些外部源可以访问服务器资源。它用于在浏览器同源策略的基础上，安全地放开合法的跨域访问。
 
@@ -178,8 +177,12 @@ REST API 和 HTTP API 在 CORS 配置方式上存在明显差异：
 - [为 Lambda 函数 URL 开启 CORS](https://aws.amazon.com/cn/blogs/china/several-solutions-to-cloudfront-cross-domain-problem-cors/)
 - [为托管静态网站的 S3 开启 CORS](https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/cors.html)
 
-## 本篇作者
 
 - **李方怡**：亚马逊云科技解决方案架构师，在无服务器架构领域有丰富经验。
 - **张司雨**：亚马逊云科技解决方案架构师，在电商解决方案领域有丰富经验。
 - **苏喆**：亚马逊云科技解决方案架构师，专注于云原生与容器架构。
+
+---
+
+原文链接：[Amazon API Gateway 跨域请求（CORS）配置 - 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/amazon-api-gateway-cross-origin-resource-sharing-configuration/)
+
