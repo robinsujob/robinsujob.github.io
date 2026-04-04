@@ -23,12 +23,6 @@
         icon = "link"
 
 [[main]]
-    identifier = "photography"
-    name       = "Photography"
-    url        = "/categories/photography/"
-    weight     = -70
-    [main.params]
-        icon = "camera"
 
 [[social]]
     identifier = "github"
