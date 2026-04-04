@@ -4,7 +4,7 @@
     weight       = 1
 
     [en.params.sidebar]
-        emoji    = "🚀"
+        emoji    = ""
         subtitle = "AWS Solutions Architect | Cloud & AI"
         avatar   = "img/avatar.png"
 
@@ -14,6 +14,6 @@
     weight       = 2
 
     [zh.params.sidebar]
-        emoji    = "🚀"
+        emoji    = ""
         subtitle = "AWS 解决方案架构师 | 云计算 & AI"
         avatar   = "img/avatar.png"

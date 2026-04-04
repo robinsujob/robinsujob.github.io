@@ -6,7 +6,7 @@ favicon        = "/favicon.ico"
     since = 2023
 
 [sidebar]
-    emoji    = "🚀"
+    emoji    = ""
     avatar   = "img/avatar.png"
 
 [article]
