@@ -2,7 +2,7 @@
 slug: "azure-apim-ai-resilience"
 title: "Building Resilient Azure AI Architecture with API Management Gateway"
 date: 2026-04-03
-description: "<span class=cn-title>使用 API Management 网关构建 Azure AI 韧性架构</span>Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance.<br>通过 Azure API Management 构建企业级高可用 AI 服务架构，实现跨订阅配额聚合、负载均衡、自动故障转移与统一治理。"
+description: "Build an enterprise-grade, highly resilient AI architecture with Azure APIM for cross-subscription quota aggregation, load balancing, automatic failover, and unified governance."
 image: images/cover.png
 categories:
   - Azure
