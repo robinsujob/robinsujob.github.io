@@ -312,6 +312,9 @@ extra hands, extra fingers, extra legs, fewer fingers, (low quality, worst quali
 
 通过巧妙地偏移二维码位置和运用构图技巧，可以有效地将观众的视觉焦点从二维码转移到角色本身，让整体画面更加自然协调。
 
+| ![](images/13-lying-sleep-openpose.png) | ![](images/14-openpose.png) |
+|:---:|:---:|
+
 
 ### 调优建议
 
