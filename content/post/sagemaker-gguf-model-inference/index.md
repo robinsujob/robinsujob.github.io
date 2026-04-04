@@ -42,15 +42,12 @@ In this article, you will learn how to deploy LLM models in GGUF file format usi
 *[Amazon SageMaker AI](https://aws.amazon.com/cn/sagemaker-ai/) 是一项完全托管的服务，它汇集了大量工具，可为任何使用场景提供高性能、低成本的机器学习（ML）。借助 SageMaker AI，您可以使用笔记本、调试器、分析器、管道、MLOps 等工具大规模构建、训练和部署机器学习模型。Amazon SageMaker AI 推理支持多种常见的机器学习框架（如 TensorFlow、PyTorch、ONNX 和 XGBoost）的内置算法和预构建的 Docker 镜像。此外，Amazon SageMaker AI 还提供专门的深度学习容器（DLC）、库和工具，用于模型并行和大型模型推理（LMI），以帮助提高基础模型的性能。*
 
 If the pre-built Docker images don't meet your needs, you can build your own Docker container (BYOC – Bring Your Own Container) for inference. To be compatible with SageMaker AI, your container must:
-
-*如果无法直接使用 SageMaker AI 预构建的 Docker 镜像，您可以构建自己的 Docker 容器（BYOC – Bring your own container）并在 SageMaker AI 中使用它进行推理。为了与 SageMaker AI 兼容，您的容器必须具备以下特征：*
-
 - Have a web server listening on port 8080.
 - Accept POST requests to /invocations and /ping endpoints. Requests must return within 60 seconds with a maximum size of 6 MB.
 
+*如果无法直接使用 SageMaker AI 预构建的 Docker 镜像，您可以构建自己的 Docker 容器（BYOC – Bring your own container）并在 SageMaker AI 中使用它进行推理。为了与 SageMaker AI 兼容，您的容器必须具备以下特征：*
 - *容器必须有一个在端口 8080 上监听的 Web 服务器。*
 - *容器必须接受对 /invocations 和 /ping 实时端点的 POST 请求。发送到这些端点的请求必须在 60 秒内返回，且最大大小为 6 MB。*
-
 To deploy and run GGUF models in SageMaker AI, you need to build a custom Docker container. This approach integrates the llama.cpp project to run GGUF models for effective deployment and inference on the SageMaker AI platform.
 
 *要在 SageMaker AI 中部署和运行 GGUF 模型，需要构建自定义 Docker 容器。这种方法通过整合 llama.cpp 项目来实现 GGUF 模型的运行，从而在 SageMaker AI 平台上进行有效的部署和推理。*
@@ -93,9 +90,6 @@ This article uses [Amazon SageMaker AI Notebook](https://aws.amazon.com/sagemake
 ![Solution Architecture](images/practice-running-gguf-format-model-inference-using-sagemaker-ai1.jpg)
 
 The main steps are:
-
-*主要分为以下几个步骤：*
-
 - From HuggingFace, download a GGUF model and upload it to S3. This blog uses Llama 3 8B GGUF as an example.
 - Prepare the key BYOC files in the Notebook: Dockerfile, main.py, requirements.txt, serve, server.sh.
 - Create a custom Docker image and push it to Amazon ECR.
@@ -103,13 +97,13 @@ The main steps are:
 - During endpoint startup, download the GGUF model from S3 to the specified location in the container.
 - Test the endpoint by invoking inference with the SageMaker SDK.
 
+*主要分为以下几个步骤：*
 - *从 HuggingFace 中下载 GGUF 模型，并上传至 S3，本博客将采用 Llama 3 8B 的 GGUF 模型为例。*
 - *在 Notebook 中准备 BYOC 所需关键文件：Dockerfile、main.py、requirements.txt、serve、server.sh*
 - *创建自定义 Docker 镜像，并将 Docker 镜像上传到 Amazon ECR*
 - *在 Notebook 中创建 Amazon SageMaker Model 并部署至 Inference Endpoint*
 - *推理端点运行阶段会从 S3 桶中下载 GGUF 模型至容器指定位置*
 - *测试端点，使用 SageMaker SDK 请求调用端点进行推理*
-
 ### 1. Create Amazon SageMaker AI Notebook
 
 ### *1. 创建 Amazon SageMaker AI Notebook*
@@ -216,31 +210,25 @@ EXPOSE 8080
 ```
 
 When building the Dockerfile, pay attention to these key environment variables:
-
-*在构建 Dockerfile 时，请特别留意以下关键环境变量：*
-
 - **MODELPATH**: Specifies the model filename used at startup.
 - **BUCKET** and **BUCKET_KEY**: Define the Amazon S3 bucket name and object key for the model file.
 
+*在构建 Dockerfile 时，请特别留意以下关键环境变量：*
 - ***MODELPATH**：用于指定模型启动时的名称*
 - ***BUCKET** 和 **BUCKET_KEY**：定义存储模型文件的 Amazon S3 存储桶名称及对象名称*
-
 #### 2.2 main.py
 
 #### *2.2 main.py 文件*
 
 This file implements an HTTP API server for interacting with llama.cpp. Key modifications for SageMaker deployment include:
-
-*该文件实现了一个 HTTP API 服务器，专门用于与 llama.cpp 进行交互。为了使 GGUF 模型能够在 Amazon SageMaker 环境中进行模型推理部署，对原始代码进行了针对性的修改：*
-
 - Port configuration: main.py defaults to port 8080, connecting to llama.cpp on port 8081
 - Route changes: /v1/completions changed to /invocations, added /ping health check
 - Model loading: Added update_model function for automatic S3 model download
 
+*该文件实现了一个 HTTP API 服务器，专门用于与 llama.cpp 进行交互。为了使 GGUF 模型能够在 Amazon SageMaker 环境中进行模型推理部署，对原始代码进行了针对性的修改：*
 - *端口配置：main.py 默认端口为 8080，连接的 llama.cpp 端口为 8081*
 - *路由修改：/v1/completions 改为 /invocations，新增 /ping 健康检查*
 - *模型加载：新增 update_model 函数，支持从 S3 自动下载模型文件*
-
 ```python
 def update_model(bucket, key):
     try:

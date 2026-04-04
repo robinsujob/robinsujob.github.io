@@ -427,44 +427,48 @@
 <p>In production, a single subscription instance fails to meet requirements for <strong>continuity, stability, and throughput</strong>. A mature architecture consolidates resources across subscriptions, <strong>aggregating AI quotas</strong> to maximize throughput, with traffic distribution, automatic failover, and unified access control.</p>
 <p><em>在生产级 AI 架构中，依赖单一订阅下的单一服务实例往往难以满足企业对<strong>服务连续性、稳定性以及大规模吞吐容量</strong>的要求——<strong>配额有限</strong>难以支撑大规模并发、<strong>单点故障</strong>影响服务可用性、<strong>单区域部署</strong>缺乏容灾能力。一个成熟的架构应当具备跨订阅的资源整合能力，通过<strong>聚合多个订阅下的 AI 资源配额</strong>来最大化可用吞吐量，同时结合流量分发、故障自动转移以及统一的身份认证与访问控制，确保 AI 服务在面对各种运行时挑战时依然能够稳定响应。</em></p>
 <p>Azure API Management (APIM), as Azure&rsquo;s native API gateway, is naturally suited for this role. By deploying APIM as the unified entry point, combined with the following capabilities, we can build an <strong>enterprise-grade, highly resilient AI architecture</strong>:</p>
-<p><em><strong>Azure API Management（APIM）</strong> 作为 Azure 原生的 API 网关服务，天然适合承担这一角色。通过将 APIM 部署为 AI 服务的统一入口，并结合以下核心能力，我们可以构建一套</em><em>企业级、高韧性的 AI 服务架构</em>*：*</p>
 <ul>
 <li>🔀 <strong>Backend Load Balancing Pool</strong> — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas</li>
-<li><em>🔀 <strong>Backend Load Balancing Pool</strong> — 跨多个订阅、多个 Microsoft Foundry 资源实例实现负载均衡与故障转移，聚合分散在不同订阅下的配额容量</em></li>
 <li>🔐 <strong>Managed Identity</strong> — Zero-key secure authentication between APIM and backend AI services</li>
-<li><em>🔐 <strong>Managed Identity</strong> — 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担</em></li>
 <li>🛡️ <strong>Unified API Governance</strong> — Request routing, traffic control, log auditing, and policy management at the gateway layer</li>
-<li><em>🛡️ <strong>统一 API 治理</strong> — 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力</em></li>
 </ul>
-<p>This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.</p>
+<p><em><strong>Azure API Management（APIM）</strong> 作为 Azure 原生的 API 网关服务，天然适合承担这一角色。通过将 APIM 部署为 AI 服务的统一入口，并结合以下核心能力，我们可以构建一套</em><em>企业级、高韧性的 AI 服务架构</em>*：*</p>
+<ul>
+<li><em>🔀 <strong>Backend Load Balancing Pool</strong> — 跨多个订阅、多个 Microsoft Foundry 资源实例实现负载均衡与故障转移，聚合分散在不同订阅下的配额容量</em></li>
+<li><em>🔐 <strong>Managed Identity</strong> — 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担</em></li>
+<li><em>🛡️ <strong>统一 API 治理</strong> — 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力</em>
+This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.</li>
+</ul>
 <p><em>本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。</em></p>
 <h2 id="architecture-overview--架构概览">Architecture Overview / 架构概览
 </h2><p><img alt="1-Architecture" class="gallery-image" data-flex-basis="289px" data-flex-grow="120" height="683" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/1-Architecture-en.png" srcset="/p/azure-apim-ai-resilience/images/1-Architecture-en_hu_10ff4595295ffe34.png 800w, /p/azure-apim-ai-resilience/images/1-Architecture-en.png 823w" width="823"></p>
 <p>This architecture uses a <strong>centralized API gateway + multi-subscription backend pattern</strong>, with APIM as the unified entry point, distributing requests round-robin to Foundry instances across multiple subscriptions and regions.</p>
 <p><em>本架构采用<strong>集中式 API 网关 + 多订阅后端模式</strong>，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。</em></p>
 <p>Core design principles:</p>
-<p><em>核心设计理念包括：</em></p>
 <ul>
 <li><strong>Unified Entry Point</strong> — Clients only need the APIM endpoint; the pool uses Round-Robin by default</li>
-<li><em><strong>统一入口</strong> — 客户端只需访问 APIM 端点，无需感知后端资源的位置和数量；后端负载均衡池默认采用 Round-Robin 轮询策略，将请求均匀分发到所有健康实例</em></li>
 <li><strong>Simplified Security Authentication</strong> — Zero-key communication via Managed Identity; clients only need a single API Key</li>
-<li><em><strong>安全认证简化</strong> — APIM 与后端 Foundry 资源之间通过托管标识（Managed Identity）实现零密钥安全通信；对外仅由 APIM 统一提供 API Key</em></li>
 <li><strong>Cross-Subscription Quota Aggregation</strong> — Aggregate quotas across subscriptions into a unified capacity pool</li>
-<li><em><strong>跨订阅配额聚合</strong> — 将分散在不同订阅下的 Foundry 资源配额汇聚为统一容量池，突破单一订阅的配额上限</em></li>
 <li><strong>Cross-Region Disaster Recovery</strong> — APIM automatically routes to healthy instances when a region becomes unavailable</li>
-<li><em><strong>跨区域容灾</strong> — 资源分布在不同区域，当某个区域不可用时，APIM 自动将流量路由到健康实例</em></li>
 </ul>
-<p>APIM&rsquo;s Policy engine also provides flexible traffic control:</p>
+<p><em>核心设计理念包括：</em></p>
+<ul>
+<li><em><strong>统一入口</strong> — 客户端只需访问 APIM 端点，无需感知后端资源的位置和数量；后端负载均衡池默认采用 Round-Robin 轮询策略，将请求均匀分发到所有健康实例</em></li>
+<li><em><strong>安全认证简化</strong> — APIM 与后端 Foundry 资源之间通过托管标识（Managed Identity）实现零密钥安全通信；对外仅由 APIM 统一提供 API Key</em></li>
+<li><em><strong>跨订阅配额聚合</strong> — 将分散在不同订阅下的 Foundry 资源配额汇聚为统一容量池，突破单一订阅的配额上限</em></li>
+<li><em><strong>跨区域容灾</strong> — 资源分布在不同区域，当某个区域不可用时，APIM 自动将流量路由到健康实例</em>
+APIM&rsquo;s Policy engine also provides flexible traffic control:</li>
+<li><strong>Pinned Routing</strong> — via <code>X-AI-Foundry-Target</code> header</li>
+<li><strong>Auto Failover</strong> — Auto-retry with exponential backoff on 4xx/5xx</li>
+<li><strong>Request Tracing</strong> — <code>X-AI-Foundry-Backend</code> response header for tracing</li>
+</ul>
 <p><em>APIM 的 Policy 策略引擎还为本架构提供了灵活的流量控制能力：</em></p>
 <ul>
-<li><strong>Pinned Routing</strong> — via <code>X-AI-Foundry-Target</code> header</li>
 <li><em><strong>定向路由</strong> — 通过 <code>X-AI-Foundry-Target</code> 请求头精确路由到指定后端实例</em></li>
-<li><strong>Auto Failover</strong> — Auto-retry with exponential backoff on 4xx/5xx</li>
 <li><em><strong>自动故障转移</strong> — <code>retry</code> 策略自动重试并切换到健康后端，指数退避</em></li>
-<li><strong>Request Tracing</strong> — <code>X-AI-Foundry-Backend</code> response header for tracing</li>
-<li><em><strong>请求溯源</strong> — <code>X-AI-Foundry-Backend</code> 响应头返回实际处理后端</em></li>
+<li><em><strong>请求溯源</strong> — <code>X-AI-Foundry-Backend</code> 响应头返回实际处理后端</em>
+Architecture setup steps:</li>
 </ul>
-<p>Architecture setup steps:</p>
 <p><em>接下来按以下步骤完成架构搭建：</em></p>
 <div class="table-wrapper"><table>
   <thead>
@@ -606,16 +610,18 @@
 </div>
 </div><p><strong>After Creation / 创建完成后确认：</strong></p>
 <p>After deployment, confirm:</p>
-<p><em>创建完成后确认：</em></p>
 <ul>
 <li>Status: <strong>Online</strong></li>
 <li><em>Status: <strong>Online</strong></em></li>
 <li>Record <strong>Gateway URL</strong></li>
 <li><em>记录 <strong>Gateway URL</strong>（如 <code>https://&lt;apim-name&gt;.azure-api.net</code>）</em></li>
 <li>Record Managed Identity <strong>Object (principal) ID</strong> for RBAC</li>
-<li><em>记录 Managed Identity 的 <strong>Object (principal) ID</strong>（后续 RBAC 需要）</em></li>
 </ul>
-<p><img class="gallery-image" data-flex-basis="728px" data-flex-grow="303" height="644" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png" srcset="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_2b05d081fb5fa317.png 800w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_e21fb9797c99f7a2.png 1600w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png 1956w" width="1956"></p>
+<p><em>创建完成后确认：</em></p>
+<ul>
+<li><em>记录 Managed Identity 的 <strong>Object (principal) ID</strong>（后续 RBAC 需要）</em>
+<img class="gallery-image" data-flex-basis="728px" data-flex-grow="303" height="644" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png" srcset="/p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_2b05d081fb5fa317.png 800w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard_hu_e21fb9797c99f7a2.png 1600w, /p/azure-apim-ai-resilience/images/2-6-apim-dashboard.png 1956w" width="1956"></li>
+</ul>
 <hr>
 <h2 id="create-foundry-resources--创建-foundry-资源">Create Foundry Resources / 创建 Foundry 资源
 </h2><p>Create Foundry resources across multiple subscriptions and regions, each with a corresponding project.</p>

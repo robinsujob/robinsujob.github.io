@@ -28,16 +28,14 @@ In production, a single subscription instance fails to meet requirements for **c
 *在生产级 AI 架构中，依赖单一订阅下的单一服务实例往往难以满足企业对**服务连续性、稳定性以及大规模吞吐容量**的要求——**配额有限**难以支撑大规模并发、**单点故障**影响服务可用性、**单区域部署**缺乏容灾能力。一个成熟的架构应当具备跨订阅的资源整合能力，通过**聚合多个订阅下的 AI 资源配额**来最大化可用吞吐量，同时结合流量分发、故障自动转移以及统一的身份认证与访问控制，确保 AI 服务在面对各种运行时挑战时依然能够稳定响应。*
 
 Azure API Management (APIM), as Azure's native API gateway, is naturally suited for this role. By deploying APIM as the unified entry point, combined with the following capabilities, we can build an **enterprise-grade, highly resilient AI architecture**:
+- 🔀 **Backend Load Balancing Pool** — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas
+- 🔐 **Managed Identity** — Zero-key secure authentication between APIM and backend AI services
+- 🛡️ **Unified API Governance** — Request routing, traffic control, log auditing, and policy management at the gateway layer
 
 ***Azure API Management（APIM）** 作为 Azure 原生的 API 网关服务，天然适合承担这一角色。通过将 APIM 部署为 AI 服务的统一入口，并结合以下核心能力，我们可以构建一套**企业级、高韧性的 AI 服务架构**：*
-
-- 🔀 **Backend Load Balancing Pool** — Load balancing and failover across subscriptions and Foundry instances, aggregating distributed quotas
 - *🔀 **Backend Load Balancing Pool** — 跨多个订阅、多个 Microsoft Foundry 资源实例实现负载均衡与故障转移，聚合分散在不同订阅下的配额容量*
-- 🔐 **Managed Identity** — Zero-key secure authentication between APIM and backend AI services
 - *🔐 **Managed Identity** — 以零密钥的方式实现 APIM 与后端 AI 服务之间的安全认证，消除凭据管理负担*
-- 🛡️ **Unified API Governance** — Request routing, traffic control, log auditing, and policy management at the gateway layer
 - *🛡️ **统一 API 治理** — 在网关层实现请求路由、流量控制、日志审计与策略管理，为所有 AI 调用提供一致的管控能力*
-
 This article walks through a complete hands-on example: from resource deployment and identity configuration to load balancing policies, building a production-ready resilient gateway architecture targeting multiple Microsoft Foundry resources.
 
 *本文将通过一个完整的实践案例，详细介绍如何使用 APIM 构建面向多个 Microsoft Foundry 资源的韧性网关架构——从资源部署、身份配置到负载均衡策略，逐步搭建一套可直接用于生产环境的解决方案。*
@@ -51,29 +49,25 @@ This architecture uses a **centralized API gateway + multi-subscription backend 
 *本架构采用**集中式 API 网关 + 多订阅后端模式**，以 Azure API Management 为统一网关入口，通过 APIM 的后端负载均衡池（Backend Load Balancing Pool）将请求轮询分发到分布在多个订阅、多个区域中的 Microsoft Foundry 资源实例。*
 
 Core design principles:
+- **Unified Entry Point** — Clients only need the APIM endpoint; the pool uses Round-Robin by default
+- **Simplified Security Authentication** — Zero-key communication via Managed Identity; clients only need a single API Key
+- **Cross-Subscription Quota Aggregation** — Aggregate quotas across subscriptions into a unified capacity pool
+- **Cross-Region Disaster Recovery** — APIM automatically routes to healthy instances when a region becomes unavailable
 
 *核心设计理念包括：*
-
-- **Unified Entry Point** — Clients only need the APIM endpoint; the pool uses Round-Robin by default
 - ***统一入口** — 客户端只需访问 APIM 端点，无需感知后端资源的位置和数量；后端负载均衡池默认采用 Round-Robin 轮询策略，将请求均匀分发到所有健康实例*
-- **Simplified Security Authentication** — Zero-key communication via Managed Identity; clients only need a single API Key
 - ***安全认证简化** — APIM 与后端 Foundry 资源之间通过托管标识（Managed Identity）实现零密钥安全通信；对外仅由 APIM 统一提供 API Key*
-- **Cross-Subscription Quota Aggregation** — Aggregate quotas across subscriptions into a unified capacity pool
 - ***跨订阅配额聚合** — 将分散在不同订阅下的 Foundry 资源配额汇聚为统一容量池，突破单一订阅的配额上限*
-- **Cross-Region Disaster Recovery** — APIM automatically routes to healthy instances when a region becomes unavailable
 - ***跨区域容灾** — 资源分布在不同区域，当某个区域不可用时，APIM 自动将流量路由到健康实例*
-
 APIM's Policy engine also provides flexible traffic control:
+- **Pinned Routing** — via `X-AI-Foundry-Target` header
+- **Auto Failover** — Auto-retry with exponential backoff on 4xx/5xx
+- **Request Tracing** — `X-AI-Foundry-Backend` response header for tracing
 
 *APIM 的 Policy 策略引擎还为本架构提供了灵活的流量控制能力：*
-
-- **Pinned Routing** — via `X-AI-Foundry-Target` header
 - ***定向路由** — 通过 `X-AI-Foundry-Target` 请求头精确路由到指定后端实例*
-- **Auto Failover** — Auto-retry with exponential backoff on 4xx/5xx
 - ***自动故障转移** — `retry` 策略自动重试并切换到健康后端，指数退避*
-- **Request Tracing** — `X-AI-Foundry-Backend` response header for tracing
 - ***请求溯源** — `X-AI-Foundry-Backend` 响应头返回实际处理后端*
-
 Architecture setup steps:
 
 *接下来按以下步骤完成架构搭建：*
@@ -130,16 +124,14 @@ az rest --method PUT \
 **After Creation / 创建完成后确认：**
 
 After deployment, confirm:
-
-*创建完成后确认：*
-
 - Status: **Online**
 - *Status: **Online***
 - Record **Gateway URL**
 - *记录 **Gateway URL**（如 `https://<apim-name>.azure-api.net`）*
 - Record Managed Identity **Object (principal) ID** for RBAC
-- *记录 Managed Identity 的 **Object (principal) ID**（后续 RBAC 需要）*
 
+*创建完成后确认：*
+- *记录 Managed Identity 的 **Object (principal) ID**（后续 RBAC 需要）*
 ![](images/2-6-apim-dashboard.png)
 
 ---
