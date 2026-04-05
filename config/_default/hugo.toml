@@ -12,3 +12,6 @@ timeZone               = "Asia/Shanghai"
 [permalinks]
     post = "/p/:slug/"
     page = "/:slug/"
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
