@@ -5,13 +5,11 @@ slug: "about"
 
 # Hey, I'm Robin 👋
 
-ENTJ, Builder, Photographer, and Lifelong tinkerer.
-
-I thrive on turning ideas into reality, moving fast, and solving problems that matter. If there's a better way to do something, I'll find it (or build it).
+Builder, Photographer, and Lifelong tinkerer.
 
 > *Live fully. Stay true.*
 >
-> Life's too short to play it safe. I want to make every moment count and stay honest to what I believe in — my ideas, my craft, and my curiosity.
+> I thrive on turning ideas into reality and solving problems that matter. Life's too short to play it safe — if there's a better way, I'll find it or build it. I want to make every moment count and stay honest to what I believe in — my ideas, my craft, and my curiosity.
 
 I work at the intersection of cloud and AI — designing architectures that scale, shipping products that solve real problems, and making complex technology feel simple.
 

@@ -1,6 +1,6 @@
 [en]
     languageName = "English"
-    title        = "Robin's Space"
+    title        = "Robin Su"
     weight       = 1
 
     [en.params.sidebar]
@@ -10,7 +10,7 @@
 
 [zh]
     languageName = "简体中文"
-    title        = "Robin's Space"
+    title        = "Robin Su"
     weight       = 2
 
     [zh.params.sidebar]
