@@ -14,7 +14,6 @@ favicon        = "/favicon.ico"
     readingTime = true
 
     [article.license]
-        enabled = false
 
 [widgets]
     homepage = [
@@ -26,8 +25,24 @@ favicon        = "/favicon.ico"
     page = [{ type = "toc" }]
 
 [comments]
-    enabled = false
+    enabled  = true
+    provider = "giscus"
 
 [colorScheme]
     toggle  = true
     default = "auto"
+
+[comments.giscus]
+    repo             = "robinsujob/robinsujob.github.io"
+    repoID           = "R_kgDOR6InNQ"
+    category         = "Announcements"
+    categoryID       = "DIC_kwDOR6InNc4C6Fgx"
+    mapping          = "pathname"
+    strict           = 0
+    reactionsEnabled = 1
+    emitMetadata     = 0
+    inputPosition    = "bottom"
+    lightTheme       = "light"
+    darkTheme        = "dark_dimmed"
+    lang             = "en"
+    loading          = "lazy"
