@@ -16,7 +16,6 @@ tags:
   - Managed Identity
   - Microsoft Foundry
   - Enterprise Architecture
-
 series:
   - "Azure APIM AI Resilience"
 ---

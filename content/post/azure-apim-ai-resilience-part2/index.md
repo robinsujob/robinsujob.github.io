@@ -16,7 +16,6 @@ tags:
   - KQL
   - Alerting
   - Enterprise Architecture
-
 series:
   - "Azure APIM AI Resilience"
 ---
