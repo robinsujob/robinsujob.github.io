@@ -63,11 +63,11 @@ series:
 
 在 APIM 同订阅、同区域中创建一个 workspace-based 的 Application Insights 实例，用于接收 APIM 的 telemetry 数据。
 
-##### 2-1) 在 Azure Portal 顶部搜索栏中输入 Application Insights，选择 **Application Insights** 服务
+**2-1) 在 Azure Portal 顶部搜索栏中输入 Application Insights，选择 **Application Insights** 服务**
 
 ![](images/2-1-search-application-insights.png)
 
-##### 2-2) 点击 **+ Create**，填写以下关键配置并完成创建
+**2-2) 点击 **+ Create**，填写以下关键配置并完成创建**
 
 ![](images/2-2-create-app-insights.png)
 
@@ -87,7 +87,7 @@ series:
 
 将上一步创建的 Application Insights 实例与 APIM 关联，使 APIM 能够将 telemetry 数据发送到 App Insights。
 
-##### 3-1) 进入 APIM 实例 → 左侧 **Monitoring** → **Application Insights** → 点击 **+ Add**
+**3-1) 进入 APIM 实例 → 左侧 **Monitoring** → **Application Insights** → 点击 **+ Add****
 
 ![](images/3-1-bind-apim-logger.png)
 
@@ -101,11 +101,11 @@ series:
 
 对目标 AI API 启用 Application Insights 日志，配置采样率、错误记录、Backend Response 等参数。
 
-##### 4-1) 进入 APIM → APIs → 选择目标 API → 切换到 **Settings** 标签 → 向下滚动到 **Diagnostic Logs** 区域，点击Enable
+**4-1) 进入 APIM → APIs → 选择目标 API → 切换到 **Settings** 标签 → 向下滚动到 **Diagnostic Logs** 区域，点击Enable**
 
 ![](images/4-1-api-settings-diagnostic-logs.png)
 
-##### 4-2) 选择 **Application Insights** 标签页，勾选 **Enable**，按以下参数配置
+**4-2) 选择 **Application Insights** 标签页，勾选 **Enable**，按以下参数配置**
 
 ![](images/4-2-diagnostic-logs-config.png)
 
@@ -165,13 +165,13 @@ series:
 
 配置完成后，发送几个会触发 Retry 的测试请求（例如调用一个不存在的模型部署），等待约 5 分钟后在 Application Insights 中验证数据。
 
-##### 5-1) 进入 Application Insights → Monitoring → ① Logs，② 切换到 Tables 视图，③ 在 Application Insights 分类下找到 `dependencies` 表并点击 Run
+**5-1) 进入 Application Insights → Monitoring → ① Logs，② 切换到 Tables 视图，③ 在 Application Insights 分类下找到 `dependencies` 表并点击 Run**
 
 ![](images/5-1-dependencies-retry-records.png)
 
 `dependencies` 表会为 `retry` 块内的**每次 `forward-request` 调用**生成一条独立记录——包括 Retry 中间失败的尝试和最终成功的请求。右侧结果中可以看到多条记录指向不同的后端（如 `ai-hub-swedencentral-02`、`ai-hub-eastus2-01` 等），它们属于同一请求的 Retry 链路。
 
-##### 5-2) 展开单条记录，查看详细字段和 customDimensions
+**5-2) 展开单条记录，查看详细字段和 customDimensions**
 
 ![](images/5-2-dependency-custom-dimensions.png)
 
@@ -194,7 +194,7 @@ series:
 
 当 Retry 失败次数超过阈值时，通过邮件自动通知运维团队。告警规则在 **Application Insights** 上创建（不是 APIM）。
 
-##### 6-1) 在 Logs 页面编写 KQL 查询并验证
+**6-1) 在 Logs 页面编写 KQL 查询并验证**
 
 进入 Application Insights → Monitoring → **Logs**，① 新建一个查询标签页，② 切换到 **KQL mode**，③ 输入以下查询并 ④ 点击 **Run** 验证结果：
 
@@ -219,13 +219,13 @@ dependencies
 
 确认查询返回了预期的 FailureCount 数值。
 
-##### 6-2) 点击右上角 **`...`** 菜单 → **+ New alert rule**
+**6-2) 点击右上角 **`...`** 菜单 → **+ New alert rule****
 
 ![](images/6-2-new-alert-rule.png)
 
 系统会自动将当前 KQL 查询带入 Alert rule 的 Condition 配置中。
 
-##### 6-3) 在 Condition 标签页中确认查询和 Measurement 配置
+**6-3) 在 Condition 标签页中确认查询和 Measurement 配置**
 
 ![](images/6-3-alert-condition-measurement.png)
 
@@ -237,7 +237,7 @@ dependencies
 | ② | **Measure** | `FailureCount` | ⚠️ 必须选 `FailureCount`（从 KQL 的 summarize 自动识别）。如果默认显示 `Table rows`，需手动切换 |
 | ③ | **Aggregation granularity** | `3 hours` | 聚合粒度，将该时间范围内的 FailureCount 汇总为一个数据点进行评估 |
 
-##### 6-4) 向下滚动配置 Alert logic
+**6-4) 向下滚动配置 Alert logic**
 
 ![](images/6-4-alert-logic-threshold.png)
 
@@ -256,7 +256,7 @@ dependencies
 
 点击 **Next: Actions >** 进入下一步。
 
-##### 6-5) 在 Actions 标签页中配置告警动作
+**6-5) 在 Actions 标签页中配置告警动作**
 
 如果 Portal 显示 **Use quick actions (preview)** 选项（新版 UI），可以直接在此页面完成 Action Group 创建，无需单独创建：
 
@@ -272,7 +272,7 @@ dependencies
 >
 > 如果 Portal 未显示 quick actions 选项（旧版 UI），则选择 **Use action groups** → **+ Create action group**，按以下 6-6 ~ 6-8 步骤手动创建。
 
-##### 6-6) 填写 Action Group 基本信息
+**6-6) 填写 Action Group 基本信息**
 
 ![](images/6-6-action-group-basics.png)
 
@@ -282,7 +282,7 @@ dependencies
 | Action group name | `ai-hub-retry-alert-action` | 唯一标识 |
 | Display name | `AI-Hub-Retry` | 限 12 字符，显示在通知中 |
 
-##### 6-7) 切换到 Notifications 标签页，配置邮件通知
+**6-7) 切换到 Notifications 标签页，配置邮件通知**
 
 ![](images/6-7-action-group-notifications.png)
 
@@ -298,7 +298,7 @@ dependencies
 >
 > ![](images/6-8-action-group-actions.png)
 
-##### 6-8) 切换到 Review + create 标签页，确认配置并点击 **Create**
+**6-8) 切换到 Review + create 标签页，确认配置并点击 **Create****
 
 ![](images/6-8-action-group-review-create.png)
 
@@ -306,13 +306,13 @@ dependencies
 
 ![](images/6-8-action-group-email-confirm.png)
 
-##### 6-9) 返回 Alert rule 的 Actions 页面，确认 Action Group 已关联，填写邮件主题
+**6-9) 返回 Alert rule 的 Actions 页面，确认 Action Group 已关联，填写邮件主题**
 
 ![](images/6-9-alert-actions-email-subject.png)
 
 在 **Email subject** 中填写自定义的告警邮件标题，例如 `AI Hub Retry Alert`。
 
-##### 6-10) 切换到 Details 标签页，填写 Alert rule 基本信息
+**6-10) 切换到 Details 标签页，填写 Alert rule 基本信息**
 
 ![](images/6-10-alert-details.png)
 
@@ -323,11 +323,11 @@ dependencies
 | Region | `Japan East` | 与 App Insights 同一区域 |
 | Identity | **Default** | 使用默认身份 |
 
-##### 6-11) 切换到 Review + create 确认所有配置，点击 **Create** 完成创建
+**6-11) 切换到 Review + create 确认所有配置，点击 **Create** 完成创建**
 
 ![](images/6-11-alert-review-create.png)
 
-##### 6-12) 验证告警邮件
+**6-12) 验证告警邮件**
 
 创建完成后约 15 分钟，当 FailureCount 超过阈值（10）时，会收到告警邮件：
 
@@ -345,7 +345,7 @@ dependencies
 
 点击邮件中的 **View alert details** 可直接跳转到 Azure Portal 查看详情；**View search results** 可查看触发告警的 KQL 查询结果。
 
-##### 6-13) （可选）调优告警参数
+**6-13) （可选）调优告警参数**
 
 告警规则创建后，进入 Application Insights → Monitoring → **Alerts** → **Alert rules** → 选择对应规则 → 点击 **Edit** 按钮：
 

@@ -70,11 +70,11 @@ The following steps will guide you through building the complete Retry observabi
 
 Create a workspace-based Application Insights instance in the same subscription and region as APIM to receive APIM telemetry data.
 
-##### 2-1) In the Azure Portal search bar, type Application Insights and select the **Application Insights** service
+**2-1) In the Azure Portal search bar, type Application Insights and select the **Application Insights** service**
 
 ![](images/2-1-search-application-insights.png)
 
-##### 2-2) Click **+ Create**, fill in the following key configurations and complete creation
+**2-2) Click **+ Create**, fill in the following key configurations and complete creation**
 
 ![](images/2-2-create-app-insights.png)
 
@@ -94,7 +94,7 @@ Create a workspace-based Application Insights instance in the same subscription 
 
 Associate the Application Insights instance created in the previous step with APIM, enabling APIM to send telemetry data to App Insights.
 
-##### 3-1) Navigate to the APIM instance → Left menu **Monitoring** → **Application Insights** → Click **+ Add**
+**3-1) Navigate to the APIM instance → Left menu **Monitoring** → **Application Insights** → Click **+ Add****
 
 ![](images/3-1-bind-apim-logger.png)
 
@@ -108,11 +108,11 @@ Associate the Application Insights instance created in the previous step with AP
 
 Enable Application Insights logging for the target AI API, configuring sampling rate, error recording, Backend Response, and other parameters.
 
-##### 4-1) Navigate to APIM → APIs → Select target API → Switch to **Settings** tab → Scroll down to **Diagnostic Logs** area, click Enable
+**4-1) Navigate to APIM → APIs → Select target API → Switch to **Settings** tab → Scroll down to **Diagnostic Logs** area, click Enable**
 
 ![](images/4-1-api-settings-diagnostic-logs.png)
 
-##### 4-2) Select the **Application Insights** tab, check **Enable**, and configure with the following parameters
+**4-2) Select the **Application Insights** tab, check **Enable**, and configure with the following parameters**
 
 ![](images/4-2-diagnostic-logs-config.png)
 
@@ -172,13 +172,13 @@ Click **Save** to complete the configuration.
 
 After configuration is complete, send a few test requests that will trigger Retry (e.g., call a non-existent model deployment), wait approximately 5 minutes, then verify data in Application Insights.
 
-##### 5-1) Navigate to Application Insights → Monitoring → ① Logs, ② Switch to Tables view, ③ Find the `dependencies` table under the Application Insights category and click Run
+**5-1) Navigate to Application Insights → Monitoring → ① Logs, ② Switch to Tables view, ③ Find the `dependencies` table under the Application Insights category and click Run**
 
 ![](images/5-1-dependencies-retry-records.png)
 
 The `dependencies` table generates an independent record for **each `forward-request` call** within the `retry` block — including intermediate failed Retry attempts and the final successful request. In the results on the right, you can see multiple records pointing to different backends (e.g., `ai-hub-swedencentral-02`, `ai-hub-eastus2-01`, etc.), all belonging to the same request's Retry chain.
 
-##### 5-2) Expand a single record to view detailed fields and customDimensions
+**5-2) Expand a single record to view detailed fields and customDimensions**
 
 ![](images/5-2-dependency-custom-dimensions.png)
 
@@ -201,7 +201,7 @@ After expanding, you can see the complete information of the dependency record, 
 
 Automatically notify the operations team via email when Retry failure counts exceed thresholds. Alert rules are created on **Application Insights** (not APIM).
 
-##### 6-1) Write and verify KQL query on the Logs page
+**6-1) Write and verify KQL query on the Logs page**
 
 Navigate to Application Insights → Monitoring → **Logs**, ① create a new query tab, ② switch to **KQL mode**, ③ enter the following query and ④ click **Run** to verify results:
 
@@ -226,13 +226,13 @@ Adjust the status code filter as needed:
 
 Confirm the query returns the expected FailureCount value.
 
-##### 6-2) Click the **`...`** menu in the top right → **+ New alert rule**
+**6-2) Click the **`...`** menu in the top right → **+ New alert rule****
 
 ![](images/6-2-new-alert-rule.png)
 
 The system will automatically carry over the current KQL query into the Alert rule's Condition configuration.
 
-##### 6-3) Confirm query and Measurement configuration on the Condition tab
+**6-3) Confirm query and Measurement configuration on the Condition tab**
 
 ![](images/6-3-alert-condition-measurement.png)
 
@@ -248,7 +248,7 @@ Other settings keep defaults:
 - **Query type**: Aggregated logs
 - **Aggregation type**: Total (sum of FailureCount)
 
-##### 6-4) Scroll down to configure Alert logic
+**6-4) Scroll down to configure Alert logic**
 
 ![](images/6-4-alert-logic-threshold.png)
 
@@ -267,7 +267,7 @@ Other settings keep defaults:
 
 Click **Next: Actions >** to proceed.
 
-##### 6-5) Configure alert actions on the Actions tab
+**6-5) Configure alert actions on the Actions tab**
 
 If the Portal displays the **Use quick actions (preview)** option (new UI), you can complete Action Group creation directly on this page without creating one separately:
 
@@ -283,7 +283,7 @@ If the Portal displays the **Use quick actions (preview)** option (new UI), you 
 >
 > If the Portal doesn't show the quick actions option (legacy UI), select **Use action groups** → **+ Create action group**, and follow steps 6-6 ~ 6-8 below to create one manually.
 
-##### 6-6) Fill in Action Group basic information
+**6-6) Fill in Action Group basic information**
 
 ![](images/6-6-action-group-basics.png)
 
@@ -293,7 +293,7 @@ If the Portal displays the **Use quick actions (preview)** option (new UI), you 
 | Action group name | `ai-hub-retry-alert-action` | Unique identifier |
 | Display name | `AI-Hub-Retry` | Limited to 12 characters, displayed in notifications |
 
-##### 6-7) Switch to the Notifications tab and configure email notifications
+**6-7) Switch to the Notifications tab and configure email notifications**
 
 ![](images/6-7-action-group-notifications.png)
 
@@ -309,7 +309,7 @@ If the Portal displays the **Use quick actions (preview)** option (new UI), you 
 >
 > ![](images/6-8-action-group-actions.png)
 
-##### 6-8) Switch to the Review + create tab, confirm configuration and click **Create**
+**6-8) Switch to the Review + create tab, confirm configuration and click **Create****
 
 ![](images/6-8-action-group-review-create.png)
 
@@ -317,13 +317,13 @@ After creation, you'll receive an Azure confirmation email indicating you've bee
 
 ![](images/6-8-action-group-email-confirm.png)
 
-##### 6-9) Return to the Alert rule's Actions page, confirm the Action Group is associated, and fill in the email subject
+**6-9) Return to the Alert rule's Actions page, confirm the Action Group is associated, and fill in the email subject**
 
 ![](images/6-9-alert-actions-email-subject.png)
 
 Enter a custom alert email subject in the **Email subject** field, e.g., `AI Hub Retry Alert`.
 
-##### 6-10) Switch to the Details tab and fill in Alert rule basic information
+**6-10) Switch to the Details tab and fill in Alert rule basic information**
 
 ![](images/6-10-alert-details.png)
 
@@ -334,11 +334,11 @@ Enter a custom alert email subject in the **Email subject** field, e.g., `AI Hub
 | Region | `Japan East` | Same region as App Insights |
 | Identity | **Default** | Use default identity |
 
-##### 6-11) Switch to Review + create to confirm all configurations, click **Create** to complete
+**6-11) Switch to Review + create to confirm all configurations, click **Create** to complete**
 
 ![](images/6-11-alert-review-create.png)
 
-##### 6-12) Verify alert email
+**6-12) Verify alert email**
 
 Approximately 15 minutes after creation, when FailureCount exceeds the threshold (10), you'll receive an alert email:
 
@@ -356,7 +356,7 @@ The email contains key information:
 
 Click **View alert details** in the email to jump directly to Azure Portal for details; **View search results** to view the KQL query results that triggered the alert.
 
-##### 6-13) (Optional) Fine-tune alert parameters
+**6-13) (Optional) Fine-tune alert parameters**
 
 After the alert rule is created, navigate to Application Insights → Monitoring → **Alerts** → **Alert rules** → Select the corresponding rule → Click the **Edit** button:
 
