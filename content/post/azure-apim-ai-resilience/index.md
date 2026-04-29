@@ -16,6 +16,9 @@ tags:
   - Managed Identity
   - Microsoft Foundry
   - Enterprise Architecture
+
+series:
+  - "Azure APIM AI Resilience"
 ---
 
 As enterprise demand for AI capabilities grows, organizations are deeply integrating Microsoft Foundry model services into core business systems. As AI moves from experimentation to production, **high availability, elastic scaling, unified governance, and security controls** become unavoidable themes.

@@ -16,6 +16,9 @@ tags:
   - KQL
   - 告警
   - 企业架构
+
+series:
+  - "Azure APIM AI Resilience"
 ---
 
 在上一篇文章[《使用 API Management 网关构建 Azure AI 韧性架构》](../azure-apim-ai-resilience/)中，我们通过 Azure API Management 构建了一套面向多个 Microsoft Foundry 资源的韧性网关架构——Backend Load Balancing Pool 实现负载均衡，`retry` 策略在后端返回 4xx/5xx 错误时自动切换到健康实例。这套机制让客户端几乎感知不到后端故障的存在。

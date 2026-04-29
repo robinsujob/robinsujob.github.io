@@ -16,6 +16,9 @@ tags:
   - KQL
   - Alerting
   - Enterprise Architecture
+
+series:
+  - "Azure APIM AI Resilience"
 ---
 
 In the previous article [*Building Resilient Azure AI Architecture with API Management Gateway*](../azure-apim-ai-resilience/), we built a resilient gateway architecture for multiple Microsoft Foundry resources using Azure API Management — Backend Load Balancing Pool for load distribution, and a `retry` policy that automatically switches to healthy instances when backends return 4xx/5xx errors. This mechanism makes backend failures nearly invisible to clients.
