@@ -18,7 +18,7 @@ tags:
   - Enterprise Architecture
 ---
 
-In the previous article *Building Resilient Azure AI Architecture with API Management Gateway*, we built a resilient gateway architecture for multiple Microsoft Foundry resources using Azure API Management — Backend Load Balancing Pool for load distribution, and a `retry` policy that automatically switches to healthy instances when backends return 4xx/5xx errors. This mechanism makes backend failures nearly invisible to clients.
+In the previous article [*Building Resilient Azure AI Architecture with API Management Gateway*](../azure-apim-ai-resilience/), we built a resilient gateway architecture for multiple Microsoft Foundry resources using Azure API Management — Backend Load Balancing Pool for load distribution, and a `retry` policy that automatically switches to healthy instances when backends return 4xx/5xx errors. This mechanism makes backend failures nearly invisible to clients.
 
 But "invisible" is precisely the challenge for operations teams: **The Retry mechanism, while protecting clients, also hides the details of intermediate failures.** When a request goes through 3 retries and ultimately returns 200, operations staff have no way of knowing why the first two attempts failed — was it a 429 rate limit? A 404 deployment not found? Or a 500 server error? Which backend had the issue? What did the error body say?
 
