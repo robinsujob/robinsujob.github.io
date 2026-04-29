@@ -15,3 +15,29 @@ timeZone               = "Asia/Shanghai"
 
 [outputs]
     home = ["HTML", "RSS", "JSON"]
+
+[related]
+    includeNewer = true
+    threshold    = 80
+    toLower      = false
+
+    [[related.indices]]
+        name   = "series"
+        weight = 200
+
+    [[related.indices]]
+        name   = "tags"
+        weight = 100
+
+    [[related.indices]]
+        name   = "categories"
+        weight = 80
+
+    [[related.indices]]
+        name   = "date"
+        weight = 10
+
+[taxonomies]
+    tag      = "tags"
+    category = "categories"
+    series   = "series"
