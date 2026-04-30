@@ -38,7 +38,7 @@ series:
 
 | 组件 | 角色 |
 |------|------|
-| **Application Insights** | 接收 APIM 原生 telemetry（`requests` / `dependencies` / `exceptions`），记录每次 Retry 的后端调用详情 |
+| **Application Insights** | 接收 APIM 原生 telemetry（`requests` / `dependencies` ），记录每次 Retry 的后端调用详情 |
 | **Log Alert** | 基于 KQL 查询自动触发告警通知，当失败次数超过阈值时通知运维 |
 | **Action Group** | 定义告警动作（邮件/SMS/Webhook） |
 

@@ -45,7 +45,7 @@ This article adds an Application Insights observability layer on top of the APIM
 
 | Component | Role |
 |-----------|------|
-| **Application Insights** | Receives APIM native telemetry (`requests` / `dependencies` / `exceptions`), recording details of each Retry backend call |
+| **Application Insights** | Receives APIM native telemetry (`requests` / `dependencies`), recording details of each Retry backend call |
 | **Log Alert** | Automatically triggers alert notifications based on KQL queries when failure counts exceed thresholds |
 | **Action Group** | Defines alert actions (Email/SMS/Webhook) |
 
