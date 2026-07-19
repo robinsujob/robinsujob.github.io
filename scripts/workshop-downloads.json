@@ -1,0 +1,3080 @@
+{
+  "generated_from": "content/workshops",
+  "local_downloads": [
+    {
+      "url": "/workshops/wordpress-glb/assets/0-introduction/architecture-digram.png",
+      "site_path": "/workshops/wordpress-glb/assets/0-introduction/architecture-digram.png",
+      "bytes": 279423,
+      "sha256": "26c592d588673ed76c2b68697ab490b6a1a421404f541d1768fd1663853f6735"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/1-region.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/1-region.png",
+      "bytes": 306766,
+      "sha256": "cd87fde52a939bf90b65b29c0eb81c1db7e48d199eb2ff0928e7bf96f3a8cd7a"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/2-search.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/2-search.png",
+      "bytes": 218365,
+      "sha256": "321c45d42d2566ea0c36409fdad01619f23e5c73bd4c670fc9e4e6a0a62cd870"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/3-launch-wizard.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/3-launch-wizard.png",
+      "bytes": 136494,
+      "sha256": "6a7fcd6ceb698b3688d6b1c899340f49d9a1771c2518ea1d88caa1f85be32ad3"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/4-input-name.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/4-input-name.png",
+      "bytes": 350983,
+      "sha256": "e9373ec9632431b0e0447cda925109b256ef3f7a6d028f187cd881069334099f"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/5-vpc-created.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/5-vpc-created.png",
+      "bytes": 353205,
+      "sha256": "e243e35273096f946231c1eb5be4446fe6cb72c1c305865344942637d0d12696"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/1-create-vpc/6-subnet-info.png",
+      "site_path": "/workshops/wordpress-glb/assets/1-create-vpc/6-subnet-info.png",
+      "bytes": 179190,
+      "sha256": "9957cd4aaa27a74055ddf848cd17715d3abdecb124e3d65de840dc2b7c47dfee"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/1-search-service.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/1-search-service.png",
+      "bytes": 169304,
+      "sha256": "687ff6d0efe3cdc7e9e1055d60601f0b7bf5f1a760a0f99e9efbff104bfaedff"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/10.1-sg-ssh.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/10.1-sg-ssh.png",
+      "bytes": 126788,
+      "sha256": "06ef2787d9151946526992900c5be4e5e6f0bc6613b952901fe524d5e755a070"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/10.2-sg-http.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/10.2-sg-http.png",
+      "bytes": 175020,
+      "sha256": "5bd9fc5ba5e866bc4a5b68daa95bf2f46bac20dcd911e97951e88659738c4acc"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/11-check-info.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/11-check-info.png",
+      "bytes": 458523,
+      "sha256": "b4e6242d2565ff1c4813e437ffcbc4d1cf70360f477cef865473666184aefaf2"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/12.1-create-key-pair.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/12.1-create-key-pair.png",
+      "bytes": 40507,
+      "sha256": "e6bfce2eb762e3a86c7e99087302320eddb6d990be9adcae7359a317fff42f6c"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/12.2-download-key-pair.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/12.2-download-key-pair.png",
+      "bytes": 135467,
+      "sha256": "d681ec69f48df58d640116b20bd17c5fc2e9dd4e4d1e0ff5b69c21e6baa4ba75"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/13.1-created-instance.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/13.1-created-instance.png",
+      "bytes": 65552,
+      "sha256": "d9ecf8afd81835f253cb8cf361b6d6512a11fe71f91fd9213bcda223be6aedd0"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/13.2-instance-list.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/13.2-instance-list.png",
+      "bytes": 64560,
+      "sha256": "782491a709c7b6203c2a13ab41f0569ce6ed5004ee986c14765281cdf9978ad8"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/2-ec2-launch-wizard.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/2-ec2-launch-wizard.png",
+      "bytes": 560443,
+      "sha256": "20bc0c0744772bf6e59e2102f7010d4b73af247c3fb5e9760f5fb697b96888cc"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/3-ami.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/3-ami.png",
+      "bytes": 289553,
+      "sha256": "45c7485bfa4b9ad591d341f3dadbcfdba1e6c1c3b587c90e4fb2887b02e82f68"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/4.1-instance-type.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/4.1-instance-type.png",
+      "bytes": 133569,
+      "sha256": "1255ff320cb6487f157f4570b7cc4963dc5743f8b4bce72ffa3dd2aa160bf0f8"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/5.1-vpc-info.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/5.1-vpc-info.png",
+      "bytes": 261555,
+      "sha256": "f6ba18cf0c6352d6714fb1d74eb9beca5fd642dae26a8913e7054d5ed4c337a2"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/5.2-auto-public-ip.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/5.2-auto-public-ip.png",
+      "bytes": 291457,
+      "sha256": "d23a45f49b87ebe9185e5d392c789f6ee664ec4e71ffb0e06f424c1729949cfb"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/6-user-data.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/6-user-data.png",
+      "bytes": 181008,
+      "sha256": "a4cc9a1ef3be1aaeec7fdb03df82a0b94564fe956dc2a3ae78edcdfed119e7d5"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/7-ebs.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/7-ebs.png",
+      "bytes": 114959,
+      "sha256": "3b492d5c33ac5b72ab9549252ad38df4deb6e390d4fa006035e40b4e40fc445d"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/2-create-ec2/9-sg-name.png",
+      "site_path": "/workshops/wordpress-glb/assets/2-create-ec2/9-sg-name.png",
+      "bytes": 154400,
+      "sha256": "8134871b9c45cb511026e78aca39aebde43fc32ef601cd7bf56f0c4f4d9adc74"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/1-search-rds.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/1-search-rds.png",
+      "bytes": 123741,
+      "sha256": "9b766dd3cda28531bb140850f5b84c4830f0f77e36a025e47855b858c01389f2"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/10-rds-sg.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/10-rds-sg.png",
+      "bytes": 101696,
+      "sha256": "92e004927c91a466d4fab5ef3861da069f65c533d3b2cfd0c943a84a1701aea9"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/11-rds-create-db.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/11-rds-create-db.png",
+      "bytes": 159036,
+      "sha256": "73b7fe8998c681d4bb04d1d334674a49908f399155015914ea634d1d4e5ac98b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/12-rds-complete.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/12-rds-complete.png",
+      "bytes": 135201,
+      "sha256": "0fbf01fbc2aad198c8e4a16fa86246a713a09c47bc077577c7e21d7d29a4823b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/2-subnet-group.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/2-subnet-group.png",
+      "bytes": 409821,
+      "sha256": "1a91949d0eacc8b5f6877a963fe1830f232c20733a4dc2652998c456c9497162"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/3.1-add-subnet.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/3.1-add-subnet.png",
+      "bytes": 86472,
+      "sha256": "2410ee7b5b8b369694e051f59cdbdf3e164b72d8cc158b32e093c1e020f1434b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/3.2-verify-subnet.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/3.2-verify-subnet.png",
+      "bytes": 161811,
+      "sha256": "68259be44947fcdeea5e44d59367b600187abae7d8f89a0560ec038bf1b78836"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/4-create-db.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/4-create-db.png",
+      "bytes": 283616,
+      "sha256": "80bae80c1f251fd8478d6293fc76f49472783fe204b5618dcef665e4fd9a906b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/5-chose-engine.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/5-chose-engine.png",
+      "bytes": 266710,
+      "sha256": "0d441acb5000450a2498ce2ea984fce0977ca308ec85e529fcab4fb8fd165050"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/6-rds-template.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/6-rds-template.png",
+      "bytes": 309154,
+      "sha256": "3d86f789de53854c3fda60b88365a90527f73d5edb87860a3995847b3db1e7dc"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/7-rds-password.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/7-rds-password.png",
+      "bytes": 176407,
+      "sha256": "27d8fc4dced80be138ac5dac43b79634a868bde85f9d412c8773b00cfe29e085"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/8.1-rds-instance.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/8.1-rds-instance.png",
+      "bytes": 125792,
+      "sha256": "859172c9e37bc160699384215be11ac99e94033cd52e8c22f9b8e8f46826e568"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/3-create-rds/9-rds-network.png",
+      "site_path": "/workshops/wordpress-glb/assets/3-create-rds/9-rds-network.png",
+      "bytes": 268652,
+      "sha256": "1a65ca28d35afdab1f600b25bd7c69b7905c8e082a4a5452376412dfc8a10531"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture1.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture1.png",
+      "bytes": 286709,
+      "sha256": "13ddae4fe136767226a819792a1f48d81a98c687747f3836d175dd481b31cfe1"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture2.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture2.png",
+      "bytes": 229847,
+      "sha256": "4c6663717de2b746cc8607f26067832b44203583e728b93dd56dfe82f2d1c19e"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture3.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture3.png",
+      "bytes": 111162,
+      "sha256": "b6323a931c9c9b9609e64328abc42a41e4bd90f0095655e10a8146c224770c80"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture4.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture4.png",
+      "bytes": 337039,
+      "sha256": "d992a677d88b755f8410a861e7144fd069b67f88cf03c914f82021730f032763"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture5.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture5.png",
+      "bytes": 65661,
+      "sha256": "28b1a77d0b18f087b193593b1fac0d19d3832af3721a104e5e3afcfb5ae27031"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture6.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture6.png",
+      "bytes": 340936,
+      "sha256": "73df747c434750ebf8bd3297825cd584e5c77ae212a5b983fbff8db63700b063"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture7.png",
+      "site_path": "/workshops/wordpress-glb/assets/4-create-eip/4-Picture7.png",
+      "bytes": 217433,
+      "sha256": "f6dcc11e47d502af32cda7545bc5eaaa28468ae5c5b501a2233e05d02cdde9ff"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.5.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.5.png",
+      "bytes": 33849,
+      "sha256": "9bbd013d5531a557b471ba02c1b8c4105b170b0ba4d2bd1e66bbb57734856c69"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.6.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.6.png",
+      "bytes": 533758,
+      "sha256": "daaef562fdbc110f9c8140c4dd4d0ba9e204463cb729ecae8b9b94ac99ad073e"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.7.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.7.png",
+      "bytes": 461848,
+      "sha256": "7425fc519a160ec9cec748cc2883c1192a326a9524b1bcac3af9635a744bd044"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.8.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.8.png",
+      "bytes": 377042,
+      "sha256": "75816408afee594c5d7d3ca3d5ad16451db1f4b64bb017722246995b525782e0"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.9.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.9.png",
+      "bytes": 281678,
+      "sha256": "480ddab0107c2f61bc85b00a5488c7341d5a937b9dd8243ea4a568aa79d408ec"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.91.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.91.png",
+      "bytes": 236990,
+      "sha256": "3e54c65eee9d9833f0e0835e066ced59017d275f5de8aeaad0e8067e21717aba"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture10.png",
+      "bytes": 63605,
+      "sha256": "30c17a602a4c7058b139792c1ea24d88a3a8da2e619064c07da4f5ea8347fd48"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture11.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture11.png",
+      "bytes": 334722,
+      "sha256": "bbebdda9576561699fa10a32a4bd0dd547c3d3313ee3997617d940ceb92f6ca0"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture12.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture12.png",
+      "bytes": 127497,
+      "sha256": "5345e80581fe3ff5bd3000c21ad02a8406146664f606a27168321d23fff129bb"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture13.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture13.png",
+      "bytes": 208221,
+      "sha256": "4fb79544555aa77616774c0d824d5ecddccf16f9056d8cfb6d486b1e364a902b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture14.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture14.png",
+      "bytes": 307553,
+      "sha256": "8a008fe80bc985df60c12c618606edd7de6ad0d8104e835a45b69e96f8b2425e"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture15.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture15.png",
+      "bytes": 140198,
+      "sha256": "1cdeee7693713f2ef9312745dee02b0df15feaf9e2959c31dae56505faa1cee2"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture16.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture16.png",
+      "bytes": 100956,
+      "sha256": "14d34077c20820da7b54c530594fff2819080fd312a6ac1b5f323a8b05b1411a"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture17.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture17.png",
+      "bytes": 265273,
+      "sha256": "38e29b640e0cb7ce229076fae031a987e3f8fcc105f36bc76f3f581d25274a08"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture18.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture18.png",
+      "bytes": 58258,
+      "sha256": "b602d043fb79bbaddc83728b8622f22d5765acfef53ca5b099549e281615cf8d"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture19.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture19.png",
+      "bytes": 151729,
+      "sha256": "0be2cb65a285762b636b1e8b56ff7d064fc246ebb4e34f73bc4add76b7f4b713"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture8.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture8.png",
+      "bytes": 131546,
+      "sha256": "6b4850e6c3d4fd5bf3700e8489dc117a423bd40367a67e8cb10dfe1e7700b223"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture9.png",
+      "site_path": "/workshops/wordpress-glb/assets/5-connect-ec2/5-Picture9.png",
+      "bytes": 181804,
+      "sha256": "2c8336e62a0c85bcab6cafc238c2f7f15945e8b93e0f358b8a0d744c78b60670"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture1.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture1.png",
+      "bytes": 148106,
+      "sha256": "3350cdbb96d1da2d064b771bd073b6fb87ffab7ed62aa2c7b79fd9d1da8159ca"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture2.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture2.png",
+      "bytes": 134664,
+      "sha256": "c85fcb4f3a0d22f40fc9bb158871453c74a842ef155ba6242ee448a6410d446e"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture3.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture3.png",
+      "bytes": 49396,
+      "sha256": "a761e751c87c0be305cebfe0d51e6c4b6eafef18dd34e6402d2829ef4ec9dc22"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture4.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture4.png",
+      "bytes": 101487,
+      "sha256": "7ec4547e2f09909fcfbbae2067c12ce0e7a6f902e59b330c1e01456ae0976bbe"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture5.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture5.png",
+      "bytes": 100337,
+      "sha256": "790404139404bbe2b311205927477f1de2d7c809bb599c2f29c4057d862e50c9"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture6.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture6.png",
+      "bytes": 93861,
+      "sha256": "a9a807661668d2133234063df8cc00317f18aa5dd0fd7ed4f2c0903a88a6f5b8"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture7.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture7.png",
+      "bytes": 70592,
+      "sha256": "db0304ab1971b542d4da904582d1cde3281574ab4d192452e591cc80c9afb06a"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture8.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture8.png",
+      "bytes": 142906,
+      "sha256": "c2d6675573bebcdec9ea46c6c1242906d182c2201ab6904726bd3fc767e3184d"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture9.png",
+      "site_path": "/workshops/wordpress-glb/assets/6-configure-rds/6-Picture9.png",
+      "bytes": 324736,
+      "sha256": "24611f800f9f6694673cf6b95f41e333716cd5b08f5859f2974eeed4ac404028"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture1.png",
+      "site_path": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture1.png",
+      "bytes": 92874,
+      "sha256": "2f2b55f5d0e506907a418b02978fec3d57c06570788366ec07be6db5eef16076"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture2.png",
+      "site_path": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture2.png",
+      "bytes": 937607,
+      "sha256": "e8acbaa7d159dd8de041da81841a3344f1ea314db6818bbf7c833c6eeaabb464"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture3.png",
+      "site_path": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture3.png",
+      "bytes": 293266,
+      "sha256": "c0d85296630f1784d85c8bf4b4ef587fae10b7e55543c8080fb72da5d8c843ee"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture4.png",
+      "site_path": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture4.png",
+      "bytes": 100304,
+      "sha256": "3aee18fd43840d596989524eadd1269ff6b5814bec69ffc17445a31e8b53e90b"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture5.png",
+      "site_path": "/workshops/wordpress-glb/assets/7-configure-wordpress/7-Picture5.png",
+      "bytes": 518300,
+      "sha256": "8f576e5de5d62602d3572ad87ab7f41ac81a72d72e57dcba48107c46d08fd19a"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/8-improve-security/8-Picture1.png",
+      "site_path": "/workshops/wordpress-glb/assets/8-improve-security/8-Picture1.png",
+      "bytes": 98529,
+      "sha256": "8f4f94d37fdc55f3224f77b7b2acb83bdef86d55a5f12765ca61aff49cb60508"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/8-improve-security/8-Picture2.png",
+      "site_path": "/workshops/wordpress-glb/assets/8-improve-security/8-Picture2.png",
+      "bytes": 112828,
+      "sha256": "48573a6f30e3e6dae3cc6b3948b9c52eed20f56e73b93782689d6a575532c716"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture1.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture1.png",
+      "bytes": 71098,
+      "sha256": "9b08d9fed5acdda9d7e8e50f4f14f419b56e500d95681b83d922f5f307eed058"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture2.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture2.png",
+      "bytes": 117613,
+      "sha256": "6c4279ad3c56e29afa4a09784b19c0e86576ebbdc96efa947a86ce5a79b03607"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture3.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture3.png",
+      "bytes": 63114,
+      "sha256": "863c1fd207bd456bdf0bb2ef86e648d35867430d90431e8cd332c73404abe023"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture4.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture4.png",
+      "bytes": 101510,
+      "sha256": "6155f545b6df14ee4ed7066d5ec5e3b2794e936d523c65048fd38a5b928d1019"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture5.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture5.png",
+      "bytes": 385670,
+      "sha256": "47d9458cb3f082ad18fb43959e4fac5401e8b7f6b37c222711ad5e04896c2527"
+    },
+    {
+      "url": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture6.png",
+      "site_path": "/workshops/wordpress-glb/assets/9-az-failover/9-Picture6.png",
+      "bytes": 115376,
+      "sha256": "c64288dd079bce8289df8f2914d7fe6c001b677e0e95c6e49449eb5da6e471b0"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-delete.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-delete.png",
+      "bytes": 223510,
+      "sha256": "bdbeacfaaac668fa7ceeb2ffbb2d143cc5af8e25e5fc5356214539d3dcc44cf6"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-ebs.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-ebs.png",
+      "bytes": 188494,
+      "sha256": "81b8fb4aa0e23722f91fe4a850def3c1a063b19ee6ff6dbb288f884dc52049eb"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-sg.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-sg.png",
+      "bytes": 230004,
+      "sha256": "7df52f7e3aaae45f72bf5ecab8af53eb0152bf2823ee5d3c929c4c4feeb79237"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-tag.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-tag.png",
+      "bytes": 45679,
+      "sha256": "8ea68aeac185258c17403b76bc09c2cd8d884c1a58d0a4a9bcab948bf979951f"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-type.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/instance-type.png",
+      "bytes": 121238,
+      "sha256": "da2bee14fce0702bdf2166da0239cba56e5760fb70c63a25b0aa6590094d77bc"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/key-pair.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/key-pair.png",
+      "bytes": 117933,
+      "sha256": "8f430062d7e954df4c7b204ff8109ebf1e3a7ebdbb650ce66a7edb9aee8ea14b"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/launch-instance.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/launch-instance.png",
+      "bytes": 199618,
+      "sha256": "ffc89a5b7738ae75bd718ad421c2acbc0df52307b062eeaba288ca6ac963ce5d"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/add-delete/launch-template.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/add-delete/launch-template.png",
+      "bytes": 189631,
+      "sha256": "a9142597e08e2cc9326b93a19387406434c3d18ff1bafcdc1290bdf0b25ea86a"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/code/new-template-cn.json",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/code/new-template-cn.json",
+      "bytes": 14400,
+      "sha256": "e6e46480937c9da6593381554220d5a2d9974f24e0c94ebe4159082d9dc288a0"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/code/new-template-en.json",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/code/new-template-en.json",
+      "bytes": 14389,
+      "sha256": "624a7361144e7bae88c5c0473415ca1b65b695e6f98c8d1a4c65cc4ad6ce3e4d"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/delete-cfn.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/delete-cfn.png",
+      "bytes": 139847,
+      "sha256": "b9d1bffd7a747b0ee9e84ff59a4234d73f2de1174b870c7431740f4a249a9434"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/architecture.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/architecture.png",
+      "bytes": 109093,
+      "sha256": "e77fb53e3a774b64b28a9f0f9d09bbd96bb57398dd66f0fbafac10132feb1518"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/confirm-deploy.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/confirm-deploy.png",
+      "bytes": 165153,
+      "sha256": "f799195f9eef97649bf7a3986c15a97db298d6459f447e89004a8b4b5e7be2a4"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/deploy-config.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/deploy-config.png",
+      "bytes": 952156,
+      "sha256": "128c07f24641ca4966f11ef8868f881a4011817da7c692bca9d9795f8c7fa5fa"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/deployed.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/deployed.png",
+      "bytes": 93300,
+      "sha256": "fc5e5e3c2aa12fb6f1dfcc51ea50c1ae328665f919e5bf758adff6bf7e2fb7d0"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/output.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/output.png",
+      "bytes": 149401,
+      "sha256": "c9a1fa708695437c79820d825d8a9457bf9392aa326ab09812e43ae81fc63d8b"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/region.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/region.png",
+      "bytes": 82030,
+      "sha256": "d856e244860f394c6297a4f9f82484c29c9ab6ecd86649d25d813b24a089df46"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/deploy/upload-cfn.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/deploy/upload-cfn.png",
+      "bytes": 400429,
+      "sha256": "68f3ccb4a53209c6cc122c7b72f691b73a61d51de84ba1ee7ed68b6665e948e5"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/instance-id.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/instance-id.png",
+      "bytes": 135449,
+      "sha256": "168e07769fb0ddddd2bb09410bbcce402e956ae568ab605896cf01486027e23d"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp-ip.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp-ip.png",
+      "bytes": 3011478,
+      "sha256": "899135eccabc26a6c7aaa81eb794c8e66c36c10a757025656f6698377ac8826d"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp-password.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp-password.png",
+      "bytes": 221646,
+      "sha256": "77d5d6e62047a05b5363385e64c3c2c4acc4d3cc3451dbb854c539a6f56428c1"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/rdp.png",
+      "bytes": 458610,
+      "sha256": "7de83fe1698fffe68610bdf630c6ca0abb67e83aa44b1bd693882dae2365414f"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/run-aksk.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/run-aksk.png",
+      "bytes": 168465,
+      "sha256": "63e243aa7955b1d4813b28799c37f5d637e083b6ec1501afd26ba8cdcf94d766"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/run-start-session.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/run-start-session.png",
+      "bytes": 95301,
+      "sha256": "3b56b03da6c9de639d7d0967248e024a1797307e359ace5c7f4c13dbc91ecf57"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/terminal.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/mac/terminal.png",
+      "bytes": 124315,
+      "sha256": "75cbcf62d9a3a768e8d36af3f836a330dce5f5bf95a4afb627ee9d7a393cd524"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/cmd.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/cmd.png",
+      "bytes": 63471,
+      "sha256": "9205e274a022f2df108fc52a6669366b3e101bf66225c0fde1330fd26b48da5d"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp-ip.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp-ip.png",
+      "bytes": 2497961,
+      "sha256": "d7aa8df3c6f7a643a44bd70b145beecd35a13d522a3f81748dfdbc337cd68d32"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp-password.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp-password.png",
+      "bytes": 140633,
+      "sha256": "8c69ad483aa7e144c5befc9183397e2e75f14915bdbd43ac240610d8982f7614"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/rdp.png",
+      "bytes": 165322,
+      "sha256": "ddb26c8e9122302243c0eb721da0417660d2b2f0d527989775a184789ec1b6bd"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/run-aksk.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/run-aksk.png",
+      "bytes": 144941,
+      "sha256": "f05f04223cad4de7ca4b49ab6065be48d5309676e3895b9795e49893853f1d6f"
+    },
+    {
+      "url": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/run-start-session.png",
+      "site_path": "/workshops/single-ip-with-multi-instance/assets/quickstart/windows/run-start-session.png",
+      "bytes": 142621,
+      "sha256": "6f573f0087be0f8f771471c9acca825db43d5635f32012eba2a6daecce5c3d80"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/1-main-page.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/1-main-page.png",
+      "bytes": 77513,
+      "sha256": "1ac2d06463a9c6e537667f9fe4bd3fdd3ec2aaeef637eb8e2a5d015e3e72d6f5"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/2-one-time-pwd.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/2-one-time-pwd.png",
+      "bytes": 66772,
+      "sha256": "2e8e3888abb226a31c1322dcf8a25a04d357456665703b63a15904193ea824ec"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/3-input-access-code.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/3-input-access-code.png",
+      "bytes": 93289,
+      "sha256": "317fc07e0bc94398bba0e001fd1e99f975d30e83b55a9dea863460a23cc4ee01"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/4-event-overview.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/4-event-overview.png",
+      "bytes": 273425,
+      "sha256": "1446ed4cf6317412690d4263382c15c9aa033970bb07fd1fdcd388cecc60e828"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/5-confirm-join.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/5-confirm-join.png",
+      "bytes": 226083,
+      "sha256": "8a4311cddf46f4c1c88260fad6f56add5f7be905bcaab1976fcfde8c52064ca9"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/6-waiting.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/6-waiting.png",
+      "bytes": 261797,
+      "sha256": "106ae5fdd8b30aadc2a5f700a8a8ecf65d97fcf98c9d5a655c2d915e6d0e970d"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/7-login-cosole.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/7-login-cosole.png",
+      "bytes": 750034,
+      "sha256": "f23368e65d2c4353ad4a04e6c05336c1587e126bf1ebf0e61bad7f57738666db"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/0-workshop-account/8-console.png",
+      "site_path": "/workshops/glbsaas-boost/assets/0-workshop-account/8-console.png",
+      "bytes": 343491,
+      "sha256": "6e60f243459c43e49b7e61f314b7b1e4a4cfd48d5ac90fc83b50cd6d1953aaa0"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/0-region.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/0-region.png",
+      "bytes": 86708,
+      "sha256": "5cef1528bcd7fa0ae49e66d475bd42b9274e7e758d1ee2398e4a69c451508140"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/1-cloud9.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/1-cloud9.png",
+      "bytes": 148397,
+      "sha256": "0e659c8adf808fa9487a71a2778fc0311bf8adb7a710df2e0fab588849ce9303"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/10-install-procedure.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/10-install-procedure.png",
+      "bytes": 208494,
+      "sha256": "4da179035bdd863585f5903e35aa897d0ef3073acd267ef37c35ef99cd1c6bb7"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/11-install-completed.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/11-install-completed.png",
+      "bytes": 654407,
+      "sha256": "865061b5949dfc1ae606ee1bea4911e8917dd3ce93cad4013236ad97f43f32d5"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/2-create-env.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/2-create-env.png",
+      "bytes": 352496,
+      "sha256": "6420e1c9b5e07a7c7ed66698091a4f2b7790ea460709baa4411c614964d8f33a"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/3-cloud9-name.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/3-cloud9-name.png",
+      "bytes": 157248,
+      "sha256": "f7e109ee3def72a5994a323c68ab40f51cb03a94123183da948ee03a91f5d19f"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/4-choose-instance.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/4-choose-instance.png",
+      "bytes": 205452,
+      "sha256": "561a4ae95351242bc055dcfd2b42a5d9624dcdbcd979c6081f6cb23547cef9ae"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/5-create-instance.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/5-create-instance.png",
+      "bytes": 218170,
+      "sha256": "9fd17b59e3fa4729b60c9870c8bb53407439e15166c040f4a00b4019ae9e6517"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/6-open-env.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/6-open-env.png",
+      "bytes": 174006,
+      "sha256": "5f3ff51bec45aaf4a8a430ced530be2eeec989a9fdea86b0c1d376fedd5b3604"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/7-show-env.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/7-show-env.png",
+      "bytes": 462809,
+      "sha256": "cffbb15f71f6a3261c785916d79f496ae060d0116b1288e54aab30ec3f3d36d5"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/8-cloud9-size.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/8-cloud9-size.png",
+      "bytes": 234673,
+      "sha256": "67ca8db7d9b40f2a9c7ab93f3ca8ad73335c80f17118716206f4ff51591adbfe"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/1-create-cloud-9/9-input-email.png",
+      "site_path": "/workshops/glbsaas-boost/assets/1-create-cloud-9/9-input-email.png",
+      "bytes": 47347,
+      "sha256": "7cfba7239884ce71779e8f141ec7b281ce185515b0f58e4af48f23267ad9d6f6"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/1-email-info.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/1-email-info.png",
+      "bytes": 191614,
+      "sha256": "0282f4607d7843adf499230896d8bf2c54f7f678c87fc13101edf440d95bcb59"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/10-filled-svc.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/10-filled-svc.png",
+      "bytes": 648857,
+      "sha256": "676c8240d39d69885e5c421a91e6478f6ac62c14cbefafeefe2f5fdb748ebf32"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/11-submit-svc.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/11-submit-svc.png",
+      "bytes": 33508,
+      "sha256": "dafcbd85af7c825c3a7637373ccb318eb56b715cb5b459d47ed975493829c1e6"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/2-change-pwd.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/2-change-pwd.png",
+      "bytes": 135753,
+      "sha256": "cdfc0debc8e10839404d7de48c08502d5c879f7098045c7c00559cf00e60303b"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/3-console-ui.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/3-console-ui.png",
+      "bytes": 261706,
+      "sha256": "80304c97cb186d30997e3a97b8d4bb58f14fc99854d3ceade7c78df597c1e5fd"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/5-application.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/5-application.png",
+      "bytes": 224446,
+      "sha256": "83eda6da260cc87d45f14bb94dccf34d5deb1477e6ad563cf2f712cb88432d2f"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/6-application-name.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/6-application-name.png",
+      "bytes": 93139,
+      "sha256": "5ce625fcf52b94d258f0743bcae0fed486ec533d883a42495a0fe81bf971b3dc"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/7-new-service.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/7-new-service.png",
+      "bytes": 144987,
+      "sha256": "d3963696fe4769f1687fe56ec1cf351513cc191573619cb62330eb9102600618"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/8-main-svc.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/8-main-svc.png",
+      "bytes": 41725,
+      "sha256": "3d233baa5a6d28c95196459bd8eb5338e3928c174a21cb3ace308155a730e342"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/9-main-form.png",
+      "site_path": "/workshops/glbsaas-boost/assets/2-saas-boost-setup/9-main-form.png",
+      "bytes": 195563,
+      "sha256": "b005e97d40d6a591d5fc356d2eef4de3415d4c8b071c8605cbdb39bb898fdf57"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/1-summary.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/1-summary.png",
+      "bytes": 372352,
+      "sha256": "1254158bc33a60e929c2dbe517a6248c71eb7cfa14feb00447ccf9c32624a278"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/10-website.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/10-website.png",
+      "bytes": 147653,
+      "sha256": "2ee8405f584ccca254d74a780ed15585635157ae09f3e021bc842352a8ffeb20"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/2-input-workshop-svc-name.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/2-input-workshop-svc-name.png",
+      "bytes": 81782,
+      "sha256": "7e20538271c82ad7c4abfce2f18760ac8cb2a95904a32979daa48c280b446117"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/3-uploaded-ecr.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/3-uploaded-ecr.png",
+      "bytes": 160336,
+      "sha256": "a85ab113e5a742d8f70c0e4cc35a6583c63307ffa95050698bd707be258d65c3"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/4-onboarding.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/4-onboarding.png",
+      "bytes": 229892,
+      "sha256": "91e6ae138ec08e0e1812c1573e431a3c7ac2e2b0bb2efd383c0087a5113e3bca"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/5-provison-tenant.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/5-provison-tenant.png",
+      "bytes": 107857,
+      "sha256": "9ff9b290616bc2bc0e302b68061331e90dd9935f287b29f26a42b5f3d0c2afaa"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/6-create-tenant.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/6-create-tenant.png",
+      "bytes": 117394,
+      "sha256": "ccb5ff5960c1c96880bb81059720791156b45f16b56297a980bd113fc0c0ba5b"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/7-deployed-tenant.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/7-deployed-tenant.png",
+      "bytes": 132081,
+      "sha256": "b582c596c4597a9c151b3f2199b8e32dee4dd483db059b314efe430c9b2723de"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/8-tenant.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/8-tenant.png",
+      "bytes": 185157,
+      "sha256": "156e67317517eda9c39f00ac611b60b4d81b7f770196675b841f21282d0190af"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/3-create-tenants/9-click-address.png",
+      "site_path": "/workshops/glbsaas-boost/assets/3-create-tenants/9-click-address.png",
+      "bytes": 243140,
+      "sha256": "e2e8b2f2b35d258df2a8b2c455a689588ee501c667e9bd4e54bcbbdb3ac66237"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/4-summary/1-delete-tenants.png",
+      "site_path": "/workshops/glbsaas-boost/assets/4-summary/1-delete-tenants.png",
+      "bytes": 253811,
+      "sha256": "6473f8d29e273e47ae0c3442d64e229d1b866cdedd7a874089c01035b0aafdff"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/4-summary/2-1-deleted-saas-boost.png",
+      "site_path": "/workshops/glbsaas-boost/assets/4-summary/2-1-deleted-saas-boost.png",
+      "bytes": 347738,
+      "sha256": "a67dfe4966187c3822d079059f61fe621aaf7afa86a48b4ec418d3aa69bbcdb8"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/4-summary/2-delete-saas-boost.png",
+      "site_path": "/workshops/glbsaas-boost/assets/4-summary/2-delete-saas-boost.png",
+      "bytes": 277503,
+      "sha256": "afdb0589dfad56984129c3b892ab31a378a6758db27b8b970ccb9d698751ca5e"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/4-summary/3-delete-cloud9.png",
+      "site_path": "/workshops/glbsaas-boost/assets/4-summary/3-delete-cloud9.png",
+      "bytes": 114493,
+      "sha256": "706ecb673ad31feff3de08404374b1054851d7034317ec3c6718b3b925dd2885"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/4-summary/4-confirm-delete.png",
+      "site_path": "/workshops/glbsaas-boost/assets/4-summary/4-confirm-delete.png",
+      "bytes": 120755,
+      "sha256": "c9fd3e8e0a632dafcc606f6a0821673aa7912d6090cd4f37d72485e14c54d20c"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/code/init-install.sh",
+      "site_path": "/workshops/glbsaas-boost/assets/code/init-install.sh",
+      "bytes": 173,
+      "sha256": "59b1ad9aa0b26c8adc5f81e1ad54072ace5570ca672a90a1906dceefb6ed28d9"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/code/resize.sh",
+      "site_path": "/workshops/glbsaas-boost/assets/code/resize.sh",
+      "bytes": 1980,
+      "sha256": "3bfa75c51ee36586a8cd20497cc0d245ac2c4ab45804cddf59e854e85b17a665"
+    },
+    {
+      "url": "/workshops/glbsaas-boost/assets/gs-install-flow.png",
+      "site_path": "/workshops/glbsaas-boost/assets/gs-install-flow.png",
+      "bytes": 136933,
+      "sha256": "4ef7f36cedbb90852dc1b071ffdd1fbb49a3333a9391af4afa302e30fd344c9f"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/1-system-manager.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/1-system-manager.png",
+      "bytes": 414523,
+      "sha256": "966fd1b0b53d7c31e2ca9525541ca9df8f8a83b28e1c1895a47ac28983466b47"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/2-quick-start.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/2-quick-start.png",
+      "bytes": 367135,
+      "sha256": "1cb027df1f9d038269bd473debcbbd577cb6f9a517be333927187d105a933d0d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/3-start-png.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/3-start-png.png",
+      "bytes": 622163,
+      "sha256": "35c8c7e999cb2cdc06263df6f2358cd157b7b52b5f022b9657f8f90a35da1dd0"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/4-host-mgmt.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/4-host-mgmt.png",
+      "bytes": 365376,
+      "sha256": "249df327bd39a71ff4439a24b56329e6b00ecf07b2e31654e91b66d64e1e3fdc"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/5-create.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-0-system-manager/5-create.png",
+      "bytes": 429853,
+      "sha256": "c4ae1e425e58aa3557e7e2042ce0a4f888fab52d654b239730b311fd1549f770"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-0-region.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-0-region.png",
+      "bytes": 649521,
+      "sha256": "0cfabffb4af58a0beed3a5625a7f79f111cf66e000ac4afc723b8512fb406773"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-1-ec2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-1-ec2.png",
+      "bytes": 447877,
+      "sha256": "d77a7ab12e81167a69ea87faf386789a52b62d8454decc5dd8dedf335ca0b8b0"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-10-ebs.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-10-ebs.png",
+      "bytes": 137150,
+      "sha256": "41d64878887a1b91d048601afdc818e9e62be0b0f63a4b4034a3094b12eeecda"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-10-iam-role.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-10-iam-role.png",
+      "bytes": 153437,
+      "sha256": "de3ed607a95c3316110ffb702658c076165fdceb0ba8f3b0550ddd659cff8e4d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-12-launch.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-12-launch.png",
+      "bytes": 150213,
+      "sha256": "191e42fbf234f581b3470de3541193b3c21eb84722ad0a1ee3568ee7c995659e"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-13-instance-id.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-13-instance-id.png",
+      "bytes": 43233,
+      "sha256": "cfe01a271e5d6a461608f5cc614613fbf830c34a4860635fbf7a9b516d1284f0"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-13-instance-state.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-13-instance-state.png",
+      "bytes": 156932,
+      "sha256": "00bc2f4d36e7eb1a031d3815b30ad6fcf0991223393cbbb8c416cc53452852c9"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-2-ec2-wizard.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-2-ec2-wizard.png",
+      "bytes": 463640,
+      "sha256": "66635ad8a1e53860ba4f177cd6828ae9345d7985014d5c5c9bff2c7b066ae26d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-3-ec2-name.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-3-ec2-name.png",
+      "bytes": 200236,
+      "sha256": "a490c87161311ce75ea24caaf2519b3d0566720a2c1f6446a98a4323159921b8"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-4-ami.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-4-ami.png",
+      "bytes": 241528,
+      "sha256": "5cb5aa98b5bd63a31f73afb59cb0834e37604f1c125147eddd6f613c74189a44"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-5-type.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-5-type.png",
+      "bytes": 145329,
+      "sha256": "01413303402969a10a92341b455252d7dd972dd7336015358a2776bc50f3cf4e"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-6-create-key.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-6-create-key.png",
+      "bytes": 137810,
+      "sha256": "dc546422ebe2ade7b21d1b8124d429d4b7cc619e1f20418ea423f3900920f37d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-7-select-key.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-7-select-key.png",
+      "bytes": 141788,
+      "sha256": "188fb1c6803c1901191eeef5fe074de25ac9cfb27f0866d105ea4159c5aa1e58"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-8-vpc.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-8-vpc.png",
+      "bytes": 110272,
+      "sha256": "6bf139066f254aa6a0c254492a00e203adb1ce3216a2e765c953e0894486780d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-9-sg.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-1-windows/3-9-sg.png",
+      "bytes": 340831,
+      "sha256": "4af46f0dda33cc9345b95a030d559101ef5d2449c99ca7d8a0907e81c736f224"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/1-connect.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/1-connect.png",
+      "bytes": 54682,
+      "sha256": "5b6ca6f0f329268f8c7c9962bfb14a5ec33d8718130ec068d3fea44c713d1ca1"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/1-rdp.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/1-rdp.png",
+      "bytes": 89719,
+      "sha256": "a6d6116dc6d662b2b9ca19ca358d2e0ca937bb0521e41167cc7b70a6848a5162"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/2-gain-pwd.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/2-gain-pwd.png",
+      "bytes": 117784,
+      "sha256": "43be8d175966220c191d26804f88dab52c41574fbee0ab43e47fef49332ce27f"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/2-upload-pem.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/2-upload-pem.png",
+      "bytes": 236108,
+      "sha256": "f58472d305a8439cc34aa8febe5527dfae99c9f308241ee5b47b063372812952"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-mac-remote-desktop.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-mac-remote-desktop.png",
+      "bytes": 110272,
+      "sha256": "e5d00d66798e00e81187b0fdf9e5fe31b22e398fc7f0f81983ba12e939061c95"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-pulicdns-username.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-pulicdns-username.png",
+      "bytes": 177233,
+      "sha256": "5bc5d9b43cb77685d70bce5dc6d44312c644c7ce8d5f404809ee49ad59efdb18"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-win-rdp.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/3-win-rdp.png",
+      "bytes": 22557,
+      "sha256": "3e9975b8a9a22a6e6b6a7dee903567aeb6518b1c9fe84832bab3346f5ab5e474"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-connect-fleet.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-connect-fleet.png",
+      "bytes": 190869,
+      "sha256": "d9583f9397449e68ec6df82f94a08b465d42b46ea6c0eca035893d31747ce851"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-fleet-mgr.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-fleet-mgr.png",
+      "bytes": 171586,
+      "sha256": "6665234c508469c4798b20f38204b4c90799710be358cdb547a3f97459dae948"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-full-screen.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/4-full-screen.png",
+      "bytes": 963278,
+      "sha256": "32a5febd07c298bfe78579f6bbfa10af32a505a492eddab2e38783d690664a4c"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/5-install-gpu-2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/5-install-gpu-2.png",
+      "bytes": 573016,
+      "sha256": "2f99b7f15b294023a0b25091affeaa7bf7a61f6a60c8c125c593c49744c02321"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/5-install-gpu.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/5-install-gpu.png",
+      "bytes": 326033,
+      "sha256": "8a6787def2d5c62ce4ade7080a4cff6c8298b6176c84a8b05be6f2e88888b940"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/6-install-epic.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/6-install-epic.png",
+      "bytes": 3583885,
+      "sha256": "d9755175a306e8c75bedcb14c34d531cc0a2227c6b5efa4f28cde73101811180"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/7-change-language.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/7-change-language.png",
+      "bytes": 84482,
+      "sha256": "49b4bf03d9c5e312bd35e098bd514193e393715fd3887ec9370d9e2f9bd6d53f"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/7-login-epic.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/7-login-epic.png",
+      "bytes": 166194,
+      "sha256": "9f4d6253e24befb1e83f3ba9d4bbcbd33a8d4574482cf885b63b327a909d8d39"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/8-install-ue.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/8-install-ue.png",
+      "bytes": 226428,
+      "sha256": "fa8411629438092fe9edeafcda0e09a7c09ea20db8a127ded6a7c7eee3a823fd"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/9-install-ue-finish.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-2-install-gpu/9-install-ue-finish.png",
+      "bytes": 312306,
+      "sha256": "00762aeafc6858e9b079347c70fdd0757bc605c083cf707b0aad917f23dd3ba2"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-1-user-info.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-1-user-info.png",
+      "bytes": 399557,
+      "sha256": "a86f9008a96c097f297670aa0b21184e32af52bce0a5451fc56235d27d7ce949"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-2-login-epic.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-2-login-epic.png",
+      "bytes": 407750,
+      "sha256": "a10b852fe948cf8516729de1b2aea5d16eced62bd401e065a0b258ef5bed2e11"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-3-epic-org.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-3-epic-org.png",
+      "bytes": 740558,
+      "sha256": "e6f21d870911d323f897131bc4a1564a36fc365b201c9638a9fcae8b1d20a9e8"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-4-gen-token.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-4-gen-token.png",
+      "bytes": 594521,
+      "sha256": "bf203152a09d001f022301cb6ae545d72a297b7c53aa49891d3e3b8d04e5b872"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-5-token.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-3-connect-epic/3-5-token.png",
+      "bytes": 273354,
+      "sha256": "d41776efc24145187701408cb7352765f38369b4dc1c8b25e8db1c2e09a8f174"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/1-ec2-name.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/1-ec2-name.png",
+      "bytes": 149034,
+      "sha256": "e873911bdce67d77332814439b3cdac03806c02b2c72bc359a316a92f568969a"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/10-connect-session-mgr.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/10-connect-session-mgr.png",
+      "bytes": 208404,
+      "sha256": "1c9985424153306dfb1373f5e6431437ab73a8451d5c4a6c26602613910509ea"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/11-session-mgr-command.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/11-session-mgr-command.png",
+      "bytes": 130645,
+      "sha256": "0d800bb66ad9b07a2a5ecb0275f03c5d2cc1e13d8913db6c3a235efeb43e432e"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/12-docker-finish.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/12-docker-finish.png",
+      "bytes": 124495,
+      "sha256": "eafe4a6763df5a0abbeccb9e5ef76e58a0e9c65161eb6e5fcf73516b241593cb"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/12-docker-pull.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/12-docker-pull.png",
+      "bytes": 587451,
+      "sha256": "fa00626453fa425b94b305e726ff2c1642d1d9479dc3e123199f6be20e809df7"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/13-check-gpu-drive.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/13-check-gpu-drive.png",
+      "bytes": 131719,
+      "sha256": "0cf3152a66bb085be408c2348d370b32f0b657a1435ae7e47a341c3b9b4db0d1"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/2-ami-pytorch.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/2-ami-pytorch.png",
+      "bytes": 279416,
+      "sha256": "8b24297e69807cccb1153fe4f2b19c3bf1543341791cd9fcbeb7985f491be43c"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/3-ue-key-pair.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/3-ue-key-pair.png",
+      "bytes": 123540,
+      "sha256": "5f2cc863afef9969390f7e57f4e5e28801a6611b8d9637b8b10f6d1948a28374"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/4-linux-sg-2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/4-linux-sg-2.png",
+      "bytes": 254003,
+      "sha256": "b7ca295c556b80252c83b5dc279fd2ae47675617e0b9b7161162f755b6f38721"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/4-linux-sg.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/4-linux-sg.png",
+      "bytes": 296019,
+      "sha256": "06736e2d8fda6eeb4bfde4090b2b40511850e6523df397144356699402ef1fec"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/5-linux-ebs.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/5-linux-ebs.png",
+      "bytes": 90891,
+      "sha256": "2f06ba0c8555b9c79181753e5b3ee69e2712e2f527b9d88fb1e0ea28a0ee9ef0"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/6-launch-ec2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/6-launch-ec2.png",
+      "bytes": 146899,
+      "sha256": "647970083234374fe41cef9c8edddf07f9b6c895ec0f3702f5849a062cca28b8"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/7-instance-id.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/7-instance-id.png",
+      "bytes": 50453,
+      "sha256": "3b79c729e222d1a5abacfb17717bb8a97a719968d840195398e013fd58396fbe"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/7-instance-state.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/7-instance-state.png",
+      "bytes": 135113,
+      "sha256": "d8d7c54a7e81c12fdbf945a9731ce4a72eef5637868ce48d9f8275113988c30a"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/8-connect-ec2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/8-connect-ec2.png",
+      "bytes": 172079,
+      "sha256": "8f94719f10a2f0595b6f4ab99376e2742f7b9200c623276116a9980ec0d414fe"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/9-connected-ec2.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/3-install-engine/3-4-linux/9-connected-ec2.png",
+      "bytes": 64240,
+      "sha256": "2e1f7e3bcc902610e9c29673fdaad4be0fcca1cf8acd316abc24a86937ccb4f0"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/1-launch-ue.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/1-launch-ue.png",
+      "bytes": 55862,
+      "sha256": "01277bde6e02247767ed54f48048a47b5a3290d25c485207e7e3656445acc81d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/2-create-game.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/2-create-game.png",
+      "bytes": 198582,
+      "sha256": "cb991963626805f8d4bf7b0955c899e03b293ece412bdec4881077b458e29174"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/3-select-template.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/3-select-template.png",
+      "bytes": 1005629,
+      "sha256": "0afb6d065c6d0903c6c3503be0e97184586cabb19e788303516625d8509322bd"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/4-project-setting.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/4-project-setting.png",
+      "bytes": 559644,
+      "sha256": "54991d5b41d731daed3f11c9c809ec027eb1508bb61d05393711930b5926ec3b"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/5-change-language.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/5-change-language.png",
+      "bytes": 1376359,
+      "sha256": "6c769002e567475bb6378820f0f5cddd33a14272098b60ad095a579e163f0491"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/6-open-streaming.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/6-open-streaming.png",
+      "bytes": 1469697,
+      "sha256": "196ac78093f614611366962acfe8a3ce596d7c2075d44ab3d07346e97a5ae54a"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/7-enable-rocker.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/7-enable-rocker.png",
+      "bytes": 1054945,
+      "sha256": "e11e48a0ac5ec35b150e283cdcb68bb99c2659ccc60e377a9b6f429be55e08b5"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/8-run-project.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/1-create-project/8-run-project.png",
+      "bytes": 243767,
+      "sha256": "30c711c45fe87377dd2c4c590cbd776103963ee1304fc63f8c1a460af57444a3"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/1-create-repo.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/1-create-repo.png",
+      "bytes": 265796,
+      "sha256": "a06bb1a6e9a8cdc2939bbc25f3f591f509c5b084623e8c48e4027f665a0d585a"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/2-drop-file.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/2-drop-file.png",
+      "bytes": 1023046,
+      "sha256": "1995ddaabea89caeaa7020eb7047efb5a04615d272ae25a5e035f6f181fb56de"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/2-upload-file.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/2-upload-file.png",
+      "bytes": 541357,
+      "sha256": "2a11414642d99dfefeed813edf0996c3ebb6ec2abbd380e5b673e2b3db37f8c9"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/3-commit-file.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/4-create-your-model/2-upload-repo/3-commit-file.png",
+      "bytes": 95299,
+      "sha256": "4052b9f02feb3eb19f518241bf6070e6993a04cbb4d83876391522021f1313b8"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/1-fork-repo.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/1-fork-repo.png",
+      "bytes": 84916,
+      "sha256": "f9980c8cb9f1f5dd3dd5242549cf4b49021c6a2a729a77974a4e23ae1c14e8b7"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/1-github-page.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/1-github-page.png",
+      "bytes": 706177,
+      "sha256": "a32e8650547cd9eac72fd650529298208564304238b3ebdf28e595b0eb1fcc7f"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/10-run-image.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/10-run-image.png",
+      "bytes": 127800,
+      "sha256": "a37684c1fa32516afc19ca62e8852834dba6b6ac9cc0ff31a3ceb3f726243687"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/11-play-project.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/11-play-project.png",
+      "bytes": 3377544,
+      "sha256": "9be161ded58f948909e383c092f2f935f476dc71b68b64f89d212cef84136504"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/2-stun-turn-architecture.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/2-stun-turn-architecture.png",
+      "bytes": 200847,
+      "sha256": "d47a1faca34a3893eddc11d55d54f8b90782b8066c23192ab6138df11948918d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/3-edit-dockerfile.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/3-edit-dockerfile.png",
+      "bytes": 763914,
+      "sha256": "39c118e0e91583d02791dd6e0e5ddb7acd55988455fe4ba73211d2fcb7d8db02"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/4-your-github-git.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/4-your-github-git.png",
+      "bytes": 914394,
+      "sha256": "5fb8768576d86f5d01cb69a326e75be824a07a801e4a9034a7c207dce29a0abe"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/5-your-project-name.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/5-your-project-name.png",
+      "bytes": 455247,
+      "sha256": "2dd38169d127b29f0237b6d1c7b5ebd55a6e625d0885b578eac5f4d853182d4b"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/6-edited-dockerfile.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/6-edited-dockerfile.png",
+      "bytes": 686632,
+      "sha256": "7f8114c9bf2714aaecfb50db20fd63a151e596480b78681e65be6237bb5d6b5d"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/7-docker-compose.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/7-docker-compose.png",
+      "bytes": 100611,
+      "sha256": "a9b6e100a1e11146dc0c86864fcbddfeae5463892bd79a217aaa6178c00dd051"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/8-image-validation.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/8-image-validation.png",
+      "bytes": 61125,
+      "sha256": "77bc9d94eb05e8a7b1d01ebf467e796fc5c0fc5affcb258c1fa800f554b6a36a"
+    },
+    {
+      "url": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/9-create-image.png",
+      "site_path": "/workshops/glb-ue-pixel-g4dn/assets/5-deploy-project/9-create-image.png",
+      "bytes": 658571,
+      "sha256": "947d11fe78facec149671235de179604dd453dd5378393357d08092fce9b46c9"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/2-workshop-studio/1-main-page.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/2-workshop-studio/1-main-page.png",
+      "bytes": 77513,
+      "sha256": "1ac2d06463a9c6e537667f9fe4bd3fdd3ec2aaeef637eb8e2a5d015e3e72d6f5"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/2-workshop-studio/2-one-time-pwd.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/2-workshop-studio/2-one-time-pwd.png",
+      "bytes": 66772,
+      "sha256": "2e8e3888abb226a31c1322dcf8a25a04d357456665703b63a15904193ea824ec"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/2-workshop-studio/3-input-access-code.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/2-workshop-studio/3-input-access-code.png",
+      "bytes": 93289,
+      "sha256": "317fc07e0bc94398bba0e001fd1e99f975d30e83b55a9dea863460a23cc4ee01"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/2-workshop-studio/5-confirm-join.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/2-workshop-studio/5-confirm-join.png",
+      "bytes": 226083,
+      "sha256": "8a4311cddf46f4c1c88260fad6f56add5f7be905bcaab1976fcfde8c52064ca9"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/1-cloud9.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/1-cloud9.png",
+      "bytes": 116988,
+      "sha256": "b8466a9b632a9c101ff2fcc95b8d7017c4221b33c494773139d0ba950c1c8802"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/2-create-cloud9.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/2-create-cloud9.png",
+      "bytes": 69882,
+      "sha256": "5d83368f7b67da4db6e66bd6e017418c386453aa4bf402b61e45d7d5e2f8fc64"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/3-cloud9-config.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/3-cloud9-config.png",
+      "bytes": 361878,
+      "sha256": "568987feb7502a0a3a532c73119d125ae5b9fc3359e402fdbeea80f028506523"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/4-confirm-create.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/4-confirm-create.png",
+      "bytes": 230409,
+      "sha256": "01f84246874cbcd2aa4b04f51a8170cc6821e0c9d6d7ff7951237d0ad2b424e2"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/5-open-cloud9.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/5-open-cloud9.png",
+      "bytes": 137958,
+      "sha256": "1a70aa041348f2fe09e1c487dd5480a5f49d7038435622140681f7d17090b785"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/6-ide.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/6-ide.png",
+      "bytes": 434223,
+      "sha256": "638e5b6bfe2e0903f6c1acc1f03587cf4e23b13de86662f4d24b688429640aee"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/3-init-environment/7-resize-ebs.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/3-init-environment/7-resize-ebs.png",
+      "bytes": 236934,
+      "sha256": "fd807028b4790f62002d96e6b7f58f4a2b11b5b828d8d499d128ce6b16c2fec3"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/1-package-and-deploy.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/1-package-and-deploy.png",
+      "bytes": 553630,
+      "sha256": "89dd8c6e3f7d42da5a67bd4261117655f66624b992bacd66522e41b4c4466587"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/2-tree-file.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/2-tree-file.png",
+      "bytes": 51031,
+      "sha256": "606e54577478d878e90aa95d5792c1f8994aaf1754abb28cb3aa6347d1296024"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/3-sam-local-invoke.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/3-sam-local-invoke.png",
+      "bytes": 192974,
+      "sha256": "54a8889be8e369e6603d8d8fc838cbbcf8fa3034d8574e6991b67c73a200f3f8"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/4-sam-deploy.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/4-sam-deploy.png",
+      "bytes": 179361,
+      "sha256": "b6cd4a21aca886e44d947f7a4dc6c9ac10c7c987bbd090a0207f23ec431c6da8"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/5-sam-deploy-result.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/5-sam-deploy-result.png",
+      "bytes": 337867,
+      "sha256": "918792ebd59d05ec7b8345f115725737c507047172a5dd46e6d49e65c36008f1"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/6-lambda-console.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/6-lambda-console.png",
+      "bytes": 261074,
+      "sha256": "37659740145b90760454f589e804d38786f51a9320bd5eafdd5893166afbb6b4"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/7-lambda-function-code.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-1/7-lambda-function-code.png",
+      "bytes": 117347,
+      "sha256": "65220112699dc3a158631f555b6147874434d5ff239bb5de181c8c8b4d11c838"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/1-sam-init.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/1-sam-init.png",
+      "bytes": 211222,
+      "sha256": "39216c3d2e32e907370af114616ac047245dd4150be5dcaa955787ed04353c75"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/2-choose-zip.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/2-choose-zip.png",
+      "bytes": 184274,
+      "sha256": "846867915473be6527137b9f927eed1800a7ab9b5bd281f6b72c391c73ca3728"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/3-create-sam-app2.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/3-create-sam-app2.png",
+      "bytes": 229626,
+      "sha256": "d44a0768630a32b2305cab0aecc3b4f5bb4b71dde9bb65a7cfc8eb8bd7b88e27"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/4-lambda-trigger.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/4-lambda-trigger.png",
+      "bytes": 143346,
+      "sha256": "98d8d0ff9867d99541b1a48d2319972481694e88eb050b487dd298e6156a56cc"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/5-trigger-architecture.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-2/5-trigger-architecture.png",
+      "bytes": 197738,
+      "sha256": "ebc0ce39531a4a1c4de307f69bb19b70c79a5820c85f7af4d6bf6291a363ca5f"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/1-sam-local-invoke.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/1-sam-local-invoke.png",
+      "bytes": 178446,
+      "sha256": "8672f5e688a90232c83256e1fc421ab32aef95c76839c765fcb9c0df37e05fea"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/2-docker-images.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/2-docker-images.png",
+      "bytes": 61088,
+      "sha256": "6a9920a138a70bc144afe7743958d177aaf9551276623b17e02e189324a555d0"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/3-sam-deploy.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/3-sam-deploy.png",
+      "bytes": 209144,
+      "sha256": "c2d9fcbd3d4fa0fa0a21c16a37320b864cc90d31256aa50359a47b8525689911"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/4-deploy-changeset.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/4-deploy-changeset.png",
+      "bytes": 138711,
+      "sha256": "192a1df499c4a75d8a96c0b698d10c43c95071d19b31fa89924c4a4f061739ac"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/5-deploy-output.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/5-deploy-output.png",
+      "bytes": 587232,
+      "sha256": "7991f104cbce36e1d7cf1a2930adee2b78589b2faaf13c23cd6e326819833bd9"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/6-view-url.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/6-view-url.png",
+      "bytes": 45328,
+      "sha256": "e71767827b6629d781b238775673b55b1603e04b05af66c183e32bafc5daa6ee"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/7-lambda-api-trigger.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-3/7-lambda-api-trigger.png",
+      "bytes": 156464,
+      "sha256": "bb2b169afdbc41b39cde2d38432d2f7ff237a18db9c6087829360f161dc4d76c"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/1-sam-local-start.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/1-sam-local-start.png",
+      "bytes": 212598,
+      "sha256": "768902328e1f247417c2e908aaec9c1d09c74e1b34b62fbdeef95175586100a8"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/2-result.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/2-result.png",
+      "bytes": 31290,
+      "sha256": "177ae2b24aa74a8787065c182736e726b87ff21b107c1bcdefd01ab8385a738d"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/3-logs.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/3-logs.png",
+      "bytes": 127596,
+      "sha256": "db0f8aefa48df613b65ddd8c3d5f853512e14fe512170bff0f989d0737d1fc67"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/4-update-code.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/4-update-code.png",
+      "bytes": 113312,
+      "sha256": "92fc7d83b91d98f74950a67d9120c27a2676ba06bf55a27182211bb9e2ada021"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/5-updated-result.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/4-sam-development/4-4/5-updated-result.png",
+      "bytes": 31635,
+      "sha256": "3ff9d415b212705fd2cdce9160c1c86de4239b9c3c501a0907ccc8b572458822"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/1-application-file.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/1-application-file.png",
+      "bytes": 83619,
+      "sha256": "9fa9fd53c87da91c88ad9db002e1c097f6f8ec1f5ab7063ebc2c021a031b4521"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/10-change-set.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/10-change-set.png",
+      "bytes": 299280,
+      "sha256": "f556653e8f07c9e9c5386756aaa8631a28053182fbbaf960deb03bb5dec07d18"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/11-sam-output-api-gw.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/11-sam-output-api-gw.png",
+      "bytes": 120944,
+      "sha256": "18fdb1cbeaf031719db3440e2c278a313cbef0ab9f17670f65f78d3f3ffd75b3"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/12-browser-api-gw.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/12-browser-api-gw.png",
+      "bytes": 184257,
+      "sha256": "0e8138dcf5b98545ceaee893434b6fbda54a189a0c8f50b40795cb6b53012fe0"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/2-active-java-enhancement.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/2-active-java-enhancement.png",
+      "bytes": 110694,
+      "sha256": "e45eb5acfc2eec7b472a9e7c21951099e9894ee191d7c96f7502d364036b5ed8"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/3-run-java.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/3-run-java.png",
+      "bytes": 683700,
+      "sha256": "d160af9be22dc2562b2d29cb246f2d2c2d210a728fbff74c558d21a641b39ded"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/4-preview-java.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/4-preview-java.png",
+      "bytes": 107422,
+      "sha256": "500e487bfcf3d5291224d465d4c2bd358dae0f360718a9dd87bea0463007fa6b"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/5-test-hello-world.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/5-test-hello-world.png",
+      "bytes": 62629,
+      "sha256": "040f342a1de57f9d5c68a7c51caafc227dd74744680ec798de26c7a725369246"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/6-sam-local-api.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/6-sam-local-api.png",
+      "bytes": 205300,
+      "sha256": "e59657c2a08e0612a0ea86ff6c9314924f01a204f297fb2656897a7a53246fe5"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/6-test-pets.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/6-test-pets.png",
+      "bytes": 330593,
+      "sha256": "85c0def3ef1d12a495081a05cc889b41aee3b0a70402baf5b35b8b76f24ca671"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/7-invoke-local-sam.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/7-invoke-local-sam.png",
+      "bytes": 116500,
+      "sha256": "3a20c532a81ec18785235702b24f31b9ae3870a74e352704f8a38b944426fa48"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/8-sam-deploy-guide.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/8-sam-deploy-guide.png",
+      "bytes": 239149,
+      "sha256": "088bb21b3eda2dd4afdd9dd273a09ee815f84d7f60c5c5a0133faa2e0493bf24"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/9-set-ecr.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-1/9-set-ecr.png",
+      "bytes": 155132,
+      "sha256": "53f2896b6e5bef34e4d6114fa975cc690ed6f764a09effc17b09d11a102c37b9"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/0-test-result.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/0-test-result.png",
+      "bytes": 20749,
+      "sha256": "37f7d956b5dc139fc12f5e169d6dc9abd1c942209a74d517cfc2f4a73efa91cf"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/1-sam-deploy-guide.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/1-sam-deploy-guide.png",
+      "bytes": 301131,
+      "sha256": "a2cfea7a5a5d1c77b5642b0c59a6066748f8d4dd5cc014dd726e0ad254b1f174"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/2-change-set.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/2-change-set.png",
+      "bytes": 154200,
+      "sha256": "67744dedc5e0c36790837cd4c414b344cc434d6eb5e085864f375c3077b59c90"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/3-output.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/3-output.png",
+      "bytes": 138185,
+      "sha256": "00ce80940023c36a74fb71fe90d636e48c021b05ca2c6f6b8a5dd535d0f3fc89"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/4-results.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-2/4-results.png",
+      "bytes": 41178,
+      "sha256": "28afe88acb82a80b2d76468ddf08abe9a2e157215360465e4129311784b6d325"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/1-aws-sync.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/1-aws-sync.png",
+      "bytes": 223576,
+      "sha256": "65df2e84190002ca169b5f03bfcbfce723485ce6751e6be94d9015af36b00b85"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/2-output-api-gw.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/2-output-api-gw.png",
+      "bytes": 166162,
+      "sha256": "19ca2cb56d876bd1b215df9f6c3876e8babd2330dc4ce4712d109329dca98403"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/3-api-gw-results.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/5-3/3-api-gw-results.png",
+      "bytes": 40800,
+      "sha256": "fd075c7b0e81e4b94871f3aa2575b96eefbece98705597e81755856447efc2a2"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/lambda-adapter-overview.png",
+      "site_path": "/workshops/glb-sam-lwa/assets/5-lambda-web-adapter/lambda-adapter-overview.png",
+      "bytes": 235494,
+      "sha256": "e3ab19f658a1f04944b96983522bd61f97ed65d62d54b5222e0dec1ba97acc4a"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/code/flask.zip",
+      "site_path": "/workshops/glb-sam-lwa/assets/code/flask.zip",
+      "bytes": 4839,
+      "sha256": "63e8649950fe0cfccd70c97989ae60074019a43c16e724b23865d452850debfd"
+    },
+    {
+      "url": "/workshops/glb-sam-lwa/assets/code/springboot.zip",
+      "site_path": "/workshops/glb-sam-lwa/assets/code/springboot.zip",
+      "bytes": 18462,
+      "sha256": "490e5e2116c1b775e4bc972d7b68d85337ea2c234b09a83b54fb1c36aec1b974"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/1-sevice-quota-check.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/1-sevice-quota-check.png",
+      "bytes": 79253,
+      "sha256": "afdbd9fc2d7f9eaf5d61ab9fa67263019deb8f75c31a81f9975aedaeb33c3491"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/2-request-quota.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/2-request-quota.png",
+      "bytes": 141146,
+      "sha256": "8c7ce3f70e69278855539211a08e037e1900a1051db45d25b4cc8bda5261460b"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/3-input-quota.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/3-input-quota.png",
+      "bytes": 312410,
+      "sha256": "929f1dcf38d73ddd6c693e68583f2ef9089850486c4460eb6fffa67c676960e9"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/4-notebook_request_qupta.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/4-notebook_request_qupta.png",
+      "bytes": 53867,
+      "sha256": "913a0e01878c3757032b28f95f767052ded22ec4acabceff589747b945ff8ffb"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/5-notebook-input_qupta.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/5-notebook-input_qupta.png",
+      "bytes": 99742,
+      "sha256": "48b8926ca2cf918db2be8cc331154a92ff55d1a7607761b2c14e61357264b008"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/Architecture.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/0-intro/Architecture.png",
+      "bytes": 119589,
+      "sha256": "7c320d620752924a7c3c9c9abb0c047900175bb39072a7127fc1930eb4a79016"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/1-region.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/1-region.png",
+      "bytes": 649521,
+      "sha256": "0cfabffb4af58a0beed3a5625a7f79f111cf66e000ac4afc723b8512fb406773"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/10-rename.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/10-rename.png",
+      "bytes": 53586,
+      "sha256": "ad135759c533d2e8d0a991ac555ee06b8fc18820df312cb1830c89dd353abc0e"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/11-click-notebook.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/11-click-notebook.png",
+      "bytes": 64640,
+      "sha256": "e572b6f32ee5f00e0ec72e6fee77172476b7d4ca38838138601ee42bcbe4e024"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/12-kernel.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/12-kernel.png",
+      "bytes": 256876,
+      "sha256": "492befc882f8cd1474cb77d89e1a0eb0d36fe7a474ac7e3fbd585c28988dcc19"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/12-notebook.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/12-notebook.png",
+      "bytes": 319593,
+      "sha256": "9735592da96b29256b02d6b82be27df60b6efdcaf72be9457d4f9575f8c31de3"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/2-sagemaker.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/2-sagemaker.png",
+      "bytes": 160516,
+      "sha256": "f71a089cfb14e1938db4f51af127f965c508198de7e257831fa1b09e64f3a64a"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/3-notebook.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/3-notebook.png",
+      "bytes": 430369,
+      "sha256": "efd148a2d7303a1cb20a8b3ec41679f14779e694361a30b374ce6acaf61e2031"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/4-create-notebook.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/4-create-notebook.png",
+      "bytes": 28530,
+      "sha256": "82f4affbd8c2d51585e5da92f1ceff971b095b74eea299c52e508b9e63b78abe"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/5-notebook-info.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/5-notebook-info.png",
+      "bytes": 755324,
+      "sha256": "0e6bb26551bfba247207367e7c7cf2b4b108f6aef9f1d3cb25d9b609fb7f6e03"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/6-notebool-create-role-2.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/6-notebool-create-role-2.png",
+      "bytes": 304104,
+      "sha256": "d65208d9720bd31131b210875a6b0c92c338ed7f66215f423cec7267c53e7d62"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/6-notebool-create-role.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/6-notebool-create-role.png",
+      "bytes": 105720,
+      "sha256": "e8295aeae7708e72c51a357f5e29af440a05595a7e2e3cade763a0343308dccf"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/7-instance-created.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/7-instance-created.png",
+      "bytes": 210291,
+      "sha256": "944e9df100649534fb85b8d9a42cc512d6baa887db6b8fc060a6798b6281a5e9"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/8-open-notebook.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/8-open-notebook.png",
+      "bytes": 143900,
+      "sha256": "5d26169e81bb4c63b06b0b0be4808af12e6e23cd60e338b99ca92d3d4d30b985"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload-2.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload-2.png",
+      "bytes": 141848,
+      "sha256": "c7da5daf221ae9b2adea6a7bc32ddee63233f1511f5277f3934fe724ed25fad5"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload-3.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload-3.png",
+      "bytes": 331113,
+      "sha256": "f3ae909d1b98bcff08137e41a80c41e3a2067c291380a404e6075cf31c4c8e67"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/1-create-notebook/9-upload.png",
+      "bytes": 30797,
+      "sha256": "914e2ac67560ef6cd3c5408546df62bd66a582b6382e2be9e07821f7fe4f6bac"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/1-cloud9.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/1-cloud9.png",
+      "bytes": 148397,
+      "sha256": "0e659c8adf808fa9487a71a2778fc0311bf8adb7a710df2e0fab588849ce9303"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/10-install-boto3.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/10-install-boto3.png",
+      "bytes": 279299,
+      "sha256": "1ec9479fda9cb98fdeb581afc5374d022776257c34ff25671ba96eec7c7f74b7"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/11-run.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/11-run.png",
+      "bytes": 235382,
+      "sha256": "c88af526242d239ad27caff13e16bf20ec56cfe52dc91236804d92e2b37ecd5e"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/12-run-8080.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/12-run-8080.png",
+      "bytes": 122367,
+      "sha256": "ca1902e3b89184a7b4b933ae737b6bc968ec6fdd6c0633234843ed8e59f46ab1"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/13-web.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/13-web.png",
+      "bytes": 111574,
+      "sha256": "62d9c0c1ee6dadc368cba6364b034a59c7e1d227cb7c95cffc04d22e84b4bf9f"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/14-preview.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/14-preview.png",
+      "bytes": 129398,
+      "sha256": "756d73577e781aa5b8d72f6189dbb663d2fde2695e49331065c25533192c08be"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/15-image.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/15-image.png",
+      "bytes": 3280374,
+      "sha256": "e659d724a6d58b4e046579544273be8730cb7fd98d898663c3793159a3d850fc"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/16-clik-preview.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/16-clik-preview.png",
+      "bytes": 234200,
+      "sha256": "4d2f62c08f738c5b4be2bb161cbc99d003b1619e97a128a5f7de1d0b83d58391"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/17-preview-app.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/17-preview-app.png",
+      "bytes": 134648,
+      "sha256": "a1a35656edb6b23487d704055eae8b8d33e60335353ff4617a37ab4623ee89ae"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/2-create-env.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/2-create-env.png",
+      "bytes": 287909,
+      "sha256": "bac88a47ebe415b7dfb6ec68fd090ffcb0b5191a88386d651ce083c76e7ce117"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/3-env-name.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/3-env-name.png",
+      "bytes": 85868,
+      "sha256": "215926cb3b53df71b2f78b05f03c61da00c03b806f4c642a7f2a17378a3422bb"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/4-create.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/4-create.png",
+      "bytes": 268390,
+      "sha256": "5f1fec0765ca4bba65595ce7e42ac5260860ae4ec395c9492d3e987dc261f7da"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/5-open-cloud9-env.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/5-open-cloud9-env.png",
+      "bytes": 125841,
+      "sha256": "31ef2202e263daca875a032db4fb648d4e845ccbd108a9506cfa450a82dedbc3"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/6-cloud9.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/6-cloud9.png",
+      "bytes": 484102,
+      "sha256": "3dce7ab8fb6b5de2630413d8ebabff4b891cbd28212eb77c83838dae0c2f2f89"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/9-install-flask.png",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/2-create-cloud9/9-install-flask.png",
+      "bytes": 492118,
+      "sha256": "f58af4c4cce05257009471e91f304d6c078e9ced8b0934187a04c8acd8af9951"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/code/SampleWebApp.zip",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/code/SampleWebApp.zip",
+      "bytes": 355166,
+      "sha256": "d725879102fde222fb6f1da26a3ab5d2cc7e105c3dddb6c585fbb890133753ee"
+    },
+    {
+      "url": "/workshops/glb-aigc-sagemaker-web/assets/code/notebook-stable-diffusion.ipynb",
+      "site_path": "/workshops/glb-aigc-sagemaker-web/assets/code/notebook-stable-diffusion.ipynb",
+      "bytes": 20088,
+      "sha256": "057926ee30a9f924cccb018aacce0e53142c406ad2084fc99659c0346cf4d8d9"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/1.Architecture.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/1.Architecture.png",
+      "bytes": 381231,
+      "sha256": "066437cd8d6395010b21be7f7a9b152b7685755e67e8e70367286f03b1f0d131"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/2.Limit-Check.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/2.Limit-Check.png",
+      "bytes": 150929,
+      "sha256": "4e6da91e6f0ec71d066c3bdda1dd8f742a4acdf79c58cad9a8ee60056e05b263"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/3-submit-request.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/3-submit-request.png",
+      "bytes": 257315,
+      "sha256": "3bea2e598b34801528883b70ffe05f069d4f8b66679bff75d37819fe6031dc33"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/4-check-request.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/4-check-request.png",
+      "bytes": 101657,
+      "sha256": "3e63e6fe2cea2b4948b807cae3e58926b307b64777953ab29b0942f4f9e7a320"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/5-ticket-info.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/5-ticket-info.png",
+      "bytes": 555107,
+      "sha256": "f3cf7b926a02454040065e182734643cd94ae7dcb168c8cc84047730ffee1f2b"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/6-contact-support.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/0-prerequisites/6-contact-support.png",
+      "bytes": 1841297,
+      "sha256": "eb76f810c2a3687e94054b694b66546544f8a5637728161e5138e606e4c880da"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/0-region.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/0-region.png",
+      "bytes": 66079,
+      "sha256": "7ebf2ed1e7587668cabd7e97ab6cfc716433a46ec26af75c8d5c50488a592276"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/10-key-pair.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/10-key-pair.png",
+      "bytes": 166002,
+      "sha256": "c88419838b1f0305bcc1d92c492371f7c4366d2a53246158a7cf599b324e6222"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/10-network.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/10-network.png",
+      "bytes": 230882,
+      "sha256": "58474ef166a499ec70afc60272865e25064faa32b3a36c3a594ff501769f4f8d"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/11-ebs.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/11-ebs.png",
+      "bytes": 63336,
+      "sha256": "65e2c6dff619f449f77a83cee5d4bd977bf3b2eb78c2723330ae58d957b03716"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/12-launch-ec2.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/12-launch-ec2.png",
+      "bytes": 421299,
+      "sha256": "a0614d8846bf73b2e88717f9df853d0d53b79aacf24a876cb1cef725859c2c8b"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/13-instance-id.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/13-instance-id.png",
+      "bytes": 41503,
+      "sha256": "30035214615a37edc769eca6b16d0fe0cc1546721d418c108ac049ef120469fd"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/14-public-ip.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/14-public-ip.png",
+      "bytes": 439011,
+      "sha256": "11925f7e173f0a32866cc10fb1af5f074a182e30bd69385197fea55bf716a724"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/15-browser.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/15-browser.png",
+      "bytes": 11803,
+      "sha256": "5cbddcefc984d06038a78387f287999098e56a675ac2e8d2cd35f4acc9ee2b62"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/16-webui-login.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/16-webui-login.png",
+      "bytes": 143916,
+      "sha256": "a8546f3c5cbc3627113c7823e40f951835c91cd75faefdeec56829e06d8bf07d"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/17-instance-id.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/17-instance-id.png",
+      "bytes": 433365,
+      "sha256": "3121cdaee6dcbfa4ec631b99f35bec3c899eb2fe60bdc9e65177e1156edb89f2"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/18-webui.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/18-webui.png",
+      "bytes": 574356,
+      "sha256": "5b2556fb6930348cd2e53fe487da1f553b2976fd061a7f640700bb25778cba08"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/19-login-page.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/19-login-page.png",
+      "bytes": 671310,
+      "sha256": "6adf435f227972dfbf4314b4d57708d3cd94dea5cdfccc6eff7c0831aba602f2"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/2-marketplace.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/2-marketplace.png",
+      "bytes": 583784,
+      "sha256": "ecb2ccbd57b839aeac788cef706470960d71eab23156c57331e251d20b9270d8"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/3-accept-terms.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/3-accept-terms.png",
+      "bytes": 460364,
+      "sha256": "7cf9e728af50a170f360286e3a19e76b09f11315203bd9e6dd96c713025b6a61"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/4-pending.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/4-pending.png",
+      "bytes": 417832,
+      "sha256": "831ba1c2c0ce03e90d33dd0b253be0d4ca10af046b412e0291fe697627435fde"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/5-subscribed.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/5-subscribed.png",
+      "bytes": 422966,
+      "sha256": "c3fea7c06e6ee33b20dfd15d0cdb82b47037948c17da3f2eca24ace2c4196e79"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/6-deploy-solution.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/6-deploy-solution.png",
+      "bytes": 461580,
+      "sha256": "d309539c6404fa4c128c22b7bc6d1891dc1b1b86fff24ea144dbe8796f2e1c30"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/7-launch-from-ec2.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/7-launch-from-ec2.png",
+      "bytes": 232402,
+      "sha256": "ee0bc433b8415b353d2322739aec20a9f39b41e76d0ea1d29690267d0ad614e2"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/8-ec2-name.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/8-ec2-name.png",
+      "bytes": 377481,
+      "sha256": "7d5ef4ee107e0d17950072438fca8ae7ae9092fc5f69e343dea79d53c4946b2f"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/9-instance-type.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/1-subscribe/9-instance-type.png",
+      "bytes": 77564,
+      "sha256": "23133f640ea46f0f4a5a4c547b7be9f70855aa49084ea2df02f7234d4645cce6"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/1-example.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/1-example.png",
+      "bytes": 7954561,
+      "sha256": "77a1a0963b5314f9b7c47444af2d916e97a49c5e6656959acc1857fa538dfd6a"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/10-tx2img.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/10-tx2img.png",
+      "bytes": 518903,
+      "sha256": "b944aa13d83e927dbcaf3fd93ae26587eeee9b246ca357d5d13708d7ee0e9de3"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/11-qrcode.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/11-qrcode.png",
+      "bytes": 2619326,
+      "sha256": "c28ef599c85bbb38768d7371a88464252d665f228b078de1d4754df6e1675c69"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/12-xyz-plot.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/12-xyz-plot.png",
+      "bytes": 249539,
+      "sha256": "ea3923c446a5ca95246ae7694a9cf864ef08416577487ce6f5bec275f849d93a"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/13-grid.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/13-grid.png",
+      "bytes": 25932711,
+      "sha256": "59bc37e8615ffa4b9c01a70461106f95c21173cf2faf9a83f133a4571d21adbb"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/2-example.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/2-example.png",
+      "bytes": 1708737,
+      "sha256": "b3b439d9f61f2ddab2ac213974d766c21d56bc82688e01d546c7c0084ddaaac2"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/3-qr-code-basic.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/3-qr-code-basic.png",
+      "bytes": 477804,
+      "sha256": "14fc6d25c9b4847b264dbb74d1a282f1c01e4ce6dd9121bdac3d665ce7adb0c8"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/4-compare-qrcode.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/4-compare-qrcode.png",
+      "bytes": 148066,
+      "sha256": "b14befc09ef33a72ab81100a5171ec97cf07def4aa8b280c69badc43463086e8"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/5-qr-code-style.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/5-qr-code-style.png",
+      "bytes": 232410,
+      "sha256": "381a75d3b0afdbd45355824f73380ed0c17c036c8e77887577f1409d1bf8bc00"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/6-qr-code-style-controlnet.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/6-qr-code-style-controlnet.png",
+      "bytes": 1783090,
+      "sha256": "db85bbd6f1f81bbc033d8ef918a79c0f78507721098d1f78d11a102e71f7ae91"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/7-qrcode-toolkit.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/7-qrcode-toolkit.png",
+      "bytes": 1151752,
+      "sha256": "b22efe1d242853d3baf6eadf95a767ae74f4e8452ee9e1408d0dc96fa70412df"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/8-blue-sky.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/8-blue-sky.png",
+      "bytes": 717699,
+      "sha256": "2fff4065326d35cdac82892aab6e781b6649c544172e830e6986c824b0ed1bde"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/9-controlenet-qrcode.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/9-controlenet-qrcode.png",
+      "bytes": 748094,
+      "sha256": "4b6a20c67a4100610dfc59f8479142379a10df7223846d4cd804aff696d4d7fe"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/controlenet.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-1-qrcode/controlenet.png",
+      "bytes": 47911,
+      "sha256": "c605b8e8b23fc5600a3d991a49dff34c843dd6740c93bd6f4941e9f76dd87d96"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/1-open-pose-code.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/1-open-pose-code.png",
+      "bytes": 75071,
+      "sha256": "0be6d673fc520868d45ce4f3d9e7c117525bcf76ae32cee1d9e37f7386a79f04"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/10-set-hw.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/10-set-hw.png",
+      "bytes": 341267,
+      "sha256": "5c84e2b2c4406184f92772add0946b7f1c7dc8dbd1deec81d33c703361c4fabc"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/11-set-prompt.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/11-set-prompt.png",
+      "bytes": 345535,
+      "sha256": "2bfc0a0501d41995e5db5f5a4bc98679f4bf38486117c1a2951f76cef74384ef"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/12-openpose-qrcode.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/12-openpose-qrcode.png",
+      "bytes": 2321647,
+      "sha256": "4e4fc5f68b496370bdad88ae31320d093e3ca4ed044d1c330c8b0afb414bedcf"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/13-lying-sleep-openpose.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/13-lying-sleep-openpose.png",
+      "bytes": 85108,
+      "sha256": "a198e5ee3ad7c9a0ea42abc5d2fe2537a0c9bfb640cf25952552d785b3a4c081"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/14-openpose.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/14-openpose.png",
+      "bytes": 1019092,
+      "sha256": "3e08975010d3a1aeb4aa35f32491110e440c2d1ff00626009f0367a70c9777c4"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/2-girl-with-car.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/2-girl-with-car.png",
+      "bytes": 796475,
+      "sha256": "bebdc3be013acd4b6283be45e3e2331ce82adbd0562ab8bc4f7da7aefdd28e87"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/3-setting.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/3-setting.png",
+      "bytes": 321799,
+      "sha256": "083a0d8aacced9357746de598f170a0e48011182c93690a331342750fd83a8b3"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/4-set-multi-unit.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/4-set-multi-unit.png",
+      "bytes": 309468,
+      "sha256": "396444d0d69576edb5579cc7325b7bd48758a45e0b85bdf7f24f758f7d497f6c"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/5-reload-ui.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/5-reload-ui.png",
+      "bytes": 601268,
+      "sha256": "8867dcc27b338d230c45e65e1886fdba175540b98586306aa03d10a764d5370d"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/6-check-result.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/6-check-result.png",
+      "bytes": 131035,
+      "sha256": "e94d4314ea291547e89e94a187a97fec873c773cab2793b9978344145fdf7ffe"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/7-import-pose.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/7-import-pose.png",
+      "bytes": 648786,
+      "sha256": "21008553dd392adc92dead34333d61adf4159389f2ea73ac634e8d80eebad725"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/8-enable-openpose.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/8-enable-openpose.png",
+      "bytes": 348778,
+      "sha256": "2372ff18b59b7c02581230499a2056e4bb0bdbcecb20ac97c3f67dfbdddca297"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/9-enable-qr-monster.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-2-openpose/9-enable-qr-monster.png",
+      "bytes": 447111,
+      "sha256": "2c6f2747d5f0a0e7573b9753a5a25098b05991dbac80f5c6a343ee1424fb20c5"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/1-cake-example01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/1-cake-example01.png",
+      "bytes": 262321,
+      "sha256": "5541a8f3714acd7dbaa61c713fea1ca2d49bec09385e4a2c2f4bf1a293f155a5"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/1-cake-example02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/1-cake-example02.png",
+      "bytes": 285367,
+      "sha256": "7b3cae71be22f3afb603f70d489ec8b5ac83ea9a2cee4a7f102f39018e298787"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/2-sea-example01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/2-sea-example01.png",
+      "bytes": 753310,
+      "sha256": "3662607055ff59563c2056ecaf191bfaec72089c1484b63ee2a5ee3cb2f5e3a9"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/2-sea-example02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/2-sea-example02.png",
+      "bytes": 800766,
+      "sha256": "3420b89d61fea1bff8d3a80a7d60f8ad4619124a14ad5280d1e4b9f14ffc00a5"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/3-Tianjin-example01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/3-Tianjin-example01.png",
+      "bytes": 814945,
+      "sha256": "8904635aa38cd45b2eab02886077b1731167adec723d77d80c97d486eef0a5e5"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/3-Tianjin-example02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/3-Tianjin-example02.png",
+      "bytes": 709273,
+      "sha256": "0638ea0dd5651dd99dfde5ec6b1e2930fe7ce2dad110318cb0ed9ee2cf26e218"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template01-Cake.jpg",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template01-Cake.jpg",
+      "bytes": 20774,
+      "sha256": "cd11b5501c165b4f5afc2c11a5560c041b6cafaaa4cd7dd2b0948562f532e048"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template02-Sea.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template02-Sea.png",
+      "bytes": 249479,
+      "sha256": "cc094dd494cf28b0b02a7fcf0a0633b6b40d9946f641185b74c04e4658f36513"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template03-Tianjin.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/4-Template03-Tianjin.png",
+      "bytes": 46107,
+      "sha256": "055f4e8d667f8982b240eb104cd03ce6dcb44770a640862807fb67e5e517e19c"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-1.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-1.png",
+      "bytes": 142152,
+      "sha256": "594552a5ac8ca3d9fac14509a9d522ad2cfadccf78bf5c80ae1538dcd42d5f42"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-2.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-2.png",
+      "bytes": 377426,
+      "sha256": "ef0e8e957618511feb1b81bcd6bad41352086818a7459a8f68741d1da88d7214"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-3.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-3.png",
+      "bytes": 180462,
+      "sha256": "b44f279fc162d33cadbfd92b03182ca65289a657b8e4b01aa28ffa5d5a79d40f"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-4.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-4.png",
+      "bytes": 494283,
+      "sha256": "a8c893bbe7ad011c5efd52dd646b89e6a71af0615c56bd423375562a2a3aa7c0"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-5.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-5.png",
+      "bytes": 205961,
+      "sha256": "9200d83821b0ba69c88803b829f5379463e6df83f6d11dc7e09a344472868e5e"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-6.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/5-SD_Setting-6.png",
+      "bytes": 366252,
+      "sha256": "0ee41b3282bc4961ded81b74c405a885d01213eb6c1d48b95df771079e9fcad0"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/6-AI-Cake.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/6-AI-Cake.png",
+      "bytes": 1589650,
+      "sha256": "2ec228ca59bea6dba3539ad5271c358fc1dcdebb5b65dfa8cc15492daa52d782"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/7-AI-Lake.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/7-AI-Lake.png",
+      "bytes": 1721131,
+      "sha256": "ea285137ef3beefe4686b36de6bbc98a6957704d8b33f1955127766265fe8e56"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/8-AI-Tianjin.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-3-front/8-AI-Tianjin.png",
+      "bytes": 1554954,
+      "sha256": "fee4997b8db0fcc9b96c02ad8e5a61b0b1088713ea49e2d0e316979c32a462d5"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/2-controlnet/1-controlnet.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/2-controlnet/1-controlnet.png",
+      "bytes": 2921716,
+      "sha256": "507d5950e1abdb85ccf1f5d646f8417ad365f38607242d8cb9224883a4ceee94"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image01.png",
+      "bytes": 1745035,
+      "sha256": "ea279ad10ee03a71c43bbe083293f0af14f4d635687c3df9e8ead94a4b17d009"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image02.png",
+      "bytes": 2111725,
+      "sha256": "75fb3135d2fd4c575766f246b5f246d3ab622a7407bfc3129e51a591b6a2ff6b"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image03.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/example-image03.png",
+      "bytes": 2241816,
+      "sha256": "b9bcc9ac41cbb2d7f800e559bdc6c1b53156f5da71895e42e706f21faaa43557"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-01.png",
+      "bytes": 298107,
+      "sha256": "3a5b70c63a1ccfb89c94dba0debd50d9a0555f8a7d7798016e3efbeb5d264ba0"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-02.png",
+      "bytes": 490260,
+      "sha256": "2d6fdaefdebb92c7ca34db76de09e5e1f798c634eb2c0682b8e359ca5d2026a4"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-03.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/webui-config-03.png",
+      "bytes": 1015974,
+      "sha256": "482aca1899719b10746711e51b7dc662b3a74071705af83ae5ff34df2e208e3a"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-01.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-01.png",
+      "bytes": 43320,
+      "sha256": "fd313a96d47c5afa9fef3d7effa6a90e24e2f6e77e80895a7355f9b3084fa61c"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-02.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-02.png",
+      "bytes": 10304581,
+      "sha256": "ccb64916b6a0e103d8666def41849dad3cf1ae549431feb46fff7665b4fb11d9"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-03.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/3-newyear/xyz-plot-03.png",
+      "bytes": 8007311,
+      "sha256": "7de724c4a5c1ba3c6078baa981854ef89174d578f47d8e254e9f0176096c91eb"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/Delete.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/Delete.png",
+      "bytes": 51111,
+      "sha256": "993e772850cc41c260bf7fbcb2fe280e99a1887204c886d3577a83d949977bc1"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/example/example-qr-code.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/example/example-qr-code.png",
+      "bytes": 90197,
+      "sha256": "286d0ee9630610e3a1c17db96f28b2ed58126850fb1ddf3b5ca29d64934151af"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/example/pose.json",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/example/pose.json",
+      "bytes": 1035,
+      "sha256": "1b4df69aa837bdd27bd9202a1bc7cf90dd2d6bc47a5f69a97934fd5050c4eefa"
+    },
+    {
+      "url": "/workshops/glb-aigc-ami-workshop/assets/main.png",
+      "site_path": "/workshops/glb-aigc-ami-workshop/assets/main.png",
+      "bytes": 8890366,
+      "sha256": "5777a235ced15875bdd7034156aeae7a7a9ffcc4405e8919fa894c7dcc564bea"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/0-images/CN_EN_JP_VN_welcome.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/0-images/CN_EN_JP_VN_welcome.png",
+      "bytes": 97934,
+      "sha256": "3cb58780c4fd8d85e3f3b6239ddb4973a138afcd527ba9e2fe6cfdb88a6b206a"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/0-images/invoice_example.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/0-images/invoice_example.png",
+      "bytes": 746122,
+      "sha256": "b380e5c24e5ce13c2fcb948b3d8a958768e2091772ce2ad1e9c95becd8c7cf7b"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/0-images/invoice_template.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/0-images/invoice_template.png",
+      "bytes": 734653,
+      "sha256": "6449a3ee36d5beb83f067708327ac7d10bbfabdcc522699776d947e632e484bc"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/0-images/object-detection.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/0-images/object-detection.png",
+      "bytes": 1136274,
+      "sha256": "ab9b74e4a68e7ab1fb655d0aa27b70b07b51753ca9db214da39116c88b65bd19"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/1-architecture/1-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/1-architecture/1-Picture1.png",
+      "bytes": 315613,
+      "sha256": "8fc6ff9687e1d3293be2862d00e2ec93382bd4daa704db5d7a8df080c81f3672"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/1-architecture/1-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/1-architecture/1-Picture2.png",
+      "bytes": 385152,
+      "sha256": "eeedc05d7ae02b537705369439653442d192242758dd59c40883a6c39385f219"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture11.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture11.png",
+      "bytes": 126503,
+      "sha256": "4d84703160ee1fc8e438bf681b743e06bc39e749e39395943c6f29d6871ad90c"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture12.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture12.png",
+      "bytes": 85181,
+      "sha256": "884590ea9c104e89981d8067d24ae4a3d1fb663fc1ed9e5fad65873275f34997"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture13.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture13.png",
+      "bytes": 245739,
+      "sha256": "a5dfa81a98c0ecaeef92971d7e60af1f2dae7b4abe11b194bd5f450597873a07"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture14.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture14.png",
+      "bytes": 280413,
+      "sha256": "82df051e8bf2787b2cb39a76cb61d8a8bd54f9415f19bcef310246503ba5ac75"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture15.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture15.png",
+      "bytes": 311078,
+      "sha256": "4e7be9745b9b7e229ed43c47af144422e45294cfddd8e47d3b05af604797649d"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture5.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture5.png",
+      "bytes": 162812,
+      "sha256": "7d03159de444e2906d9f16fe0adee95dc5765daff34a587d65b799f10d571677"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture6.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/2.1/Picture6.png",
+      "bytes": 239450,
+      "sha256": "bac24124ffcb565f3c0c9343ae9a1d7ef237ebe0dbe2ae25777aaa8797dffc3a"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture1.png",
+      "bytes": 251765,
+      "sha256": "4d1779a17e810853763b2da22e067ff3f3a1d6275e26a894855ccf56c7fd5633"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture2.png",
+      "bytes": 69299,
+      "sha256": "e192dec338089fe3eae6c268634a66615a0debc6cd4b4f7b173040dd29932fbc"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture3.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture3.png",
+      "bytes": 972418,
+      "sha256": "97b9a19e8e8daae7d0ef241bfeea0821b0d9ed51da50eb76d9674b5bd6973df1"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture4.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture4.png",
+      "bytes": 129370,
+      "sha256": "80403682c1441dc41c9b2a48f527ed9620fdb1b381912b83f8063dd68ac508c2"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture5.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/2-deploy-aikit/glb/Picture5.png",
+      "bytes": 103055,
+      "sha256": "31ecf7d46f72ebf52e850513aaf693329fd30fa392ed874044148f9171465fa6"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture1.png",
+      "bytes": 168723,
+      "sha256": "8af6f5656239dfbbfef8096c1a1aeeea6f8520a8740cb4674a93a2f3e040ef7b"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture2.png",
+      "bytes": 371175,
+      "sha256": "f902bcd98937fe4cd93294385620888b2988913f166bdec5de6202a12376abf5"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture3.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.1/3.1-Picture3.png",
+      "bytes": 132562,
+      "sha256": "0a20cee9ef526cfa980c5be97950fdba9d21161f31c232f7195402fdc6d4d433"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture1.png",
+      "bytes": 50071,
+      "sha256": "ebec97a6a00c7a101c8c1926e811578fc09083a8186b2a99d501bf977e35a0de"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture2.png",
+      "bytes": 49320,
+      "sha256": "158a6e2feaf75e38ee978d625a0cacfc484c9f41cab201c77a4ebdfb13bd3b37"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture3.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture3.png",
+      "bytes": 63952,
+      "sha256": "ba91ce2a0cc9ff28297b607a50f14325442c14e4c68f54ae6be8c1637e46914e"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture4.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.2/3.2-Picture4.png",
+      "bytes": 89591,
+      "sha256": "1dd2cca7c078392aa3e70af22ef2db8951ac701517fe83f24f698d9881bf15cc"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture1.png",
+      "bytes": 27502,
+      "sha256": "920f7b0574b7c1a716af1e3579be7c79c6bec6216ae52184562355e330c4642c"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture2.png",
+      "bytes": 866202,
+      "sha256": "e690838a33a8eddbf2f505695e93521a76fa8f73471a94ac4b3aca9aa7960cae"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture3.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture3.png",
+      "bytes": 791884,
+      "sha256": "85ccec44eabb7fabf568cb6e4207990716a832580dca5f3be5e5f0ece1441367"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture4.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture4.png",
+      "bytes": 115710,
+      "sha256": "f3f7560be447fddf37ef58cf3ace6b3691fea65f80a45a11dcc898cce7445066"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture5.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture5.png",
+      "bytes": 99686,
+      "sha256": "7960bb1f371b8c785b093fac1b5db51a6431bd533b791cbf63c315f4969e7907"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture6.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture6.png",
+      "bytes": 274992,
+      "sha256": "a92c4c4a8578c346118e4d75ab6a8b4af7be0f9579d3ca03b4f19cedeef8eb0b"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture7.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture7.png",
+      "bytes": 260101,
+      "sha256": "b7ad9b4445e4e6c1342902b435a6afc6569d3790bea3dc42fbde57a43b971e71"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture8.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.3/3.3-Picture8.png",
+      "bytes": 37150,
+      "sha256": "cfd76732c1887e7de718af23b6a6d768089360d8b952a2619d10a7508e1f9e31"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.4/3.4-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.4/3.4-Picture1.png",
+      "bytes": 1136274,
+      "sha256": "ab9b74e4a68e7ab1fb655d0aa27b70b07b51753ca9db214da39116c88b65bd19"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.4/3.4-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.4/3.4-Picture2.png",
+      "bytes": 77545,
+      "sha256": "b370e7a3b7955b9ac058a44a747065bab5180826effa19cfa1ec1f6a5915f8a1"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture1.png",
+      "bytes": 76194,
+      "sha256": "a0f888247cd3e144cd48981cf18fe7fa26819437ddbb566de6d4927aa015a2a5"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture2.png",
+      "bytes": 76464,
+      "sha256": "87f940be2c41d69b15616c423350eab1fa13b4cb4987aca9800bee7201fd5162"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture3.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture3.png",
+      "bytes": 78030,
+      "sha256": "3836b68a58a4e61b411f18413bf91d8e2f1e10a62aeaa3245dc9d27641be1f83"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture4.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/3-use-aikit/3.5/3.5-Picture4.png",
+      "bytes": 65124,
+      "sha256": "a66f33e10762ab550c0f26f34cbcc052d083c92f81fa01ae87863e105f23c64f"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/4-summary/4-Picture1.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/4-summary/4-Picture1.png",
+      "bytes": 1142481,
+      "sha256": "0309724d7618f432274d6c144ded8d73b8ce5eb87c0c9b18636d23f530f2dedf"
+    },
+    {
+      "url": "/workshops/glb-ai-solution-kit/assets/4-summary/4-Picture2.png",
+      "site_path": "/workshops/glb-ai-solution-kit/assets/4-summary/4-Picture2.png",
+      "bytes": 1114650,
+      "sha256": "97397ed2cae745d4c26d8cadcd64ea6f4cf50b6aaa1c744e5be021181036f181"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/1_0.png",
+      "site_path": "/workshops/amazon-eks-global/assets/1_0.png",
+      "bytes": 30506,
+      "sha256": "1d7d8a21fb3ae9f661e39bc92a2c02c00e87d24a28731f14820eb32e4a0b9d28"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/3-service-animated.gif",
+      "site_path": "/workshops/amazon-eks-global/assets/3-service-animated.gif",
+      "bytes": 1679880,
+      "sha256": "7eea5cef1ddadfdbfa456801af6e98748f63a726b752dc7b1e8640c92efca637"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img.png",
+      "bytes": 24141,
+      "sha256": "4f77a256799576a645b69bf3a673a125811e3335f60502c26bdc584ac458147d"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img_1.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img_1.png",
+      "bytes": 21718,
+      "sha256": "806b3ede93c5683edb850e2994ab4cd14dea9f63a49a971bced5bfa0e0054cba"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img_2.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img_2.png",
+      "bytes": 16217,
+      "sha256": "b7d65c51f9c9c8c9255625f9503157ff8d17664ad2429959a4302210b08ebbdf"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img_3.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img_3.png",
+      "bytes": 70443,
+      "sha256": "6f483e56b280a81ac4038608f6b95a0960f712c1f88b711a1136ad1ac01e2a78"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img_4.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img_4.png",
+      "bytes": 56216,
+      "sha256": "c0113d61b72fdf1ad8de538de76e3afce44081f027ae799e6c3b7b56f5e61d97"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Appendix/img_5.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Appendix/img_5.png",
+      "bytes": 50804,
+      "sha256": "461108ca23b78146ba08819db008e769c8647740955cd22db2b16a7065de5f22"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img.png",
+      "bytes": 151449,
+      "sha256": "d12d12c04567da1fd2720ef77a8eacaa28f6c8b6035afcae18f3fea972808d45"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_0.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_0.png",
+      "bytes": 40429,
+      "sha256": "60df54d632b92db879f8fc1b1561a2fc92ea9f10fff4198e6f9977f3ae5e63af"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_00.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_00.png",
+      "bytes": 29066,
+      "sha256": "19030a08f6de83d3d4586348eb4cf950b323de03bc8201a48fa04515c2fa4dd9"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_1.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_1.png",
+      "bytes": 276458,
+      "sha256": "2d0e5392483c6c6e120e6a0650c5cd22a009908d7bd0f9ad15ff6650e08c7f95"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_11.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_11.png",
+      "bytes": 98077,
+      "sha256": "54cd5e1d48eb453df82fb6e7e257bd5b3baab521a955b36d43973d3e5e304e4d"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_2.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_2.png",
+      "bytes": 23711,
+      "sha256": "19051f9dec686ebd8738baa31421ad4d5b3cf72fb6939953a18028f0e3492b64"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_3.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_3.png",
+      "bytes": 28376,
+      "sha256": "4c8ca079338512dad77dca2be319bda3b9f5808a78c530f1ed3992ecb148eb5c"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_4.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_4.png",
+      "bytes": 183486,
+      "sha256": "24d24582e515cc91f0cccfc89cd4083cc5bcfb33587bb117568b8decb0a5e10f"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_5.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_5.png",
+      "bytes": 89499,
+      "sha256": "15a583fbbdadd69d5d6461fe634269c746b4be99831a891563431a8233b42547"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task1/img_7.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task1/img_7.png",
+      "bytes": 326962,
+      "sha256": "d7acc0a0ee37b89e4457a57f3a0bdba0ff7c606ac625bc74e3b45681a92d2eff"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task2/img.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task2/img.png",
+      "bytes": 22544,
+      "sha256": "c07193cfa798b510a8e2bb4cce15551eedae07a0fc806dd019501f9aec607da4"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task2/img_1.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task2/img_1.png",
+      "bytes": 79420,
+      "sha256": "b2fc9d86c2d968e343e65eb336ef1cd57171762db04daabefe24fefcc321c279"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task2/img_2.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task2/img_2.png",
+      "bytes": 75114,
+      "sha256": "a65613739ce01aca622c02eec1bf29c4f1dec910f0275379ac24289c3609d8b7"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task2/img_3.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task2/img_3.png",
+      "bytes": 101846,
+      "sha256": "9441c81799eea2cc1252df0909c5644248ceca5c5baf3882bb580a0858cef2d6"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task2/img_4.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task2/img_4.png",
+      "bytes": 13476,
+      "sha256": "9492a5c69920da746346c971b445340544210ad2f46669b6150f6350084019bb"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img.png",
+      "bytes": 139371,
+      "sha256": "41b568860eb7b6eb7dcf405f49cc6db40aa0f9b19d4e89d82d7c6dc510e88716"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_1.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_1.png",
+      "bytes": 52317,
+      "sha256": "d96208e39d04b474203b8fd9fafdcd063b93f7706c82239db23c36d781c9280c"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_11.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_11.png",
+      "bytes": 124139,
+      "sha256": "8a05a5513c83b7c89306ae62de1cb38126a73f51f0bef2eb38e3e772d5656fc0"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_12.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_12.png",
+      "bytes": 106941,
+      "sha256": "cd0057b5692eb7c5397cd4db52d4ea8a698935966c942a70490996bcb57b437b"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_13.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_13.png",
+      "bytes": 78582,
+      "sha256": "2add9f9f6a4ebd586aed6450b2df4ea857eae7cef739f76599d7ff68ed0fb47b"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_4.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_4.png",
+      "bytes": 118258,
+      "sha256": "86dd5538195cdf3b9f77d5e78eacf779caadded29b24063bb7daf90e9c9b0d1c"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_5.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_5.png",
+      "bytes": 57350,
+      "sha256": "bfbbc5b14ea49219b1f5d63eeb2bdfa077b6c87976468f289fea1c74251c0d45"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_6.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_6.png",
+      "bytes": 132165,
+      "sha256": "6afa8f6383bb29794da3352c8e598d5b66682d9fb90ed949bf4ae3a28a208465"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_7.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_7.png",
+      "bytes": 47035,
+      "sha256": "5bfcec200e0b41603f862931de47ac824835819ec8a545e1f9f00588f3062e65"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_8.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_8.png",
+      "bytes": 40562,
+      "sha256": "e5c50f7740854ba1e72c85fe7a4b98df8eaeb56bd2060e39bb9fa967a84bd8c1"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task3/img_9.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task3/img_9.png",
+      "bytes": 114150,
+      "sha256": "725b80c6efb2b854a84f1e21f14077ce3ae3b721dabcd70edf5d362e5e9528d5"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab1/task4/img.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab1/task4/img.png",
+      "bytes": 25657,
+      "sha256": "7ae787a37628a6d3dea915b0bd73a8b60fc06e014619b79df45405429fccf4b8"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/Lab3/img_2.png",
+      "site_path": "/workshops/amazon-eks-global/assets/Lab3/img_2.png",
+      "bytes": 14996,
+      "sha256": "d58d4ebf40d22a16f7abd74f05be423c953ae2896242f1bda32c1f6b9e4276e4"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/code/ecsdemo-crystal.zip",
+      "site_path": "/workshops/amazon-eks-global/assets/code/ecsdemo-crystal.zip",
+      "bytes": 26356,
+      "sha256": "5152249b97ff961027a3755409b2efc09849ee103b88fa65a612fa6292e72420"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/code/ecsdemo-frontend.zip",
+      "site_path": "/workshops/amazon-eks-global/assets/code/ecsdemo-frontend.zip",
+      "bytes": 448057,
+      "sha256": "9195f7923f663b26f5e25f2228aa0598f2b43d3eb32f32d983e659d4b92997ac"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/code/ecsdemo-nodejs.zip",
+      "site_path": "/workshops/amazon-eks-global/assets/code/ecsdemo-nodejs.zip",
+      "bytes": 33659,
+      "sha256": "ee4c68ef33837465ef74f086fb28630a41a3008e7af3ca8345933587a3d15780"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/img_2.png",
+      "site_path": "/workshops/amazon-eks-global/assets/img_2.png",
+      "bytes": 23395,
+      "sha256": "ef003d8f543c647e1d7823926a9b7ad9016a4d64863fc25ecf8b2787f654f282"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/ingress-3.png",
+      "site_path": "/workshops/amazon-eks-global/assets/ingress-3.png",
+      "bytes": 499446,
+      "sha256": "7659314261b5f927e1c63f3d6f6d99190772d867660313053ad83fe283183e99"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/ingress-4.png",
+      "site_path": "/workshops/amazon-eks-global/assets/ingress-4.png",
+      "bytes": 445576,
+      "sha256": "9d859ed1e4496eceff00ee118f117964f167607f12ae95eaab98ef410b029ce4"
+    },
+    {
+      "url": "/workshops/amazon-eks-global/assets/ingress.png",
+      "site_path": "/workshops/amazon-eks-global/assets/ingress.png",
+      "bytes": 144297,
+      "sha256": "6c46aca42519762b60458710fa49e33d46f1f1b0391d589da2c7d0c5e36ea652"
+    }
+  ],
+  "external_replacements": [
+    "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-nvidia-driver.html"
+  ]
+}

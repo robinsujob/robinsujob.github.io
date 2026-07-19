@@ -1,9 +1,4 @@
 {{ define "main" }}
   <div class="workshop-content">{{ .Content }}</div>
-  {{ with index (.Pages.ByWeight) 0 }}
-    <nav class="workshop-pager" aria-label="章节翻页">
-      <span></span>
-      <a class="pager-next" href="{{ .RelPermalink }}"><span>下一步</span><strong>{{ .Title }}</strong> →</a>
-    </nav>
-  {{ end }}
+  {{ partial "workshops/pager.html" . }}
 {{ end }}

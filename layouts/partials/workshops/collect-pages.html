@@ -1,0 +1,6 @@
+{{- range .Section.Pages.ByWeight -}}
+  {{- $.Scratch.Add "items" (slice .) -}}
+  {{- if .IsSection -}}
+    {{- partial "workshops/collect-pages.html" (dict "Section" . "Scratch" $.Scratch) -}}
+  {{- end -}}
+{{- end -}}

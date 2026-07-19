@@ -1,0 +1,701 @@
+{
+ "Metadata": {
+  "AWS::CloudFormation::Interface": {
+   "ParameterGroups": [
+    {
+     "Label": {
+      "default": "Amazon EC2 Configuration"
+     },
+     "Parameters": [
+      "instanceType",
+      "requestNum",
+      "ebs",
+      "password"
+     ]
+    },
+    {
+     "Label": {
+      "default": "System Configuration, DO NOT MODIFY!"
+     },
+     "Parameters": [
+      "WindowsChineseAMI"
+     ]
+    }
+   ],
+   "ParameterLabels": {
+    "instanceType": {
+     "default": "Instance Type"
+    },
+    "requestNum": {
+     "default": "Instance Number"
+    },
+    "ebs": {
+     "default": "Disk Size"
+    },
+    "password": {
+     "default": "Password"
+    },
+    "windowsAMI": {
+     "default": "Image(AMI)"
+    }
+   }
+  }
+ },
+ "Parameters": {
+  "instanceType": {
+   "Type": "String",
+   "Default": "t3.medium",
+   "AllowedValues": [
+    "t3.nano",
+    "t3.micro",
+    "t3.small",
+    "t3.medium",
+    "t3.large",
+    "t3.xlarge",
+    "t3.2xlarge",
+    "c5.large",
+    "c5.xlarge",
+    "c5.2xlarge",
+    "c5.4xlarge",
+    "c5.9xlarge",
+    "c5.12xlarge",
+    "c5.18xlarge",
+    "c5.24xlarge",
+    "c5.metal",
+    "m5.large",
+    "m5.xlarge",
+    "m5.2xlarge",
+    "m5.4xlarge",
+    "m5.8xlarge",
+    "m5.12xlarge",
+    "m5.16xlarge",
+    "m5.24xlarge",
+    "m5.metal"
+   ],
+   "Description": "Please select your instance type."
+  },
+  "requestNum": {
+   "Type": "Number",
+   "Default": 1,
+   "Description": "How many instances do you want to launch?",
+   "MinValue": 1
+  },
+  "ebs": {
+   "Type": "Number",
+   "Default": 30,
+   "Description": "Please input your Disk Size.",
+   "MinValue": 30
+  },
+  "password": {
+   "Type": "String",
+   "Description": "Please input your initial password for Windows, at least 8 characters.",
+   "MaxLength": 64,
+   "MinLength": 8,
+   "NoEcho": true
+  },
+  "WindowsChineseAMI": {
+   "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+   "Default": "/aws/service/ami-windows-latest/Windows_Server-2022-Chinese_Simplified-Full-Base",
+   "Description": "SYSTEM CONFIG,PLEASE DO NOT MODIFY!!"
+  }
+ },
+ "Resources": {
+  "SingleIPWithMutilWindowsVPCA42E909B": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": {
+       "Fn::Join": [
+        "-",
+        [
+         "Single-IP-With-Mutil-Windows-VPC-CHINESE",
+         {
+          "Ref": "AWS::Region"
+         },
+         "stack-Name",{"Ref":"AWS::StackName"}
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1SubnetED0CC49D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SingleIPWithMutilWindowsVPCA42E909B"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/17",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PublicSubnet1"
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1RouteTable67B3C6E8": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SingleIPWithMutilWindowsVPCA42E909B"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PublicSubnet1"
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1RouteTableAssociation0F2F647D": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPublicSubnet1RouteTable67B3C6E8"
+    },
+    "SubnetId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPublicSubnet1SubnetED0CC49D"
+    }
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1DefaultRouteD3ADB823": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPublicSubnet1RouteTable67B3C6E8"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "SingleIPWithMutilWindowsVPCIGW609A71F9"
+    }
+   },
+   "DependsOn": [
+    "SingleIPWithMutilWindowsVPCVPCGW786D3169"
+   ]
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1EIP7DF13FBE": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PublicSubnet1"
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPublicSubnet1NATGateway0D3EC499": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "SubnetId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPublicSubnet1SubnetED0CC49D"
+    },
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "SingleIPWithMutilWindowsVPCPublicSubnet1EIP7DF13FBE",
+      "AllocationId"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "SingleIPWithMutilWindowsVPCPublicSubnet1DefaultRouteD3ADB823",
+    "SingleIPWithMutilWindowsVPCPublicSubnet1RouteTableAssociation0F2F647D"
+   ]
+  },
+  "SingleIPWithMutilWindowsVPCPrivateSubnet1Subnet6F66A8AE": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SingleIPWithMutilWindowsVPCA42E909B"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.128.0/17",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PrivateSubnet1"
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPrivateSubnet1RouteTable0D385FDA": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SingleIPWithMutilWindowsVPCA42E909B"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "SingleIpWithMultiWindowsInstancesStack/Single-IP-With-Mutil-Windows-VPC/PrivateSubnet1"
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPrivateSubnet1RouteTableAssociation8AD96C98": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPrivateSubnet1RouteTable0D385FDA"
+    },
+    "SubnetId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPrivateSubnet1Subnet6F66A8AE"
+    }
+   }
+  },
+  "SingleIPWithMutilWindowsVPCPrivateSubnet1DefaultRouteE4574441": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPrivateSubnet1RouteTable0D385FDA"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "SingleIPWithMutilWindowsVPCPublicSubnet1NATGateway0D3EC499"
+    }
+   }
+  },
+  "SingleIPWithMutilWindowsVPCIGW609A71F9": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": {
+       "Fn::Join": [
+        "-",
+        [
+         "Single-IP-With-Mutil-Windows-VPC-CHINESE",
+         {
+          "Ref": "AWS::Region"
+         },
+         "stack-Name",{"Ref":"AWS::StackName"}
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "SingleIPWithMutilWindowsVPCVPCGW786D3169": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SingleIPWithMutilWindowsVPCA42E909B"
+    },
+    "InternetGatewayId": {
+     "Ref": "SingleIPWithMutilWindowsVPCIGW609A71F9"
+    }
+   }
+  },
+  "SSMWindowsRole1300DB7E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "EC2 role for Multi Windows Instances Role Login",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "-",
+      [
+       "SSM-Windows-Role",
+       {
+        "Ref": "AWS::Region"
+       },
+       "stack-Name",{"Ref":"AWS::StackName"}
+      ]
+     ]
+    }
+   }
+  },
+  "SSMWindowsRoleInstanceProfile": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "SSMWindowsRole1300DB7E"
+     }
+    ],
+    "InstanceProfileName": {
+     "Fn::Join": [
+      "",
+      [
+       {
+        "Fn::Join": [
+         "-",
+         [
+          "SSM-Windows-Role",
+          {
+           "Ref": "AWS::Region"
+          },
+          "stack-Name",{"Ref":"AWS::StackName"}
+         ]
+        ]
+       },
+       "-InstanceProfile"
+      ]
+     ]
+    }
+   }
+  },
+  "MultiWindowsInstancesTemplate": {
+   "Type": "AWS::EC2::LaunchTemplate",
+   "Properties": {
+    "LaunchTemplateData": {
+     "BlockDeviceMappings": [
+      {
+       "DeviceName": "/dev/sda1",
+       "Ebs": {
+        "Encrypted": false,
+        "Iops": 3000,
+        "VolumeSize": {
+         "Ref": "ebs"
+        },
+        "VolumeType": "gp3"
+       }
+      }
+     ],
+     "IamInstanceProfile": {
+      "Arn": {
+       "Fn::GetAtt": [
+        "SSMWindowsRoleInstanceProfile",
+        "Arn"
+       ]
+      }
+     },
+     "ImageId": {
+      "Ref": "WindowsChineseAMI"
+     },
+     "InstanceType": {
+      "Ref": "instanceType"
+     },
+     "NetworkInterfaces": [
+      {
+       "DeviceIndex": 0,
+       "SubnetId": {
+        "Ref": "SingleIPWithMutilWindowsVPCPrivateSubnet1Subnet6F66A8AE"
+       }
+      }
+     ],
+     "TagSpecifications": [
+      {
+       "ResourceType": "instance",
+       "Tags": [
+        {
+         "Key": "Name",
+         "Value": {
+          "Fn::Join": [
+           "-",
+           [
+            "Windows",
+            {
+             "Ref": "AWS::Region"
+            },
+            "stack-Name",{"Ref":"AWS::StackName"}
+           ]
+          ]
+         }
+        },
+        {
+         "Key": "SSM-Connect",
+         "Value": {
+          "Fn::Join": [
+           "-",
+           [
+            "SSM",
+            {
+             "Ref": "AWS::Region"
+            },
+            "stack-Name",{"Ref":"AWS::StackName"}
+           ]
+          ]
+         }
+        }
+       ]
+      }
+     ],
+     "UserData": {
+      "Fn::Base64": {
+       "Fn::Join": [
+        "",
+        [
+         "<powershell>\n                net user Administrator \"",
+         {
+          "Ref": "password"
+         },
+         "\"\n                        </powershell>\n           "
+        ]
+       ]
+      }
+     }
+    },
+    "LaunchTemplateName": {
+     "Fn::Join": [
+      "-",
+      [
+       "Template",
+       {
+        "Ref": "AWS::Region"
+       },
+       "stack-Name",{"Ref":"AWS::StackName"}
+      ]
+     ]
+    }
+   }
+  },
+  "SingleIPWindowsFleet": {
+   "Type": "AWS::EC2::EC2Fleet",
+   "Properties": {
+    "LaunchTemplateConfigs": [
+     {
+      "LaunchTemplateSpecification": {
+       "LaunchTemplateId": {
+        "Ref": "MultiWindowsInstancesTemplate"
+       },
+       "Version": "$Default"
+      }
+     }
+    ],
+    "TargetCapacitySpecification": {
+     "DefaultTargetCapacityType": "on-demand",
+     "TotalTargetCapacity": {
+      "Ref": "requestNum"
+     }
+    },
+    "Type": "instant"
+   }
+  },
+  "IAMUserF582D1D5": {
+   "Type": "AWS::IAM::User",
+   "Properties": {
+    "UserName": {
+     "Fn::Join": [
+      "-",
+      [
+       "SSM",
+       {
+        "Ref": "AWS::Region"
+       },
+       "stack-Name",{"Ref":"AWS::StackName"}
+      ]
+     ]
+    }
+   }
+  },
+  "SSMInlinePolicyA5E693AC": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "ssm:StartSession",
+       "Condition": {
+        "StringLike": {
+         "ssm:resourceTag/SSM-Connect": {
+          "Fn::Join": [
+           "-",
+           [
+            "SSM",
+            {
+             "Ref": "AWS::Region"
+            },
+            "stack-Name",{"Ref":"AWS::StackName"}
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:ec2:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":instance/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "ssm:StartSession",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:ssm:",
+          {
+           "Ref": "AWS::Region"
+          },
+          "::document/AWS-StartPortForwardingSession"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "ssm:ResumeSession",
+        "ssm:TerminateSession"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:ssm:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":session/${aws:username}-*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "SSMInlinePolicyA5E693AC",
+    "Users": [
+     {
+      "Ref": "IAMUserF582D1D5"
+     }
+    ]
+   }
+  },
+  "IAMAccessKeyBF84E1DA": {
+   "Type": "AWS::IAM::AccessKey",
+   "Properties": {
+    "UserName": {
+     "Ref": "IAMUserF582D1D5"
+    }
+   }
+  }
+ },
+ "Outputs": {
+  "Region": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "AWS_DEFAULT_REGION=",
+      {
+       "Ref": "AWS::Region"
+      }
+     ]
+    ]
+   }
+  },
+  "AccessKey": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "AWS_ACCESS_KEY_ID=",
+      {
+       "Ref": "IAMAccessKeyBF84E1DA"
+      }
+     ]
+    ]
+   }
+  },
+  "SecretAccessKey": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "AWS_SECRET_ACCESS_KEY=",
+      {
+       "Fn::GetAtt": [
+        "IAMAccessKeyBF84E1DA",
+        "SecretAccessKey"
+       ]
+      }
+     ]
+    ]
+   }
+  }
+ }
+}

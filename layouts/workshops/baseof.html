@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
+  {{ $root := partial "workshops/root.html" . }}
   <title>{{ .Title }} · {{ site.Title }}</title>
-  <meta name="description" content="Amazon WorkMail 动手训练营">
+  <meta name="description" content="{{ $root.Params.summary | default $root.Title }}">
   <link rel="icon" href="{{ "favicon.ico" | relURL }}">
-  <link rel="stylesheet" href="{{ "workshops/workmail/workshop.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "workshops/workshop.css" | relURL }}">
 </head>
 <body class="workshop-page">
-  {{ $root := .CurrentSection }}
   {{ $workshopsHome := "/workshops/" | relURL }}
   <header class="workshop-header">
     <a class="workshop-brand" href="{{ $workshopsHome }}" aria-label="返回所有动手训练营">
-      <img src="{{ "workshops/workmail/images/aws-logo.png" | relURL }}" alt="AWS">
+      <img src="{{ "workshops/aws-logo.png" | relURL }}" alt="AWS">
       <span>workshop</span>
     </a>
     <a class="site-link" href="{{ site.Home.RelPermalink }}">Robin Su</a>
@@ -28,15 +28,13 @@
         <button class="sidebar-close" type="button" aria-label="关闭章节导航">×</button>
       </div>
       <nav aria-label="训练营章节">
-        <a class="nav-item{{ if eq .RelPermalink $root.RelPermalink }} active{{ end }}" href="{{ $root.RelPermalink }}">{{ $root.Params.shortTitle | default $root.Title }}</a>
-        {{ range $root.Pages.ByWeight }}
-          <a class="nav-item{{ if eq $.RelPermalink .RelPermalink }} active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{ end }}
+        <a class="nav-item nav-level-0{{ if eq .RelPermalink $root.RelPermalink }} active{{ end }}" href="{{ $root.RelPermalink }}">{{ $root.Params.shortTitle | default $root.Title }}</a>
+        {{ partial "workshops/nav-tree.html" (dict "Section" $root "Current" . "Level" 0) }}
       </nav>
     </aside>
 
     <main class="workshop-main">
-      <div class="workshop-breadcrumb"><a href="{{ $root.RelPermalink }}">{{ $root.Title }}</a><span>/</span><span>{{ .Title }}</span></div>
+      <div class="workshop-breadcrumb"><a href="{{ $workshopsHome }}">Workshops</a><span>/</span><a href="{{ $root.RelPermalink }}">{{ $root.Params.shortTitle | default $root.Title }}</a>{{ if ne .RelPermalink $root.RelPermalink }}<span>/</span><span>{{ .Title }}</span>{{ end }}</div>
       <article class="workshop-article">
         <h1>{{ .Title }}</h1>
         {{ block "main" . }}{{ end }}

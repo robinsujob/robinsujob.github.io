@@ -1,18 +1,4 @@
 {{ define "main" }}
   <div class="workshop-content">{{ .Content }}</div>
-  {{ $root := .CurrentSection }}
-  {{ $pages := $root.Pages.ByWeight }}
-  {{ $current := . }}
-  {{ $prev := $root }}
-  {{ $next := false }}
-  {{ range $index, $page := $pages }}
-    {{ if eq $page.RelPermalink $current.RelPermalink }}
-      {{ if gt $index 0 }}{{ $prev = index $pages (sub $index 1) }}{{ end }}
-      {{ if lt (add $index 1) (len $pages) }}{{ $next = index $pages (add $index 1) }}{{ end }}
-    {{ end }}
-  {{ end }}
-  <nav class="workshop-pager" aria-label="章节翻页">
-    <a class="pager-prev" href="{{ $prev.RelPermalink }}">← <span>上一步</span><strong>{{ $prev.Title }}</strong></a>
-    {{ with $next }}<a class="pager-next" href="{{ .RelPermalink }}"><span>下一步</span><strong>{{ .Title }}</strong> →</a>{{ end }}
-  </nav>
+  {{ partial "workshops/pager.html" . }}
 {{ end }}

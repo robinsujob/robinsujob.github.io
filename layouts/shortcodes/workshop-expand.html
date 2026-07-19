@@ -1,0 +1,4 @@
+<details class="workshop-expand"{{ if eq (.Get "open") "true" }} open{{ end }}>
+  <summary>{{ .Get "title" | default "展开查看" }}</summary>
+  <div class="workshop-expand-content">{{ .Inner | markdownify }}</div>
+</details>

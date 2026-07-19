@@ -306,3 +306,44 @@ a:hover { text-decoration: underline; }
   .workshops-intro { font-size: 16px; }
   .workshop-card { padding: 21px; }
 }
+
+/* Nested workshop navigation */
+.nav-item.nav-level-1 { padding-left: 28px; font-size: 13px; }
+.nav-item.nav-level-2 { padding-left: 44px; font-size: 13px; }
+.nav-item.nav-level-3 { padding-left: 58px; font-size: 12px; }
+
+/* Workshop Studio directive replacements */
+.workshop-callout--warning { border-left-color: #ff9900; background: #fff8e8; }
+.workshop-callout--error { border-left-color: #d13212; background: #fff3f2; }
+.workshop-callout > div > :last-child { margin-bottom: 0; }
+.workshop-expand {
+  margin: 22px 0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+}
+.workshop-expand summary {
+  padding: 13px 16px;
+  color: #232f3e;
+  background: #f7f8f8;
+  font-weight: 700;
+  cursor: pointer;
+}
+.workshop-expand-content { padding: 16px; }
+.workshop-tabs { display: grid; gap: 18px; margin: 24px 0; }
+.workshop-tab-panel {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--aws-blue);
+  border-radius: 5px;
+}
+.workshop-tab-panel > h4 { margin-top: 0; }
+.workshop-content table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 20px 0; }
+.workshop-content th,
+.workshop-content td { padding: 10px 12px; border: 1px solid var(--line); vertical-align: top; }
+.workshop-content th { background: #f2f3f3; }
+.workshop-content pre { max-width: 100%; overflow-x: auto; border-radius: 5px; }
+.workshop-content a[href$=".zip"],
+.workshop-content a[href$=".json"],
+.workshop-content a[href$=".ipynb"],
+.workshop-content a[href$=".sh"] { font-weight: 700; }

@@ -4,7 +4,7 @@ weight: 3
 type: workshops
 ---
 
-完成[前提条件](../prerequisites/)后，您就可以通过完成以下步骤开始使用 Amazon WorkMail。
+完成[前提条件](/workshops/workmail/prerequisites/)后，您就可以通过完成以下步骤开始使用 Amazon WorkMail。
 
 #### 步骤 1：登录 Amazon WorkMail 控制台
 

@@ -1,0 +1,8 @@
+{{- $current := .Current -}}
+{{- $level := .Level -}}
+{{- range .Section.Pages.ByWeight -}}
+  <a class="nav-item nav-level-{{ $level }}{{ if eq $current.RelPermalink .RelPermalink }} active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- if .IsSection -}}
+    {{- partial "workshops/nav-tree.html" (dict "Section" . "Current" $current "Level" (add $level 1)) -}}
+  {{- end -}}
+{{- end -}}

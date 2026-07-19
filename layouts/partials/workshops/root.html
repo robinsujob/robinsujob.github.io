@@ -1,0 +1,7 @@
+{{- $root := . -}}
+{{- if not .Params.workshopRoot -}}
+  {{- range .Ancestors -}}
+    {{- if .Params.workshopRoot -}}{{- $root = . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $root -}}

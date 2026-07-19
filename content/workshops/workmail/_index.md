@@ -1,9 +1,11 @@
 ---
 title: "动手训练营 - Amazon WorkMail"
-weight: 1
+weight: 4
 shortTitle: "Amazon WorkMail"
+homeTitle: "动手训练营 - Amazon WorkMail"
 summary: "创建并配置自己的企业级邮箱：组织、域名验证、送达率优化及邮件客户端集成。"
 type: workshops
+workshopRoot: true
 ---
 
 # Amazon WorkMail

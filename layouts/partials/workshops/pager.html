@@ -1,0 +1,22 @@
+{{- $root := partial "workshops/root.html" . -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "items" (slice $root) -}}
+{{- partial "workshops/collect-pages.html" (dict "Section" $root "Scratch" $scratch) -}}
+{{- $items := $scratch.Get "items" -}}
+{{- $current := . -}}
+{{- $index := -1 -}}
+{{- range $i, $page := $items -}}
+  {{- if eq $page.RelPermalink $current.RelPermalink -}}{{- $index = $i -}}{{- end -}}
+{{- end -}}
+{{- if ge $index 0 -}}
+  {{- $prev := false -}}
+  {{- $next := false -}}
+  {{- if gt $index 0 -}}{{- $prev = index $items (sub $index 1) -}}{{- end -}}
+  {{- if lt (add $index 1) (len $items) -}}{{- $next = index $items (add $index 1) -}}{{- end -}}
+  {{- if or $prev $next -}}
+  <nav class="workshop-pager" aria-label="章节翻页">
+    {{- with $prev -}}<a class="pager-prev" href="{{ .RelPermalink }}">← <span>上一步</span><strong>{{ .Title }}</strong></a>{{- else -}}<span></span>{{- end -}}
+    {{- with $next -}}<a class="pager-next" href="{{ .RelPermalink }}"><span>下一步</span><strong>{{ .Title }}</strong> →</a>{{- end -}}
+  </nav>
+  {{- end -}}
+{{- end -}}
