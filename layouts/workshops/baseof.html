@@ -8,13 +8,13 @@
   <title>{{ .Title }} · {{ site.Title }}</title>
   <meta name="description" content="{{ $root.Params.summary | default $root.Title }}">
   <link rel="icon" href="{{ "favicon.ico" | relURL }}">
-  <link rel="stylesheet" href="{{ "workshops/workshop.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "aws-workshops/workshop.css" | relURL }}">
 </head>
 <body class="workshop-page">
-  {{ $workshopsHome := "/workshops/" | relURL }}
+  {{ $workshopsHome := "/aws-workshops/" | relURL }}
   <header class="workshop-header">
     <a class="workshop-brand" href="{{ $workshopsHome }}" aria-label="返回所有动手训练营">
-      <img src="{{ "workshops/aws-logo.png" | relURL }}" alt="AWS">
+      <img src="{{ "aws-workshops/aws-logo.png" | relURL }}" alt="AWS">
       <span>workshop</span>
     </a>
     <a class="site-link" href="{{ site.Home.RelPermalink }}">Robin Su</a>

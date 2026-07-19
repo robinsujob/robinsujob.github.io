@@ -1,13 +1,13 @@
 # AWS Workshop import
 
-This site keeps AWS Workshop Studio content under `/workshops/` while leaving the Hugo Stack blog layout unchanged.
+This site keeps AWS Workshop Studio content under `/aws-workshops/` while leaving the Hugo Stack blog layout unchanged.
 
 ## Source and output
 
-- Source repositories: `/data/openclaw/AWS/workshop/workshops/<name>/`
-- Hugo content: `content/workshops/<slug>/`
-- Public assets and downloads: `static/workshops/<slug>/assets/`
-- Shared layout/style: `layouts/workshops/`, `layouts/partials/workshops/`, `layouts/shortcodes/`, `static/workshops/workshop.css`
+- Source repositories: `/data/openclaw/AWS/workshop/aws-workshops/<name>/`
+- Hugo content: `content/aws-workshops/<slug>/`
+- Public assets and downloads: `static/aws-workshops/<slug>/assets/`
+- Shared layout/style: `layouts/aws-workshops/`, `layouts/partials/aws-workshops/`, `layouts/shortcodes/`, `static/aws-workshops/workshop.css`
 
 ## Re-import
 
@@ -27,7 +27,7 @@ The importer:
 2. converts `/static/...` paths to workshop-scoped assets;
 3. converts Workshop Studio alerts, tabs, expandable blocks, and `:assetUrl` values;
 4. fixes case-only asset path mismatches and a missing ZIP extension when a unique local match exists;
-5. emits browser download links as root-relative `/workshops/...` paths;
+5. emits browser download links as root-relative `/aws-workshops/...` paths;
 6. emits URLs inside `wget`, `curl`, and JSON code examples through the `workshop-asset-url` shortcode, so Hugo derives the domain from the active `baseURL`;
 7. fails when a referenced local asset cannot be resolved.
 
@@ -36,7 +36,7 @@ The importer:
 Do not hard-code `robinsujob.github.io` in workshop content. Browser links use root-relative paths. Command-line and JSON examples use:
 
 ```text
-{{< workshop-asset-url path="/workshops/<slug>/assets/<file>" >}}
+{{< workshop-asset-url path="/aws-workshops/<slug>/assets/<file>" >}}
 ```
 
 The shortcode expands to an absolute URL at build time, which keeps local preview, GitHub Pages, and a future custom domain consistent.

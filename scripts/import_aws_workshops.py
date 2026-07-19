@@ -12,8 +12,8 @@ from urllib.parse import unquote
 
 SOURCE_ROOT = Path('/data/openclaw/AWS/workshop/workshops')
 REPO_ROOT = Path('/data/code/hugo-stack-site')
-CONTENT_ROOT = REPO_ROOT / 'content/workshops'
-STATIC_ROOT = REPO_ROOT / 'static/workshops'
+CONTENT_ROOT = REPO_ROOT / 'content/aws-workshops'
+STATIC_ROOT = REPO_ROOT / 'static/aws-workshops'
 
 WORKSHOPS = [
     {
@@ -231,7 +231,7 @@ def import_workshop(config: dict[str, str], workshop_weight: int) -> dict[str, o
         docs[md] = {'meta': meta, 'body': body, 'source_key': key, 'target_key': target}
         source_to_target[key] = target
         suffix = '' if str(target) == '.' else f'{target.as_posix()}/'
-        source_to_permalink[key] = f'/workshops/{config["slug"]}/{suffix}'
+        source_to_permalink[key] = f'/aws-workshops/{config["slug"]}/{suffix}'
 
     fuzzy = {fuzzy_path(key): key for key in source_to_target}
     asset_files = [p for p in target_static.rglob('*') if p.is_file()]
@@ -249,7 +249,7 @@ def import_workshop(config: dict[str, str], workshop_weight: int) -> dict[str, o
                 actual = stem_matches[0]
         if actual:
             referenced_assets.add(actual)
-            return f'/workshops/{config["slug"]}/assets/{actual}'
+            return f'/aws-workshops/{config["slug"]}/assets/{actual}'
         if source_s3 and path == '513.46_grid_64bit_aws_swl.exe':
             replacement = 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-nvidia-driver.html'
             external_replacements.add(replacement)
@@ -267,7 +267,7 @@ def import_workshop(config: dict[str, str], workshop_weight: int) -> dict[str, o
     def resolve_page_link(destination: str, current_md: Path) -> str:
         if destination.startswith(('http://', 'https://', 'mailto:', '#', 'tel:', 'javascript:')):
             return destination
-        if destination.startswith('/workshops/'):
+        if destination.startswith('/aws-workshops/'):
             return destination
         path_and_query, sep, fragment = destination.partition('#')
         query = ''
@@ -364,7 +364,7 @@ def import_workshop(config: dict[str, str], workshop_weight: int) -> dict[str, o
     for relative in sorted(referenced_assets):
         path = asset_exact[relative]
         data = path.read_bytes()
-        site_path = f'/workshops/{config["slug"]}/assets/{relative}'
+        site_path = f'/aws-workshops/{config["slug"]}/assets/{relative}'
         downloads.append({
             'url': site_path,
             'site_path': site_path,
@@ -389,7 +389,7 @@ def main() -> None:
         results.append(result)
         print(f"{result['slug']}: pages={result['pages']} assets={result['assets']} size={result['bytes']/1024/1024:.2f} MiB")
     manifest = {
-        'generated_from': 'content/workshops',
+        'generated_from': 'content/aws-workshops',
         'local_downloads': [item for result in results for item in result['downloads']],
         'external_replacements': sorted({item for result in results for item in result['external_replacements']}),
     }
