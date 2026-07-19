@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang | default "zh" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{ .Title }} · {{ site.Title }}</title>
+  <meta name="description" content="Robin Su 的云服务动手训练营">
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="stylesheet" href="{{ "workshops/workmail/workshop.css" | relURL }}">
+</head>
+<body class="workshop-page workshop-home-page">
+  <header class="workshop-header">
+    <a class="workshop-brand" href="{{ "/workshops/" | relURL }}" aria-label="动手训练营首页">
+      <img src="{{ "workshops/workmail/images/aws-logo.png" | relURL }}" alt="AWS">
+      <span>workshop</span>
+    </a>
+    <a class="site-link" href="{{ site.Home.RelPermalink }}">Robin Su</a>
+  </header>
+  <main class="workshops-home">
+    <div class="workshops-hero">
+      <span class="eyebrow">LEARN BY DOING</span>
+      <h1>{{ .Title }}</h1>
+      <div class="workshops-intro">{{ .Content }}</div>
+    </div>
+    <section aria-labelledby="available-workshops">
+      <h2 id="available-workshops">所有训练营</h2>
+      <div class="workshop-grid">
+        {{ range .Sections.ByWeight }}
+          <a class="workshop-card" href="{{ .RelPermalink }}">
+            <div class="workshop-card-icon">AWS</div>
+            <div>
+              <h3>{{ .Params.shortTitle | default .Title }}</h3>
+              <p>{{ .Params.summary | default .Summary }}</p>
+              <span>开始学习 →</span>
+            </div>
+          </a>
+        {{ else }}
+          <p>训练营内容正在准备中。</p>
+        {{ end }}
+      </div>
+    </section>
+  </main>
+</body>
+</html>

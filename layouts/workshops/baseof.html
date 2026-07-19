@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang | default "zh" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{ .Title }} · {{ site.Title }}</title>
+  <meta name="description" content="Amazon WorkMail 动手训练营">
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="stylesheet" href="{{ "workshops/workmail/workshop.css" | relURL }}">
+</head>
+<body class="workshop-page">
+  {{ $root := .CurrentSection }}
+  {{ $workshopsHome := "/workshops/" | relURL }}
+  <header class="workshop-header">
+    <a class="workshop-brand" href="{{ $workshopsHome }}" aria-label="返回所有动手训练营">
+      <img src="{{ "workshops/workmail/images/aws-logo.png" | relURL }}" alt="AWS">
+      <span>workshop</span>
+    </a>
+    <a class="site-link" href="{{ site.Home.RelPermalink }}">Robin Su</a>
+    <button class="nav-toggle" type="button" aria-label="打开章节导航" aria-controls="workshop-sidebar" aria-expanded="false">☰</button>
+  </header>
+
+  <div class="workshop-shell">
+    <aside class="workshop-sidebar" id="workshop-sidebar">
+      <div class="sidebar-heading">
+        <a href="{{ $root.RelPermalink }}">{{ $root.Title }}</a>
+        <button class="sidebar-close" type="button" aria-label="关闭章节导航">×</button>
+      </div>
+      <nav aria-label="训练营章节">
+        <a class="nav-item{{ if eq .RelPermalink $root.RelPermalink }} active{{ end }}" href="{{ $root.RelPermalink }}">{{ $root.Params.shortTitle | default $root.Title }}</a>
+        {{ range $root.Pages.ByWeight }}
+          <a class="nav-item{{ if eq $.RelPermalink .RelPermalink }} active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ end }}
+      </nav>
+    </aside>
+
+    <main class="workshop-main">
+      <div class="workshop-breadcrumb"><a href="{{ $root.RelPermalink }}">{{ $root.Title }}</a><span>/</span><span>{{ .Title }}</span></div>
+      <article class="workshop-article">
+        <h1>{{ .Title }}</h1>
+        {{ block "main" . }}{{ end }}
+      </article>
+    </main>
+  </div>
+  <div class="nav-scrim" aria-hidden="true"></div>
+  <script>
+    (() => {
+      const body = document.body;
+      const open = document.querySelector('.nav-toggle');
+      const close = document.querySelector('.sidebar-close');
+      const scrim = document.querySelector('.nav-scrim');
+      const setOpen = value => {
+        body.classList.toggle('nav-open', value);
+        open.setAttribute('aria-expanded', String(value));
+      };
+      open.addEventListener('click', () => setOpen(true));
+      close.addEventListener('click', () => setOpen(false));
+      scrim.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', event => event.key === 'Escape' && setOpen(false));
+    })();
+  </script>
+</body>
+</html>
