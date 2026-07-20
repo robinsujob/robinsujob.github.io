@@ -4,6 +4,7 @@ weight: 10
 type: workshops
 shortTitle: "AWS SAM + Lambda Web Adapter"
 homeTitle: "Serverless应用开发与快速适配"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/b9329e36-ec0e-4f09-8d55-d7cf4b39f746/zh-CN"
 summary: "从 AWS SAM CLI 入门到本地测试与部署，并将 Spring Boot、Flask 应用迁移到 AWS Lambda。"
 workshopRoot: true
 ---

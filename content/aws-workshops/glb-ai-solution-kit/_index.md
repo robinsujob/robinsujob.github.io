@@ -4,6 +4,7 @@ weight: 2
 type: workshops
 shortTitle: "AWS AI Solution Kit"
 homeTitle: "动手训练营 - AI Solution Kit"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/c4e21b99-7e78-4969-95d9-3f52036e2844"
 summary: "部署 AI Solution Kit，并通过 API 体验多语种 OCR、自定义模板 OCR、物体识别和自然语言理解。"
 workshopRoot: true
 ---

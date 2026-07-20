@@ -4,6 +4,7 @@ weight: 3
 type: workshops
 shortTitle: "Amazon EKS"
 homeTitle: "动手训练营 – Amazon EKS"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/7e45c13b-adfa-461f-80a3-01e5a3edc7b2"
 summary: "配置堡垒机与权限，部署 Amazon EKS 集群和托管节点组，并运行、扩展微服务应用。"
 workshopRoot: true
 ---

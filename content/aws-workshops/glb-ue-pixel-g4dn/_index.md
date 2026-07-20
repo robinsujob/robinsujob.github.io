@@ -4,6 +4,7 @@ weight: 7
 type: workshops
 shortTitle: "Unreal Engine on G4dn"
 homeTitle: "Unreal Engine虚幻引擎在G4dn上的容器化部署实践"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/ee2bea41-d75c-44bc-8633-a3d4891bf9e5"
 summary: "在 Windows 与 Linux EC2 G4dn 实例上安装 Unreal Engine，并通过容器、STUN/TURN 和 Pixel Streaming 部署实时应用。"
 workshopRoot: true
 ---

@@ -4,6 +4,7 @@ weight: 1
 type: workshops
 shortTitle: "WordPress + Amazon RDS"
 homeTitle: "在两层架构中部署 WordPress和RDS"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/ff2db477-bf34-45cc-832a-169f687c4896/zh-CN"
 summary: "从零创建 VPC、EC2、弹性 IP 和 Amazon RDS for MySQL，部署 WordPress，并完成数据库安全加固及多可用区故障转移实验。"
 workshopRoot: true
 ---

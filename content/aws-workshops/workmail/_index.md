@@ -3,6 +3,7 @@ title: "动手训练营 - Amazon WorkMail"
 weight: 4
 shortTitle: "Amazon WorkMail"
 homeTitle: "动手训练营 - Amazon WorkMail"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/21e72070-d1c6-48b9-8cfa-e8308f8f7e33/zh-CN"
 summary: "创建并配置自己的企业级邮箱：组织、域名验证、送达率优化及邮件客户端集成。"
 type: workshops
 workshopRoot: true

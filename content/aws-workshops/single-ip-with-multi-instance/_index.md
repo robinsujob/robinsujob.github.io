@@ -4,6 +4,7 @@ weight: 9
 type: workshops
 shortTitle: "单 IP 多实例运维"
 homeTitle: "电商运营 - 单IP多人运维环境部署"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/0e1c27b5-f0eb-445e-9dac-5bf7f4116621"
 summary: "通过 CloudFormation、NAT Gateway 和 Systems Manager，为多台 Windows EC2 建立共享固定出口 IP 的安全运维环境。"
 workshopRoot: true
 ---

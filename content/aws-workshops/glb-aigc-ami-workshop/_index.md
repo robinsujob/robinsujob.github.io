@@ -4,6 +4,7 @@ weight: 6
 type: workshops
 shortTitle: "Stable Diffusion + ControlNet"
 homeTitle: "AIGC Stable Diffusion一键式方案"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5"
 summary: "通过 AWS Marketplace AMI 部署 Stable Diffusion，完成艺术二维码、OpenPose、艺术字和拜年图创作。"
 workshopRoot: true
 ---

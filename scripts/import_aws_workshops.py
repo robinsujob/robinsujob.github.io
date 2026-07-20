@@ -19,6 +19,7 @@ WORKSHOPS = [
     {
         'source': 'wordpress-glb',
         'slug': 'wordpress-glb',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/ff2db477-bf34-45cc-832a-169f687c4896/zh-CN',
         'home_order': 1,
         'home_title': '在两层架构中部署 WordPress和RDS',
         'short': 'WordPress + Amazon RDS',
@@ -27,6 +28,7 @@ WORKSHOPS = [
     {
         'source': 'single-ip-with-multi-instance',
         'slug': 'single-ip-with-multi-instance',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/0e1c27b5-f0eb-445e-9dac-5bf7f4116621',
         'home_order': 9,
         'home_title': '电商运营 - 单IP多人运维环境部署',
         'short': '单 IP 多实例运维',
@@ -35,6 +37,7 @@ WORKSHOPS = [
     {
         'source': 'glbsaas-boost',
         'slug': 'glbsaas-boost',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/f6fcd79d-faf2-4ea6-9a57-3fe0222e5dd4',
         'home_order': 8,
         'home_title': 'SaaS Boost入门指南',
         'short': 'AWS SaaS Boost',
@@ -43,6 +46,7 @@ WORKSHOPS = [
     {
         'source': 'glb-ue-pixel-g4dn',
         'slug': 'glb-ue-pixel-g4dn',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/ee2bea41-d75c-44bc-8633-a3d4891bf9e5',
         'home_order': 7,
         'home_title': 'Unreal Engine虚幻引擎在G4dn上的容器化部署实践',
         'short': 'Unreal Engine on G4dn',
@@ -51,6 +55,7 @@ WORKSHOPS = [
     {
         'source': 'glb-sam-lwa',
         'slug': 'glb-sam-lwa',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/b9329e36-ec0e-4f09-8d55-d7cf4b39f746/zh-CN',
         'home_order': 10,
         'home_title': 'Serverless应用开发与快速适配',
         'short': 'AWS SAM + Lambda Web Adapter',
@@ -59,6 +64,7 @@ WORKSHOPS = [
     {
         'source': 'glb-aigc-sagemaker-web',
         'slug': 'glb-aigc-sagemaker-web',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/3b86fa89-da3a-4e5f-8e77-b45fb11adf4a',
         'home_order': 5,
         'home_title': '端到端体验AIGC-从SageMaker到Web应用',
         'short': 'AIGC：SageMaker 到 Web',
@@ -67,6 +73,7 @@ WORKSHOPS = [
     {
         'source': 'glb-aigc-ami-workshop',
         'slug': 'glb-aigc-ami-workshop',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/facdf921-2eea-4638-bc01-522e1eef3dc5',
         'home_order': 6,
         'home_title': 'AIGC Stable Diffusion一键式方案',
         'short': 'Stable Diffusion + ControlNet',
@@ -75,6 +82,7 @@ WORKSHOPS = [
     {
         'source': 'glb-ai-solution-kit',
         'slug': 'glb-ai-solution-kit',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/c4e21b99-7e78-4969-95d9-3f52036e2844',
         'home_order': 2,
         'home_title': '动手训练营 - AI Solution Kit',
         'short': 'AWS AI Solution Kit',
@@ -83,6 +91,7 @@ WORKSHOPS = [
     {
         'source': 'amazon-eks-global',
         'slug': 'amazon-eks-global',
+        'original_url': 'https://catalog.us-east-1.prod.workshops.aws/workshops/7e45c13b-adfa-461f-80a3-01e5a3edc7b2',
         'home_order': 3,
         'home_title': '动手训练营 – Amazon EKS',
         'short': 'Amazon EKS',
@@ -336,6 +345,7 @@ def import_workshop(config: dict[str, str], workshop_weight: int) -> dict[str, o
             extra = {
                 'shortTitle': config['short'],
                 'homeTitle': config['home_title'],
+                'originalUrl': config.get('original_url', ''),
                 'summary': config['summary'],
                 'workshopRoot': True,
             }

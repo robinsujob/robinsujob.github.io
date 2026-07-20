@@ -4,6 +4,7 @@ weight: 5
 type: workshops
 shortTitle: "AIGC：SageMaker 到 Web"
 homeTitle: "端到端体验AIGC-从SageMaker到Web应用"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/3b86fa89-da3a-4e5f-8e77-b45fb11adf4a"
 summary: "使用 SageMaker Notebook 运行 Stable Diffusion，并在 Cloud9 构建可调用模型的 Flask Web 应用。"
 workshopRoot: true
 ---

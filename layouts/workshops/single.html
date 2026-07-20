@@ -1,4 +1,9 @@
 {{ define "main" }}
-  <div class="workshop-content">{{ .Content }}</div>
+  <div class="workshop-content">
+    {{ .Content }}
+    {{ if and .Params.workshopRoot .Params.originalUrl }}
+      <p class="workshop-original-link"><a href="{{ .Params.originalUrl }}" target="_blank" rel="noopener noreferrer">查看 AWS Workshop 原版 ↗</a></p>
+    {{ end }}
+  </div>
   {{ partial "workshops/pager.html" . }}
 {{ end }}

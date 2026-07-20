@@ -4,6 +4,7 @@ weight: 8
 type: workshops
 shortTitle: "AWS SaaS Boost"
 homeTitle: "SaaS Boost入门指南"
+originalUrl: "https://catalog.us-east-1.prod.workshops.aws/workshops/f6fcd79d-faf2-4ea6-9a57-3fe0222e5dd4"
 summary: "安装和配置 AWS SaaS Boost，构建示例容器应用，完成服务配置、租户入驻、访问验证与资源清理。"
 workshopRoot: true
 ---
