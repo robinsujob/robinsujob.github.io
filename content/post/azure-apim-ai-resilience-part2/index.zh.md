@@ -15,6 +15,7 @@ tags:
   - KQL
   - 告警
   - 企业架构
+  - 韧性
 series:
   - "Azure APIM AI Resilience"
 ---

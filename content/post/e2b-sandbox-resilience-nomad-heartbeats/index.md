@@ -13,6 +13,7 @@ tags:
   - Fault Injection
   - Blast Radius
   - Sandbox
+  - Resilience
 ---
 
 Running a self-hosted E2B cluster is about more than getting Firecracker sandboxes to start. We also need to consider how to keep them stable once they host long-running workloads. As a single cluster supports more sandboxes, resilience becomes increasingly important. **Our architecture needs to protect existing runtime state and user connections while limiting the impact on capacity for new sandboxes, so that a local interruption does not cause unnecessary disruption elsewhere.**
