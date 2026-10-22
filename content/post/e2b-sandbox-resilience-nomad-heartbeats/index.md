@@ -451,7 +451,7 @@ Across two complete server-stop tests with grace set to 50 seconds and no discon
 
 **`heartbeat_grace` gives the Leader more time to wait.** If connectivity recovers in time, that heartbeat failure does not lead to a node-disconnection decision.
 
-The cost becomes clearer when a Client actually fails. When a Server fails but the Client is healthy, we want to wait a little longer. When the Client's host really has failed, we want to detect it quickly and stop placing work there. The same heartbeat signal cannot guarantee both "never falsely mark a healthy node down" and "immediately detect a real failure." A longer grace delays real Client-failure detection at the Nomad heartbeat layer, although application health checks may exclude the failed node earlier.
+However, the cost becomes clearer when a Client actually fails. When a Server fails but the Client is healthy, we want to wait a little longer. When the Client's host really has failed, we want to detect it quickly and stop placing work there. The same heartbeat signal cannot guarantee both "never falsely mark a healthy node down" and "immediately detect a real failure." A longer grace delays real Client-failure detection at the Nomad heartbeat layer, although application health checks may exclude the failed node earlier.
 
 From a blast-radius perspective, the two adjustments place the cost at different points:
 
