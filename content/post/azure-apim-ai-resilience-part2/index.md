@@ -2,7 +2,6 @@
 slug: "azure-apim-ai-resilience-part2"
 title: "Building Resilient Azure AI Architecture with API Management Gateway (Part 2) — Retry Observability and Alerting"
 date: 2026-04-29
-weight: 1
 description: "Achieve complete Retry observability through Application Insights Diagnostic Logs — record every retry failure, reconstruct retry chains via KQL, and configure automated alerts, all without modifying any Policy code."
 image: images/cover.png
 categories:

@@ -2,7 +2,6 @@
 slug: "azure-apim-ai-resilience-part2"
 title: "使用 API Management 网关构建 Azure AI 韧性架构（二）— Retry 行为的可观测性与告警"
 date: 2026-04-29
-weight: 1
 description: "通过 Application Insights Diagnostic Logs 实现完整的 Retry 可观测性——记录每次重试失败、通过 KQL 还原重试链路、配置自动化告警，全程无需修改任何 Policy 代码。"
 image: images/cover.png
 categories:

@@ -57,6 +57,7 @@ hugo-stack-site/
 
 | 文章 | 日期 | 分类 |
 |---|---|---|
+| [构建 E2B 沙箱韧性：Nomad 心跳机制的发现与实践](content/post/e2b-sandbox-resilience-nomad-heartbeats/index.zh.md) | 2026-10-22 | Cloud Architecture |
 | China CloudFront SSL Plugin V2 | 2025-08-19 | AWS > CloudFront |
 | SageMaker GGUF 模型推理 | 2025-02-12 | AWS > SageMaker |
 | API Gateway CORS 配置 | 2024-10-28 | AWS > API Gateway |
@@ -89,6 +90,25 @@ slug: my-new-post
 
 正文内容...
 ```
+
+### 文章图表（Mermaid）
+
+当前 Stack 主题支持在 Markdown 中直接编写 Mermaid 流程图和时序图，无需先生成 PNG：
+
+````markdown
+```mermaid
+flowchart LR
+    A["Server 故障"] --> B["心跳超期"] --> C["节点状态变化"]
+```
+````
+
+修改代码块并保存，Hugo 预览会更新图表；主题提供明暗主题适配和放大查看。
+
+如果希望所有示意图都直接在 Markdown 中维护，可以省略 front matter 的 `image`，将开篇图也写成 Mermaid 代码块。`image` 用于图片资源，不能填写 Mermaid；省略后，文章列表不显示该篇的图片缩略图。
+
+开篇使用 Mermaid 时，可以先写一段介绍，再用 `<!--more-->` 结束自动摘要，然后放图，避免摘要包含图表源码。
+
+图表由浏览器渲染，当前主题从 `cdn.jsdelivr.net` 加载 Mermaid，首次打开页面需要能访问该 CDN。
 
 ## 添加摄影作品
 
